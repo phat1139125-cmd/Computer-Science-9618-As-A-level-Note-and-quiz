@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 13 — Data Representation | 9618 A Level</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 13</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. User-Defined Data Types</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. Composite Types</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Non-Composite Types</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. File Organisation</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. File Access & Hashing</button>
+  <button class="nav-item" onclick="scrollToId('t6')">6. Floating-Point Numbers</button>
+  <button class="nav-item" onclick="scrollToId('t7')">7. Normalisation & Conversions</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+<section class="hero">
+  <div class="hero-badge">CHAPTER 13 · A LEVEL · PAPER 3</div>
+  <h1>Data <span>Representation</span></h1>
+  <p>User-defined data types, file organisation and access, hashing, floating-point numbers and normalisation.</p>
+  <div class="hero-pills"><div class="hero-pill"><span>22</span> Flashcards</div><div class="hero-pill"><span>9</span> Exam Questions</div><div class="hero-pill"><span>7</span> Topics</div></div>
+</section>
+<div class="part-header" id="part1"><div class="part-num">PART 1</div><div class="part-title" style="color:var(--cyan)">THEORY — DATA REPRESENTATION (A LEVEL)</div></div>
+
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §13.1</div>
+  <div class="topic-title">User-Defined Data Types</div>
+  <div class="topic-sub">PURPOSE · COMPOSITE vs NON-COMPOSITE</div>
+  <div class="def-box"><div class="def-label">PURPOSE</div><ul>
+    <li>To <strong>create a new data type</strong> not available in a programming language</li>
+    <li>Extends the flexibility of a programming language</li>
+    <li>Constructed by the programmer for a specific problem</li>
+  </ul></div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-blue">COMPOSITE</th><th class="th-green">NON-COMPOSITE</th></tr>
+    <tr><td>Elements</td><td>Multiple elements, different data types under one identifier</td><td>Single data type in definition only</td></tr>
+    <tr><td>Examples</td><td>Record, Set, Class/Object</td><td>Enumerated, Pointer</td></tr>
+    <tr><td>References other types?</td><td>Yes — primitive or user-defined</td><td>No — only primitive or itself</td></tr>
+  </table>
+</section>
+
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §13.1</div>
+  <div class="topic-title">Composite Data Types</div>
+  <div class="topic-sub">RECORD · SET</div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Record</div><ul><li>Uses other data types to form a single new type</li><li>Contains related items with fixed number of fields</li><li>Fields can be primitive or user-defined types</li></ul></div>
+    <div class="card c-green-card"><div class="card-title">Set</div><ul><li>Unordered list — ALL elements same data type</li><li>Theory operations: intersection, union</li><li>Includes data type in its definition</li></ul></div>
+  </div>
+  <div class="code-block"><span class="cm">// Record type</span>
+<span class="kw">TYPE</span> <span class="fn">StudentRecord</span>
+    <span class="kw">DECLARE</span> StudentID : <span class="st">INTEGER</span>
+    <span class="kw">DECLARE</span> Name : <span class="st">STRING</span>
+    <span class="kw">DECLARE</span> Grade : <span class="st">CHAR</span>
+<span class="kw">ENDTYPE</span>
+
+<span class="cm">// Set type</span>
+<span class="kw">TYPE</span> <span class="fn">IntSet</span> = <span class="kw">SET OF</span> <span class="st">INTEGER</span>
+<span class="kw">DEFINE</span> <span class="fn">mySet</span> = (<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>) : <span class="fn">IntSet</span></div>
+  <div class="memory-box"><strong>⚡ SET vs RECORD &nbsp;</strong>Set = all same type, unordered, supports set operations. Record = different types, ordered named fields, fixed number.</div>
+</section>
+
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §13.1</div>
+  <div class="topic-title">Non-Composite Data Types</div>
+  <div class="topic-sub">ENUMERATED · POINTER</div>
+  <div class="card-grid">
+    <div class="card c-orange-card"><div class="card-title">Enumerated Type</div><ul><li>Ordered list of all possible values</li><li>Values defined by programmer</li><li>Each value has implicit ordinal position</li><li>Only one data type in its definition</li></ul></div>
+    <div class="card c-purple-card"><div class="card-title">Pointer Type</div><ul><li>Stores a memory address/location</li><li>Indicates the type of data at that address</li><li>Used in dynamic data structures (linked lists)</li><li>^ symbol means "pointer to"</li></ul></div>
+  </div>
+  <div class="code-block"><span class="cm">// Enumerated type</span>
+<span class="kw">TYPE</span> <span class="fn">Season</span> = (Spring, Summer, Autumn, Winter)
+<span class="kw">TYPE</span> <span class="fn">Direction</span> = (North, South, East, West)
+
+<span class="cm">// Pointer type</span>
+<span class="kw">TYPE</span> <span class="fn">IntPointer</span> = ^<span class="st">INTEGER</span>
+<span class="kw">TYPE</span> <span class="fn">NodePtr</span> = ^<span class="fn">Node</span></div>
+</section>
+
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §13.2</div>
+  <div class="topic-title">File Organisation Methods</div>
+  <div class="topic-sub">SERIAL · SEQUENTIAL · RANDOM</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-orange">SERIAL</th><th class="th-blue">SEQUENTIAL</th><th class="th-green">RANDOM</th></tr>
+    <tr><td>Order</td><td>Chronological — order added</td><td>Ordered by key field</td><td>No particular order</td></tr>
+    <tr><td>New records</td><td>Appended to end</td><td>Inserted in correct position</td><td>Location via hashing algorithm</td></tr>
+    <tr><td>Searching</td><td>Every record checked</td><td>Stop when key field &gt; target</td><td>Hash calculates address directly</td></tr>
+    <tr><td>Updating</td><td>New file required</td><td>New file required</td><td>Updated directly in place</td></tr>
+    <tr><td>Use case</td><td>Transaction files, logs</td><td>Bank accounts by number</td><td>Direct access required</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ KEY DISTINCTION &nbsp;</strong>Only RANDOM files can be updated directly without creating a new file. Serial = unsorted. Sequential = sorted by key. Random = hash-located.</div>
+</section>
+
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §13.2</div>
+  <div class="topic-title">File Access Methods & Hashing</div>
+  <div class="topic-sub">SEQUENTIAL ACCESS · DIRECT ACCESS · COLLISIONS</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">METHOD</th><th class="th-green">HOW IT WORKS</th><th class="th-yellow">USED WITH</th></tr>
+    <tr><td style="color:var(--blue)">Sequential Access</td><td>Records read one by one from start until found or EOF</td><td>Serial and Sequential files</td></tr>
+    <tr><td style="color:var(--blue)">Direct Access</td><td>Hashing algorithm calculates address — jumps directly to record</td><td>Sequential (indexed) and Random files</td></tr>
+  </table>
+  <div class="sub-label">Hashing & Collision Resolution</div>
+  <div class="card-grid">
+    <div class="card c-cyan-card"><div class="card-title">Hashing Algorithm</div><ul><li>Mathematical formula applied to key field</li><li>Result = memory address of record</li><li>Enables direct access without sequential searching</li></ul></div>
+    <div class="card c-red-card"><div class="card-title">Collision</div><ul><li>Two different keys produce same hash value</li><li>Calculated address already occupied</li><li>Must be resolved before record can be stored</li></ul></div>
+    <div class="card c-orange-card"><div class="card-title">Resolution — Storing</div><ul><li>Linear probing: next free space after identified location</li><li>Overflow area: store in next free overflow space</li></ul></div>
+    <div class="card c-yellow-card"><div class="card-title">Resolution — Finding</div><ul><li>Search overflow area linearly</li><li>Until matching key found or end of overflow reached</li><li>If not found → record does not exist</li></ul></div>
+  </div>
+</section>
+
+<section class="topic" id="t6">
+  <div class="topic-num">TOPIC 06 · §13.3</div>
+  <div class="topic-title">Floating-Point Numbers</div>
+  <div class="topic-sub">FORMAT · MANTISSA · EXPONENT · OVERFLOW · UNDERFLOW</div>
+  <div class="def-box"><div class="def-label">FORMAT: M × 2^E</div>
+    <p>M = <strong>mantissa</strong> (significant digits → precision). E = <strong>exponent</strong> (shifts binary point → range). Both in <strong>two's complement</strong>. Binary point follows sign bit in mantissa.</p>
+  </div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">BIT ALLOCATION CHANGE</th><th class="th-green">EFFECT</th></tr>
+    <tr><td>⬆ More mantissa bits</td><td>More PRECISION / accuracy — more significant digits stored</td></tr>
+    <tr><td>⬇ Fewer mantissa bits</td><td>Less precision — digits truncated</td></tr>
+    <tr><td>⬆ More exponent bits</td><td>Greater RANGE — larger/smaller numbers representable</td></tr>
+    <tr><td>⬇ Fewer exponent bits</td><td>Smaller range of numbers</td></tr>
+  </table>
+  <div class="card-grid">
+    <div class="card c-red-card"><div class="card-title">Overflow</div><ul><li>Result TOO LARGE to represent</li><li>Requires more bits than available</li><li>Digits truncated → precision lost</li></ul></div>
+    <div class="card c-orange-card"><div class="card-title">Underflow</div><ul><li>Result TOO SMALL (too close to zero)</li><li>Not enough bits to represent it</li><li>Digits truncated → precision lost</li></ul></div>
+    <div class="card c-yellow-card"><div class="card-title">Why Binary is an Approximation</div><ul><li>Real numbers have fractional parts</li><li>Binary limited to powers of 2 fractions</li><li>Fixed storage → not all fractions stored precisely</li></ul></div>
+  </div>
+  <div class="sub-label">Mantissa Bit Weights (Two's Complement)</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">BIT POSITION</th><th class="th-green">VALUE</th><th class="th-cyan">BIT POSITION</th><th class="th-green">VALUE</th></tr>
+    <tr><td>Bit 1 (sign)</td><td>-1</td><td>Bit 5</td><td>1/16 = 0.0625</td></tr>
+    <tr><td>Bit 2</td><td>½ = 0.5</td><td>Bit 6</td><td>1/32 = 0.03125</td></tr>
+    <tr><td>Bit 3</td><td>¼ = 0.25</td><td>Bit 7</td><td>1/64</td></tr>
+    <tr><td>Bit 4</td><td>⅛ = 0.125</td><td>Bit 8</td><td>1/128</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ MANTISSA vs EXPONENT &nbsp;</strong>Mantissa → PRECISION. Exponent → RANGE. Never swap these — it's the most common exam mistake on floating-point questions.</div>
+</section>
+
+<section class="topic" id="t7">
+  <div class="topic-num">TOPIC 07 · §13.3</div>
+  <div class="topic-title">Normalisation & Conversions</div>
+  <div class="topic-sub">WHY NORMALISE · FLOAT→DENARY · DENARY→FLOAT</div>
+  <div class="def-box"><div class="def-label">WHY NORMALISE?</div><ul>
+    <li>Store maximum range of numbers in minimum bits</li>
+    <li>Minimises leading 0s/1s — maximises significant bits</li>
+    <li>Increases precision for very small/large numbers</li>
+    <li>Avoids multiple binary representations of same number</li>
+    <li><strong>Normalised:</strong> mantissa starts with <code style="color:var(--green)">01</code> (positive) or <code style="color:var(--red)">10</code> (negative)</li>
+  </ul></div>
+  <div class="sub-label">Floating-Point Binary → Denary</div>
+  <div class="process">
+    <div class="step"><p>Convert <span class="kw">exponent</span> to denary (two's complement)</p></div>
+    <div class="step"><p>Shift mantissa binary point <span class="kw">RIGHT</span> by exponent value</p></div>
+    <div class="step"><p>Convert result to denary — bits after point = ½, ¼, ⅛...</p></div>
+  </div>
+  <div class="def-box" style="margin-top:10px"><div class="def-label">WORKED EXAMPLE: 01011010 × 00000100</div>
+    <p>Exponent: 00000100 = <strong>4</strong><br>
+    Mantissa: 0.1011010 → shift 4 right → 01011.010<br>
+    = 8 + 2 + 1 + ¼ = <strong>11.25</strong></p>
+  </div>
+  <div class="sub-label" style="margin-top:16px">Denary → Floating-Point Binary</div>
+  <div class="process">
+    <div class="step"><p>Convert denary to <span class="kw">binary</span> with binary point for fractions</p></div>
+    <div class="step"><p>Move point <span class="kw">LEFT</span> until form 0.1xxx (count moves = exponent)</p></div>
+    <div class="step"><p>Express mantissa and exponent in <span class="kw">two's complement</span></p></div>
+  </div>
+  <div class="def-box" style="margin-top:10px"><div class="def-label">WORKED EXAMPLE: Convert 4.75</div>
+    <p>4.75 = 4 + ½ + ¼ → binary: 0100.11<br>
+    Shift 3 left → 0.10011 (exponent = 3 = 00000011)<br>
+    Mantissa: <strong>01001100...</strong> Exponent: <strong>00000011</strong></p>
+  </div>
+</section>
+
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)"><div class="part-num">PART 2</div><div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div></div>
+<div class="ez-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 13 · Data Representation</div><div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong>.</div></div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 01</div>
+  <div class="q-text">State two reasons why user-defined data types are necessary. <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>To create a new data type not available in the programming language (1)</li>
+    <li>To extend the flexibility of a programming language (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 02</div>
+  <div class="q-text">Write pseudocode to define an enumerated type called TrafficLight with values Red, Amber, Green. <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>TYPE TrafficLight = (Red, Amber, Green) (1 for syntax, 1 for correct values)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 03</div>
+  <div class="q-text">Explain the difference between a composite and non-composite user-defined type. Give an example of each. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Composite: collection of multiple elements of different data types under one identifier (1) — e.g. record, set (1)</li>
+    <li>Non-composite: contains only one data type in its definition (1) — e.g. enumerated type, pointer (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 04</div>
+  <div class="q-text">Compare serial and sequential file organisation. Give three differences. <span class="marks">[6]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 3 × 2)</h4><ul>
+    <li>Serial: stored in chronological order / Sequential: stored ordered by key field (1) — sequential enables faster searching (1)</li>
+    <li>Serial: new records appended to end / Sequential: records inserted in correct key position (1)</li>
+    <li>Serial: every record must be checked when searching / Sequential: searching stops when key field exceeds target value (1)</li>
+    <li>Both require a new file to be created to update records (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 05</div>
+  <div class="q-text">Explain what a collision is in hashing and describe one method of collision resolution. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Collision: two different record keys produce the same hash value when passed through the hashing algorithm (1)</li>
+    <li>The calculated storage location is already occupied by another record (1)</li>
+    <li>Resolution: linear probing — store record in next free memory space after the identified location (1)</li>
+    <li>When finding: search overflow area linearly until matching record key found (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 06</div>
+  <div class="q-text">Convert the floating-point binary 01101000 × 00000011 to denary. (8-bit mantissa, 8-bit exponent, two's complement) <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Exponent: 00000011 = 3 (1)</li>
+    <li>Shift mantissa 3 right: 0.1101000 → 0110.1000 (1)</li>
+    <li>= 4 + 2 + ½ = 6.5 (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 07</div>
+  <div class="q-text">Explain the effect on a floating-point number of: (a) increasing mantissa bits, (b) increasing exponent bits. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>(a) More mantissa bits → increases precision/accuracy of stored number (1) — more significant digits can be represented (1)</li>
+    <li>(b) More exponent bits → increases the range of numbers that can be represented (1) — larger or smaller numbers can be stored (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Mantissa = PRECISION. Exponent = RANGE. Never swap. "Makes the number bigger" = 0 marks.</div></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 08</div>
+  <div class="q-text">Explain why floating-point binary numbers are stored in normalised form. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 3)</h4><ul>
+    <li>To store the maximum range of numbers in the minimum number of bits (1)</li>
+    <li>Minimises leading 0s/1s — maximises the number of significant bits stored (1)</li>
+    <li>Increases precision/accuracy especially for very small or very large numbers (1)</li>
+    <li>Avoids a number having multiple binary representations (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 09</div>
+  <div class="q-text">Explain the difference between overflow and underflow in floating-point arithmetic, referring to precision. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Overflow: result of operation too large to be represented in available bits (1) — digits truncated, precision lost (1)</li>
+    <li>Underflow: result too small (too close to zero) to be precisely represented (1) — digits truncated, precision lost (1)</li>
+  </ul></div>
+</div>
+</div>
+
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">PART 3</div><div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);">CH 13 · DATA REPRESENTATION (A LEVEL) · 22 CARDS</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress"><div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div><div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div><div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div></div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 22</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button>&nbsp;<button class="fc-btn" onclick="FC.reviewMissed()">Review Missed</button></div>
+</div>
+</div>
+</main></div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'PURPOSE',q:'Why are user-defined data types necessary?',a:'• Create new data types not available in programming language\n• Extend the flexibility of a programming language\n• Constructed by programmer for a specific problem'},
+  {label:'COMPARE',q:'Composite vs Non-Composite — key difference',a:'Composite: multiple elements, different data types, one identifier (e.g. record, set, class).\nNon-composite: only ONE data type in definition (e.g. enumerated, pointer).'},
+  {label:'DEFINE',q:'What is a RECORD composite type?',a:'Uses other data types to form a single new type. Related items with fixed number of fields. Fields can be primitive or user-defined.\nTYPE name / DECLARE fields / ENDTYPE'},
+  {label:'DEFINE',q:'What is a SET composite type?',a:'Unordered list — ALL elements the same data type. Set operations (union, intersection) applicable. Includes data type in its definition.\nTYPE name = SET OF DATATYPE'},
+  {label:'DEFINE',q:'What is an ENUMERATED non-composite type?',a:'Ordered list of all possible values defined by programmer. Each value has an implicit ordinal position.\nTYPE Season = (Spring, Summer, Autumn, Winter)'},
+  {label:'DEFINE',q:'What is a POINTER non-composite type?',a:'Stores a memory address/location. Indicates the type of data stored there. Used in dynamic structures (linked lists).\nTYPE IntPointer = ^INTEGER  (^ means "pointer to")'},
+  {label:'COMPARE',q:'Serial vs Sequential vs Random file organisation',a:'Serial: chronological, appended to end, every record checked.\nSequential: ordered by key, inserted in position, stop when key > target.\nRandom: hash-located, no order, direct in-place updates possible.'},
+  {label:'DEFINE',q:'Sequential file access vs Direct file access',a:'Sequential: read records one by one from start until found.\nDirect: hashing algorithm calculates address — jumps directly to record without reading others.'},
+  {label:'DEFINE',q:'What is a hashing algorithm used for in file access?',a:'Mathematical formula applied to key field. Result = memory address of the record. Enables direct access without sequential searching.'},
+  {label:'DEFINE',q:'What is a collision in hashing?',a:'Two DIFFERENT record keys produce the SAME hash value. The calculated address is already occupied by another record — cannot store two records at same address.'},
+  {label:'PROCESS',q:'How are collisions resolved when STORING a record?',a:'Linear probing: store in next free space AFTER the identified location.\nOverflow area: store in next free space in overflow area.'},
+  {label:'PROCESS',q:'How are collisions resolved when FINDING a record?',a:'Search overflow area linearly until matching key found.\nIf not found → record does not exist in file.'},
+  {label:'DEFINE',q:'Floating-point format M × 2^E — what are M and E?',a:'M = mantissa: stores significant digits → determines PRECISION.\nE = exponent: shifts binary point → determines RANGE.\nBoth stored in two\'s complement.'},
+  {label:'CRITICAL',q:'More mantissa bits vs more exponent bits — effect on each',a:'⚡ More mantissa bits → more PRECISION/ACCURACY.\n⚡ More exponent bits → greater RANGE.\nNEVER confuse these two — most common exam error.'},
+  {label:'DEFINE',q:'What is OVERFLOW in floating-point arithmetic?',a:'Result of operation is too LARGE to be precisely represented. Requires more bits than available — digits truncated, precision lost.'},
+  {label:'DEFINE',q:'What is UNDERFLOW in floating-point arithmetic?',a:'Result too SMALL (too close to zero) to be represented. Not enough bits — digits truncated, precision lost.'},
+  {label:'EXPLAIN',q:'Why is floating-point binary sometimes only an approximation?',a:'• Real numbers have fractional parts\n• Binary limited to powers of 2 fractions (½, ¼, ⅛...)\n• Fixed storage length — not all fractions can be stored with required precision'},
+  {label:'NORMALISE',q:'Why are floating-point numbers stored in normalised form? (4 reasons)',a:'• Maximum range in minimum bits\n• Minimises leading 0s/1s — maximises significant bits\n• Increases precision for very small/large numbers\n• Avoids multiple representations of same number'},
+  {label:'NORMALISE',q:'How do you identify a normalised floating-point number?',a:'Positive: mantissa starts with 01 (e.g. 0.1xxxxx)\nNegative: mantissa starts with 10 (e.g. 1.0xxxxx)\nAny other leading pattern = NOT normalised.'},
+  {label:'CONVERT',q:'Steps: floating-point binary → denary',a:'1. Convert EXPONENT to denary (two\'s complement)\n2. Shift mantissa point RIGHT by exponent value\n3. Convert result: bits after point = ½, ¼, ⅛...'},
+  {label:'CONVERT',q:'Steps: denary → floating-point binary',a:'1. Convert to binary with binary point\n2. Shift point LEFT until 0.1xxx form (count = exponent)\n3. Express mantissa + exponent in two\'s complement'},
+  {label:'APPLY',q:'Convert 01011010 × 00000100 to denary',a:'Exponent: 00000100 = 4\nMantissa: 0.1011010 → shift 4 right → 01011.010\n= 8 + 2 + 1 + ¼ = 11.25'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','t6','t7','exam','flash']);
+</script>
+</body>
+</html>

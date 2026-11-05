@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 18 — Artificial Intelligence | 9618 A Level</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 18</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. Graphs in AI</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. A* & Dijkstra's Algorithms</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Artificial Neural Networks</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. Deep Learning</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. Machine Learning</button>
+  <button class="nav-item" onclick="scrollToId('t6')">6. Reinforcement Learning</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+<section class="hero">
+  <div class="hero-badge">CHAPTER 18 · A LEVEL · PAPER 3</div>
+  <h1>Artificial <span>Intelligence</span></h1>
+  <p>Graphs in AI, neural networks, deep learning, machine learning types and reinforcement learning.</p>
+  <div class="hero-pills"><div class="hero-pill"><span>20</span> Flashcards</div><div class="hero-pill"><span>8</span> Exam Questions</div><div class="hero-pill"><span>6</span> Topics</div></div>
+</section>
+<div class="part-header" id="part1"><div class="part-num">PART 1</div><div class="part-title" style="color:var(--cyan)">THEORY — ARTIFICIAL INTELLIGENCE</div></div>
+
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §18.1</div>
+  <div class="topic-title">How Graphs Aid AI</div>
+  <div class="topic-sub">PURPOSE OF GRAPHS · STRUCTURE · USE IN AI PROBLEMS</div>
+  <div class="def-box"><div class="def-label">HOW GRAPHS AID AI</div><ul>
+    <li>Artificial Neural Networks can be <strong>represented using graphs</strong></li>
+    <li>Graphs provide <strong>structures for relationships</strong> between data</li>
+    <li>AI problems can be defined as <strong>finding a path in a graph</strong></li>
+    <li>Graphs may be analysed by a range of algorithms (e.g. Dijkstra's, A*)</li>
+  </ul></div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Graph Structure</div><ul>
+      <li>Consists of <strong>nodes</strong> (vertices) and <strong>edges</strong> (connections)</li>
+      <li>Edges can be directed or undirected</li>
+      <li>Edges can be weighted (cost, distance, time)</li>
+      <li>Can be cyclic or acyclic</li>
+    </ul></div>
+    <div class="card c-green-card"><div class="card-title">Graphs as ADTs in AI</div><ul>
+      <li>Nodes represent states/positions</li>
+      <li>Edges represent possible transitions</li>
+      <li>Weights represent cost of transition</li>
+      <li>Path = sequence of decisions/moves</li>
+      <li>Goal = find optimal path between two nodes</li>
+    </ul></div>
+  </div>
+  <div class="memory-box"><strong>⚡ EXAM NOTE &nbsp;</strong>Candidates will NOT be required to write algorithms to set up, access or perform searches on graphs. You only need to know the purpose, structure and how they aid AI problems.</div>
+</section>
+
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §18.1</div>
+  <div class="topic-title">A* and Dijkstra's Algorithms</div>
+  <div class="topic-sub">PURPOSE · HOW THEY WORK · WHEN USED</div>
+  <div class="def-box"><div class="def-label">PURPOSE</div>
+    <p>To find the <strong>optimal shortest and most cost-effective route</strong> between two nodes in a graph, based on distance, cost or time.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card c-cyan-card">
+      <div class="card-title">Dijkstra's Algorithm</div>
+      <ul>
+        <li>Finds shortest path from a source node to ALL other nodes</li>
+        <li>Works on graphs with non-negative weights</li>
+        <li>Explores all nodes — guarantees shortest path</li>
+        <li>Used in GPS, routing tables, network navigation</li>
+        <li>Does not account for a heuristic — explores more nodes</li>
+      </ul>
+    </div>
+    <div class="card c-purple-card">
+      <div class="card-title">A* Algorithm</div>
+      <ul>
+        <li>Finds shortest path from source to a SPECIFIC target node</li>
+        <li>Uses a heuristic (estimated cost to goal) to guide search</li>
+        <li>More efficient — explores fewer nodes than Dijkstra's</li>
+        <li>Used in game AI, robotics, pathfinding</li>
+        <li>f(n) = g(n) + h(n): actual cost + estimated cost to goal</li>
+      </ul>
+    </div>
+  </div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-blue">DIJKSTRA'S</th><th class="th-purple">A*</th></tr>
+    <tr><td>Target</td><td>All nodes from source</td><td>Specific target node</td></tr>
+    <tr><td>Heuristic</td><td>No — explores all</td><td>Yes — guides toward goal</td></tr>
+    <tr><td>Efficiency</td><td>Slower — more nodes explored</td><td>Faster — guided by heuristic</td></tr>
+    <tr><td>Use case</td><td>Network routing, GPS all routes</td><td>Game AI, robotics pathfinding</td></tr>
+  </table>
+</section>
+
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §18.1</div>
+  <div class="topic-title">Artificial Neural Networks (ANNs)</div>
+  <div class="topic-sub">STRUCTURE · HOW THEY ENABLE MACHINE LEARNING · BACK PROPAGATION</div>
+  <div class="def-box"><div class="def-label">ARTIFICIAL NEURAL NETWORK</div><ul>
+    <li>Part of AI — simulates function of a human brain</li>
+    <li>Key component of machine learning</li>
+    <li>Has <strong>self-learning capabilities</strong> — improves as more data available</li>
+    <li>Can solve complex problems humans find difficult</li>
+  </ul></div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Structure</div><ul>
+      <li>Input layer: receives data</li>
+      <li>Hidden layers: extract characteristics, calculate outputs</li>
+      <li>Output layer: provides results/decisions</li>
+      <li>Weights assigned between nodes — adjusted through training</li>
+    </ul></div>
+    <div class="card c-green-card"><div class="card-title">How ANNs Enable Machine Learning</div><ul>
+      <li>Replicates how human brains work</li>
+      <li>Weights adjusted through training → more accurate results</li>
+      <li>Data input at input layer → analysed at each hidden layer</li>
+      <li>Characteristics extracted/outputs calculated at each layer</li>
+      <li>Reinforcement learning through repeated training</li>
+      <li>Decisions made without being specifically programmed</li>
+    </ul></div>
+    <div class="card c-orange-card"><div class="card-title">Multiple Hidden Layers</div><ul>
+      <li>Enables <strong>deep learning</strong></li>
+      <li>Needed for higher complexity problems</li>
+      <li>Network learns and makes decisions on its own</li>
+      <li>Improves accuracy — more layers = more complex learning</li>
+      <li>Creates complex feature detectors</li>
+    </ul></div>
+    <div class="card c-red-card"><div class="card-title">Back Propagation of Errors</div><ul>
+      <li>Used to correct errors in the network</li>
+      <li>Error calculated at output layer</li>
+      <li>Error propagated back through network</li>
+      <li>Weights adjusted to reduce error</li>
+      <li>Process repeated until accuracy acceptable</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §18.1</div>
+  <div class="topic-title">Deep Learning</div>
+  <div class="topic-sub">DEFINITION · HOW IT WORKS · REASONS FOR USE</div>
+  <div class="def-box"><div class="def-label">DEEP LEARNING</div><ul>
+    <li>Simulates data processing abilities of human brain</li>
+    <li>Uses ANNs with <strong>many hidden layers</strong> — progressively extracts higher-level features</li>
+    <li>Specialised form of machine learning</li>
+    <li>Trained using large amounts of <strong>unlabelled data</strong></li>
+  </ul></div>
+  <div class="card-grid">
+    <div class="card c-purple-card"><div class="card-title">Reasons for Using Deep Learning</div><ul>
+      <li>Makes good use of unstructured data</li>
+      <li>Outperforms other ML methods when data size is large</li>
+      <li>Processes data with a non-linear approach</li>
+      <li>Effective at identifying hidden patterns too complex for humans</li>
+      <li>More accurate outcomes with more hidden layers</li>
+      <li>Enables machines to process data autonomously</li>
+    </ul></div>
+  </div>
+  <div class="memory-box"><strong>⚡ DEEP LEARNING KEY POINT &nbsp;</strong>Deep learning = many hidden layers + large unlabelled datasets. The "deep" refers to the depth (number of hidden layers). More layers = can detect more complex, abstract patterns.</div>
+</section>
+
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §18.1</div>
+  <div class="topic-title">Machine Learning</div>
+  <div class="topic-sub">SUPERVISED · UNSUPERVISED · COMPARISON</div>
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">Supervised Learning</div>
+      <ul>
+        <li>Uses <strong>labelled input data</strong> — known input with associated output</li>
+        <li>Learns from sample data with known correct outputs</li>
+        <li>Able to predict future outcomes based on past data</li>
+        <li>e.g. spam detection, image classification</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">Unsupervised Learning</div>
+      <ul>
+        <li>Uses <strong>unlabelled input data</strong> — no correct output given</li>
+        <li>Finds previously unknown patterns in data</li>
+        <li>Only requires input data</li>
+        <li>e.g. customer segmentation, anomaly detection</li>
+      </ul>
+    </div>
+  </div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-blue">SUPERVISED</th><th class="th-green">UNSUPERVISED</th></tr>
+    <tr><td>Input data</td><td>Labelled (input + known output)</td><td>Unlabelled (input only)</td></tr>
+    <tr><td>Training</td><td>Trained with correct answers</td><td>Discovers patterns independently</td></tr>
+    <tr><td>Goal</td><td>Predict future outcomes</td><td>Find hidden patterns/groups</td></tr>
+    <tr><td>Example</td><td>Spam filter, medical diagnosis</td><td>Customer clustering, anomaly detection</td></tr>
+  </table>
+</section>
+
+<section class="topic" id="t6">
+  <div class="topic-num">TOPIC 06 · §18.1</div>
+  <div class="topic-title">Reinforcement Learning</div>
+  <div class="topic-sub">HOW IT WORKS · FEEDBACK · REASONS FOR USE</div>
+  <div class="def-box"><div class="def-label">REINFORCEMENT LEARNING</div><ul>
+    <li>Based on <strong>feedback</strong> — AI learns through actions and seeing results</li>
+    <li>Works through <strong>trial and error</strong> — learns from own experiences</li>
+    <li>Good action → positive feedback (reward)</li>
+    <li>Bad action → negative feedback (penalty)</li>
+    <li>Node weightings adjusted to achieve correct outcome</li>
+    <li>AI uses feedback to improve performance in similar tasks</li>
+  </ul></div>
+  <div class="card-grid">
+    <div class="card c-orange-card"><div class="card-title">Reasons for Using Reinforcement Learning</div><ul>
+      <li>Enables autonomous learning using feedback without labelled data</li>
+      <li>System improves through experience — no human intervention needed</li>
+      <li>Effective for complex decision-making problems</li>
+      <li>e.g. game playing AI, robotics, self-driving cars</li>
+    </ul></div>
+  </div>
+  <div class="memory-box"><strong>⚡ THREE LEARNING TYPES COMPARISON &nbsp;</strong>Supervised = labelled data, known answers. Unsupervised = unlabelled, finds patterns. Reinforcement = no labelled data, learns from reward/penalty feedback. Deep learning can use any of these approaches with many hidden layers.</div>
+</section>
+
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)"><div class="part-num">PART 2</div><div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div></div>
+<div class="ez-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 18 · Artificial Intelligence</div><div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong>.</div></div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 01</div>
+  <div class="q-text">Explain how graphs are used to aid Artificial Intelligence. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 3)</h4><ul>
+    <li>ANNs can be represented using graphs (1)</li>
+    <li>Graphs provide structures for relationships between data (1)</li>
+    <li>AI problems can be defined as finding a path in a graph (1)</li>
+    <li>Graphs can be analysed by algorithms such as Dijkstra's and A* (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 02</div>
+  <div class="q-text">Explain the difference between Dijkstra's algorithm and the A* algorithm. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 4)</h4><ul>
+    <li>Dijkstra's: finds shortest path from source to ALL nodes / A*: finds shortest path to a SPECIFIC target (1)</li>
+    <li>Dijkstra's: no heuristic — explores all nodes / A*: uses heuristic to guide search toward goal (1)</li>
+    <li>A* more efficient — explores fewer nodes (1)</li>
+    <li>Dijkstra's: used in network routing / A*: used in game AI, robotics (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 03</div>
+  <div class="q-text">Describe the structure of an artificial neural network. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Input layer: receives the input data (1)</li>
+    <li>Hidden layer(s): analyses data, extracts characteristics, calculates outputs (1)</li>
+    <li>Output layer: provides the final result/decision (1)</li>
+    <li>Weights assigned between nodes — adjusted through training to improve accuracy (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 04</div>
+  <div class="q-text">Explain the difference between supervised and unsupervised machine learning. Give an example of each. <span class="marks">[6]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 3 × 2)</h4><ul>
+    <li>Supervised: uses labelled data — known input with associated correct output (1) — e.g. spam filter, medical diagnosis (1)</li>
+    <li>Unsupervised: uses unlabelled data — no correct output provided (1) — e.g. customer segmentation, anomaly detection (1)</li>
+    <li>Supervised: predicts future outcomes from past labelled data (1)</li>
+    <li>Unsupervised: discovers previously unknown patterns independently (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 05</div>
+  <div class="q-text">Explain what reinforcement learning is and give two reasons for using it. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Reinforcement learning: AI learns through trial and error — good actions receive positive feedback, bad actions receive negative feedback (1)</li>
+    <li>Node weightings adjusted based on feedback to improve performance (1)</li>
+    <li>[Reason] Enables autonomous learning without labelled data (1)</li>
+    <li>[Reason] System improves through experience — effective for complex decision-making (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 06</div>
+  <div class="q-text">Explain how back propagation of errors improves an artificial neural network. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Error calculated at the output layer (1)</li>
+    <li>Error propagated back through the network to each layer (1)</li>
+    <li>Weights adjusted at each layer to reduce the error — process repeated until accuracy acceptable (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 07</div>
+  <div class="q-text">Explain what deep learning is and give three reasons for its use over other machine learning methods. <span class="marks">[5]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Deep learning: uses ANNs with many hidden layers — progressively extracts higher-level features (1)</li>
+    <li>Trained using large amounts of unlabelled data (1)</li>
+    <li>[Reason] Outperforms other ML when data size is large (1)</li>
+    <li>[Reason] Effective at identifying hidden patterns too complex for humans to spot (1)</li>
+    <li>[Reason] Processes data with a non-linear approach — handles complex unstructured data (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 08</div>
+  <div class="q-text">Explain why multiple hidden layers in a neural network improve its performance. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 4)</h4><ul>
+    <li>Enables deep learning to take place (1)</li>
+    <li>Needed when problem has a higher level of complexity (1)</li>
+    <li>Network learns and makes decisions independently (1)</li>
+    <li>More hidden layers = more complex learning capabilities (1)</li>
+    <li>Improves accuracy of results (1)</li>
+    <li>Creates complex feature detectors that extract abstract patterns (1)</li>
+  </ul></div>
+</div>
+</div>
+
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">PART 3</div><div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);">CH 18 · ARTIFICIAL INTELLIGENCE · 20 CARDS</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress"><div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div><div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div><div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div></div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 20</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button>&nbsp;<button class="fc-btn" onclick="FC.reviewMissed()">Review Missed</button></div>
+</div>
+</div>
+</main></div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'GRAPHS',q:'How do graphs aid Artificial Intelligence? (4 ways)',a:'• ANNs represented using graphs\n• Graphs provide structures for relationships\n• AI problems defined as finding a path in a graph\n• Graphs analysed by algorithms (Dijkstra\'s, A*)'},
+  {label:'GRAPHS',q:'What makes up a graph structure?',a:'Nodes (vertices): represent states/positions.\nEdges (connections): represent transitions — can be directed/undirected, weighted.\nWeights: represent cost, distance or time of transition.'},
+  {label:'ALGORITHMS',q:'Purpose of A* and Dijkstra\'s algorithms',a:'To find the optimal shortest and most cost-effective route between two nodes in a graph, based on distance, cost or time.'},
+  {label:'COMPARE',q:'Dijkstra\'s vs A* algorithm — 3 differences',a:'Target: Dijkstra\'s=all nodes from source / A*=specific target node.\nHeuristic: Dijkstra\'s=none / A*=uses heuristic to guide search.\nEfficiency: Dijkstra\'s=slower (more nodes) / A*=faster (guided).'},
+  {label:'DEFINE',q:'What is an Artificial Neural Network?',a:'Part of AI — simulates function of human brain. Key component of machine learning. Has self-learning capabilities — improves with more data. Can solve complex problems. Made of input layer, hidden layers and output layer.'},
+  {label:'STRUCTURE',q:'ANN structure — 3 layer types and their roles',a:'Input layer: receives the data fed into the network.\nHidden layer(s): extracts characteristics, calculates outputs at each layer.\nOutput layer: provides the final result or decision.'},
+  {label:'DEFINE',q:'What are weights in a neural network?',a:'Values assigned between nodes. Adjusted through training to give more accurate results. Back propagation adjusts weights to reduce errors. Higher weight = stronger connection influence.'},
+  {label:'DEFINE',q:'What is back propagation of errors?',a:'Method to correct errors in a neural network. Error calculated at output layer → propagated back through network → weights adjusted at each layer to reduce error → repeated until accuracy acceptable.'},
+  {label:'HIDDEN LAYERS',q:'Why do multiple hidden layers improve a neural network?',a:'• Enables deep learning\n• Needed for higher complexity problems\n• Network learns/decides independently\n• More layers = more complex learning capabilities\n• Improves accuracy — creates complex feature detectors'},
+  {label:'DEFINE',q:'What is Deep Learning?',a:'Uses ANNs with MANY hidden layers. Progressively extracts higher-level features from input. Specialised form of machine learning. Trained using large unlabelled datasets. Simulates brain\'s data processing abilities.'},
+  {label:'REASONS',q:'4 reasons to use Deep Learning',a:'• Makes good use of unstructured data\n• Outperforms other ML when data size is large\n• Processes data with non-linear approach\n• Identifies hidden patterns too complex for humans\n• More accurate with more hidden layers'},
+  {label:'COMPARE',q:'Deep Learning vs regular Machine Learning',a:'Deep Learning: many hidden layers, large unlabelled data, extracts abstract features automatically.\nRegular ML: fewer layers, often needs labelled data, features may need manual selection.'},
+  {label:'DEFINE',q:'What is Supervised Machine Learning?',a:'Uses LABELLED input data — known inputs with associated correct outputs. Learns from sample data. Predicts future outcomes based on past data.\nExamples: spam filter, image classification, medical diagnosis.'},
+  {label:'DEFINE',q:'What is Unsupervised Machine Learning?',a:'Uses UNLABELLED input data — no correct output given. Finds previously unknown patterns independently. Only requires input data.\nExamples: customer segmentation, anomaly detection, clustering.'},
+  {label:'COMPARE',q:'Supervised vs Unsupervised vs Reinforcement Learning',a:'Supervised: labelled data, known answers → predict outcomes.\nUnsupervised: unlabelled data → find hidden patterns.\nReinforcement: no labelled data, learns from reward/penalty feedback → trial and error.'},
+  {label:'DEFINE',q:'What is Reinforcement Learning?',a:'AI learns through trial and error in interactive environment. Good action → positive feedback (reward). Bad action → negative feedback (penalty). Node weights adjusted based on feedback to improve performance.'},
+  {label:'REASONS',q:'2 reasons to use Reinforcement Learning',a:'• Enables autonomous learning using feedback WITHOUT labelled data\n• System improves through experience — effective for complex decision-making\nExamples: game AI, robotics, self-driving cars'},
+  {label:'APPLY',q:'Which ML type? (a) Training with email examples labelled spam/not-spam (b) Grouping customers by buying behaviour (c) Teaching a robot to walk through trial',a:'(a) Supervised — labelled training data\n(b) Unsupervised — no labels, finds clusters\n(c) Reinforcement — learns from reward/penalty feedback'},
+  {label:'EXPLAIN',q:'What does "self-learning capability" mean in ANNs?',a:'The network improves automatically as more data becomes available. Weights are adjusted through training — no specific programming for each task. Can develop its own rules and feature detectors through back propagation.'},
+  {label:'APPLY',q:'Give 3 real-world applications of ANNs/deep learning',a:'• Facial recognition systems\n• Medical image analysis (cancer detection)\n• Natural language processing (speech recognition)\n• Self-driving car vision systems\n• Game playing AI (chess, Go)'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','t6','exam','flash']);
+</script>
+</body>
+</html>

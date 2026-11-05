@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 17 — Security | 9618 A Level</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 17</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. Key Cryptography Concepts</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. Asymmetric Encryption</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Symmetric Encryption</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. Quantum Cryptography</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. SSL/TLS Protocols</button>
+  <button class="nav-item" onclick="scrollToId('t6')">6. Digital Certificates & Signatures</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+<section class="hero">
+  <div class="hero-badge">CHAPTER 17 · A LEVEL · PAPER 3</div>
+  <h1>Security &amp; <span>Encryption</span></h1>
+  <p>Asymmetric and symmetric encryption, quantum cryptography, SSL/TLS, digital certificates and signatures.</p>
+  <div class="hero-pills"><div class="hero-pill"><span>20</span> Flashcards</div><div class="hero-pill"><span>8</span> Exam Questions</div><div class="hero-pill"><span>6</span> Topics</div></div>
+</section>
+<div class="part-header" id="part1"><div class="part-num">PART 1</div><div class="part-title" style="color:var(--cyan)">THEORY — SECURITY & ENCRYPTION</div></div>
+
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §17.1</div>
+  <div class="topic-title">Key Cryptography Concepts</div>
+  <div class="topic-sub">PURPOSE · NON-REPUDIATION · KEY TYPES</div>
+  <div class="def-box"><div class="def-label">PURPOSE OF KEY CRYPTOGRAPHY</div><ul>
+    <li>Ensures message is <strong>authentic</strong> — from a trusted source</li>
+    <li>Ensures message has <strong>not been altered</strong> during transmission</li>
+    <li>Makes sure only <strong>intended receiver</strong> can understand message</li>
+    <li><strong>Non-repudiation</strong>: neither sender nor receiver can deny the transmission happened</li>
+  </ul></div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Public Key</div><ul>
+      <li>Available to everyone — freely distributed</li>
+      <li>Used to ENCRYPT data sent TO the key owner</li>
+      <li>Cannot decrypt what it encrypts</li>
+    </ul></div>
+    <div class="card c-red-card"><div class="card-title">Private Key</div><ul>
+      <li>Unpublished/secret — never transmitted anywhere</li>
+      <li>Has a matching public key</li>
+      <li>Used to DECRYPT data encrypted with matching public key</li>
+      <li>Also used to CREATE digital signatures</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §17.1</div>
+  <div class="topic-title">Asymmetric Encryption</div>
+  <div class="topic-sub">TWO KEYS · PROCESS · DETECTING ALTERATIONS</div>
+  <div class="def-box"><div class="def-label">ASYMMETRIC ENCRYPTION</div><ul>
+    <li>Uses a <strong>pair of different keys</strong> — public + private</li>
+    <li>One key encrypts, the matching key decrypts</li>
+    <li>Only public key available to everyone — private key stays secret</li>
+    <li>Longer process — more complex</li>
+    <li>Key length: usually <strong>2048 bits</strong></li>
+  </ul></div>
+  <div class="sub-label">Sending a Private Message (Encryption Process)</div>
+  <div class="process">
+    <div class="step"><p>Receiver's computer generates a matching <span class="kw">key pair</span> (public + private)</p></div>
+    <div class="step"><p>Receiver sends their <span class="kw">public key</span> to the sender</p></div>
+    <div class="step"><p>Sender encrypts data using receiver's <span class="kw">public key</span> → creates cipher text</p></div>
+    <div class="step"><p>Cipher text sent to receiver — can <strong>only</strong> be decrypted using receiver's <span class="kw">private key</span></p></div>
+  </div>
+  <div class="sub-label">Detecting Message Alterations (Digital Signature)</div>
+  <div class="process">
+    <div class="step"><p>Message decrypted using receiver's <span class="kw">private key</span></p></div>
+    <div class="step"><p>Digital signature decrypted using sender's <span class="kw">public key</span> → recovers original digest</p></div>
+    <div class="step"><p>Received message hashed with <span class="kw">agreed hashing algorithm</span> → produces second digest</p></div>
+    <div class="step"><p>Two digests <span class="kw">compared</span> — if same, message not altered; if different, message was tampered</p></div>
+  </div>
+  <div class="memory-box"><strong>⚡ ASYMMETRIC KEY RULE &nbsp;</strong>Encrypt with PUBLIC key → decrypt with PRIVATE key. Sign with PRIVATE key → verify with PUBLIC key. Public key = freely shared. Private key = NEVER shared.</div>
+</section>
+
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §17.1</div>
+  <div class="topic-title">Symmetric Encryption</div>
+  <div class="topic-sub">SINGLE KEY · COMPARISON WITH ASYMMETRIC</div>
+  <div class="def-box"><div class="def-label">SYMMETRIC ENCRYPTION</div><ul>
+    <li>Uses a <strong>single key</strong> shared by all parties</li>
+    <li>Same key used to encrypt AND decrypt</li>
+    <li>Simple and fast process</li>
+    <li>Higher risk of compromise — key must be shared securely</li>
+    <li>Key length: usually <strong>128 or 256 bits</strong></li>
+  </ul></div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-blue">ASYMMETRIC</th><th class="th-green">SYMMETRIC</th></tr>
+    <tr><td>Number of keys</td><td>Two (public + private)</td><td>One (shared key)</td></tr>
+    <tr><td>Speed</td><td>Slower — more complex</td><td>Faster — simpler process</td></tr>
+    <tr><td>Security</td><td>Higher — private key never shared</td><td>Lower — key must be distributed securely</td></tr>
+    <tr><td>Key length</td><td>Usually 2048 bits</td><td>Usually 128/256 bits</td></tr>
+    <tr><td>Use case</td><td>Secure key exchange, digital signatures</td><td>Bulk data encryption after key exchange</td></tr>
+  </table>
+</section>
+
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §17.1</div>
+  <div class="topic-title">Quantum Cryptography</div>
+  <div class="topic-sub">HOW IT WORKS · BENEFITS · LIMITATIONS</div>
+  <div class="def-box"><div class="def-label">QUANTUM CRYPTOGRAPHY</div><ul>
+    <li>Protects security of data transmitted over <strong>fibre optic cable</strong></li>
+    <li>Uses quantum properties of photons to transmit encryption keys</li>
+    <li>Virtually unhackable — any eavesdropping changes photon properties</li>
+  </ul></div>
+  <div class="card-grid">
+    <div class="card c-green-card"><div class="card-title">✅ Benefits</div><ul>
+      <li>Detects any eavesdropping — photon properties change if intercepted</li>
+      <li>Once transferred, key integrity guaranteed — cannot be copied or decrypted later</li>
+      <li>More secure, longer keys can be used</li>
+    </ul></div>
+    <div class="card c-red-card"><div class="card-title">❌ Limitations</div><ul>
+      <li>Limited range — only short distances</li>
+      <li>Requires dedicated fibre-optic line + specialist hardware — expensive</li>
+      <li>Polarisation of light may be altered during transmission</li>
+      <li>Still new — lacks vital features, high error rates</li>
+      <li>No digital signatures, certified mail etc. yet</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §17.1</div>
+  <div class="topic-title">SSL/TLS Protocols</div>
+  <div class="topic-sub">PURPOSE · USE CASES · CLIENT-SERVER HANDSHAKE</div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">SSL — Secure Socket Layer</div><ul>
+      <li>Encrypts data transferred over internet</li>
+      <li>Decides which encryption algorithms to use</li>
+      <li>Data integrity checks and compression</li>
+    </ul></div>
+    <div class="card c-cyan-card"><div class="card-title">TLS — Transport Layer Security</div><ul>
+      <li>More effective than SSL</li>
+      <li>Provides encryption + authentication + data integrity</li>
+      <li>Prevents third-party eavesdropping</li>
+    </ul></div>
+  </div>
+  <div class="card-grid">
+    <div class="card c-green-card"><div class="card-title">Where SSL/TLS is Used</div><ul>
+      <li>Online banking and financial transactions</li>
+      <li>Sending/receiving emails</li>
+      <li>Cloud storage facilities</li>
+      <li>VPN connections</li>
+      <li>Any HTTPS website</li>
+    </ul></div>
+  </div>
+  <div class="sub-label">SSL/TLS Handshake Process</div>
+  <div class="process">
+    <div class="step"><p>Application initiates SSL/TLS connection — becomes the <span class="kw">client</span>; receiving application becomes <span class="kw">server</span></p></div>
+    <div class="step"><p>Every new session begins with a <span class="kw">handshake</span></p></div>
+    <div class="step"><p>Digital <span class="kw">certificate requested/sent</span> from client/server</p></div>
+    <div class="step"><p>Client <span class="kw">verifies server's digital certificate</span> and obtains server's public key</p></div>
+    <div class="step"><p>Encryption <span class="kw">algorithms agreed</span> by server and client</p></div>
+    <div class="step"><p>Symmetric <span class="kw">session keys generated</span> for the session</p></div>
+  </div>
+</section>
+
+<section class="topic" id="t6">
+  <div class="topic-num">TOPIC 06 · §17.1</div>
+  <div class="topic-title">Digital Certificates & Digital Signatures</div>
+  <div class="topic-sub">CERTIFICATE AUTHORITY · HOW SIGNATURES WORK</div>
+  <div class="def-box"><div class="def-label">DIGITAL CERTIFICATE</div><ul>
+    <li>Electronic/online document used to <strong>authenticate</strong> identity of website/individual/organisation</li>
+    <li>Typically issued by a <strong>Certificate Authority (CA)</strong></li>
+    <li>Contains: identifying information + owner's public key</li>
+    <li>Provides public key for validating the private key associated with signature</li>
+  </ul></div>
+  <div class="sub-label">How a Digital Certificate is Acquired</div>
+  <div class="process">
+    <div class="step"><p>Enquirer sends <span class="kw">public key + proof of identity</span> to Certificate Authority (CA)</p></div>
+    <div class="step"><p>CA <span class="kw">verifies</span> the enquirer's details and identity</p></div>
+    <div class="step"><p>If verified, CA <span class="kw">creates and issues certificate</span> containing enquirer's public key</p></div>
+    <div class="step"><p>Data encrypted with CA's <span class="kw">public key</span>; sent using CA's <span class="kw">private key</span></p></div>
+  </div>
+  <div class="sub-label">How a Digital Signature is Created & Verified</div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Creating the Signature (Sender)</div><ul>
+      <li>Message passed through hashing algorithm → produces digest</li>
+      <li>Digest encrypted with sender's PRIVATE key → forms the signature</li>
+      <li>Message + signature sent to receiver</li>
+    </ul></div>
+    <div class="card c-green-card"><div class="card-title">Verifying the Signature (Receiver)</div><ul>
+      <li>Receiver decrypts signature using sender's PUBLIC key → recovers original digest</li>
+      <li>Receiver hashes the received message → produces second digest</li>
+      <li>Two digests compared — if same, message authentic and unaltered</li>
+    </ul></div>
+  </div>
+  <div class="memory-box"><strong>⚡ DIGITAL SIGNATURE PROCESS &nbsp;</strong>Sign = hash message → encrypt digest with PRIVATE key. Verify = decrypt signature with PUBLIC key → hash received message → compare digests. If digests match = authentic + unaltered.</div>
+</section>
+
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)"><div class="part-num">PART 2</div><div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div></div>
+<div class="ez-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 17 · Security</div><div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong>.</div></div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 01</div>
+  <div class="q-text">State the difference between a public key and a private key in asymmetric encryption. <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Public key: freely available to everyone — used to encrypt data sent to the key owner (1)</li>
+    <li>Private key: secret, never transmitted — used to decrypt data encrypted with its matching public key (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 02</div>
+  <div class="q-text">Describe the process of asymmetric encryption when sending a private message. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Receiver's computer generates a matching key pair (public and private) (1)</li>
+    <li>Receiver sends their public key to the sender (1)</li>
+    <li>Sender encrypts the message/data using the receiver's public key (1)</li>
+    <li>Cipher text sent to receiver — can only be decrypted using receiver's private key (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 03</div>
+  <div class="q-text">Compare symmetric and asymmetric encryption. Give three differences. <span class="marks">[6]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 3 × 2)</h4><ul>
+    <li>Symmetric: one shared key / Asymmetric: two keys (public + private) (1)</li>
+    <li>Symmetric: faster, simpler / Asymmetric: slower, more complex (1)</li>
+    <li>Symmetric: higher risk — key must be shared / Asymmetric: more secure — private key never shared (1)</li>
+    <li>Symmetric: 128/256-bit keys / Asymmetric: 2048-bit keys typically (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 04</div>
+  <div class="q-text">Describe how a digital signature is created and how it is used to verify a message. <span class="marks">[6]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Creating: message passed through hashing algorithm to produce a digest (1)</li>
+    <li>Digest encrypted with sender's PRIVATE key to form the signature (1)</li>
+    <li>Message and signature sent together to receiver (1)</li>
+    <li>Verifying: receiver decrypts signature using sender's PUBLIC key → recovers original digest (1)</li>
+    <li>Receiver hashes the received message → produces second digest (1)</li>
+    <li>If two digests match → message is authentic and has not been altered (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 05</div>
+  <div class="q-text">Explain two benefits and two limitations of quantum cryptography. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 2 + 2)</h4><ul>
+    <li>[Benefit] Any eavesdropping detected — intercepting changes photon properties (1)</li>
+    <li>[Benefit] Once key transferred, integrity guaranteed — cannot be copied or decrypted later (1)</li>
+    <li>[Limitation] Limited range — only works over short distances (1)</li>
+    <li>[Limitation] Requires dedicated fibre-optic line and specialist hardware — expensive (1)</li>
+    <li>[Limitation] Still new — lacks vital features (digital signatures etc.) and has high error rates (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 06</div>
+  <div class="q-text">Describe the SSL/TLS handshake process when a client-server connection is initiated. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Application initiates connection — becomes client; receiving application becomes server (1)</li>
+    <li>Digital certificate requested and sent between client and server (1)</li>
+    <li>Client verifies server's digital certificate and obtains server's public key (1)</li>
+    <li>Encryption algorithms agreed; symmetric session keys generated (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 07</div>
+  <div class="q-text">Explain what a digital certificate is, how it is obtained and why it is important. <span class="marks">[5]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Digital certificate: electronic document used to authenticate identity of website/individual (1)</li>
+    <li>Contains identifying information and owner's public key (1)</li>
+    <li>Obtaining: enquirer sends public key + proof of identity to Certificate Authority (CA) (1)</li>
+    <li>CA verifies details — if verified, issues certificate containing enquirer's public key (1)</li>
+    <li>Importance: provides public key for validating digital signatures; confirms identity is genuine (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 08</div>
+  <div class="q-text">Explain the concept of non-repudiation in key cryptography and how digital signatures support it. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Non-repudiation: neither sender nor receiver can deny that a transmission happened (1)</li>
+    <li>Digital signature created by encrypting digest with sender's PRIVATE key (1)</li>
+    <li>Only the sender possesses their private key — proves identity (1)</li>
+    <li>Verified signature proves sender sent the message and receiver received it — cannot be denied (1)</li>
+  </ul></div>
+</div>
+</div>
+
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">PART 3</div><div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);">CH 17 · SECURITY · 20 CARDS</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress"><div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div><div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div><div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div></div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 20</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button>&nbsp;<button class="fc-btn" onclick="FC.reviewMissed()">Review Missed</button></div>
+</div>
+</div>
+</main></div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'PURPOSE',q:'4 purposes of key cryptography',a:'• Ensures message is authentic (from trusted source)\n• Ensures message not altered during transmission\n• Only intended receiver can understand message\n• Non-repudiation: neither party can deny transmission happened'},
+  {label:'DEFINE',q:'Public key vs Private key',a:'Public key: freely available, used to ENCRYPT data sent to owner.\nPrivate key: secret, never transmitted, used to DECRYPT data encrypted with matching public key. Also used to SIGN messages.'},
+  {label:'DEFINE',q:'What is non-repudiation?',a:'Neither the sender nor receiver can deny that a transmission happened. Digital signatures provide non-repudiation — only the holder of the private key could have created the signature.'},
+  {label:'PROCESS',q:'Asymmetric encryption: sending a private message (4 steps)',a:'1. Receiver generates key pair (public + private)\n2. Receiver sends PUBLIC key to sender\n3. Sender encrypts message with receiver\'s PUBLIC key\n4. Cipher text sent — only decryptable with receiver\'s PRIVATE key'},
+  {label:'CRITICAL',q:'⚡ KEY RULE: which key encrypts and which decrypts?',a:'Encrypt with PUBLIC key → decrypt with PRIVATE key.\nSign with PRIVATE key → verify with PUBLIC key.\nPublic key = freely shared. Private key = NEVER shared.'},
+  {label:'COMPARE',q:'Asymmetric vs Symmetric encryption — 4 differences',a:'Keys: asymmetric=2 (public+private), symmetric=1 (shared)\nSpeed: asymmetric=slower, symmetric=faster\nSecurity: asymmetric=higher (private never shared), symmetric=lower (key must be shared)\nKey length: asymmetric=2048-bit, symmetric=128/256-bit'},
+  {label:'DEFINE',q:'Symmetric encryption — key facts',a:'Single key shared by all parties. Same key encrypts AND decrypts. Faster and simpler. Higher risk — key must be distributed securely. 128/256-bit keys.'},
+  {label:'DEFINE',q:'Quantum cryptography — what it is',a:'Uses quantum properties of photons to transmit encryption keys over fibre-optic cable. Virtually unhackable — eavesdropping changes photon properties and is detected. More secure than conventional cryptography.'},
+  {label:'BENEFITS',q:'3 benefits of quantum cryptography',a:'• Any eavesdropping detected (photon properties change)\n• Key integrity guaranteed once transferred — cannot be copied\n• More secure, longer keys can be used'},
+  {label:'LIMITATIONS',q:'4 limitations of quantum cryptography',a:'• Limited range — short distances only\n• Requires dedicated fibre-optic line + specialist hardware = expensive\n• Polarisation may be altered during transmission\n• Still new — lacks features (digital signatures etc.), high error rates'},
+  {label:'DEFINE',q:'SSL vs TLS — difference',a:'SSL (Secure Socket Layer): encrypts internet data, decides algorithms, integrity checks.\nTLS (Transport Layer Security): more effective than SSL, provides encryption + authentication + integrity, prevents eavesdropping.'},
+  {label:'USE CASES',q:'Give 4 situations where SSL/TLS is used',a:'• Online banking / financial transactions\n• Sending/receiving emails\n• Cloud storage facilities\n• VPN connections\n• Any HTTPS website'},
+  {label:'PROCESS',q:'SSL/TLS handshake — 5 steps',a:'1. Application connects — becomes client; receiver = server\n2. New session begins with handshake\n3. Digital certificate requested/sent\n4. Client verifies server\'s certificate, obtains public key\n5. Encryption algorithms agreed; symmetric session keys generated'},
+  {label:'DEFINE',q:'What is a digital certificate?',a:'Electronic document that authenticates identity of website/individual/organisation. Issued by Certificate Authority (CA). Contains: identifying info + owner\'s public key. Used to validate digital signatures.'},
+  {label:'PROCESS',q:'How is a digital certificate obtained? (4 steps)',a:'1. Enquirer sends public key + proof of identity to CA\n2. CA verifies the enquirer\'s details\n3. If verified, CA issues certificate containing enquirer\'s public key\n4. Data encrypted using CA\'s keys'},
+  {label:'PROCESS',q:'Creating a digital signature (3 steps)',a:'1. Hash message using agreed hashing algorithm → produces DIGEST\n2. Encrypt digest with sender\'s PRIVATE key → forms SIGNATURE\n3. Send message + signature to receiver'},
+  {label:'PROCESS',q:'Verifying a digital signature (3 steps)',a:'1. Decrypt signature using sender\'s PUBLIC key → recovers original digest\n2. Hash the received message using same algorithm → second digest\n3. Compare both digests — if SAME: authentic + unaltered; if DIFFERENT: tampered'},
+  {label:'EXPLAIN',q:'Why is a hashing algorithm used in digital signatures?',a:'Produces a fixed-length digest (fingerprint) of the message. Any change to the message produces a completely different hash. Allows receiver to detect if message was altered after signing.'},
+  {label:'APPLY',q:'A message needs to be sent securely and authentically. What combination is used?',a:'Asymmetric encryption for secure delivery (encrypt with recipient\'s public key). Digital signature for authenticity (sign with sender\'s private key). SSL/TLS for the secure channel.'},
+  {label:'COMPARE',q:'Digital signature vs Digital certificate — difference',a:'Digital signature: proves a message came from sender and was not altered. Created by hashing message and encrypting digest with private key.\nDigital certificate: proves identity of a person/website. Issued by CA, contains public key.'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','t6','exam','flash']);
+</script>
+</body>
+</html>

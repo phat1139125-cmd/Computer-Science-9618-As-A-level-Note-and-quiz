@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 2 — Networks & Internet | 9618</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 2</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. Purpose of Networks</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. LAN vs WAN</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Client-Server vs P2P</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. Thin vs Thick Client</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. Topologies</button>
+  <button class="nav-item" onclick="scrollToId('t6')">6. Cloud Computing</button>
+  <button class="nav-item" onclick="scrollToId('t7')">7. Transmission Media</button>
+  <button class="nav-item" onclick="scrollToId('t8')">8. LAN Hardware</button>
+  <button class="nav-item" onclick="scrollToId('t9')">9. Router Role</button>
+  <button class="nav-item" onclick="scrollToId('t10')">10. Ethernet & CSMA/CD</button>
+  <button class="nav-item" onclick="scrollToId('t11')">11. Bit Streaming</button>
+  <button class="nav-item" onclick="scrollToId('t12')">12. WWW vs Internet</button>
+  <button class="nav-item" onclick="scrollToId('t13')">13. Internet Hardware</button>
+  <button class="nav-item" onclick="scrollToId('t14')">14. IP Addressing</button>
+  <button class="nav-item" onclick="scrollToId('t15')">15. URL Structure</button>
+  <button class="nav-item" onclick="scrollToId('t16')">16. DNS Role</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+<section class="hero">
+  <div class="hero-badge">CAMBRIDGE 9618</div>
+  <h1>Networks &amp; <span>The Internet</span></h1>
+  <p>Chapter 2.1 — Complete revision guide. Theory → Exam practice → Flashcard system.</p>
+  <div class="hero-parts">
+    <div class="hero-part"><span>PART 1</span> Theory — 16 Topics</div>
+    <div class="hero-part"><span>PART 2</span> Exam Practice Zone</div>
+    <div class="hero-part"><span>PART 3</span> Flashcard System</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════
+     PART 1 — THEORY
+═══════════════════════ -->
+<div class="part-header" id="part1">
+  <div class="part-num">PART 1</div>
+  <div class="part-title" style="color:var(--cyan)">COMPLETE THEORY SECTION</div>
+</div>
+
+<!-- TOPIC 1 -->
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01</div>
+  <div class="topic-title">Purpose and Benefits of Networking</div>
+  <div class="topic-sub">WHY DO WE BUILD NETWORKS?</div>
+  <div class="def-box">
+    <div class="def-label">DEFINITION</div>
+    <p>A <strong>network</strong> is two or more computers connected together to share data and resources.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card c-cyan-card">
+      <div class="card-title">Communication</div>
+      <ul><li>Share data between devices</li><li>Send messages and emails</li><li>Video calls and collaboration</li></ul>
+    </div>
+    <div class="card c-blue-card">
+      <div class="card-title">Resource Sharing</div>
+      <ul><li>Share printers and scanners</li><li>Share software licences</li><li>Shared internet connection</li></ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">Central Management</div>
+      <ul><li>Centralised security policies</li><li>Centralised backups</li><li>User account management</li></ul>
+    </div>
+    <div class="card c-yellow-card">
+      <div class="card-title">Cost Efficiency</div>
+      <ul><li>One printer for many users</li><li>Shared software licences</li><li>Single internet connection</li></ul>
+    </div>
+  </div>
+  <div class="memory-box"><strong>⚡ EXAM TRIGGER &nbsp;</strong>If asked "give two benefits of networking" — the safe answers are: (1) sharing of hardware/resources, (2) central management of security/backups. These are the most consistently awarded marks.</div>
+</section>
+
+<!-- TOPIC 2 -->
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02</div>
+  <div class="topic-title">LAN vs WAN</div>
+  <div class="topic-sub">LOCAL AREA NETWORK vs WIDE AREA NETWORK</div>
+  <table class="cmp-table">
+    <tr>
+      <th class="th-cyan">FEATURE</th>
+      <th class="th-blue">LAN</th>
+      <th class="th-green">WAN</th>
+    </tr>
+    <tr><td>Geographical area</td><td>Small — one building/site</td><td>Large — cities, countries</td></tr>
+    <tr><td>Ownership</td><td>Privately owned</td><td>Often public/ISP controlled</td></tr>
+    <tr><td>Data transfer rate</td><td>High — fast</td><td>Low — slower</td></tr>
+    <tr><td>Connection type</td><td>Usually physical cables</td><td>Often virtual/leased lines</td></tr>
+    <tr><td>Security</td><td>Easier to manage</td><td>Harder to control</td></tr>
+    <tr><td>Infrastructure</td><td>Organisation owns it</td><td>External organisations (ISPs)</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ EXAM PATTERN &nbsp;</strong>LAN vs WAN = give BOTH sides. Write: "LAN covers a small geographical area whereas WAN covers a large area." Never state just one side — you need the contrast for each mark.</div>
+</section>
+
+<!-- TOPIC 3 -->
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03</div>
+  <div class="topic-title">Client-Server vs Peer-to-Peer</div>
+  <div class="topic-sub">NETWORK ORGANISATION MODELS</div>
+  <table class="cmp-table">
+    <tr>
+      <th class="th-cyan">FEATURE</th>
+      <th class="th-blue">CLIENT-SERVER</th>
+      <th class="th-orange">PEER-TO-PEER</th>
+    </tr>
+    <tr><td>Structure</td><td>Dedicated server + clients</td><td>All computers equal status</td></tr>
+    <tr><td>Processing</td><td>Server processes requests</td><td>Each computer processes own</td></tr>
+    <tr><td>Security</td><td>Centrally managed</td><td>Each device manages own</td></tr>
+    <tr><td>Backups</td><td>Central backup on server</td><td>No central backup</td></tr>
+    <tr><td>Files</td><td>Stored centrally on server</td><td>Distributed across all devices</td></tr>
+    <tr><td>Use case</td><td>Schools, businesses</td><td>Small home networks</td></tr>
+  </table>
+  <div class="def-box">
+    <div class="def-label">CLIENT-SERVER PROCESS</div>
+    <p>Client sends request → Server processes task → Server returns result → Client displays result</p>
+  </div>
+  <div class="memory-box"><strong>⚡ P2P EXAM SHORTCUT &nbsp;</strong>Any P2P drawback = "no central management of [X]". X = security / backup / files. This phrase = 1 mark each time. The word "central" is the key marker.</div>
+</section>
+
+<!-- TOPIC 4 -->
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04</div>
+  <div class="topic-title">Thin Client vs Thick Client</div>
+  <div class="topic-sub">WHERE DOES PROCESSING HAPPEN?</div>
+  <table class="cmp-table">
+    <tr>
+      <th class="th-cyan">FEATURE</th>
+      <th class="th-blue">THICK CLIENT</th>
+      <th class="th-green">THIN CLIENT</th>
+    </tr>
+    <tr><td>Processing location</td><td>Locally on client device</td><td>On the server</td></tr>
+    <tr><td>Server role</td><td>Minimal processing</td><td>All processing</td></tr>
+    <tr><td>Local resources</td><td>Software installed locally</td><td>Minimal — just display</td></tr>
+    <tr><td>Hardware cost</td><td>Expensive per device</td><td>Cheap hardware devices</td></tr>
+    <tr><td>Maintenance</td><td>Each device needs updates</td><td>Updates on server only</td></tr>
+    <tr><td>Server dependency</td><td>Can work offline</td><td>Fully depends on server</td></tr>
+    <tr><td>Use case</td><td>Design studios, gaming</td><td>Schools, call centres</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ EXAM TRIGGER &nbsp;</strong>"Justify thin client for a school" → three marks: (1) updates applied centrally on server only, (2) cheaper hardware on each device, (3) security managed centrally. Always state WHERE processing occurs.</div>
+</section>
+
+<!-- TOPIC 5 -->
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05</div>
+  <div class="topic-title">Network Topologies</div>
+  <div class="topic-sub">BUS · STAR · MESH · HYBRID</div>
+
+  <div class="topo-grid">
+    <!-- BUS -->
+    <div class="topo-box" style="border-left:2px solid var(--red)">
+      <h4 style="color:var(--red)">🚌 BUS TOPOLOGY</h4>
+      <svg class="topo-svg" viewBox="0 0 200 110">
+        <line x1="20" y1="55" x2="180" y2="55" stroke="#ff5370" stroke-width="2.5"/>
+        <rect x="15" y="50" width="8" height="10" fill="#ff5370" opacity="0.6"/>
+        <rect x="177" y="50" width="8" height="10" fill="#ff5370" opacity="0.6"/>
+        <text x="15" y="47" fill="#ff5370" font-size="7" font-family="monospace">T</text>
+        <text x="177" y="47" fill="#ff5370" font-size="7" font-family="monospace">T</text>
+        <g>
+          <line x1="50" y1="55" x2="50" y2="30" stroke="#4a5e7a" stroke-width="1.5"/>
+          <rect x="40" y="18" width="20" height="13" rx="2" fill="none" stroke="#3d9eff" stroke-width="1.5"/>
+          <text x="50" y="27" text-anchor="middle" fill="#3d9eff" font-size="6" font-family="monospace">PC</text>
+        </g>
+        <g>
+          <line x1="90" y1="55" x2="90" y2="30" stroke="#4a5e7a" stroke-width="1.5"/>
+          <rect x="80" y="18" width="20" height="13" rx="2" fill="none" stroke="#3d9eff" stroke-width="1.5"/>
+          <text x="90" y="27" text-anchor="middle" fill="#3d9eff" font-size="6" font-family="monospace">PC</text>
+        </g>
+        <g>
+          <line x1="130" y1="55" x2="130" y2="30" stroke="#4a5e7a" stroke-width="1.5"/>
+          <rect x="120" y="18" width="20" height="13" rx="2" fill="none" stroke="#3d9eff" stroke-width="1.5"/>
+          <text x="130" y="27" text-anchor="middle" fill="#3d9eff" font-size="6" font-family="monospace">PC</text>
+        </g>
+        <g>
+          <line x1="50" y1="55" x2="50" y2="80" stroke="#4a5e7a" stroke-width="1.5"/>
+          <rect x="40" y="80" width="20" height="13" rx="2" fill="none" stroke="#3d9eff" stroke-width="1.5"/>
+          <text x="50" y="89" text-anchor="middle" fill="#3d9eff" font-size="6" font-family="monospace">PC</text>
+        </g>
+        <g>
+          <line x1="130" y1="55" x2="130" y2="80" stroke="#4a5e7a" stroke-width="1.5"/>
+          <rect x="120" y="80" width="20" height="13" rx="2" fill="none" stroke="#3d9eff" stroke-width="1.5"/>
+          <text x="130" y="89" text-anchor="middle" fill="#3d9eff" font-size="6" font-family="monospace">PC</text>
+        </g>
+        <text x="100" y="105" text-anchor="middle" fill="#4a5e7a" font-size="6.5" font-family="monospace">BACKBONE CABLE</text>
+      </svg>
+      <ul class="topo-facts">
+        <li>✅ Simple, cheap, less cabling</li>
+        <li>❌ Backbone fails → whole network down</li>
+        <li>❌ More collisions — all share one channel</li>
+        <li>Data broadcast to ALL devices</li>
+      </ul>
+    </div>
+
+    <!-- STAR -->
+    <div class="topo-box" style="border-left:2px solid var(--cyan)">
+      <h4 style="color:var(--cyan)">⭐ STAR TOPOLOGY</h4>
+      <svg class="topo-svg" viewBox="0 0 200 130">
+        <rect x="88" y="53" width="24" height="18" rx="3" fill="none" stroke="#00e5ff" stroke-width="2"/>
+        <text x="100" y="65" text-anchor="middle" fill="#00e5ff" font-size="7" font-family="monospace">SW</text>
+        <line x1="100" y1="53" x2="100" y2="18" stroke="#4a5e7a" stroke-width="1.5"/>
+        <rect x="88" y="8" width="22" height="11" rx="2" fill="none" stroke="#3d9eff" stroke-width="1.5"/>
+        <text x="99" y="16" text-anchor="middle" fill="#3d9eff" font-size="6" font-family="monospace">PC</text>
+        <line x1="100" y1="71" x2="100" y2="106" stroke="#4a5e7a" stroke-width="1.5"/>
+        <rect x="88" y="106" width="22" height="11" rx="2" fill="none" stroke="#3d9eff" stroke-width="1.5"/>
+        <text x="99" y="114" text-anchor="middle" fill="#3d9eff" font-size="6" font-family="monospace">PC</text>
+        <line x1="88" y1="62" x2="53" y2="40" stroke="#4a5e7a" stroke-width="1.5"/>
+        <rect x="34" y="32" width="22" height="11" rx="2" fill="none" stroke="#3d9eff" stroke-width="1.5"/>
+        <text x="45" y="40" text-anchor="middle" fill="#3d9eff" font-size="6" font-family="monospace">PC</text>
+        <line x1="112" y1="62" x2="147" y2="40" stroke="#4a5e7a" stroke-width="1.5"/>
+        <rect x="144" y="32" width="22" height="11" rx="2" fill="none" stroke="#3d9eff" stroke-width="1.5"/>
+        <text x="155" y="40" text-anchor="middle" fill="#3d9eff" font-size="6" font-family="monospace">PC</text>
+        <line x1="88" y1="67" x2="53" y2="90" stroke="#4a5e7a" stroke-width="1.5"/>
+        <rect x="34" y="88" width="22" height="11" rx="2" fill="none" stroke="#3d9eff" stroke-width="1.5"/>
+        <text x="45" y="96" text-anchor="middle" fill="#3d9eff" font-size="6" font-family="monospace">PC</text>
+        <line x1="112" y1="67" x2="147" y2="90" stroke="#4a5e7a" stroke-width="1.5"/>
+        <rect x="144" y="88" width="22" height="11" rx="2" fill="none" stroke="#3d9eff" stroke-width="1.5"/>
+        <text x="155" y="96" text-anchor="middle" fill="#3d9eff" font-size="6" font-family="monospace">PC</text>
+        <text x="100" y="126" text-anchor="middle" fill="#4a5e7a" font-size="6.5" font-family="monospace">CENTRAL SWITCH</text>
+      </svg>
+      <ul class="topo-facts">
+        <li>✅ Fewer collisions — dedicated links</li>
+        <li>✅ Scalable — add device to switch</li>
+        <li>✅ One cable fails → only that device affected</li>
+        <li>❌ Switch failure = whole network fails</li>
+      </ul>
+    </div>
+
+    <!-- MESH -->
+    <div class="topo-box" style="border-left:2px solid var(--orange)">
+      <h4 style="color:var(--orange)">🕸️ MESH TOPOLOGY</h4>
+      <svg class="topo-svg" viewBox="0 0 200 120">
+        <line x1="50" y1="30" x2="150" y2="30" stroke="#4a5e7a" stroke-width="1.5"/>
+        <line x1="50" y1="30" x2="50" y2="90" stroke="#4a5e7a" stroke-width="1.5"/>
+        <line x1="50" y1="30" x2="150" y2="90" stroke="#4a5e7a" stroke-width="1.5"/>
+        <line x1="150" y1="30" x2="50" y2="90" stroke="#4a5e7a" stroke-width="1.5"/>
+        <line x1="150" y1="30" x2="150" y2="90" stroke="#4a5e7a" stroke-width="1.5"/>
+        <line x1="50" y1="90" x2="150" y2="90" stroke="#4a5e7a" stroke-width="1.5"/>
+        <line x1="50" y1="30" x2="100" y2="60" stroke="#4a5e7a" stroke-width="1"/>
+        <line x1="150" y1="30" x2="100" y2="60" stroke="#4a5e7a" stroke-width="1"/>
+        <line x1="50" y1="90" x2="100" y2="60" stroke="#4a5e7a" stroke-width="1"/>
+        <line x1="150" y1="90" x2="100" y2="60" stroke="#4a5e7a" stroke-width="1"/>
+        <circle cx="50" cy="30" r="8" fill="none" stroke="#ff9f43" stroke-width="2"/><text x="50" y="33" text-anchor="middle" fill="#ff9f43" font-size="6">PC</text>
+        <circle cx="150" cy="30" r="8" fill="none" stroke="#ff9f43" stroke-width="2"/><text x="150" y="33" text-anchor="middle" fill="#ff9f43" font-size="6">PC</text>
+        <circle cx="50" cy="90" r="8" fill="none" stroke="#ff9f43" stroke-width="2"/><text x="50" y="93" text-anchor="middle" fill="#ff9f43" font-size="6">PC</text>
+        <circle cx="150" cy="90" r="8" fill="none" stroke="#ff9f43" stroke-width="2"/><text x="150" y="93" text-anchor="middle" fill="#ff9f43" font-size="6">PC</text>
+        <circle cx="100" cy="60" r="8" fill="none" stroke="#ff9f43" stroke-width="2"/><text x="100" y="63" text-anchor="middle" fill="#ff9f43" font-size="6">PC</text>
+        <text x="100" y="112" text-anchor="middle" fill="#4a5e7a" font-size="6.5" font-family="monospace">MULTIPLE ROUTES</text>
+      </svg>
+      <ul class="topo-facts">
+        <li>✅ Alternate routes if link fails</li>
+        <li>✅ High resilience, no single point of failure</li>
+        <li>❌ Expensive — lots of cabling</li>
+        <li>❌ Complex to manage</li>
+      </ul>
+    </div>
+
+    <!-- HYBRID -->
+    <div class="topo-box" style="border-left:2px solid var(--teal)">
+      <h4 style="color:var(--teal)">🔗 HYBRID TOPOLOGY</h4>
+      <svg class="topo-svg" viewBox="0 0 200 120">
+        <!-- Star sub-network left -->
+        <rect x="32" y="45" width="16" height="12" rx="2" fill="none" stroke="#26d9c8" stroke-width="1.5"/>
+        <text x="40" y="53" text-anchor="middle" fill="#26d9c8" font-size="5">SW</text>
+        <line x1="40" y1="45" x2="40" y2="22" stroke="#4a5e7a" stroke-width="1"/>
+        <rect x="33" y="15" width="14" height="8" rx="1" fill="none" stroke="#3d9eff" stroke-width="1"/><text x="40" y="21" text-anchor="middle" fill="#3d9eff" font-size="5">PC</text>
+        <line x1="32" y1="51" x2="14" y2="51" stroke="#4a5e7a" stroke-width="1"/>
+        <rect x="5" y="47" width="12" height="8" rx="1" fill="none" stroke="#3d9eff" stroke-width="1"/><text x="11" y="53" text-anchor="middle" fill="#3d9eff" font-size="5">PC</text>
+        <line x1="32" y1="55" x2="14" y2="68" stroke="#4a5e7a" stroke-width="1"/>
+        <rect x="5" y="65" width="12" height="8" rx="1" fill="none" stroke="#3d9eff" stroke-width="1"/><text x="11" y="71" text-anchor="middle" fill="#3d9eff" font-size="5">PC</text>
+        <!-- bus backbone center -->
+        <line x1="48" y1="51" x2="152" y2="51" stroke="#26d9c8" stroke-width="2"/>
+        <!-- Star sub-network right -->
+        <rect x="152" y="45" width="16" height="12" rx="2" fill="none" stroke="#26d9c8" stroke-width="1.5"/>
+        <text x="160" y="53" text-anchor="middle" fill="#26d9c8" font-size="5">SW</text>
+        <line x1="160" y1="45" x2="160" y2="22" stroke="#4a5e7a" stroke-width="1"/>
+        <rect x="153" y="15" width="14" height="8" rx="1" fill="none" stroke="#3d9eff" stroke-width="1"/><text x="160" y="21" text-anchor="middle" fill="#3d9eff" font-size="5">PC</text>
+        <line x1="168" y1="51" x2="185" y2="40" stroke="#4a5e7a" stroke-width="1"/>
+        <rect x="183" y="35" width="12" height="8" rx="1" fill="none" stroke="#3d9eff" stroke-width="1"/><text x="189" y="41" text-anchor="middle" fill="#3d9eff" font-size="5">PC</text>
+        <line x1="168" y1="55" x2="185" y2="65" stroke="#4a5e7a" stroke-width="1"/>
+        <rect x="183" y="62" width="12" height="8" rx="1" fill="none" stroke="#3d9eff" stroke-width="1"/><text x="189" y="68" text-anchor="middle" fill="#3d9eff" font-size="5">PC</text>
+        <text x="100" y="108" text-anchor="middle" fill="#4a5e7a" font-size="6.5" font-family="monospace">STAR-BUS COMBINATION</text>
+      </svg>
+      <ul class="topo-facts">
+        <li>✅ Flexible — tailored to needs</li>
+        <li>✅ Inherits best of each topology</li>
+        <li>❌ Complex and expensive</li>
+        <li>Large organisations with varied needs</li>
+      </ul>
+    </div>
+  </div>
+
+  <table class="cmp-table" style="margin-top:20px">
+    <tr>
+      <th class="th-cyan">TOPOLOGY</th>
+      <th class="th-green">PACKET TRAVEL</th>
+      <th class="th-yellow">USE WHEN</th>
+    </tr>
+    <tr><td style="color:var(--red)">BUS</td><td>Broadcast to ALL — each checks address</td><td>Small cheap network</td></tr>
+    <tr><td style="color:var(--cyan)">STAR</td><td>Switch reads MAC → sends to target ONLY</td><td>Office/school needing performance</td></tr>
+    <tr><td style="color:var(--orange)">MESH</td><td>Nodes relay via best available path</td><td>Critical systems, ISP backbones</td></tr>
+    <tr><td style="color:var(--teal)">HYBRID</td><td>Depends on sub-topology used</td><td>Large org with varied departments</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ EXAM PATTERN &nbsp;</strong>"Justify topology for situation": state advantage + link to context. E.g. "Star topology should be used because each device has a dedicated link to the switch, reducing collisions, which is important as many students use the network simultaneously."</div>
+</section>
+
+<!-- TOPIC 6 -->
+<section class="topic" id="t6">
+  <div class="topic-num">TOPIC 06</div>
+  <div class="topic-title">Cloud Computing</div>
+  <div class="topic-sub">PUBLIC CLOUD · PRIVATE CLOUD · BENEFITS · DRAWBACKS</div>
+  <div class="def-box">
+    <div class="def-label">DEFINITION</div>
+    <p>Accessing files, applications, or services stored on <strong>remote servers</strong> via the internet, rather than on local hardware.</p>
+  </div>
+  <table class="cmp-table">
+    <tr>
+      <th class="th-cyan">FEATURE</th>
+      <th class="th-purple">PUBLIC CLOUD</th>
+      <th class="th-blue">PRIVATE CLOUD</th>
+    </tr>
+    <tr><td>Provider</td><td>Third-party (Google, AWS)</td><td>Organisation's own infrastructure</td></tr>
+    <tr><td>Access</td><td>Available to anyone on internet</td><td>Restricted to authorised users only</td></tr>
+    <tr><td>Examples</td><td>Google Drive, Dropbox</td><td>Internal company server</td></tr>
+    <tr><td>Cost</td><td>Pay-as-you-go / free tier</td><td>High upfront investment</td></tr>
+    <tr><td>Control</td><td>Limited — provider controls</td><td>Full control over data</td></tr>
+  </table>
+  <div class="card-grid">
+    <div class="card c-green-card">
+      <div class="card-title">✅ Advantages</div>
+      <ul>
+        <li>Access from any device with internet</li>
+        <li>Saves local storage space</li>
+        <li>Automatic backups (usually)</li>
+        <li>Scalable — increase storage easily</li>
+        <li>Easy file sharing</li>
+        <li>No upfront hardware cost</li>
+      </ul>
+    </div>
+    <div class="card c-red-card">
+      <div class="card-title">❌ Disadvantages</div>
+      <ul>
+        <li>Requires internet connection</li>
+        <li>Dependent on third-party provider</li>
+        <li>Server downtime = no access</li>
+        <li>Recurring costs (long-term)</li>
+        <li>Data privacy and security concerns</li>
+        <li>Slow to upload/download large files</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TOPIC 7 -->
+<section class="topic" id="t7">
+  <div class="topic-num">TOPIC 07</div>
+  <div class="topic-title">Transmission Media</div>
+  <div class="topic-sub">WIRED vs WIRELESS · COPPER · FIBRE · WiFi · RADIO · MICROWAVE · SATELLITE</div>
+  <table class="cmp-table">
+    <tr>
+      <th class="th-cyan">MEDIA</th>
+      <th class="th-yellow">SIGNAL</th>
+      <th class="th-green">ADVANTAGES</th>
+      <th class="th-red">DISADVANTAGES</th>
+    </tr>
+    <tr>
+      <td style="color:var(--red)"><strong>Copper Cable</strong></td>
+      <td>Electrical</td>
+      <td>Cheap · Flexible · Easy to install</td>
+      <td>Interference (EMI) · Slower · Needs repeaters · Easier to tap</td>
+    </tr>
+    <tr>
+      <td style="color:var(--cyan)"><strong>Fibre Optic</strong></td>
+      <td>Light pulses</td>
+      <td>Very high bandwidth · Low interference · Long distances · Hard to intercept</td>
+      <td>Fragile · Expensive · Difficult to install/terminate</td>
+    </tr>
+    <tr>
+      <td style="color:var(--green)"><strong>WiFi / Radio</strong></td>
+      <td>EM waves</td>
+      <td>No cables · Portable · Easy expansion</td>
+      <td>Interference · Walls reduce signal · Security risk · Higher latency</td>
+    </tr>
+    <tr>
+      <td style="color:var(--orange)"><strong>Microwave</strong></td>
+      <td>EM waves (high freq)</td>
+      <td>Long distances · No cables between towers</td>
+      <td>Line of sight required · Weather affected</td>
+    </tr>
+    <tr>
+      <td style="color:var(--purple)"><strong>Satellite</strong></td>
+      <td>EM waves (orbit)</td>
+      <td>Global coverage · Remote areas</td>
+      <td>Very high latency · Expensive · Weather affected</td>
+    </tr>
+  </table>
+  <div class="memory-box"><strong>⚡ FIBRE vs COPPER KEY &nbsp;</strong>Always explain WHY: "Fibre optic uses light pulses so it is not affected by electromagnetic interference, whereas copper uses electrical signals which can be disrupted by EMI." The explanation = the mark, not just naming the medium.</div>
+</section>
+
+<!-- TOPIC 8 -->
+<section class="topic" id="t8">
+  <div class="topic-num">TOPIC 08</div>
+  <div class="topic-title">LAN Hardware</div>
+  <div class="topic-sub">SWITCH · SERVER · NIC · WNIC · WAP · BRIDGE · REPEATER · CABLES</div>
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">🔀 Switch</div>
+      <ul>
+        <li>Connects devices within LAN</li>
+        <li>Reads destination MAC address</li>
+        <li>Forwards to target device ONLY</li>
+        <li>Reduces collisions vs hub</li>
+      </ul>
+    </div>
+    <div class="card c-cyan-card">
+      <div class="card-title">🗄️ Server</div>
+      <ul>
+        <li>Manages centralised resources</li>
+        <li>File/print/web server types</li>
+        <li>Processes client requests</li>
+        <li>Returns results to clients</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">🃏 NIC (Wired)</div>
+      <ul>
+        <li>Connects device to wired LAN</li>
+        <li>Digital ↔ electrical signal</li>
+        <li>Contains unique MAC address</li>
+        <li>Implements Ethernet protocol</li>
+      </ul>
+    </div>
+    <div class="card c-yellow-card">
+      <div class="card-title">📡 WNIC (Wireless)</div>
+      <ul>
+        <li>Connects device to wireless LAN</li>
+        <li>Digital ↔ analogue radio waves</li>
+        <li>Encrypts and decrypts data</li>
+        <li>Provides MAC address</li>
+      </ul>
+    </div>
+    <div class="card c-orange-card">
+      <div class="card-title">🔁 WAP</div>
+      <ul>
+        <li>Wireless to wired LAN bridge</li>
+        <li>Transmits/receives radio signals</li>
+        <li>Extends wireless coverage</li>
+        <li>NOT a router — no IP routing</li>
+      </ul>
+    </div>
+    <div class="card c-teal-card">
+      <div class="card-title">🌉 Bridge</div>
+      <ul>
+        <li>Connects two LANs — SAME protocol</li>
+        <li>Filters traffic between networks</li>
+        <li>Reduces traffic in each LAN</li>
+      </ul>
+    </div>
+    <div class="card c-purple-card">
+      <div class="card-title">🔄 Repeater</div>
+      <ul>
+        <li>REGENERATES degraded signal</li>
+        <li>Extends cable range</li>
+        <li>Digital signal only — regenerate ≠ amplify</li>
+      </ul>
+    </div>
+    <div class="card c-red-card">
+      <div class="card-title">🔌 Cables</div>
+      <ul>
+        <li>Copper: electrical, cheaper, flexible</li>
+        <li>Fibre: light, faster, less interference</li>
+        <li>Connect devices to switch/router</li>
+      </ul>
+    </div>
+  </div>
+  <div class="memory-box"><strong>⚡ WNIC EXAM TRICK &nbsp;</strong>TWO functions of WNIC = always: (1) converts digital to analogue radio waves for transmission, (2) provides MAC address. Bonus: (3) encrypts/decrypts data. These three are the most consistently marked.</div>
+</section>
+
+<!-- TOPIC 9 -->
+<section class="topic" id="t9">
+  <div class="topic-num">TOPIC 09</div>
+  <div class="topic-title">Router Role</div>
+  <div class="topic-sub">★ MOST EXAMINED DEVICE</div>
+  <div class="def-box">
+    <div class="def-label">DEFINITION</div>
+    <p>A device that <strong>routes and forwards data packets</strong> between different networks using IP addresses.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card c-green-card">
+      <div class="card-title">Router Functions (exam list)</div>
+      <ul>
+        <li>Receives packets from devices/internet</li>
+        <li>Stores IP &amp; MAC addresses of connected devices</li>
+        <li>Maintains a ROUTING TABLE</li>
+        <li>Routes packets to destination via IP</li>
+        <li>Finds most efficient path to destination</li>
+        <li>Assigns private IP addresses (DHCP)</li>
+        <li>Can act as firewall / gateway</li>
+        <li>Performs protocol conversion</li>
+      </ul>
+    </div>
+    <div class="card c-cyan-card">
+      <div class="card-title">Routing Table</div>
+      <ul>
+        <li>Database stored in router</li>
+        <li>Maps destination IP → next hop</li>
+        <li>Updated dynamically as network changes</li>
+        <li>Used to find most efficient path</li>
+      </ul>
+    </div>
+  </div>
+  <div class="memory-box"><strong>⚡ EXAM CRITICAL &nbsp;</strong>Router = "routing table" + "IP address" + "most efficient path" + "assigns private IP". Never say router "connects devices in LAN" — that is the SWITCH. Router connects NETWORKS together.</div>
+</section>
+
+<!-- TOPIC 10 -->
+<section class="topic" id="t10">
+  <div class="topic-num">TOPIC 10</div>
+  <div class="topic-title">Ethernet and CSMA/CD</div>
+  <div class="topic-sub">HOW COLLISIONS ARE DETECTED AND AVOIDED</div>
+  <div class="def-box">
+    <div class="def-label">ETHERNET</div>
+    <p>A wired LAN protocol — data transmitted in <strong>frames</strong>. Each frame contains: source MAC, destination MAC, data, error-check (CRC).</p>
+  </div>
+  <div class="spacer"></div>
+  <div style="font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--dim);letter-spacing:2px;margin-bottom:8px;">CSMA/CD PROCESS — IN ORDER</div>
+  <div class="process">
+    <div class="step"><p>Device <span class="kw">listens to channel</span> — checks if line is idle (carrier sense)</p></div>
+    <div class="step"><p>If channel is <span class="kw">free/idle</span> → device transmits data</p></div>
+    <div class="step"><p>If two devices transmit simultaneously → <span class="kw">COLLISION</span> detected</p></div>
+    <div class="step"><p>All nodes send a <span class="kw">JAM signal</span> — all stop transmitting immediately</p></div>
+    <div class="step"><p>Each device waits a <span class="kw">random backoff time</span> before retransmitting</p></div>
+  </div>
+  <div class="memory-box"><strong>⚡ 4-5 MARK QUESTION PATTERN &nbsp;</strong>Must include all 5 steps in order. Critical marks: "listens first", "only sends when idle", "collision detected", "JAM signal", "random wait". The RANDOM wait = 1 mark students miss. Explain WHY random: "if both waited the same time, they would collide again."</div>
+</section>
+
+<!-- TOPIC 11 -->
+<section class="topic" id="t11">
+  <div class="topic-num">TOPIC 11</div>
+  <div class="topic-title">Bit Streaming</div>
+  <div class="topic-sub">REAL-TIME · ON-DEMAND · EFFECT OF BIT RATE</div>
+  <table class="cmp-table">
+    <tr>
+      <th class="th-cyan">FEATURE</th>
+      <th class="th-red">REAL-TIME</th>
+      <th class="th-orange">ON-DEMAND</th>
+    </tr>
+    <tr><td>When recorded</td><td>Live — as it happens</td><td>Pre-recorded, uploaded to server</td></tr>
+    <tr><td>Pause/rewind</td><td>❌ Cannot pause or rewind</td><td>✅ Can pause, rewind, fast-forward</td></tr>
+    <tr><td>Delivery</td><td>Sent to buffer as recorded</td><td>Stored on server, streamed on request</td></tr>
+    <tr><td>Examples</td><td>Live news, live sports, live gaming</td><td>Netflix, YouTube, iPlayer</td></tr>
+  </table>
+  <div class="def-box" style="margin-top:12px">
+    <div class="def-label">HOW STREAMING WORKS</div>
+    <p>Video is <strong>compressed</strong> → Server sends data to a <strong>buffer</strong> on client → Client plays from buffer continuously → Buffer absorbs variation in network speed</p>
+  </div>
+  <div class="card-grid">
+    <div class="card c-yellow-card">
+      <div class="card-title">⚡ Bit Rate Impact</div>
+      <ul>
+        <li>Higher bit rate = better video/audio quality</li>
+        <li>Higher bit rate = more data per second needed</li>
+        <li>Low broadband + high bit rate → buffering</li>
+        <li>Services adapt bit rate to connection speed</li>
+      </ul>
+    </div>
+  </div>
+  <div class="memory-box"><strong>⚡ EXAM KEY &nbsp;</strong>Buffer = always 1 mark. "Data sent to buffer on client device; client plays from buffer." Real-time vs on-demand: "cannot be paused" (real-time) vs "can be paused/rewound" (on-demand) = clearest exam distinction.</div>
+</section>
+
+<!-- TOPIC 12 -->
+<section class="topic" id="t12">
+  <div class="topic-num">TOPIC 12</div>
+  <div class="topic-title">WWW vs Internet</div>
+  <div class="topic-sub">THESE ARE NOT THE SAME THING</div>
+  <table class="cmp-table">
+    <tr>
+      <th class="th-cyan">FEATURE</th>
+      <th class="th-cyan">WWW (World Wide Web)</th>
+      <th class="th-green">INTERNET</th>
+    </tr>
+    <tr><td>What it is</td><td>Collection of web pages/resources</td><td>Global network of networks</td></tr>
+    <tr><td>Protocol</td><td>HTTP / HTTPS</td><td>TCP / IP</td></tr>
+    <tr><td>Accessed via</td><td>Web browser</td><td>Any internet-connected device</td></tr>
+    <tr><td>Relationship</td><td>A service that RUNS ON the internet</td><td>The underlying infrastructure</td></tr>
+    <tr><td>Other services</td><td>Only web pages</td><td>Email, FTP, VoIP, WWW...</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ EXAM DEFINITION &nbsp;</strong>"WWW is a collection of web pages accessed using HTTP/HTTPS, whereas the Internet is the global network of interconnected networks using TCP/IP." Both protocol names score marks.</div>
+</section>
+
+<!-- TOPIC 13 -->
+<section class="topic" id="t13">
+  <div class="topic-num">TOPIC 13</div>
+  <div class="topic-title">Internet Hardware</div>
+  <div class="topic-sub">MODEM · PSTN · DEDICATED LINES · CELLULAR NETWORKS</div>
+  <div class="card-grid">
+    <div class="card c-teal-card">
+      <div class="card-title">📟 Modem</div>
+      <ul>
+        <li>MOdulator/DEModulator</li>
+        <li>Digital → analogue (to send via PSTN)</li>
+        <li>Analogue → digital (to receive)</li>
+        <li>Needed when only phone line available</li>
+      </ul>
+    </div>
+    <div class="card c-blue-card">
+      <div class="card-title">☎️ PSTN</div>
+      <ul>
+        <li>Public Switched Telephone Network</li>
+        <li>Traditional circuit-switched network</li>
+        <li>Full duplex transmission</li>
+        <li>Dedicated channel during call</li>
+        <li>Line active even in power cut</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">📡 Dedicated Lines</div>
+      <ul>
+        <li>Permanent, always-on connection</li>
+        <li>Reserved for one organisation</li>
+        <li>Guaranteed bandwidth — not shared</li>
+        <li>Symmetrical upload/download</li>
+        <li>More expensive than broadband</li>
+      </ul>
+    </div>
+    <div class="card c-orange-card">
+      <div class="card-title">📱 Cellular Networks</div>
+      <ul>
+        <li>Area divided into cells (base stations)</li>
+        <li>Device connects to nearest tower</li>
+        <li>Handoff as device moves</li>
+        <li>3G / 4G / 5G standards</li>
+        <li>Internet in remote areas</li>
+      </ul>
+    </div>
+  </div>
+  <div class="memory-box"><strong>⚡ MODEM EXAM ANSWER &nbsp;</strong>"Converts digital data to analogue signals for transmission over telephone lines, and converts received analogue signals back to digital." Must state BOTH directions for full marks.</div>
+</section>
+
+<!-- TOPIC 14 -->
+<section class="topic" id="t14">
+  <div class="topic-num">TOPIC 14</div>
+  <div class="topic-title">IP Addressing</div>
+  <div class="topic-sub">IPv4 · IPv6 · SUBNETTING · PUBLIC/PRIVATE · STATIC/DYNAMIC</div>
+  <table class="cmp-table">
+    <tr>
+      <th class="th-cyan">FEATURE</th>
+      <th class="th-green">IPv4</th>
+      <th class="th-blue">IPv6</th>
+    </tr>
+    <tr><td>Bit length</td><td>32 bits</td><td>128 bits</td></tr>
+    <tr><td>Groups</td><td>4 groups × 8 bits</td><td>8 groups × 16 bits</td></tr>
+    <tr><td>Format</td><td>Denary (0–255), dot-separated</td><td>Hexadecimal (0–FFFF), colon-separated</td></tr>
+    <tr><td>Example</td><td>192.168.0.1</td><td>2001:0db8::1</td></tr>
+    <tr><td>Special rule</td><td>—</td><td>Groups of all 0s replaced by ::</td></tr>
+    <tr><td>Why needed</td><td>Original — now exhausted</td><td>IPv4 addresses insufficient</td></tr>
+  </table>
+  <div class="spacer"></div>
+  <div style="font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--dim);letter-spacing:2px;margin-bottom:10px;">SUBNETTING BENEFITS — S·E·T·M</div>
+  <div class="card-grid">
+    <div class="card c-red-card"><div class="card-title">S — Security</div><ul><li>Data stays within subnet</li><li>Devices don't receive unintended data</li></ul></div>
+    <div class="card c-orange-card"><div class="card-title">E — Expansion</div><ul><li>Greater range of IP addresses</li><li>Easier to extend network</li></ul></div>
+    <div class="card c-yellow-card"><div class="card-title">T — Traffic Reduction</div><ul><li>Data stays in subnet</li><li>Reduces traffic on wider network</li></ul></div>
+    <div class="card c-green-card"><div class="card-title">M — Management</div><ul><li>Faults isolated to one subnet</li><li>Easier maintenance per subnet</li></ul></div>
+  </div>
+  <div class="spacer"></div>
+  <table class="cmp-table">
+    <tr>
+      <th class="th-cyan">TYPE</th>
+      <th class="th-yellow">ASSIGNED BY</th>
+      <th class="th-green">VISIBLE TO</th>
+      <th class="th-orange">KEY FEATURE</th>
+    </tr>
+    <tr><td style="color:var(--orange)">Public IP</td><td>ISP</td><td>Anyone on internet</td><td>Globally unique</td></tr>
+    <tr><td style="color:var(--purple)">Private IP</td><td>Router (DHCP)</td><td>LAN only</td><td>Only unique within LAN</td></tr>
+    <tr><td style="color:var(--blue)">Static IP</td><td>Manual config</td><td>—</td><td>Fixed — never changes</td></tr>
+    <tr><td style="color:var(--teal)">Dynamic IP</td><td>DHCP server</td><td>—</td><td>Changes each session</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ SUBNETTING S·E·T·M &nbsp;</strong>4 benefits = 4 marks. Use the word "subnet" in each answer. E.g. "Data stays within the subnet, reducing traffic on the wider network."</div>
+</section>
+
+<!-- TOPIC 15 -->
+<section class="topic" id="t15">
+  <div class="topic-num">TOPIC 15</div>
+  <div class="topic-title">URL Structure</div>
+  <div class="topic-sub">UNIFORM RESOURCE LOCATOR</div>
+  <div class="def-box">
+    <div class="def-label">URL ANATOMY</div>
+    <p><code style="color:var(--cyan)">https</code><code style="color:var(--dim)">://</code><code style="color:var(--green)">www.bbc</code><code style="color:var(--yellow)">.co.uk</code><code style="color:var(--orange)">/news/article</code></p>
+  </div>
+  <div class="card-grid">
+    <div class="card c-cyan-card"><div class="card-title">Protocol</div><ul><li>https:// or http://</li><li>Defines how data is transferred</li><li>HTTPS = encrypted</li></ul></div>
+    <div class="card c-green-card"><div class="card-title">Domain Name</div><ul><li>Human-readable server name</li><li>Sent to DNS for resolution</li><li>e.g. www.bbc</li></ul></div>
+    <div class="card c-yellow-card"><div class="card-title">TLD</div><ul><li>Top-Level Domain</li><li>e.g. .co.uk / .com / .org</li><li>Indicates type/country</li></ul></div>
+    <div class="card c-orange-card"><div class="card-title">Path</div><ul><li>Specific resource on server</li><li>e.g. /news/article</li><li>Points to file/directory</li></ul></div>
+  </div>
+</section>
+
+<!-- TOPIC 16 -->
+<section class="topic" id="t16">
+  <div class="topic-num">TOPIC 16</div>
+  <div class="topic-title">DNS Role</div>
+  <div class="topic-sub">HOW A URL BECOMES AN IP ADDRESS</div>
+  <div class="def-box">
+    <div class="def-label">PURPOSE</div>
+    <p>DNS (Domain Name System) translates human-readable <strong>domain names</strong> into machine-readable <strong>IP addresses</strong>.</p>
+  </div>
+  <div class="packet-journey">
+    <div class="pj-node">User types URL</div>
+    <div class="pj-arrow">→</div>
+    <div class="pj-node">Browser parses domain</div>
+    <div class="pj-arrow">→</div>
+    <div class="pj-node">Sent to DNS server</div>
+    <div class="pj-arrow">→</div>
+    <div class="pj-node">DNS searches database</div>
+    <div class="pj-arrow">→</div>
+    <div class="pj-node">IP returned</div>
+    <div class="pj-arrow">→</div>
+    <div class="pj-node">Browser connects to server</div>
+  </div>
+  <div class="process" style="margin-top:14px">
+    <div class="step"><p>User enters <span class="kw">URL</span> into web browser</p></div>
+    <div class="step"><p>Browser <span class="kw">parses the URL</span> to extract the domain name</p></div>
+    <div class="step"><p>Domain name sent to <span class="kw">DNS server</span></p></div>
+    <div class="step"><p>DNS <span class="kw">searches its database</span> for matching IP address</p></div>
+    <div class="step"><p><strong>If found:</strong> IP address <span class="kw">returned to browser</span> → page loads</p></div>
+    <div class="step"><p><strong>If NOT found:</strong> request <span class="kw">forwarded to higher-level DNS</span></p></div>
+    <div class="step"><p>Higher DNS returns IP; lower DNS <span class="kw">caches result</span> for future lookups</p></div>
+  </div>
+  <div class="memory-box"><strong>⚡ 4-MARK DNS QUESTION &nbsp;</strong>Key steps: "parses URL" → "sent to DNS" → "searches database" → "returns IP" → "forwarded to higher DNS if not found" → "lower DNS caches result." Step 7 (CACHING) is the mark most students miss.</div>
+</section>
+
+
+<!-- ═══════════════════════
+     PART 2 — EXAM ZONE
+═══════════════════════ -->
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)">
+  <div class="part-num">PART 2</div>
+  <div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div>
+</div>
+<div class="ez-header">
+  <div style="font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--dim2);margin-bottom:8px;">Cambridge 9618 · Chapter 2.1 · Structured Questions</div>
+  <div style="font-size:0.85rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong> to reveal mark scheme and examiner hints.</div>
+</div>
+
+<!-- ── EASY ── -->
+<div class="q-block">
+  <div class="q-tier tier-easy">● EASY</div>
+  <div class="q-num">QUESTION 01 · Definition</div>
+  <div class="q-text">Define the term "LAN" (Local Area Network). <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box">
+    <h4>MARK SCHEME</h4>
+    <ul>
+      <li>A network that covers a small geographical area (1)</li>
+      <li>Infrastructure is privately owned / not controlled by external organisations (1)</li>
+    </ul>
+    <div class="examiner-hint"><strong>Examiner:</strong> "Small geographical area" alone is 1 mark. The private ownership point is the second mark many students miss. "High speed" alone does NOT score — it must be contrasted with WAN in a compare question.</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-easy">● EASY</div>
+  <div class="q-num">QUESTION 02 · Definition</div>
+  <div class="q-text">State two functions of a WNIC. <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box">
+    <h4>MARK SCHEME (any two)</h4>
+    <ul>
+      <li>Converts digital data to analogue radio waves for transmission (1)</li>
+      <li>Converts received analogue radio waves back to digital data (1)</li>
+      <li>Provides the device's MAC address on the network (1)</li>
+      <li>Encrypts and decrypts data (1)</li>
+    </ul>
+    <div class="examiner-hint"><strong>Examiner:</strong> The signal conversion answers are the safest marks. "Allows wireless connection" alone is NOT enough — you must describe what it does technically.</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-easy">● EASY</div>
+  <div class="q-num">QUESTION 03 · Describe</div>
+  <div class="q-text">Describe the purpose of a router in a network. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box">
+    <h4>MARK SCHEME (any three)</h4>
+    <ul>
+      <li>Routes/forwards data packets between different networks (1)</li>
+      <li>Uses IP addresses to determine the destination of packets (1)</li>
+      <li>Maintains a routing table to find the most efficient path (1)</li>
+      <li>Assigns private IP addresses to devices on a LAN (1)</li>
+    </ul>
+    <div class="examiner-hint"><strong>Examiner:</strong> "Routing table" + "IP address" + "most efficient path" = 3 easy marks. Don't say "connects devices in a LAN" — that's the switch.</div>
+  </div>
+</div>
+
+<!-- ── STANDARD ── -->
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 04 · Compare</div>
+  <div class="q-text">Compare a star topology with a bus topology. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box">
+    <h4>MARK SCHEME (4 contrasting points)</h4>
+    <ul>
+      <li>Star uses a central switch whereas bus uses a single backbone cable (1)</li>
+      <li>Star has fewer collisions because each device has a dedicated link / bus has more collisions as all devices share the same channel (1)</li>
+      <li>In star, one cable failing only affects that device / in bus, backbone failure causes whole network to fail (1)</li>
+      <li>Star is more expensive due to central switch and more cabling / bus is cheaper and uses less cable (1)</li>
+    </ul>
+    <div class="examiner-hint"><strong>Examiner:</strong> Each point must give BOTH sides. "Star has fewer collisions" alone = 0 marks. "Star has fewer collisions because... whereas bus has more collisions because..." = 1 mark.</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 05 · Process</div>
+  <div class="q-text">Describe the CSMA/CD process used in Ethernet networks. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box">
+    <h4>MARK SCHEME</h4>
+    <ul>
+      <li>Device listens to the channel to check if it is free/idle (1)</li>
+      <li>If channel is free, the device transmits data (1)</li>
+      <li>If two devices transmit simultaneously, a collision is detected (1)</li>
+      <li>A JAM signal is sent by all nodes — all stop transmitting (1)</li>
+      <li>Each device waits a random backoff time before attempting to retransmit (1)</li>
+    </ul>
+    <div class="examiner-hint"><strong>Examiner:</strong> 5 steps available for 4 marks — full credit from any 4. The RANDOM wait step is the most missed. Explain why random: "prevents both devices retransmitting at the same time again."</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 06 · Explain</div>
+  <div class="q-text">Explain the role of DNS when a user enters a URL in a web browser. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box">
+    <h4>MARK SCHEME</h4>
+    <ul>
+      <li>Browser parses the URL to extract the domain name (1)</li>
+      <li>Domain name is sent to a DNS server (1)</li>
+      <li>DNS searches its database for the corresponding IP address (1)</li>
+      <li>If found, IP address is returned to the browser (1)</li>
+      <li>If not found, request is forwarded to a higher-level DNS server (1)</li>
+      <li>Lower-level DNS caches / stores the result for future requests (1)</li>
+    </ul>
+    <div class="examiner-hint"><strong>Examiner:</strong> For 4 marks, steps 1–5 cover the core process. Step 6 (caching) is a bonus mark. Don't forget "parses URL" as step 1 — many students jump straight to DNS.</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 07 · Compare</div>
+  <div class="q-text">Compare IPv4 and IPv6 addressing. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box">
+    <h4>MARK SCHEME (any 4 contrasting pairs)</h4>
+    <ul>
+      <li>IPv4 is 32-bit whereas IPv6 is 128-bit (1)</li>
+      <li>IPv4 has 4 groups / IPv6 has 8 groups (1)</li>
+      <li>IPv4 written in denary / IPv6 written in hexadecimal (1)</li>
+      <li>IPv4 groups separated by dots / IPv6 groups separated by colons (1)</li>
+      <li>IPv6 allows groups of zeros to be replaced with :: / IPv4 has no such shorthand (1)</li>
+    </ul>
+    <div class="examiner-hint"><strong>Examiner:</strong> Contrasting pairs = marks. "IPv4 is 32-bit" alone = 0 in a compare question. "IPv4 is 32-bit whereas IPv6 is 128-bit" = 1 mark.</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 08 · Advantages/Disadvantages</div>
+  <div class="q-text">State two advantages and two disadvantages of using a private cloud. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box">
+    <h4>MARK SCHEME</h4>
+    <ul>
+      <li>[Advantage] Full control over data and security (1)</li>
+      <li>[Advantage] Not dependent on internet — accessible via internal network (1)</li>
+      <li>[Advantage] No third-party access to sensitive data (1)</li>
+      <li>[Disadvantage] High upfront cost to set up infrastructure (1)</li>
+      <li>[Disadvantage] Requires IT staff to maintain (1)</li>
+      <li>[Disadvantage] Less scalable than public cloud (1)</li>
+    </ul>
+    <div class="examiner-hint"><strong>Examiner:</strong> Accept any valid advantage/disadvantage. "More secure" alone = 1 mark but "more secure because data is not stored by a third party" = stronger answer.</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 09 · Describe</div>
+  <div class="q-text">Describe how data is transmitted between two devices connected in a star topology. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box">
+    <h4>MARK SCHEME</h4>
+    <ul>
+      <li>Sending device transmits a data frame to the central switch (1)</li>
+      <li>Switch reads the destination MAC address in the frame (1)</li>
+      <li>Switch forwards the frame only to the device with that MAC address (1)</li>
+    </ul>
+    <div class="examiner-hint"><strong>Examiner:</strong> Key marks: "MAC address" + "switch reads" + "forwards only to destination." The word "only" is important — switch does NOT broadcast like a hub.</div>
+  </div>
+</div>
+
+<!-- ── CHALLENGE ── -->
+<div class="q-block">
+  <div class="q-tier tier-hard">★ CHALLENGE</div>
+  <div class="q-num">QUESTION 10 · Scenario</div>
+  <div class="q-context">A hospital is designing a new network. Patient records must be kept secure and always accessible. The network serves 500 staff in a large building with multiple departments.</div>
+  <div class="q-text">Justify which network topology would be most suitable for the hospital network. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box">
+    <h4>MARK SCHEME (star or mesh both acceptable with justification)</h4>
+    <ul>
+      <li>[Star] Central switch means each device has a dedicated link, reducing collisions which is important with 500 users (1)</li>
+      <li>[Star] Easy to add new devices to the switch as the hospital expands (1)</li>
+      <li>[Mesh] If one link fails, alternate routes exist, ensuring patient records remain accessible at all times (1)</li>
+      <li>[Mesh] No single point of failure which is critical in a hospital environment (1)</li>
+      <li>Hybrid could combine benefits of both for different departments (1)</li>
+    </ul>
+    <div class="examiner-hint"><strong>Examiner:</strong> Full marks require: name topology + advantage + link to scenario context. "Star is suitable because it has fewer collisions" = 1 mark. "Star is suitable because each device has a dedicated link reducing collisions, which is important as 500 staff use the network simultaneously" = 2 marks (advantage + context).</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-hard">★ CHALLENGE</div>
+  <div class="q-num">QUESTION 11 · Scenario</div>
+  <div class="q-context">A school is deciding between a thin client and thick client setup for 200 student workstations.</div>
+  <div class="q-text">Discuss the suitability of thin client and thick client architectures for the school. <span class="marks">[6]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box">
+    <h4>MARK SCHEME (3 marks each side, max 6)</h4>
+    <ul>
+      <li>[Thin] Software updates applied once on server — easier and cheaper to maintain 200 devices (1)</li>
+      <li>[Thin] Cheaper hardware required for each workstation — lower cost for school (1)</li>
+      <li>[Thin] Security managed centrally on server — staff can control all devices easily (1)</li>
+      <li>[Thick] If server fails, students can still work locally — less disruption (1)</li>
+      <li>[Thick] Better local performance for tasks like graphic design or video editing (1)</li>
+      <li>[Thick] Higher hardware cost and maintenance burden across 200 devices (negative) (1)</li>
+    </ul>
+    <div class="examiner-hint"><strong>Examiner:</strong> Discuss = both sides with context. Link each point to school. "Thin client is suitable because updates only need to be applied to the server, reducing the time and cost of maintaining 200 student machines."</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-hard">★ CHALLENGE</div>
+  <div class="q-num">QUESTION 12 · Explain</div>
+  <div class="q-text">Explain four benefits of subnetting a large organisational network. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box">
+    <h4>MARK SCHEME — S·E·T·M</h4>
+    <ul>
+      <li>[Security] Data stays within its subnet so devices do not receive unintended data from other subnets (1)</li>
+      <li>[Expansion] Allows a greater range of IP addresses, making it easier to extend the network (1)</li>
+      <li>[Traffic] Data remains within the subnet, reducing traffic on the wider network and improving speed (1)</li>
+      <li>[Management] Faults can be isolated to a single subnet without affecting the rest of the network (1)</li>
+    </ul>
+    <div class="examiner-hint"><strong>Examiner:</strong> Use the word "subnet" in each answer. One mark each. "Improves security" alone = 0. "Data stays within the subnet so devices do not receive unintended data" = 1 mark.</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-hard">★ CHALLENGE</div>
+  <div class="q-num">QUESTION 13 · Compare</div>
+  <div class="q-text">Compare real-time bit streaming and on-demand bit streaming. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box">
+    <h4>MARK SCHEME (any 4 contrasting pairs)</h4>
+    <ul>
+      <li>Real-time streams a live event as it happens / on-demand streams pre-recorded content uploaded to a server (1)</li>
+      <li>Real-time cannot be paused or rewound / on-demand can be paused, rewound and fast-forwarded (1)</li>
+      <li>Real-time data sent to buffer as it is recorded / on-demand data stored on server then streamed on request (1)</li>
+      <li>Real-time requires consistent connection (no stored copy) / on-demand buffers more data ahead (1)</li>
+    </ul>
+    <div class="examiner-hint"><strong>Examiner:</strong> "Cannot be paused" (real-time) vs "can be paused" (on-demand) = clearest and safest contrast pair. Always contrast — one-sided answers score 0 in compare questions.</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-hard">★ CHALLENGE</div>
+  <div class="q-num">QUESTION 14 · Explain</div>
+  <div class="q-text">Explain the difference between a public IP address and a private IP address, and state one security implication of each. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box">
+    <h4>MARK SCHEME</h4>
+    <ul>
+      <li>Public IP is visible to any device on the internet, assigned by ISP, globally unique (1)</li>
+      <li>Private IP is only visible within the LAN, assigned by the router, only unique within the LAN (1)</li>
+      <li>[Security — Public] Can be targeted by external attackers as it is visible on the internet (1)</li>
+      <li>[Security — Private] Cannot be accessed directly from the internet, providing protection from external threats (1)</li>
+    </ul>
+    <div class="examiner-hint"><strong>Examiner:</strong> Security implication must be specific to IP type. "Public IP can be attacked from internet because it is visible globally" = mark. "Private IP is safer" alone = 0.</div>
+  </div>
+</div>
+
+</div><!-- /exam-zone -->
+
+
+<!-- ═══════════════════════
+     PART 3 — FLASHCARDS
+═══════════════════════ -->
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)">
+  <div class="part-num">PART 3</div>
+  <div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div>
+</div>
+
+<div class="fc-header">
+  <div style="font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--dim2);margin-bottom:6px;">QUIZLET-STYLE · FLIP TO REVEAL · TRACK YOUR PROGRESS</div>
+  <div style="font-size:0.85rem;color:var(--dim2)">Click a card to flip it. Use ✓ / ✗ to track what you know.</div>
+</div>
+
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.filter('wrong')">❌ Review Missed</button>
+  <div class="fc-progress">
+    <div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div>
+    <div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div>
+    <div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> remaining</div>
+  </div>
+</div>
+
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 40</div>
+  <div class="fc-card-wrap">
+    <div class="fc-card" id="fc-card" onclick="FC.flip()">
+      <div class="fc-front">
+        <div class="fc-label" id="fc-front-label">TERM</div>
+        <div class="fc-question" id="fc-front-text">Loading...</div>
+        <div class="fc-flip-hint">Click card to flip →</div>
+      </div>
+      <div class="fc-back">
+        <div class="fc-label">ANSWER</div>
+        <div class="fc-answer" id="fc-back-text"></div>
+      </div>
+    </div>
+  </div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)" title="I didn't know this">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)" title="I knew this">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done">
+    <h3>Session Complete! 🎉</h3>
+    <p id="fc-done-stats"></p>
+    <button class="fc-btn primary" onclick="FC.restart()">↺ Restart All Cards</button>
+    &nbsp;
+    <button class="fc-btn" onclick="FC.filter('wrong')">Review Missed Cards</button>
+  </div>
+</div>
+</div>
+
+
+</main>
+</div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'DEFINITION',q:'What is a LAN?',a:'Local Area Network. Covers a small geographical area. Infrastructure is privately owned. Devices connected via cables or short-range wireless. High data transfer rate.'},
+  {label:'DEFINITION',q:'What is a WAN?',a:'Wide Area Network. Covers a large geographical area. Often controlled by external organisations (ISPs). Lower data transfer rate. Connections often virtual/leased.'},
+  {label:'COMPARE',q:'State THREE differences between LAN and WAN.',a:'• LAN: small area / WAN: large area\n• LAN: private ownership / WAN: often public/ISP\n• LAN: high data rate / WAN: lower data rate\n• LAN: physical connections / WAN: virtual/leased'},
+  {label:'DEFINITION',q:'What is Client-Server networking?',a:'A model where dedicated servers process requests from client devices. Client sends request → server processes → server returns result → client displays result. Central management of security and backups.'},
+  {label:'DISADVANTAGES',q:'Give THREE drawbacks of Peer-to-Peer networking.',a:'• No central security management — each device vulnerable\n• No central backup — data lost if device not backed up\n• No central file management — inconsistency across devices\n• Slower response — device accessed by multiple others\n• Files may not always be available'},
+  {label:'COMPARE',q:'Thick Client vs Thin Client — where does processing occur?',a:'Thick Client: processing done LOCALLY on client device. Server does minimal work.\nThin Client: ALL processing done on SERVER. Client only sends requests and displays results.'},
+  {label:'EXAM TIP',q:'Justify Thin Client for a school (3 marks)',a:'1. Software updates applied centrally on server only — cheaper to maintain 200 devices\n2. Cheaper hardware required for each workstation\n3. Security managed centrally on server'},
+  {label:'TOPOLOGY',q:'What are the ADVANTAGES of Star topology?',a:'• Fewer collisions — each device has dedicated link to switch\n• Easily scalable — connect new device to switch\n• One cable failing only affects that device\n• High performance — no competition for shared medium\n• Easy fault detection per device'},
+  {label:'TOPOLOGY',q:'What are the DISADVANTAGES of Star topology?',a:'• Central switch = single point of failure\n• More cabling required\n• More expensive (switch + cables)'},
+  {label:'TOPOLOGY',q:'What are the ADVANTAGES of Bus topology?',a:'• Simple and cheap to set up\n• Uses less cabling\n• Easy to add devices short-term'},
+  {label:'TOPOLOGY',q:'What are the DISADVANTAGES of Bus topology?',a:'• Backbone failure → entire network fails\n• All devices share one channel → more collisions\n• Performance degrades with more devices\n• Less secure — all devices see all data\n• Difficult to identify faults'},
+  {label:'TOPOLOGY',q:'How does data travel in BUS topology?',a:'Packet is broadcast to ALL devices on the bus. Each device checks the destination MAC address. Only the intended device accepts the packet — others discard it.'},
+  {label:'TOPOLOGY',q:'How does data travel in STAR topology?',a:'Device sends frame to central switch. Switch reads destination MAC address. Switch forwards frame ONLY to the target device. Other devices do NOT receive it.'},
+  {label:'TOPOLOGY',q:'What are the ADVANTAGES of Mesh topology?',a:'• Alternate routes if one link fails\n• No single point of failure\n• High resilience — critical systems\n• Fewer collisions — multiple routes\n• More secure — no single cable'},
+  {label:'TOPOLOGY',q:'When would you use HYBRID topology?',a:'For large organisations with varied departments. Combines best of multiple topologies. E.g. Star-Bus: star networks per department connected via bus backbone. Provides flexibility and fault isolation.'},
+  {label:'DEFINITION',q:'What is Cloud Computing?',a:'Accessing files, applications, or services stored on remote servers via the internet, rather than locally on the user\'s device.'},
+  {label:'COMPARE',q:'Public Cloud vs Private Cloud — key difference?',a:'Public Cloud: offered by third party over public internet, available to ANYONE with appropriate software (e.g. Google Drive).\nPrivate Cloud: offered on private internal network, only accessible to AUTHORISED USERS of the organisation.'},
+  {label:'ADVANTAGES',q:'Give THREE advantages of Cloud Computing.',a:'• Access from any device with internet\n• Saves local storage space\n• Data likely automatically backed up\n• Scalable — increase storage easily\n• Easy to share files with others'},
+  {label:'DISADVANTAGES',q:'Give THREE disadvantages of Cloud Computing.',a:'• Requires internet access to use\n• Dependent on third-party provider\n• Cannot access files if server is down\n• Recurring costs (long-term)\n• Data privacy and security concerns'},
+  {label:'COMPARE',q:'Fibre Optic vs Copper Cable — 4 differences',a:'• Fibre: light pulses / Copper: electrical signals\n• Fibre: higher bandwidth / Copper: lower speed\n• Fibre: less interference / Copper: susceptible to EMI\n• Fibre: harder to intercept / Copper: easier to tap\n• Fibre: more fragile/expensive / Copper: cheaper/flexible'},
+  {label:'DEFINITION',q:'What does Satellite transmission offer?',a:'Global coverage especially for remote/rural areas. Transmits via EM waves to orbiting satellite. Very high latency (600ms for geostationary). Affected by weather. Expensive.'},
+  {label:'DEFINITION',q:'What is Microwave transmission?',a:'Uses high-frequency radio waves for point-to-point transmission. Requires LINE OF SIGHT between transmitter and receiver. Cannot pass through solid objects. Affected by weather. Used for long-distance communication.'},
+  {label:'HARDWARE',q:'What are the FUNCTIONS of a Switch?',a:'Connects devices within a LAN. Reads destination MAC address from incoming frames. Forwards frame ONLY to the target device. Maintains a MAC address table. Reduces collisions compared to a hub.'},
+  {label:'HARDWARE',q:'State TWO functions of WNIC.',a:'• Converts digital data to analogue radio waves for transmission\n• Converts received analogue radio waves back to digital data\n• Provides device MAC address on the network\n• Encrypts and decrypts data'},
+  {label:'HARDWARE',q:'What is the difference between NIC and WNIC?',a:'NIC: wired connection (Ethernet/copper), converts digital ↔ electrical signals.\nWNIC: wireless, converts digital ↔ analogue radio waves, also encrypts/decrypts data.\nBoth provide MAC address.'},
+  {label:'HARDWARE',q:'What is a WAP? How does it differ from a Router?',a:'WAP (Wireless Access Point): bridges wireless devices to a wired LAN. Transmits/receives radio signals. Does NOT route packets between networks.\nRouter: routes packets between DIFFERENT networks using IP addresses.'},
+  {label:'HARDWARE',q:'What is a Bridge used for?',a:'Connects two LANs that use the SAME protocol. Allows data transmission between them. Filters traffic — only forwards data destined for the other network. Key phrase: SAME PROTOCOL.'},
+  {label:'HARDWARE',q:'What does a Repeater do?',a:'Receives a degraded/weakened digital signal and REGENERATES it so it can travel further. Extends the range of a network. Note: say REGENERATE not amplify for digital signals.'},
+  {label:'HARDWARE',q:'List 4 functions of a Router.',a:'• Routes/forwards packets between networks using IP addresses\n• Maintains a routing table\n• Finds most efficient path to destination\n• Assigns private IP addresses to LAN devices (DHCP)\n• Can act as firewall/gateway'},
+  {label:'PROCESS',q:'Describe the CSMA/CD process in order.',a:'1. Device listens to channel — checks if idle\n2. If free → transmits data\n3. If two transmit simultaneously → COLLISION\n4. All nodes send JAM signal — stop transmitting\n5. Each device waits RANDOM time before retransmitting'},
+  {label:'EXAM TIP',q:'Why must the backoff time be RANDOM in CSMA/CD?',a:'If both devices waited the same time, they would both retransmit simultaneously and collide again. Random wait ensures one device transmits before the other.'},
+  {label:'COMPARE',q:'Real-time vs On-demand streaming — 3 differences',a:'• Real-time: live as it happens / On-demand: pre-recorded on server\n• Real-time: CANNOT pause or rewind / On-demand: CAN pause, rewind, fast-forward\n• Real-time: sent to buffer as recorded / On-demand: stored, streamed on request'},
+  {label:'DEFINITION',q:'What is a buffer in bit streaming?',a:'Temporary storage on the client device. Server sends data to the buffer. Client plays from the buffer continuously. Buffer absorbs variation in network speed to prevent interruption.'},
+  {label:'EXPLAIN',q:'How does bit rate affect streaming quality?',a:'Higher bit rate = better quality video/audio. Higher bit rate = more data per second required. If broadband speed is too low for the bit rate → buffering occurs. Services adapt bit rate dynamically to match connection speed.'},
+  {label:'COMPARE',q:'WWW vs Internet — key differences',a:'WWW: collection of web pages, uses HTTP/HTTPS, accessed via browser, runs ON TOP of internet.\nInternet: global network of networks, uses TCP/IP, the underlying infrastructure, WWW is just one service on it.'},
+  {label:'IP ADDRESS',q:'IPv4 format — key facts',a:'32-bit address. 4 groups × 8 bits. Written in denary (0–255) or hexadecimal. Groups separated by dots. Example: 192.168.0.1. ~4.3 billion addresses — now exhausted.'},
+  {label:'IP ADDRESS',q:'IPv6 format — key facts',a:'128-bit address. 8 groups × 16 bits. Written in hexadecimal (0–FFFF). Groups separated by colons. Groups of all zeros replaced by ::. Example: 2001:0db8::1.'},
+  {label:'IP ADDRESS',q:'Give 4 benefits of subnetting (S·E·T·M)',a:'S — Security: data stays in subnet, devices don\'t receive unintended data\nE — Expansion: greater range of IP addresses\nT — Traffic: reduces traffic on wider network\nM — Management: faults isolated to one subnet'},
+  {label:'IP ADDRESS',q:'Public IP vs Private IP — key differences',a:'Public: visible on internet, assigned by ISP, globally unique.\nPrivate: only visible in LAN, assigned by router (DHCP), only unique within LAN.\nSecurity: public IP can be targeted from internet; private IP cannot be directly accessed externally.'},
+  {label:'IP ADDRESS',q:'Static IP vs Dynamic IP — key differences',a:'Static: fixed address, never changes, manually configured, used by servers.\nDynamic: changes each session, assigned by DHCP, efficient use of IP pool, harder to track.'},
+  {label:'PROCESS',q:'Describe the DNS resolution process (7 steps)',a:'1. User types URL into browser\n2. Browser parses URL → extracts domain name\n3. Domain name sent to DNS server\n4. DNS searches database for IP address\n5. If found → IP returned to browser → page loads\n6. If not found → forwarded to higher-level DNS\n7. Lower DNS caches result for future lookups'},
+  {label:'DEFINITION',q:'What is a MODEM?',a:'Modulator/Demodulator. Converts digital data → analogue signals for transmission over telephone lines. Converts received analogue signals → digital data. Required when only analogue phone line infrastructure exists.'},
+  {label:'DEFINITION',q:'What is PSTN?',a:'Public Switched Telephone Network. Traditional circuit-switched network. Full duplex transmission. Dedicated channel between endpoints for duration of connection. Line active even during power cut.'},
+  {label:'DEFINITION',q:'What is a Dedicated Line?',a:'A permanent, always-on connection reserved exclusively for one organisation. Guaranteed bandwidth — not shared. Symmetrical upload/download. More expensive than broadband. Used by businesses needing reliable internet.'}
+];
+
+// ─── FLASHCARD ENGINE ───
+const FC = createFlashcardEngine(
+  let index=0;
+  let correct=0;
+  let wrong=0;
+  let results={}; // index -> true/false
+  let flipped=false;
+// removed
+    index=0; correct=0; wrong=0; results={}; flipped=false;
+    document.getElementById('fc-done').classList.remove('visible');
+    render();
+  }
+
+  function render(){
+    if(index>=deck.length){
+      showDone(); return;
+    }
+    const card=deck[index];
+    const cardEl=document.getElementById('fc-card');
+    cardEl.classList.remove('flipped');
+    flipped=false;
+    document.getElementById('fc-front-label').textContent=card.label;
+    document.getElementById('fc-front-text').textContent=card.q;
+
+    // Format answer
+    const ansEl=document.getElementById('fc-back-text');
+    if(card.a.includes('\n')){
+      const lines=card.a.split('\n');
+      ansEl.innerHTML='<ul>'+lines.map(l=>'<li>'+l.replace(/^[•\-]\s*/,'')+'</li>').join('')+'</ul>';
+    } else {
+      ansEl.textContent=card.a;
+    }
+
+    document.getElementById('fc-counter').textContent=`Card ${index+1} of ${deck.length}`;
+    document.getElementById('fc-correct').textContent=correct;
+    document.getElementById('fc-wrong').textContent=wrong;
+    document.getElementById('fc-remain').textContent=deck.length-index;
+    const pct=Math.round((index/deck.length)*100);
+    document.getElementById('fc-bar').style.width=pct+'%';
+  }
+
+  function flip(){
+    flipped=!flipped;
+    document.getElementById('fc-card').classList.toggle('flipped',flipped);
+  }
+
+  function mark(knew){
+    if(knew){ correct++; } else { wrong++; }
+    results[index]=knew;
+    index++;
+    setTimeout(render,200);
+  }
+
+  function shuffle(){
+    deck=[...deck].sort(()=>Math.random()-.5);
+    index=0; correct=0; wrong=0; results={};
+    document.getElementById('fc-done').classList.remove('visible');
+    render();
+  }
+
+  function restart(){
+    deck=[...CARDS];
+    init();
+  }
+
+  function filter(type){
+    if(type==='wrong'){
+      const wrongCards=[];
+      Object.keys(results).forEach(i=>{
+        if(!results[i]) wrongCards.push(deck[parseInt(i)]);
+      });
+      if(wrongCards.length===0){ alert('No missed cards yet! Finish a session first.'); return; }
+      deck=wrongCards;
+      index=0; correct=0; wrong=0; results={};
+      document.getElementById('fc-done').classList.remove('visible');
+      render();
+    }
+  }
+
+  function showDone(){
+    document.getElementById('fc-done').classList.add('visible');
+    const pct=deck.length>0?Math.round((correct/deck.length)*100):0;
+    document.getElementById('fc-done-stats').textContent=
+      `You got ${correct} / ${deck.length} correct (${pct}%). ${wrong} to review.`;
+    document.getElementById('fc-bar').style.width='100%';
+  }
+// re-init with shared engine
+initNavHighlight(["t1","t2","t3","t4","t5","t6","t7","t8","t9","t10","t11","t12","t13","t14","t15","t16","exam","flash"]);
+</script>
+</body>
+</html>

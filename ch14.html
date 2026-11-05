@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 14 — Communication Technologies | 9618 A Level</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 14</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. Protocols & Purpose</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. TCP/IP Protocol Suite</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Application Layer Protocols</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. Circuit Switching</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. Packet Switching</button>
+  <button class="nav-item" onclick="scrollToId('t6')">6. Router in Packet Switching</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+<section class="hero">
+  <div class="hero-badge">CHAPTER 14 · A LEVEL · PAPER 3</div>
+  <h1>Communication <span>Technologies</span></h1>
+  <p>Protocols, TCP/IP stack layers, circuit switching vs packet switching and router functions.</p>
+  <div class="hero-pills"><div class="hero-pill"><span>20</span> Flashcards</div><div class="hero-pill"><span>8</span> Exam Questions</div><div class="hero-pill"><span>6</span> Topics</div></div>
+</section>
+<div class="part-header" id="part1"><div class="part-num">PART 1</div><div class="part-title" style="color:var(--cyan)">THEORY — COMMUNICATION TECHNOLOGIES</div></div>
+
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §14.1</div>
+  <div class="topic-title">Protocols & Their Purpose</div>
+  <div class="topic-sub">WHY PROTOCOLS ARE ESSENTIAL · SSL/TLS</div>
+  <div class="def-box"><div class="def-label">PURPOSE OF PROTOCOLS</div><ul>
+    <li>Provide a <strong>standard set of rules</strong> to enable successful data transfer</li>
+    <li>Enable communication/compatibility between devices from different manufacturers</li>
+    <li>Make communications independent of software and hardware</li>
+    <li>Without protocols: devices with different protocols cannot communicate</li>
+  </ul></div>
+  <div class="card-grid">
+    <div class="card c-green-card"><div class="card-title">SSL — Secure Socket Layer</div><ul>
+      <li>Encrypts data transferred over internet</li>
+      <li>Decides which encryption algorithms to use</li>
+      <li>Performs data integrity checks and compression</li>
+    </ul></div>
+    <div class="card c-cyan-card"><div class="card-title">TLS — Transport Layer Security</div><ul>
+      <li>More effective than SSL</li>
+      <li>Provides encryption, authentication and data integrity</li>
+      <li>Prevents third-party eavesdropping</li>
+      <li>Ensures privacy between communicating devices</li>
+    </ul></div>
+  </div>
+  <div class="memory-box"><strong>⚡ EXAM &nbsp;</strong>"Why is a protocol essential for communication?" → standard rules enable devices from different manufacturers/platforms to communicate. Without common rules, data cannot be interpreted correctly.</div>
+</section>
+
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §14.1</div>
+  <div class="topic-title">TCP/IP Protocol Suite</div>
+  <div class="topic-sub">4 LAYERS · PURPOSE OF EACH LAYER · INTERACTIONS</div>
+  <div class="def-box"><div class="def-label">TCP/IP — KEY FACTS</div><ul>
+    <li>Maintains connection between two hosts — ensures successful delivery</li>
+    <li>Represented as a stack — each layer has separate functionality</li>
+    <li>Separate layers make hardware and software compatibility easier</li>
+    <li>Each layer can only accept input from <strong>adjacent layers</strong> only</li>
+  </ul></div>
+  <div class="card-grid">
+    <div class="card c-purple-card">
+      <div class="card-title">4 · Application Layer</div>
+      <ul>
+        <li>Interacts directly with user/applications</li>
+        <li>Used by web browsers and server software</li>
+        <li>Defines protocols for data exchange</li>
+        <li>Provides access to services in lower layers</li>
+      </ul>
+    </div>
+    <div class="card c-blue-card">
+      <div class="card-title">3 · Transport Layer</div>
+      <ul>
+        <li>Breaks data into manageable packets (segmentation)</li>
+        <li>Adds packet header + sequence number</li>
+        <li>Controls flow of packets</li>
+        <li>Handles packet loss/corruption — ensures error-free delivery</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">2 · Internet Layer</div>
+      <ul>
+        <li>Identifies intended network and host</li>
+        <li>Routes packets independently via optimum route</li>
+        <li>Addresses packets with source/destination IP</li>
+        <li>Uses IP address + port number to form a socket</li>
+      </ul>
+    </div>
+    <div class="card c-orange-card">
+      <div class="card-title">1 · Link Layer</div>
+      <ul>
+        <li>Handles how data is physically sent</li>
+        <li>Ensures correct network protocols followed</li>
+        <li>Formats data into frames for transmission</li>
+        <li>Maps IP addresses to MAC addresses</li>
+      </ul>
+    </div>
+  </div>
+  <div class="packet-journey">
+    <div class="pj-node">Application Layer</div>
+    <div class="pj-arrow">↓</div>
+    <div class="pj-node">Transport Layer (segmentation)</div>
+    <div class="pj-arrow">↓</div>
+    <div class="pj-node">Internet Layer (routing)</div>
+    <div class="pj-arrow">↓</div>
+    <div class="pj-node">Link Layer (physical)</div>
+    <div class="pj-arrow">→</div>
+    <div class="pj-node">Network</div>
+  </div>
+  <div class="memory-box"><strong>⚡ LAYER INTERACTIONS &nbsp;</strong>Each layer ONLY communicates with adjacent layers (one above or one below). User interaction at Application layer. Hardware access at Link layer. Data encapsulated as it moves down, de-encapsulated going up.</div>
+</section>
+
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §14.1</div>
+  <div class="topic-title">Application Layer Protocols</div>
+  <div class="topic-sub">HTTP · FTP · SMTP · POP3/IMAP · BITTORRENT</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">PROTOCOL</th><th class="th-green">PURPOSE</th><th class="th-yellow">KEY DETAIL</th></tr>
+    <tr><td style="color:var(--blue)">HTTPS/HTTP</td><td>Transfer of web pages and hypertext documents</td><td>Used by web browsers; HTTPS = encrypted</td></tr>
+    <tr><td style="color:var(--blue)">FTP</td><td>Send and receive files over a network between devices</td><td>Transfer from server to client on network</td></tr>
+    <tr><td style="color:var(--blue)">SMTP</td><td>Sending/uploading emails</td><td>PUSH protocol — sends email out</td></tr>
+    <tr><td style="color:var(--blue)">POP3</td><td>Retrieving/downloading emails</td><td>PULL protocol — deletes from server after download</td></tr>
+    <tr><td style="color:var(--blue)">IMAP</td><td>Retrieving emails while keeping on server</td><td>Keeps server and client in sync; does NOT delete original</td></tr>
+    <tr><td style="color:var(--blue)">BitTorrent</td><td>Peer-to-peer file sharing over internet</td><td>Users share directly — no web server; all equal status</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ SMTP vs POP3 vs IMAP &nbsp;</strong>SMTP = SEND (push). POP3 = PULL and DELETE from server. IMAP = PULL and KEEP on server (stays in sync). Exam often asks to distinguish IMAP from POP3 — IMAP preserves email on server.</div>
+</section>
+
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §14.2</div>
+  <div class="topic-title">Circuit Switching</div>
+  <div class="topic-sub">HOW IT WORKS · ADVANTAGES · DISADVANTAGES · USE CASES</div>
+  <div class="def-box"><div class="def-label">CIRCUIT SWITCHING</div><ul>
+    <li>Data transferred using a <strong>dedicated circuit/channel</strong></li>
+    <li>Circuit established BEFORE transmission starts</li>
+    <li>Circuit lasts for entire duration — closed after transmission ends</li>
+    <li>All data transferred over the <strong>same route</strong></li>
+    <li>Entire bandwidth available for the connection</li>
+    <li>Implemented at the physical layer</li>
+  </ul></div>
+  <div class="card-grid">
+    <div class="card c-green-card"><div class="card-title">✅ Advantages</div><ul>
+      <li>No need to reassemble data — arrives in order</li>
+      <li>Entire bandwidth available throughout</li>
+      <li>Simple and fast — fixed data rate, same path</li>
+      <li>Fast data transfer — suitable for real-time</li>
+    </ul></div>
+    <div class="card c-red-card"><div class="card-title">❌ Disadvantages</div><ul>
+      <li>No other transmission possible when in use — wasted bandwidth</li>
+      <li>Less secure — all data travels same route (easier to intercept)</li>
+      <li>Cost/time to establish dedicated connection</li>
+      <li>Only one route — if error occurs, transmission ends</li>
+      <li>Setup time before transmission can begin</li>
+      <li>Circuit always active even when idle</li>
+    </ul></div>
+    <div class="card c-blue-card"><div class="card-title">📌 Use When</div><ul>
+      <li>Dedicated path needed throughout (phone calls)</li>
+      <li>Whole bandwidth required</li>
+      <li>Real-time communication (voice, video streaming)</li>
+      <li>Long continuous communication</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §14.2</div>
+  <div class="topic-title">Packet Switching</div>
+  <div class="topic-sub">HOW IT WORKS · PACKET STRUCTURE · ADVANTAGES · DISADVANTAGES</div>
+  <div class="def-box"><div class="def-label">PACKET SWITCHING</div><ul>
+    <li>Data divided into equal-sized packets (header + payload + trailer)</li>
+    <li>Each packet dispatched <strong>independently</strong> — can take different routes</li>
+    <li>Routes determined by routing table — optimum route always taken</li>
+    <li>Packets may arrive out of order — reassembled using sequence numbers</li>
+    <li>Missing/corrupted packets → resend request sent</li>
+    <li>Implemented at the network layer</li>
+  </ul></div>
+  <div class="def-box" style="margin-top:10px"><div class="def-label">PACKET HEADER CONTAINS</div>
+    <p>Source IP address, destination IP address, packet number/sequence number, other routing information</p>
+  </div>
+  <div class="card-grid">
+    <div class="card c-green-card"><div class="card-title">✅ Advantages</div><ul>
+      <li>Packets rerouted/retransmitted if error — more likely to arrive</li>
+      <li>Bandwidth shared — packets from multiple messages share paths</li>
+      <li>More secure — packets travel different routes</li>
+      <li>High data transmission rate possible</li>
+    </ul></div>
+    <div class="card c-red-card"><div class="card-title">❌ Disadvantages</div><ul>
+      <li>Time delay — reassembly, shared bandwidth, potential resends</li>
+      <li>Requires complex algorithms</li>
+      <li>Needs lots of RAM to handle large data amounts</li>
+      <li>Unsuitable for real-time transmission</li>
+    </ul></div>
+    <div class="card c-blue-card"><div class="card-title">📌 Use When</div><ul>
+      <li>Sending large files not needing live streaming</li>
+      <li>Must overcome faulty lines via rerouting</li>
+      <li>Secure communication needed</li>
+      <li>Entire bandwidth not required</li>
+      <li>e.g. emails, documents, text messages</li>
+    </ul></div>
+  </div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-blue">CIRCUIT SWITCHING</th><th class="th-green">PACKET SWITCHING</th></tr>
+    <tr><td>Route</td><td>Fixed — same throughout</td><td>Independent — each packet may differ</td></tr>
+    <tr><td>Bandwidth</td><td>Dedicated — not shared</td><td>Shared between multiple transmissions</td></tr>
+    <tr><td>Setup</td><td>Circuit established before transmission</td><td>No setup — packets sent immediately</td></tr>
+    <tr><td>Order of arrival</td><td>In order — same path</td><td>Out of order — reassembled at destination</td></tr>
+    <tr><td>Real-time suitability</td><td>✅ Excellent</td><td>❌ Not suitable</td></tr>
+    <tr><td>Security</td><td>Less secure — one route</td><td>More secure — different routes</td></tr>
+  </table>
+</section>
+
+<section class="topic" id="t6">
+  <div class="topic-num">TOPIC 06 · §14.2</div>
+  <div class="topic-title">Router in Packet Switching</div>
+  <div class="topic-sub">FUNCTION · ROUTING TABLE · BENEFITS OF PACKET SWITCHING</div>
+  <div class="card-grid">
+    <div class="card c-green-card"><div class="card-title">Router Function</div><ul>
+      <li>Examines packet header — reads destination IP address</li>
+      <li>Accesses routing table — contains netmask, gateway, available hops, route status</li>
+      <li>Decides next hop/best route</li>
+      <li>Forwards packet to next hop</li>
+    </ul></div>
+    <div class="card c-cyan-card"><div class="card-title">Benefits of Packet Switching</div><ul>
+      <li>Accuracy — ensures accurate delivery</li>
+      <li>Completeness — missing packets detected, resend request sent</li>
+      <li>Rerouting — detects network changes, sends data alternate way</li>
+      <li>Simultaneous use — multiple users share channel</li>
+      <li>Better security — packets hashed, travel different routes</li>
+    </ul></div>
+    <div class="card c-red-card"><div class="card-title">Drawbacks</div><ul>
+      <li>Time delays — correcting packet errors</li>
+      <li>Complex protocols required</li>
+      <li>Unsuitable for real-time applications</li>
+    </ul></div>
+  </div>
+</section>
+
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)"><div class="part-num">PART 2</div><div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div></div>
+<div class="ez-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 14 · Communication Technologies</div><div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong>.</div></div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 01</div>
+  <div class="q-text">Explain why protocols are essential for communication between computers. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Protocols provide a standard set of rules for data transfer (1)</li>
+    <li>Enables communication/compatibility between devices from different manufacturers (1)</li>
+    <li>Without protocols, devices with different rules cannot interpret each other's data (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 02</div>
+  <div class="q-text">State the purpose of each of the four TCP/IP layers. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Application: interacts with user/software; defines protocols for data exchange (1)</li>
+    <li>Transport: breaks data into packets; adds sequence numbers; handles errors (1)</li>
+    <li>Internet: routes packets; assigns source/destination IP addresses (1)</li>
+    <li>Link: handles physical transmission; formats data into frames; maps IP to MAC (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 03</div>
+  <div class="q-text">Distinguish between POP3 and IMAP email protocols. <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>POP3: downloads emails from server and deletes them from server (1)</li>
+    <li>IMAP: downloads emails but keeps originals on server — keeps client and server in sync (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 04</div>
+  <div class="q-text">Describe how data is transmitted using packet switching across the internet. <span class="marks">[5]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 5)</h4><ul>
+    <li>Data divided into equal-sized packets (1)</li>
+    <li>Each packet has a header containing source/destination IP and sequence number (1)</li>
+    <li>Packets dispatched independently — can take different routes (1)</li>
+    <li>Routes determined by routing table — optimum route taken (1)</li>
+    <li>Packets may arrive out of order — reassembled using sequence numbers at destination (1)</li>
+    <li>If packets missing/corrupted — resend request sent (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 05</div>
+  <div class="q-text">Compare circuit switching and packet switching. Give four differences. <span class="marks">[8]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 4 × 2)</h4><ul>
+    <li>Circuit: dedicated route throughout / Packet: packets take independent routes (1) — packet more resilient to failures (1)</li>
+    <li>Circuit: bandwidth not shared / Packet: bandwidth shared between users (1) — packet more efficient use of bandwidth (1)</li>
+    <li>Circuit: data arrives in order / Packet: arrives out of order, reassembled using sequence numbers (1)</li>
+    <li>Circuit: suitable for real-time / Packet: not suitable for real-time — time delays (1)</li>
+    <li>Circuit: less secure (single route) / Packet: more secure (multiple routes) (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 06</div>
+  <div class="q-text">Explain the role of a router in packet switching. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Examines packet header and reads the destination IP address (1)</li>
+    <li>Accesses its routing table containing information about available routes (1)</li>
+    <li>Decides the next hop/best route for the packet (1)</li>
+    <li>Forwards the packet to the next router/destination (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 07</div>
+  <div class="q-context">A company needs to transmit live video calls between offices and also send large reports to clients by email.</div>
+  <div class="q-text">Justify which switching method is appropriate for each use case. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Live video: circuit switching (1) — requires dedicated path and entire bandwidth for real-time, uninterrupted transmission (1)</li>
+    <li>Email reports: packet switching (1) — large files divided into packets, bandwidth shared, delivery not time-critical (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 08</div>
+  <div class="q-text">Explain how TCP/IP layers interact and why this layered approach is beneficial. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Each layer can only accept input from adjacent layer (next higher or lower) (1)</li>
+    <li>There is an interface between adjacent layers — interactions via installed software (1)</li>
+    <li>Benefit: separate layers make hardware and software compatibility easier to implement (1)</li>
+    <li>Benefit: each layer is self-contained — changes to one layer don't affect others (1)</li>
+  </ul></div>
+</div>
+</div>
+
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">PART 3</div><div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);">CH 14 · COMMUNICATION TECHNOLOGIES · 20 CARDS</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress"><div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div><div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div><div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div></div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 20</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button>&nbsp;<button class="fc-btn" onclick="FC.reviewMissed()">Review Missed</button></div>
+</div>
+</div>
+</main></div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'DEFINE',q:'Why are protocols essential for communication?',a:'Provide standard rules for data transfer. Enable compatibility between devices from different manufacturers. Without common protocols, devices cannot interpret each other\'s data.'},
+  {label:'DEFINE',q:'SSL vs TLS — key difference',a:'SSL (Secure Socket Layer): encrypts data, decides encryption algorithms, integrity checks.\nTLS (Transport Layer Security): more effective than SSL, provides encryption + authentication + data integrity, prevents eavesdropping.'},
+  {label:'TCP/IP',q:'Name the 4 TCP/IP layers from top to bottom',a:'1. Application Layer (top — user interaction)\n2. Transport Layer (packets/segmentation)\n3. Internet Layer (routing/IP addressing)\n4. Link Layer (bottom — physical transmission)'},
+  {label:'TCP/IP',q:'What does the APPLICATION layer do?',a:'Interacts directly with user and applications. Defines protocols for data exchange. Used by web browsers and server software. Provides access to services in lower layers.'},
+  {label:'TCP/IP',q:'What does the TRANSPORT layer do?',a:'Breaks data into packets (segmentation). Adds packet header and sequence number. Controls flow of packets. Handles packet loss/corruption — ensures error-free delivery.'},
+  {label:'TCP/IP',q:'What does the INTERNET layer do?',a:'Identifies intended network and host. Routes packets independently via optimum route. Addresses packets with source/destination IP addresses. Uses IP + port number to form a socket.'},
+  {label:'TCP/IP',q:'What does the LINK layer do?',a:'Handles physical transmission of data. Ensures correct network protocols followed. Formats data into frames. Maps IP addresses to MAC addresses.'},
+  {label:'PROTOCOLS',q:'SMTP vs POP3 vs IMAP — purpose of each',a:'SMTP: PUSH — sends/uploads emails.\nPOP3: PULL — downloads emails, DELETES from server.\nIMAP: PULL — downloads emails, KEEPS on server (stays in sync).'},
+  {label:'PROTOCOLS',q:'What is BitTorrent used for?',a:'Peer-to-peer file sharing over internet. Users share files DIRECTLY with each other — no central web server. All users are of equal status. Allows more users to share than standard P2P.'},
+  {label:'PROTOCOLS',q:'What is FTP used for?',a:'File Transfer Protocol — for sending and receiving files over a network. Transfers data from server to client on network. Separate from HTTP (which is for web pages).'},
+  {label:'SWITCHING',q:'What is circuit switching?',a:'Data transferred via a DEDICATED circuit/channel. Circuit established before transmission. Same route throughout. Entire bandwidth available. Closed after transmission ends.'},
+  {label:'ADVANTAGES',q:'Advantages of circuit switching',a:'• No need to reassemble — arrives in order\n• Entire bandwidth available\n• Simple and fast — fixed rate, same path\n• Suitable for real-time transmission'},
+  {label:'DISADVANTAGES',q:'Disadvantages of circuit switching',a:'• No other transmission when in use — wasted bandwidth\n• Less secure — all data same route\n• Cost/time to establish connection\n• Only one route — failure ends transmission\n• Circuit active even when idle'},
+  {label:'SWITCHING',q:'What is packet switching?',a:'Data divided into equal-sized packets (header + payload + trailer). Each packet sent independently — can take different routes. Packets reassembled at destination using sequence numbers.'},
+  {label:'ADVANTAGES',q:'Advantages of packet switching',a:'• Packets rerouted if error — more reliable\n• Bandwidth shared between users\n• More secure — packets travel different routes\n• High data transmission rate possible'},
+  {label:'DISADVANTAGES',q:'Disadvantages of packet switching',a:'• Time delays — reassembly, shared bandwidth, resends\n• Complex algorithms required\n• Needs lots of RAM\n• Unsuitable for real-time transmission'},
+  {label:'COMPARE',q:'Circuit switching vs Packet switching — 4 differences',a:'Route: fixed vs independent per packet.\nBandwidth: dedicated vs shared.\nOrder: arrives in order vs reassembled from out-of-order.\nReal-time: suitable vs unsuitable.'},
+  {label:'ROUTER',q:'What is the role of a router in packet switching?',a:'Reads destination IP from packet header. Accesses routing table (netmask, gateway, available hops). Decides best next hop. Forwards packet on its route.'},
+  {label:'BENEFITS',q:'5 benefits of packet switching',a:'• Accuracy — ensures accurate delivery\n• Completeness — missing packets detected, resent\n• Rerouting — adapts if network changes\n• Simultaneous use by multiple users\n• Security — packets hashed, different routes'},
+  {label:'APPLY',q:'Which switching for: (a) live phone call, (b) sending email?',a:'(a) Circuit switching — real-time, needs dedicated path, whole bandwidth required.\n(b) Packet switching — not time-critical, large file divided into packets, bandwidth shared.'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','t6','exam','flash']);
+</script>
+</body>
+</html>

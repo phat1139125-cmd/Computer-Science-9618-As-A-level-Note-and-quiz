@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 20 — Further Programming | 9618 A Level</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 20</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. Programming Paradigms</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. Low-Level & Imperative</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Object-Oriented Programming</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. OOP Terminology</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. Declarative Programming</button>
+  <button class="nav-item" onclick="scrollToId('t6')">6. Exception Handling</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+<section class="hero">
+  <div class="hero-badge">CHAPTER 20 · A LEVEL · PAPER 4</div>
+  <h1>Further <span>Programming</span></h1>
+  <p>Programming paradigms, OOP concepts, declarative programming and exception handling.</p>
+  <div class="hero-pills"><div class="hero-pill"><span>22</span> Flashcards</div><div class="hero-pill"><span>9</span> Exam Questions</div><div class="hero-pill"><span>6</span> Topics</div></div>
+</section>
+<div class="part-header" id="part1"><div class="part-num">PART 1</div><div class="part-title" style="color:var(--cyan)">THEORY — FURTHER PROGRAMMING</div></div>
+
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §20.1</div>
+  <div class="topic-title">Programming Paradigms</div>
+  <div class="topic-sub">WHAT IS A PARADIGM · FOUR TYPES</div>
+  <div class="def-box"><div class="def-label">PROGRAMMING PARADIGM</div><ul>
+    <li>A <strong>set of programming concepts</strong></li>
+    <li>Defines the <strong>structure and capability</strong> of a programming language</li>
+    <li>Different paradigms solve problems in different ways</li>
+  </ul></div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">PARADIGM</th><th class="th-green">KEY FEATURE</th><th class="th-yellow">EXAMPLES</th></tr>
+    <tr><td style="color:var(--blue)">Low-Level</td><td>Uses processor instruction set directly; uses addressing modes</td><td>Assembly language</td></tr>
+    <tr><td style="color:var(--blue)">Imperative (Procedural)</td><td>Explicit sequence of commands; uses variables + assignment + iteration</td><td>Python, Pascal, C</td></tr>
+    <tr><td style="color:var(--blue)">Object-Oriented</td><td>Uses classes, inheritance, encapsulation, polymorphism</td><td>Java, Python, C++</td></tr>
+    <tr><td style="color:var(--blue)">Declarative</td><td>Specifies WHAT to do, not HOW; uses facts, rules and queries</td><td>SQL, Prolog, HTML</td></tr>
+  </table>
+</section>
+
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §20.1</div>
+  <div class="topic-title">Low-Level & Imperative Paradigms</div>
+  <div class="topic-sub">LOW-LEVEL · ADDRESSING MODES · IMPERATIVE/PROCEDURAL</div>
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">Low-Level Programming</div>
+      <ul>
+        <li>Uses the <strong>instruction set</strong> of a specific processor</li>
+        <li>Uses different <strong>addressing modes</strong>:</li>
+        <li>→ Immediate: value given directly in instruction</li>
+        <li>→ Direct: address of data given</li>
+        <li>→ Indirect: address of address given</li>
+        <li>→ Indexed: base address + index register</li>
+        <li>→ Relative: offset from current PC value</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">Imperative (Procedural) Programming</div>
+      <ul>
+        <li>Uses <strong>variables</strong> changed via assignment statements</li>
+        <li>Relies on <strong>iterative/repetitive</strong> methods</li>
+        <li>Explicit sequence of commands — each line changes program state</li>
+        <li>Programmer specifies exactly HOW the task is done</li>
+        <li>Uses procedures, functions and structured programming</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §20.1</div>
+  <div class="topic-title">Object-Oriented Programming (OOP)</div>
+  <div class="topic-sub">CLASS · OBJECT · INHERITANCE · POLYMORPHISM · ENCAPSULATION</div>
+  <div class="def-box"><div class="def-label">OOP CORE CONCEPTS</div><ul>
+    <li><strong>Class</strong>: template/blueprint — defines attributes and methods</li>
+    <li><strong>Object</strong>: an instance of a class — allocated memory space when created</li>
+    <li><strong>Inheritance</strong>: methods and properties of one class reused in a derived class</li>
+    <li><strong>Polymorphism</strong>: methods redefined (take different behaviours) in derived classes</li>
+    <li><strong>Encapsulation</strong>: properties and methods grouped in a class — sensitive data hidden</li>
+  </ul></div>
+
+  <div class="sub-label">Class vs Object</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-blue">CLASS</th><th class="th-green">OBJECT</th></tr>
+    <tr><td>Definition</td><td>Template from which objects are created</td><td>An instance of a class</td></tr>
+    <tr><td>Memory</td><td>NOT allocated memory when defined</td><td>Allocated memory when created</td></tr>
+    <tr><td>How many</td><td>Defined only once</td><td>Many objects created from one class</td></tr>
+    <tr><td>Can manipulate?</td><td>No — not available in memory</td><td>Yes — exists in memory</td></tr>
+    <tr><td>Inheritance</td><td>Classes can use inheritance</td><td>Objects cannot</td></tr>
+  </table>
+
+  <div class="code-block"><span class="cm">// Class definition in pseudocode</span>
+<span class="kw">CLASS</span> <span class="fn">Student</span>
+    <span class="kw">PRIVATE</span> StudentID : <span class="st">INTEGER</span>
+    <span class="kw">PRIVATE</span> Name : <span class="st">STRING</span>
+    <span class="kw">PRIVATE</span> Grade : <span class="st">CHAR</span>
+
+    <span class="cm">// Constructor</span>
+    <span class="kw">PUBLIC PROCEDURE</span> <span class="fn">NEW</span>(id : <span class="st">INTEGER</span>, n : <span class="st">STRING</span>, g : <span class="st">CHAR</span>)
+        StudentID ← id
+        Name ← n
+        Grade ← g
+    <span class="kw">ENDPROCEDURE</span>
+
+    <span class="cm">// Getter</span>
+    <span class="kw">PUBLIC FUNCTION</span> <span class="fn">GetName</span>() <span class="kw">RETURNS</span> <span class="st">STRING</span>
+        <span class="kw">RETURN</span> Name
+    <span class="kw">ENDFUNCTION</span>
+
+    <span class="cm">// Setter</span>
+    <span class="kw">PUBLIC PROCEDURE</span> <span class="fn">SetGrade</span>(g : <span class="st">CHAR</span>)
+        Grade ← g
+    <span class="kw">ENDPROCEDURE</span>
+
+<span class="kw">ENDCLASS</span>
+
+<span class="cm">// Creating an object (instance)</span>
+<span class="kw">DECLARE</span> S1 : <span class="fn">Student</span>
+S1 ← <span class="kw">NEW</span> <span class="fn">Student</span>(<span class="nm">101</span>, <span class="st">"Ahmed"</span>, <span class="st">'A'</span>)
+OUTPUT S1.<span class="fn">GetName</span>()     <span class="cm">// Output: Ahmed</span></div>
+
+  <div class="sub-label">Inheritance</div>
+  <div class="code-block"><span class="cm">// Derived class inherits from base class</span>
+<span class="kw">CLASS</span> <span class="fn">PostGradStudent</span> <span class="kw">INHERITS</span> <span class="fn">Student</span>
+    <span class="kw">PRIVATE</span> ThesisTitle : <span class="st">STRING</span>
+
+    <span class="kw">PUBLIC PROCEDURE</span> <span class="fn">NEW</span>(id : <span class="st">INTEGER</span>, n : <span class="st">STRING</span>, g : <span class="st">CHAR</span>, t : <span class="st">STRING</span>)
+        <span class="kw">CALL SUPER</span>.<span class="fn">NEW</span>(id, n, g)   <span class="cm">// call parent constructor</span>
+        ThesisTitle ← t
+    <span class="kw">ENDPROCEDURE</span>
+<span class="kw">ENDCLASS</span></div>
+</section>
+
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §20.1</div>
+  <div class="topic-title">OOP Terminology</div>
+  <div class="topic-sub">ATTRIBUTES · METHODS · GETTER · SETTER · CONSTRUCTOR · INSTANCE</div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Properties / Attributes</div><ul>
+      <li>Data items or data types defined in a class</li>
+      <li>Private attributes enforce encapsulation</li>
+      <li>Only accessible using class's own methods</li>
+    </ul></div>
+    <div class="card c-cyan-card"><div class="card-title">Methods</div><ul>
+      <li>Modules (functions/procedures) in a class</li>
+      <li>Implement behaviours that act on attributes</li>
+      <li>Can be public (accessible outside) or private (internal only)</li>
+    </ul></div>
+    <div class="card c-green-card"><div class="card-title">Getter</div><ul>
+      <li>A method that RETURNS the value of a private attribute</li>
+      <li>Provides read access without exposing attribute directly</li>
+      <li>Naming: GetAttributeName()</li>
+    </ul></div>
+    <div class="card c-yellow-card"><div class="card-title">Setter</div><ul>
+      <li>A method that UPDATES/SETS value of a private attribute</li>
+      <li>Can include validation before setting</li>
+      <li>Naming: SetAttributeName(value)</li>
+    </ul></div>
+    <div class="card c-orange-card"><div class="card-title">Constructor</div><ul>
+      <li>Special method used to CREATE instances of objects</li>
+      <li>Called automatically when object is created</li>
+      <li>Initialises attributes of new object</li>
+      <li>Named NEW or __init__ depending on language</li>
+    </ul></div>
+    <div class="card c-purple-card"><div class="card-title">Instance</div><ul>
+      <li>An occurrence/creation of an object from a class</li>
+      <li>Each instance has its own copy of attributes</li>
+      <li>Multiple instances can be created from one class</li>
+    </ul></div>
+  </div>
+  <div class="memory-box"><strong>⚡ OOP EXAM PATTERNS &nbsp;</strong>"State what is meant by encapsulation" = grouping attributes and methods inside a class, hiding sensitive data. "Explain inheritance" = methods/properties of parent class available to derived class — avoids code duplication. "What is polymorphism" = methods redefined for derived classes to take different behaviours.</div>
+</section>
+
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §20.1</div>
+  <div class="topic-title">Declarative Programming</div>
+  <div class="topic-sub">WHAT IT IS · FACTS · RULES · QUERIES · PROLOG STYLE</div>
+  <div class="def-box"><div class="def-label">DECLARATIVE PROGRAMMING</div><ul>
+    <li>Instructs a program on <strong>WHAT</strong> needs to be done — not HOW to do it</li>
+    <li>Specifies desired result rather than method of acquiring it</li>
+    <li>Uses <strong>facts</strong>, <strong>rules</strong> and <strong>queries</strong> to satisfy goals</li>
+    <li>Can be logical (set of logical relations) or functional (applying functions to arguments)</li>
+  </ul></div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Facts</div><ul>
+      <li>Statements of truth about the world</li>
+      <li>e.g. <code style="color:var(--cyan)">parent(tom, bob).</code></li>
+      <li>States that tom is parent of bob</li>
+    </ul></div>
+    <div class="card c-green-card"><div class="card-title">Rules</div><ul>
+      <li>Define relationships based on facts</li>
+      <li>e.g. <code style="color:var(--cyan)">grandparent(X, Z) :- parent(X, Y), parent(Y, Z).</code></li>
+      <li>X is grandparent of Z if X is parent of Y AND Y is parent of Z</li>
+    </ul></div>
+    <div class="card c-orange-card"><div class="card-title">Queries</div><ul>
+      <li>Questions asked about facts and rules</li>
+      <li>e.g. <code style="color:var(--cyan)">?- grandparent(tom, ann).</code></li>
+      <li>System answers yes/no or finds matching values</li>
+    </ul></div>
+  </div>
+  <div class="code-block"><span class="cm">// Declarative example (Prolog-style)</span>
+<span class="cm">// Facts</span>
+parent(tom, bob).
+parent(tom, liz).
+parent(bob, ann).
+
+<span class="cm">// Rule</span>
+grandparent(X, Z) :- parent(X, Y), parent(Y, Z).
+
+<span class="cm">// Query</span>
+?- grandparent(tom, ann).    <span class="cm">// returns: yes</span>
+?- grandparent(tom, Who).   <span class="cm">// returns: Who = ann</span></div>
+  <div class="memory-box"><strong>⚡ DECLARATIVE vs IMPERATIVE &nbsp;</strong>Imperative: tells computer HOW to do it (step by step). Declarative: tells computer WHAT result is wanted (system works out how). SQL is declarative — SELECT * FROM table WHERE condition tells WHAT, not HOW to search.</div>
+</section>
+
+<section class="topic" id="t6">
+  <div class="topic-num">TOPIC 06 · §20.2</div>
+  <div class="topic-title">Exception Handling</div>
+  <div class="topic-sub">WHAT IS AN EXCEPTION · EXCEPTION HANDLING ROUTINE · TRY/EXCEPT</div>
+  <div class="def-box"><div class="def-label">EXCEPTION</div><ul>
+    <li>An <strong>unexpected event</strong> that occurs during execution of a program</li>
+    <li>Causes the program to <strong>halt execution</strong> if not handled</li>
+    <li>Examples: end of file, division by zero, invalid input, hardware failure</li>
+    <li>These are <strong>runtime errors</strong></li>
+  </ul></div>
+  <div class="def-box" style="margin-top:10px"><div class="def-label">EXCEPTION HANDLING ROUTINE</div><ul>
+    <li>Responds to unexpected events while program is running</li>
+    <li><strong>Prevents programs from halting</strong> unexpectedly</li>
+    <li>Traps runtime errors — executes alternative code</li>
+    <li>Produces <strong>meaningful error messages</strong></li>
+  </ul></div>
+  <div class="card-grid">
+    <div class="card c-yellow-card"><div class="card-title">When to Use Exception Handling</div><ul>
+      <li>Division by zero — user enters 0 as divisor</li>
+      <li>File not found — file path incorrect</li>
+      <li>End of file reached unexpectedly</li>
+      <li>Invalid data type entered</li>
+      <li>Network connection failure</li>
+      <li>Any runtime error that can be anticipated</li>
+    </ul></div>
+  </div>
+  <div class="code-block"><span class="cm">// Exception handling structure (pseudocode)</span>
+<span class="kw">TRY</span>
+    <span class="cm">// Code that might cause an exception</span>
+    INPUT number
+    result ← <span class="nm">100</span> / number
+    OUTPUT result
+<span class="kw">EXCEPT</span>
+    <span class="cm">// Code executed if exception occurs</span>
+    OUTPUT <span class="st">"Error: division by zero or invalid input"</span>
+<span class="kw">ENDTRY</span></div>
+  <div class="code-block"><span class="cm"># Python exception handling</span>
+<span class="kw">try</span>:
+    number = <span class="fn">int</span>(<span class="fn">input</span>(<span class="st">"Enter a number: "</span>))
+    result = <span class="nm">100</span> / number
+    <span class="fn">print</span>(result)
+<span class="kw">except</span> ZeroDivisionError:
+    <span class="fn">print</span>(<span class="st">"Error: cannot divide by zero"</span>)
+<span class="kw">except</span> ValueError:
+    <span class="fn">print</span>(<span class="st">"Error: please enter a valid number"</span>)
+<span class="kw">except</span>:
+    <span class="fn">print</span>(<span class="st">"An unexpected error occurred"</span>)</div>
+  <div class="memory-box"><strong>⚡ EXCEPTION HANDLING EXAM &nbsp;</strong>"Explain what exception handling does" = prevents program halting unexpectedly when a runtime error occurs; traps the error and executes alternative code; produces meaningful error message. TRY block = normal code. EXCEPT block = runs only if exception occurs.</div>
+</section>
+
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)"><div class="part-num">PART 2</div><div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div></div>
+<div class="ez-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 20 · Further Programming</div><div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong>.</div></div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 01</div>
+  <div class="q-text">State what is meant by a programming paradigm. Name four paradigms. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>A programming paradigm is a set of programming concepts that defines the structure and capability of a language (1)</li>
+    <li>Any four: Low-level, Imperative/Procedural, Object-Oriented, Declarative (2 — 1 per 2 correct)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 02</div>
+  <div class="q-text">Explain the difference between a class and an object in OOP. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Class: a template/blueprint from which objects are created — defined only once (1)</li>
+    <li>Class: NOT allocated memory when defined — cannot be manipulated directly (1)</li>
+    <li>Object: an instance of a class (1)</li>
+    <li>Object: allocated memory when created — can be manipulated (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 03</div>
+  <div class="q-text">Explain the terms encapsulation, inheritance and polymorphism in OOP. <span class="marks">[6]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (2 marks each)</h4><ul>
+    <li>Encapsulation: process of putting properties and methods inside a class as a single unit (1) — ensures sensitive data is hidden/only accessible through class's own methods (1)</li>
+    <li>Inheritance: methods and properties of one class made available to a derived/child class (1) — allows code reuse without rewriting (1)</li>
+    <li>Polymorphism: allows methods to be redefined in derived classes (1) — same method name but different behaviour depending on the class (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 04</div>
+  <div class="q-text">Explain the purpose of getter and setter methods in OOP. Why are they used with private attributes? <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Getter: method that returns the value of a private attribute (1)</li>
+    <li>Setter: method that updates/sets the value of a private attribute (1)</li>
+    <li>Used because private attributes cannot be accessed directly from outside the class (1)</li>
+    <li>Setters can include validation before updating the attribute — protects data integrity (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 05</div>
+  <div class="q-text">Describe what declarative programming is and how it differs from imperative programming. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Declarative: specifies WHAT result is wanted — not HOW to achieve it (1)</li>
+    <li>Uses facts, rules and queries to satisfy goals (1)</li>
+    <li>Imperative: explicit sequence of commands telling computer HOW to do the task step by step (1)</li>
+    <li>Imperative: each line changes the program state — relies on variables and assignment (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 06</div>
+  <div class="q-text">Write pseudocode for a class called Car with private attributes Make and Speed, a constructor, a getter for Make and a setter for Speed. <span class="marks">[6]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>CLASS Car ... ENDCLASS (1)</li>
+    <li>PRIVATE Make : STRING / PRIVATE Speed : INTEGER (1)</li>
+    <li>Constructor: PUBLIC PROCEDURE NEW(m : STRING, s : INTEGER) / Make←m / Speed←s / ENDPROCEDURE (1)</li>
+    <li>Getter: PUBLIC FUNCTION GetMake() RETURNS STRING / RETURN Make / ENDFUNCTION (1)</li>
+    <li>Setter: PUBLIC PROCEDURE SetSpeed(s : INTEGER) / Speed←s / ENDPROCEDURE (1)</li>
+    <li>Correct use of PUBLIC/PRIVATE access modifiers throughout (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 07</div>
+  <div class="q-text">Explain what an exception is and describe how exception handling prevents a program from crashing. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Exception: an unexpected event that occurs during program execution (1)</li>
+    <li>Without handling: exception causes the program to halt unexpectedly (1)</li>
+    <li>Exception handling: code placed in TRY block — if exception occurs, EXCEPT block executes instead (1)</li>
+    <li>Produces meaningful error message — program continues or terminates gracefully (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 08</div>
+  <div class="q-text">Write pseudocode to define a class Animal with a private attribute Name, a constructor and a method Speak that outputs "..." Then write a derived class Dog that inherits Animal and overrides Speak to output "Woof!". <span class="marks">[6]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>CLASS Animal / PRIVATE Name : STRING (1)</li>
+    <li>PUBLIC PROCEDURE NEW(n:STRING) / Name←n / ENDPROCEDURE (1)</li>
+    <li>PUBLIC PROCEDURE Speak() / OUTPUT "..." / ENDPROCEDURE / ENDCLASS (1)</li>
+    <li>CLASS Dog INHERITS Animal (1)</li>
+    <li>PUBLIC PROCEDURE Speak() / OUTPUT "Woof!" / ENDPROCEDURE (1) — overrides parent method (polymorphism)</li>
+    <li>ENDCLASS / correct structure throughout (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> The Dog's Speak() overriding Animal's Speak() demonstrates polymorphism.</div></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 09</div>
+  <div class="q-text">Compare the low-level, imperative and declarative programming paradigms. Give a key characteristic and an example language for each. <span class="marks">[6]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (2 marks each)</h4><ul>
+    <li>Low-level: uses processor instruction set directly, uses addressing modes (1) — e.g. Assembly language (1)</li>
+    <li>Imperative: explicit sequence of commands; variables changed by assignment; tells HOW (1) — e.g. Python, Pascal, C (1)</li>
+    <li>Declarative: specifies WHAT result wanted not HOW; uses facts and rules (1) — e.g. SQL, Prolog (1)</li>
+  </ul></div>
+</div>
+</div>
+
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">PART 3</div><div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);">CH 20 · FURTHER PROGRAMMING · 22 CARDS</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress"><div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div><div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div><div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div></div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 22</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button>&nbsp;<button class="fc-btn" onclick="FC.reviewMissed()">Review Missed</button></div>
+</div>
+</div>
+</main></div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'DEFINE',q:'What is a programming paradigm?',a:'A set of programming concepts that defines the structure and capability of a programming language. Different paradigms approach problem-solving in different ways.'},
+  {label:'COMPARE',q:'4 programming paradigms — name and key feature of each',a:'Low-level: uses processor instruction set directly.\nImperative: explicit commands, HOW to do it, variables + assignment.\nObject-Oriented: classes, objects, inheritance, encapsulation, polymorphism.\nDeclarative: specifies WHAT, not HOW — facts, rules, queries.'},
+  {label:'DEFINE',q:'Low-level programming — key features',a:'Uses instruction set of a specific processor. Uses addressing modes: immediate, direct, indirect, indexed, relative. Closest to hardware — most control but hardest to write.'},
+  {label:'DEFINE',q:'Imperative programming — key features',a:'Uses variables changed via assignment. Relies on iterative/repetitive methods. Explicit sequence of commands. Each line changes program state. Programmer specifies HOW the task is done.'},
+  {label:'OOP',q:'5 core OOP concepts',a:'Class: template/blueprint.\nObject: instance of class.\nInheritance: parent class properties/methods available to derived class.\nPolymorphism: methods redefined in derived classes.\nEncapsulation: attributes + methods grouped in class, sensitive data hidden.'},
+  {label:'COMPARE',q:'Class vs Object — 4 differences',a:'Class: template, defined once, NOT in memory, cannot manipulate.\nObject: instance, many per class, allocated memory, can manipulate.'},
+  {label:'DEFINE',q:'What is encapsulation?',a:'Process of putting attributes and methods inside a class as a single unit. Ensures sensitive data is hidden — only accessible through the class\'s own methods (via getters/setters). Enforced by PRIVATE keyword.'},
+  {label:'DEFINE',q:'What is inheritance in OOP?',a:'Methods and properties of one class (parent/base) are made available to a derived/child class. Child class can use parent\'s methods without rewriting them. Allows code reuse. Written as: CLASS Child INHERITS Parent.'},
+  {label:'DEFINE',q:'What is polymorphism in OOP?',a:'Allows methods to be REDEFINED in derived classes — same method name, different behaviour depending on the class. e.g. Speak() in Animal outputs "...", Speak() in Dog outputs "Woof!". Enables flexible code.'},
+  {label:'DEFINE',q:'Getter vs Setter methods',a:'Getter: returns value of a private attribute — provides READ access. e.g. GetName() RETURNS STRING.\nSetter: updates/sets value of private attribute — provides WRITE access. e.g. SetSpeed(s:INTEGER). Can include validation.'},
+  {label:'DEFINE',q:'What is a Constructor?',a:'Special method used to CREATE instances (objects) of a class. Called automatically when object is created. Initialises the object\'s attributes. Named NEW in pseudocode or __init__ in Python.'},
+  {label:'DEFINE',q:'What is an Instance?',a:'An occurrence/creation of an object from a class. Each instance has its own copy of attribute values. Multiple instances can exist from one class simultaneously.'},
+  {label:'CODE',q:'Write a class skeleton in pseudocode with private attributes, constructor, getter and setter',a:'CLASS ClassName\n    PRIVATE attr : DATATYPE\n    PUBLIC PROCEDURE NEW(a:DATATYPE)\n        attr ← a\n    ENDPROCEDURE\n    PUBLIC FUNCTION GetAttr() RETURNS DATATYPE\n        RETURN attr\n    ENDFUNCTION\n    PUBLIC PROCEDURE SetAttr(a:DATATYPE)\n        attr ← a\n    ENDPROCEDURE\nENDCLASS'},
+  {label:'DEFINE',q:'What is Declarative programming?',a:'Specifies WHAT result is wanted — not HOW to achieve it. Uses facts, rules and queries to satisfy goals. System works out how to find the answer. Examples: SQL, Prolog, HTML.'},
+  {label:'COMPARE',q:'Declarative vs Imperative — key difference',a:'Imperative: tells computer HOW step by step (explicit sequence of commands).\nDeclarative: tells computer WHAT result is wanted (system determines how).\nSQL example: SELECT * FROM table WHERE condition — declares WHAT, not HOW to search.'},
+  {label:'DECLARATIVE',q:'Facts vs Rules vs Queries in declarative programming',a:'Facts: statements of truth. e.g. parent(tom, bob).\nRules: define relationships. e.g. grandparent(X,Z) :- parent(X,Y), parent(Y,Z).\nQueries: questions asked to find answers. e.g. ?- grandparent(tom, Who).'},
+  {label:'DEFINE',q:'What is an Exception?',a:'An unexpected event that occurs during execution of a program. Causes the program to halt if not handled. Examples: division by zero, file not found, invalid input, hardware failure. All are RUNTIME errors.'},
+  {label:'DEFINE',q:'What is an Exception Handling Routine?',a:'Responds to unexpected events while program runs. Prevents program halting unexpectedly. Traps runtime errors and executes alternative code. Produces meaningful error messages. Allows graceful error recovery.'},
+  {label:'CODE',q:'Write pseudocode for exception handling structure',a:'TRY\n    // code that might raise exception\n    INPUT number\n    result ← 100 / number\nEXCEPT\n    // code if exception occurs\n    OUTPUT "Error: invalid input"\nENDTRY'},
+  {label:'APPLY',q:'When should you use exception handling? Give 3 examples.',a:'• Division by zero (user enters 0)\n• File not found (wrong path)\n• End of file reached unexpectedly\n• Invalid data type entered\n• Network connection failure\nUse whenever a runtime error can be anticipated.'},
+  {label:'APPLY',q:'Write Python exception handling for division',a:'try:\n    n = int(input("Enter: "))\n    print(100 / n)\nexcept ZeroDivisionError:\n    print("Cannot divide by zero")\nexcept ValueError:\n    print("Invalid number")\nexcept:\n    print("Unexpected error")'},
+  {label:'COMPARE',q:'OOP vs Declarative — when to use each',a:'OOP: when modelling real-world entities with state and behaviour. Good for large systems. Reusable code via inheritance.\nDeclarative: when specifying relationships and constraints. Good for databases (SQL), logic problems (Prolog). System figures out HOW.'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','t6','exam','flash']);
+</script>
+</body>
+</html>

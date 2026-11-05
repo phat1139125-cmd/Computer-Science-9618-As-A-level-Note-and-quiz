@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 19 — Computational Thinking | 9618 A Level</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 19</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. Recursion</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. Stacks & Recursion</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Binary Trees</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. Graphs as ADTs</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. Stack, Queue & Linked List ADTs</button>
+  <button class="nav-item" onclick="scrollToId('t6')">6. Dictionary ADT</button>
+  <button class="nav-item" onclick="scrollToId('t7')">7. Big O & Algorithm Comparison</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+<section class="hero">
+  <div class="hero-badge">CHAPTER 19 · A LEVEL · PAPER 4</div>
+  <h1>Computational Thinking &amp; <span>Problem Solving</span></h1>
+  <p>Recursion, binary trees, graphs as ADTs, dictionary ADT, Big O notation and algorithm comparison.</p>
+  <div class="hero-pills"><div class="hero-pill"><span>22</span> Flashcards</div><div class="hero-pill"><span>9</span> Exam Questions</div><div class="hero-pill"><span>7</span> Topics</div></div>
+</section>
+<div class="part-header" id="part1"><div class="part-num">PART 1</div><div class="part-title" style="color:var(--cyan)">THEORY — COMPUTATIONAL THINKING (A LEVEL)</div></div>
+
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §19.2</div>
+  <div class="topic-title">Recursion</div>
+  <div class="topic-sub">DEFINITION · BASE CASE · GENERAL CASE · WINDING/UNWINDING</div>
+  <div class="def-box"><div class="def-label">RECURSION</div><ul>
+    <li>A process using a function/procedure that <strong>calls itself</strong></li>
+    <li>Must have a <strong>base case</strong> (stopping condition) — prevents infinite recursion</li>
+    <li>Must have a <strong>general case</strong> — calls itself recursively, moves toward base case</li>
+  </ul></div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Winding Phase</div><ul>
+      <li>Statements AFTER the recursive call not executed</li>
+      <li>Each recursive call pushed onto the stack</li>
+      <li>Continues until base case reached</li>
+    </ul></div>
+    <div class="card c-green-card"><div class="card-title">Unwinding Phase</div><ul>
+      <li>Occurs once base case is reached</li>
+      <li>Each call is popped from stack in reverse order</li>
+      <li>Deferred statements execute as stack unwinds</li>
+    </ul></div>
+    <div class="card c-orange-card"><div class="card-title">Benefits of Recursion</div><ul>
+      <li>Fewer programming statements needed</li>
+      <li>Simpler solutions to complex problems</li>
+      <li>Code more elegant and readable</li>
+    </ul></div>
+    <div class="card c-red-card"><div class="card-title">Drawbacks of Recursion</div><ul>
+      <li>Repetitive — demanding use of stack</li>
+      <li>Stack overflow can occur</li>
+      <li>Infinite recursion possible if base case wrong</li>
+      <li>More storage space required</li>
+    </ul></div>
+  </div>
+  <div class="code-block"><span class="cm">// Recursive factorial example</span>
+<span class="kw">FUNCTION</span> <span class="fn">Factorial</span>(n : <span class="st">INTEGER</span>) <span class="kw">RETURNS</span> <span class="st">INTEGER</span>
+    <span class="kw">IF</span> n = <span class="nm">0</span> <span class="kw">THEN</span>          <span class="cm">// base case</span>
+        <span class="kw">RETURN</span> <span class="nm">1</span>
+    <span class="kw">ELSE</span>
+        <span class="kw">RETURN</span> n * <span class="fn">Factorial</span>(n - <span class="nm">1</span>)   <span class="cm">// general case</span>
+    <span class="kw">ENDIF</span>
+<span class="kw">ENDFUNCTION</span></div>
+  <div class="memory-box"><strong>⚡ RECURSION EXAM &nbsp;</strong>Always identify: (1) base case — what stops the recursion? (2) general case — how does it call itself and move toward base case? Stack used to store return addresses/local variables each call.</div>
+</section>
+
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §19.2</div>
+  <div class="topic-title">Stacks & Recursion</div>
+  <div class="topic-sub">WHY STACKS · COMPILER TRANSLATION · UNWINDING</div>
+  <div class="def-box"><div class="def-label">WHY STACKS ARE EFFECTIVE FOR RECURSION</div><ul>
+    <li>Stacks have LIFO structure — matches reverse order needed for unwinding</li>
+    <li>Each recursive call is <strong>pushed</strong> to stack — popped as function ends</li>
+    <li>Enables <strong>backtracking/unwinding</strong> to maintain required order</li>
+  </ul></div>
+  <div class="def-box" style="margin-top:10px"><div class="def-label">COMPILER TRANSLATION OF RECURSION</div>
+    <p>Compiler must produce object code to:</p>
+    <ul>
+      <li><strong>Push</strong> return addresses/values of local variables onto stack with each recursive call</li>
+      <li><strong>Pop</strong> return addresses/values of local variables off stack after base case is reached</li>
+    </ul>
+  </div>
+</section>
+
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §19.1</div>
+  <div class="topic-title">Binary Trees</div>
+  <div class="topic-sub">STRUCTURE · TRAVERSALS · INSERT · FIND</div>
+  <div class="def-box"><div class="def-label">BINARY TREE</div><ul>
+    <li>Each node has at most <strong>two children</strong> (left and right)</li>
+    <li>Left child value &lt; parent value</li>
+    <li>Right child value &gt; parent value</li>
+    <li>Root node at top — no parent</li>
+    <li>Leaf nodes at bottom — no children</li>
+  </ul></div>
+  <div class="sub-label">Tree Traversals</div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">In-Order (LNR)</div><ul>
+      <li>Visit Left subtree</li>
+      <li>Visit Node</li>
+      <li>Visit Right subtree</li>
+      <li>Result: sorted/ascending order</li></ul></div>
+    <div class="card c-green-card"><div class="card-title">Pre-Order (NLR)</div><ul>
+      <li>Visit Node first</li>
+      <li>Visit Left subtree</li>
+      <li>Visit Right subtree</li>
+      <li>Used to copy/recreate tree</li></ul></div>
+    <div class="card c="card c-orange-card"><div class="card-title">Post-Order (LRN)</div><ul>
+      <li>Visit Left subtree</li>
+      <li>Visit Right subtree</li>
+      <li>Visit Node last</li>
+      <li>Used to delete tree / evaluate expressions</li></ul></div>
+  </div>
+  <div class="code-block"><span class="cm">// In-order traversal (recursive)</span>
+<span class="kw">PROCEDURE</span> <span class="fn">InOrder</span>(node)
+    <span class="kw">IF</span> node &lt;&gt; <span class="kw">NULL THEN</span>
+        <span class="fn">InOrder</span>(node.Left)       <span class="cm">// visit left</span>
+        OUTPUT node.Data          <span class="cm">// visit node</span>
+        <span class="fn">InOrder</span>(node.Right)      <span class="cm">// visit right</span>
+    <span class="kw">ENDIF</span>
+<span class="kw">ENDPROCEDURE</span>
+
+<span class="cm">// Insert into binary search tree</span>
+<span class="kw">PROCEDURE</span> <span class="fn">Insert</span>(node, value)
+    <span class="kw">IF</span> value &lt; node.Data <span class="kw">THEN</span>
+        <span class="kw">IF</span> node.Left = <span class="kw">NULL THEN</span>
+            node.Left ← <span class="fn">NewNode</span>(value)
+        <span class="kw">ELSE</span>
+            <span class="fn">Insert</span>(node.Left, value)
+        <span class="kw">ENDIF</span>
+    <span class="kw">ELSE</span>
+        <span class="kw">IF</span> node.Right = <span class="kw">NULL THEN</span>
+            node.Right ← <span class="fn">NewNode</span>(value)
+        <span class="kw">ELSE</span>
+            <span class="fn">Insert</span>(node.Right, value)
+        <span class="kw">ENDIF</span>
+    <span class="kw">ENDIF</span>
+<span class="kw">ENDPROCEDURE</span></div>
+  <div class="memory-box"><strong>⚡ TRAVERSAL MNEMONIC &nbsp;</strong>In-Order = LNR → gives SORTED output. Pre-Order = NLR → Node first. Post-Order = LRN → Node last. The letter order tells you when the Node is visited: Pre=first, In=middle, Post=last.</div>
+</section>
+
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §19.1</div>
+  <div class="topic-title">Graphs as ADTs</div>
+  <div class="topic-sub">STRUCTURE · KEY FEATURES · WHEN TO USE</div>
+  <div class="def-box"><div class="def-label">GRAPH AS AN ADT</div><ul>
+    <li>Collection of <strong>nodes (vertices)</strong> and <strong>edges</strong></li>
+    <li>Edges can be directed (one-way) or undirected (two-way)</li>
+    <li>Edges can be weighted (have a cost/distance value)</li>
+    <li>Can be cyclic (contains cycles) or acyclic (no cycles)</li>
+    <li>Unlike trees — no hierarchy, any node can connect to any other</li>
+  </ul></div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Key Features of a Graph</div><ul>
+      <li>Nodes represent entities (cities, states, people)</li>
+      <li>Edges represent relationships/connections</li>
+      <li>Weighted edges represent cost (distance, time, bandwidth)</li>
+      <li>Used when data has complex many-to-many relationships</li>
+    </ul></div>
+    <div class="card c-green-card"><div class="card-title">When to Use a Graph</div><ul>
+      <li>Network routing and pathfinding</li>
+      <li>Social networks (connections between people)</li>
+      <li>Maps (cities and roads)</li>
+      <li>AI search problems</li>
+      <li>Any problem requiring finding paths between nodes</li>
+    </ul></div>
+  </div>
+  <div class="memory-box"><strong>⚡ GRAPH vs TREE &nbsp;</strong>Tree = hierarchical, one root, no cycles, one path between nodes. Graph = no hierarchy, can have cycles, multiple paths possible, nodes can connect to any other. A tree IS a special case of a graph.</div>
+</section>
+
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §19.1</div>
+  <div class="topic-title">Stack, Queue & Linked List ADTs</div>
+  <div class="topic-sub">ALGORITHMS TO FIND · INSERT · DELETE</div>
+  <div class="sub-label">Stack Algorithms</div>
+  <div class="code-block"><span class="cm">// PUSH — add to stack (check not full first)</span>
+<span class="kw">IF</span> TopPointer < MaxSize - <span class="nm">1</span> <span class="kw">THEN</span>
+    TopPointer ← TopPointer + <span class="nm">1</span>
+    Stack[TopPointer] ← Item
+<span class="kw">ENDIF</span>
+
+<span class="cm">// POP — remove from stack (check not empty first)</span>
+<span class="kw">IF</span> TopPointer >= <span class="nm">0</span> <span class="kw">THEN</span>
+    Item ← Stack[TopPointer]
+    TopPointer ← TopPointer - <span class="nm">1</span>
+    <span class="kw">RETURN</span> Item
+<span class="kw">ENDIF</span></div>
+  <div class="sub-label">Queue Algorithms</div>
+  <div class="code-block"><span class="cm">// ENQUEUE — add to queue (check not full)</span>
+<span class="kw">IF</span> Count < MaxSize <span class="kw">THEN</span>
+    Queue[TailPointer] ← Item
+    TailPointer ← (TailPointer + <span class="nm">1</span>) <span class="kw">MOD</span> MaxSize  <span class="cm">// circular wrap</span>
+    Count ← Count + <span class="nm">1</span>
+<span class="kw">ENDIF</span>
+
+<span class="cm">// DEQUEUE — remove from queue (check not empty)</span>
+<span class="kw">IF</span> Count > <span class="nm">0</span> <span class="kw">THEN</span>
+    Item ← Queue[HeadPointer]
+    HeadPointer ← (HeadPointer + <span class="nm">1</span>) <span class="kw">MOD</span> MaxSize
+    Count ← Count - <span class="nm">1</span>
+    <span class="kw">RETURN</span> Item
+<span class="kw">ENDIF</span></div>
+  <div class="sub-label">Linked List Algorithms</div>
+  <div class="code-block"><span class="cm">// FIND item in linked list</span>
+Current ← StartNode
+<span class="kw">WHILE</span> Current &lt;&gt; <span class="nm">-1</span> <span class="kw">AND</span> Data[Current] &lt;&gt; Target
+    Current ← Pointer[Current]
+<span class="kw">ENDWHILE</span>
+<span class="cm">// If Current = -1, item not found</span>
+
+<span class="cm">// INSERT at beginning of linked list</span>
+NewNode ← FreeNode
+FreeNode ← Pointer[FreeNode]
+Data[NewNode] ← Item
+Pointer[NewNode] ← StartNode
+StartNode ← NewNode
+
+<span class="cm">// DELETE from linked list</span>
+<span class="cm">// Find node before the one to delete, redirect its pointer</span>
+Pointer[PreviousNode] ← Pointer[NodeToDelete]
+Pointer[NodeToDelete] ← FreeNode
+FreeNode ← NodeToDelete</div>
+</section>
+
+<section class="topic" id="t6">
+  <div class="topic-num">TOPIC 06 · §19.1</div>
+  <div class="topic-title">Dictionary ADT</div>
+  <div class="topic-sub">WHAT IT IS · OPERATIONS · IMPLEMENTATION</div>
+  <div class="def-box"><div class="def-label">DICTIONARY ADT</div><ul>
+    <li>Stores <strong>key-value pairs</strong></li>
+    <li>Each key is <strong>unique</strong></li>
+    <li>Values accessed by their associated key</li>
+    <li>Also called a hash map or associative array</li>
+    <li>Can be implemented from arrays, linked lists or hash tables</li>
+  </ul></div>
+  <div class="card-grid">
+    <div class="card c-cyan-card"><div class="card-title">Dictionary Operations</div><ul>
+      <li>Create — initialise empty dictionary</li>
+      <li>Add(key, value) — insert new key-value pair</li>
+      <li>Delete(key) — remove a key-value pair</li>
+      <li>Get(key) — retrieve value for given key</li>
+      <li>Contains(key) — check if key exists</li>
+      <li>Update(key, value) — modify existing value</li>
+    </ul></div>
+    <div class="card c-yellow-card"><div class="card-title">Implementing Dictionary from ADTs</div><ul>
+      <li>From arrays: use parallel arrays (keys[ ] + values[ ])</li>
+      <li>From linked list: each node stores key + value + pointer</li>
+      <li>From hash table: hash key → find storage location</li>
+      <li>Binary tree: keys stored in BST order — O(log n) search</li>
+    </ul></div>
+  </div>
+  <div class="code-block"><span class="cm">// Dictionary using parallel arrays</span>
+<span class="kw">DECLARE</span> Keys : <span class="st">ARRAY</span>[<span class="nm">0</span>:<span class="nm">99</span>] <span class="kw">OF</span> <span class="st">STRING</span>
+<span class="kw">DECLARE</span> Values : <span class="st">ARRAY</span>[<span class="nm">0</span>:<span class="nm">99</span>] <span class="kw">OF</span> <span class="st">STRING</span>
+<span class="kw">DECLARE</span> Count : <span class="st">INTEGER</span> ← <span class="nm">0</span>
+
+<span class="cm">// Add key-value pair</span>
+<span class="kw">PROCEDURE</span> <span class="fn">Add</span>(key : <span class="st">STRING</span>, value : <span class="st">STRING</span>)
+    Keys[Count] ← key
+    Values[Count] ← value
+    Count ← Count + <span class="nm">1</span>
+<span class="kw">ENDPROCEDURE</span>
+
+<span class="cm">// Get value by key</span>
+<span class="kw">FUNCTION</span> <span class="fn">Get</span>(key : <span class="st">STRING</span>) <span class="kw">RETURNS</span> <span class="st">STRING</span>
+    <span class="kw">FOR</span> i ← <span class="nm">0</span> <span class="kw">TO</span> Count - <span class="nm">1</span>
+        <span class="kw">IF</span> Keys[i] = key <span class="kw">THEN RETURN</span> Values[i]
+    <span class="kw">NEXT</span> i
+<span class="kw">ENDFUNCTION</span></div>
+</section>
+
+<section class="topic" id="t7">
+  <div class="topic-num">TOPIC 07 · §19.1</div>
+  <div class="topic-title">Big O Notation & Algorithm Comparison</div>
+  <div class="topic-sub">TIME COMPLEXITY · SPACE COMPLEXITY · COMPARING ALGORITHMS</div>
+  <div class="def-box"><div class="def-label">BIG O NOTATION</div><p>Used to indicate the <strong>time or space complexity</strong> of an algorithm — how performance scales with input size n.</p></div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">ALGORITHM</th><th class="th-green">TIME COMPLEXITY</th><th class="th-yellow">MEANING</th></tr>
+    <tr><td>Linear search</td><td style="color:var(--orange)">O(n)</td><td>Time increases linearly with n</td></tr>
+    <tr><td>Binary search</td><td style="color:var(--green)">O(log n)</td><td>Time increases logarithmically — very efficient</td></tr>
+    <tr><td>Bubble sort</td><td style="color:var(--red)">O(n²)</td><td>Time increases as square of n — slow for large n</td></tr>
+    <tr><td>Insertion sort</td><td style="color:var(--red)">O(n²) worst / O(n) best</td><td>Efficient for nearly-sorted data</td></tr>
+    <tr><td>BST find (balanced)</td><td style="color:var(--green)">O(log n)</td><td>Same as binary search</td></tr>
+    <tr><td>Hash table lookup</td><td style="color:var(--green)">O(1)</td><td>Constant time — best possible</td></tr>
+  </table>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Comparing Algorithms — Criteria</div><ul>
+      <li>Time taken to complete the task</li>
+      <li>Memory/storage space used</li>
+      <li>Complexity of implementation</li>
+      <li>Performance for different data sizes</li>
+      <li>Best/worst/average case behaviour</li>
+    </ul></div>
+    <div class="card c-green-card"><div class="card-title">Space Complexity</div><ul>
+      <li>Amount of memory an algorithm uses</li>
+      <li>Also expressed in Big O notation</li>
+      <li>e.g. recursive algorithms use O(n) stack space</li>
+      <li>Iterative equivalents often use O(1) space</li>
+    </ul></div>
+  </div>
+  <div class="memory-box"><strong>⚡ BIG O ORDER (best to worst) &nbsp;</strong>O(1) → O(log n) → O(n) → O(n log n) → O(n²) → O(2ⁿ). For exam: Binary search O(log n) is much better than Linear search O(n) for large datasets. Bubble sort O(n²) is slow for large n.</div>
+</section>
+
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)"><div class="part-num">PART 2</div><div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div></div>
+<div class="ez-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 19 · Computational Thinking</div><div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong>.</div></div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 01</div>
+  <div class="q-text">Explain what a base case and a general case are in recursion, and why both are necessary. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Base case: the stopping condition — when the function does not call itself again (1)</li>
+    <li>Without base case: infinite recursion occurs / stack overflow (1)</li>
+    <li>General case: the part that calls itself recursively (1)</li>
+    <li>General case must change state and move toward base case each call (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 02</div>
+  <div class="q-text">Describe the in-order traversal of a binary tree and state the result it produces. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Visit left subtree first (1)</li>
+    <li>Then visit the node (1)</li>
+    <li>Then visit right subtree (1)</li>
+    <li>Result: nodes visited in sorted/ascending order (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 03</div>
+  <div class="q-text">State two benefits and two drawbacks of using recursion over iteration. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 2 + 2)</h4><ul>
+    <li>[Benefit] Fewer programming statements — shorter, more elegant code (1)</li>
+    <li>[Benefit] Provides simpler solutions to complex problems (1)</li>
+    <li>[Drawback] Demanding use of stack — stack overflow can occur (1)</li>
+    <li>[Drawback] More storage space required than iterative equivalent (1)</li>
+    <li>[Drawback] Infinite recursion possible if base case is incorrect (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 04</div>
+  <div class="q-text">Explain why a stack is an effective data structure for implementing recursion. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Stacks use LIFO structure — last item in is first out (1)</li>
+    <li>Each recursive call pushed onto stack — popped as function ends (1)</li>
+    <li>Enables backtracking/unwinding in the correct reverse order (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 05</div>
+  <div class="q-text">Describe the key features of a graph as an ADT and justify when it should be used rather than a tree. <span class="marks">[5]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Graph consists of nodes (vertices) and edges (connections) (1)</li>
+    <li>Edges can be directed or undirected; weighted or unweighted (1)</li>
+    <li>Unlike trees, graphs can have cycles and multiple paths between nodes (1)</li>
+    <li>Use graph when data has complex many-to-many relationships (1)</li>
+    <li>e.g. road networks, social networks — where no hierarchy exists (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 06</div>
+  <div class="q-text">A binary search tree contains: 50, 30, 70, 20, 40, 60, 80. State the result of in-order and pre-order traversal. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>In-order (LNR): 20, 30, 40, 50, 60, 70, 80 — sorted ascending (2)</li>
+    <li>Pre-order (NLR): 50, 30, 20, 40, 70, 60, 80 — root first (2)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 07</div>
+  <div class="q-text">Explain what a dictionary ADT is and describe three operations it supports. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Dictionary stores key-value pairs — each key is unique; values accessed by key (1)</li>
+    <li>Add(key, value): inserts new key-value pair into dictionary (1)</li>
+    <li>Get(key): retrieves the value associated with given key (1)</li>
+    <li>Delete(key): removes key-value pair from dictionary (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 08</div>
+  <div class="q-text">Trace the recursive factorial function for n=4. Show the winding and unwinding phases. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Winding: Factorial(4) calls Factorial(3), calls Factorial(2), calls Factorial(1), calls Factorial(0) (1)</li>
+    <li>Base case reached: Factorial(0) returns 1 (1)</li>
+    <li>Unwinding: Factorial(1)=1×1=1, Factorial(2)=2×1=2, Factorial(3)=3×2=6 (1)</li>
+    <li>Factorial(4)=4×6=24 (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 09</div>
+  <div class="q-text">Explain what the compiler must produce when translating recursive code and why this is necessary. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Compiler produces code to push return addresses onto stack with each recursive call (1)</li>
+    <li>Also pushes values of local variables onto stack (1)</li>
+    <li>After base case reached: code to pop return addresses/local variables off stack (1)</li>
+    <li>Necessary because each recursive call needs its own context — stack maintains LIFO order for unwinding (1)</li>
+  </ul></div>
+</div>
+</div>
+
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">PART 3</div><div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);">CH 19 · COMPUTATIONAL THINKING · 22 CARDS</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress"><div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div><div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div><div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div></div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 22</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button>&nbsp;<button class="fc-btn" onclick="FC.reviewMissed()">Review Missed</button></div>
+</div>
+</div>
+</main></div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'DEFINE',q:'What is recursion? What two things must every recursive function have?',a:'A function/procedure that calls ITSELF.\nMust have:\n1. Base case: stopping condition — prevents infinite recursion.\n2. General case: calls itself, changes state, moves toward base case.'},
+  {label:'PHASES',q:'Winding vs Unwinding in recursion',a:'Winding: each recursive call pushed to stack; statements after call not yet executed; continues until base case reached.\nUnwinding: base case reached → each call popped from stack in reverse order; deferred statements execute.'},
+  {label:'COMPARE',q:'Benefits vs Drawbacks of recursion',a:'Benefits: fewer statements, simpler solutions to complex problems, elegant code.\nDrawbacks: heavy stack use → stack overflow risk, more storage needed, infinite recursion if base case wrong.'},
+  {label:'STACKS',q:'Why are stacks effective for implementing recursion?',a:'LIFO structure matches reverse order needed for unwinding. Each recursive call pushed to stack → popped as function ends. Enables backtracking in correct order.'},
+  {label:'COMPILER',q:'What must the compiler produce when translating recursion?',a:'Code to PUSH return addresses + local variable values onto stack with each recursive call. Code to POP return addresses + local variable values after base case reached.'},
+  {label:'BINARY TREE',q:'Binary search tree property — where do values go?',a:'Left child < parent value.\nRight child > parent value.\nRoot at top (no parent). Leaf nodes at bottom (no children). Enables O(log n) search on balanced tree.'},
+  {label:'TRAVERSAL',q:'In-Order traversal — order and result',a:'LNR: Left → Node → Right.\nResult: nodes visited in SORTED ascending order.\nMnemonic: "In" = sorted In order.'},
+  {label:'TRAVERSAL',q:'Pre-Order traversal — order and use',a:'NLR: Node → Left → Right.\nNode visited FIRST.\nUsed to copy or recreate the tree structure.'},
+  {label:'TRAVERSAL',q:'Post-Order traversal — order and use',a:'LRN: Left → Right → Node.\nNode visited LAST.\nUsed to delete a tree or evaluate expression trees.'},
+  {label:'GRAPHS',q:'Key features of a graph ADT',a:'Nodes (vertices) + edges (connections). Edges: directed/undirected, weighted/unweighted. Can have cycles. No hierarchy — any node can connect to any other. Multiple paths possible between nodes.'},
+  {label:'COMPARE',q:'Graph vs Tree — 3 differences',a:'Tree: hierarchical, one root, no cycles, one path between nodes.\nGraph: no hierarchy, can have cycles, multiple paths possible, any node can connect to any other.\nTree is a special case of graph.'},
+  {label:'WHEN',q:'When should you use a graph instead of a tree?',a:'When data has complex many-to-many relationships. When cycles may exist. When there is no hierarchy. Examples: road networks, social networks, routing tables, AI pathfinding.'},
+  {label:'DEFINE',q:'What is a Dictionary ADT?',a:'Stores KEY-VALUE pairs. Each key is unique. Values accessed by their associated key. Also called hash map or associative array. Can be implemented from arrays, linked lists, hash tables or BSTs.'},
+  {label:'OPERATIONS',q:'6 Dictionary ADT operations',a:'Create, Add(key,value), Delete(key), Get(key), Contains(key), Update(key,value)'},
+  {label:'IMPLEMENT',q:'How can a Dictionary be implemented from other ADTs?',a:'Arrays: parallel arrays — keys[] and values[].\nLinked list: each node stores key + value + pointer.\nHash table: hash key → calculate storage location.\nBST: keys in binary search tree — O(log n) search.'},
+  {label:'BIG O',q:'Big O complexity: Linear search, Binary search, Bubble sort, Hash lookup',a:'Linear search: O(n)\nBinary search: O(log n)\nBubble sort: O(n²)\nHash table lookup: O(1) — constant time'},
+  {label:'BIG O',q:'Big O order from best to worst',a:'O(1) → O(log n) → O(n) → O(n log n) → O(n²) → O(2ⁿ)\n\nConstant → Logarithmic → Linear → Log-linear → Quadratic → Exponential'},
+  {label:'COMPARE',q:'What criteria are used to compare two algorithms?',a:'• Time taken to complete task (time complexity)\n• Memory/storage space used (space complexity)\n• Complexity of implementation\n• Performance for different input sizes\n• Best/worst/average case behaviour'},
+  {label:'APPLY',q:'Trace Factorial(3) — show winding and unwinding',a:'Winding: F(3)→F(2)→F(1)→F(0)\nBase case: F(0)=1\nUnwinding: F(1)=1×1=1, F(2)=2×1=2, F(3)=3×2=6\nResult = 6'},
+  {label:'CODE',q:'Write pseudocode to find an item in a linked list',a:'Current ← StartNode\nWHILE Current <> -1 AND Data[Current] <> Target\n    Current ← Pointer[Current]\nENDWHILE\n// If Current=-1, item not found'},
+  {label:'CODE',q:'Write pseudocode for in-order tree traversal',a:'PROCEDURE InOrder(node)\n    IF node <> NULL THEN\n        InOrder(node.Left)\n        OUTPUT node.Data\n        InOrder(node.Right)\n    ENDIF\nENDPROCEDURE'},
+  {label:'APPLY',q:'BST with 50,30,70,20,40 — in-order and pre-order?',a:'In-order (sorted): 20, 30, 40, 50, 70\nPre-order (root first): 50, 30, 20, 40, 70'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','t6','t7','exam','flash']);
+</script>
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 12 — Software Development | 9618</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 12</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. Program Development Life Cycle</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. Waterfall Model</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Iterative & RAD Models</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. Program Design Tools</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. Testing Methods</button>
+  <button class="nav-item" onclick="scrollToId('t6')">6. Types of Errors & Test Data</button>
+  <button class="nav-item" onclick="scrollToId('t7')">7. Maintenance Types</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+<section class="hero">
+  <div class="hero-badge">CHAPTER 12 · PAPER 2</div>
+  <h1>Software <span>Development</span></h1>
+  <p>PDLC stages, development models, design tools, testing strategies, error types and maintenance.</p>
+  <div class="hero-pills"><div class="hero-pill"><span>20</span> Flashcards</div><div class="hero-pill"><span>9</span> Exam Questions</div><div class="hero-pill"><span>7</span> Topics</div></div>
+</section>
+<div class="part-header" id="part1"><div class="part-num">PART 1</div><div class="part-title" style="color:var(--cyan)">THEORY — SOFTWARE DEVELOPMENT</div></div>
+
+<!-- T1: PDLC -->
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §12.1</div>
+  <div class="topic-title">Program Development Life Cycle (PDLC)</div>
+  <div class="topic-sub">STAGES · DOCUMENTS PRODUCED · PURPOSE</div>
+  <div class="def-box"><div class="def-label">PURPOSE OF PDLC</div><p>Makes projects easier to plan and manage. Clear deliverables produced at end of each stage. Allows prototypes to be shown to client.</p></div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">STAGE</th><th class="th-green">WHAT HAPPENS</th><th class="th-yellow">DOCUMENTS PRODUCED</th></tr>
+    <tr><td style="color:var(--blue)">1. Analysis</td><td>Developer discusses requirements with client. Current system examined.</td><td>Problem definition, client requirements, ER diagrams, current system docs</td></tr>
+    <tr><td style="color:var(--blue)">2. Design</td><td>Algorithm and UI designed. Data structures and language chosen.</td><td>Identifier table, algorithms/pseudocode, UI mockups, structure charts</td></tr>
+    <tr><td style="color:var(--blue)">3. Coding</td><td>Program written from design. Syntax errors may occur.</td><td>Source code</td></tr>
+    <tr><td style="color:var(--blue)">4. Testing</td><td>Program tested with various data. Errors corrected.</td><td>Trace table, test plan, test results</td></tr>
+    <tr><td style="color:var(--blue)">5. Maintenance</td><td>Program updated/improved after release.</td><td>Updated documentation</td></tr>
+  </table>
+</section>
+
+<!-- T2: WATERFALL -->
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §12.1</div>
+  <div class="topic-title">Waterfall Model</div>
+  <div class="topic-sub">LINEAR · SEQUENTIAL · BENEFITS · DRAWBACKS</div>
+  <div class="def-box"><div class="def-label">WATERFALL MODEL</div><p>Each stage completed fully before the next begins. Linear progression. Full documentation at each stage. Client involved mainly at start and end.</p></div>
+  <div class="card-grid">
+    <div class="card c-green-card">
+      <div class="card-title">✅ Waterfall Benefits</div>
+      <ul>
+        <li>Easy to manage — stages don't overlap, completed one at a time</li>
+        <li>Each stage has clear, specific deliverables</li>
+        <li>Detailed documentation of entire project</li>
+        <li>Little room for client to change mind — smoother development</li>
+        <li>Client has clear idea of finished product</li>
+      </ul>
+    </div>
+    <div class="card c-red-card">
+      <div class="card-title">❌ Waterfall Drawbacks</div>
+      <ul>
+        <li>No working program until late in lifecycle</li>
+        <li>Slower to market than competitors</li>
+        <li>Difficult to cope with changes in requirements</li>
+        <li>Needs high involvement from client at start</li>
+        <li>Client only sees product at very end</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- T3: ITERATIVE & RAD -->
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §12.1</div>
+  <div class="topic-title">Iterative & RAD Models</div>
+  <div class="topic-sub">ITERATIVE · RAPID APPLICATION DEVELOPMENT · COMPARISON</div>
+  <div class="card-grid">
+    <div class="card c-cyan-card">
+      <div class="card-title">Iterative Model</div>
+      <ul>
+        <li>Development cycle repeated until full program built</li>
+        <li>Split into repeated stages/sprints</li>
+        <li>Working programs produced early in cycle</li>
+        <li>Easier to test and debug incrementally</li>
+        <li>Flexible to changes in requirements</li>
+        <li>Customer involved at each iteration</li>
+      </ul>
+    </div>
+    <div class="card c-red-card">
+      <div class="card-title">❌ Iterative Drawbacks</div>
+      <ul>
+        <li>Whole system must be defined at start for clear stages</li>
+        <li>Client can easily change requirements often</li>
+        <li>More planning needed to section project clearly</li>
+      </ul>
+    </div>
+    <div class="card c-orange-card">
+      <div class="card-title">RAD Model</div>
+      <ul>
+        <li>Modules developed in parallel as prototypes</li>
+        <li>Minimal planning — allows changes</li>
+        <li>Flexible development process</li>
+        <li>Used for time-critical development</li>
+        <li>Client involved throughout all stages</li>
+        <li>Multiple areas worked on simultaneously</li>
+      </ul>
+    </div>
+    <div class="card c-red-card">
+      <div class="card-title">❌ RAD Drawbacks</div>
+      <ul>
+        <li>Difficult to estimate cost/time needed</li>
+        <li>Client can change requirements often</li>
+        <li>Documentation often omitted</li>
+        <li>Requires skilled developers working in parallel</li>
+      </ul>
+    </div>
+  </div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-blue">WATERFALL</th><th class="th-green">ITERATIVE</th><th class="th-orange">RAD</th></tr>
+    <tr><td>Working software</td><td>Late in lifecycle</td><td>Early — each iteration</td><td>Very early (prototypes)</td></tr>
+    <tr><td>Client involvement</td><td>Start and end only</td><td>Each iteration</td><td>Throughout all stages</td></tr>
+    <tr><td>Flexibility</td><td>Low — hard to change</td><td>Medium — per iteration</td><td>High — minimal planning</td></tr>
+    <tr><td>Documentation</td><td>Extensive</td><td>Good</td><td>Often omitted</td></tr>
+    <tr><td>Best for</td><td>Well-defined, stable requirements</td><td>Requirements may evolve</td><td>Time-critical, fast delivery</td></tr>
+  </table>
+</section>
+
+<!-- T4: DESIGN TOOLS -->
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §12.2</div>
+  <div class="topic-title">Program Design Tools</div>
+  <div class="topic-sub">STRUCTURE CHARTS · STATE-TRANSITION DIAGRAMS</div>
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">Structure Chart — Purpose</div>
+      <ul>
+        <li>Shows module relationships</li>
+        <li>Shows how problem is broken down into modules</li>
+        <li>Determines whether module is function or procedure</li>
+        <li>Shows parameters passed between modules</li>
+      </ul>
+    </div>
+    <div class="card c-cyan-card">
+      <div class="card-title">Structure Chart — Symbols</div>
+      <ul>
+        <li>Curved arrow — iteration/looping</li>
+        <li>Downward arrow — result passed to next stage</li>
+        <li>Upward arrow — more work required on previous stage</li>
+        <li>Rectangle — module/procedure</li>
+        <li>Diamond — selection/condition</li>
+      </ul>
+    </div>
+    <div class="card c-purple-card">
+      <div class="card-title">State-Transition Diagram</div>
+      <ul>
+        <li>Shows states a system can be in</li>
+        <li>Arrows represent transitions between states</li>
+        <li>Each arrow has format: input | output</li>
+        <li>X symbol signifies start state</li>
+        <li>Used to document algorithm behaviour</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- T5: TESTING -->
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §12.3</div>
+  <div class="topic-title">Testing Methods</div>
+  <div class="topic-sub">ALPHA · BETA · WHITE-BOX · BLACK-BOX · INTEGRATION · STUB · WALKTHROUGH</div>
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">Alpha Testing</div>
+      <ul><li>Carried out by development team</li><li>Check program works as intended</li><li>Identify and address errors before release</li></ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">Beta Testing</div>
+      <ul><li>Carried out by small group of potential users</li><li>Users check program works as intended</li><li>Identify errors and provide feedback/suggestions</li><li>Problems addressed before program is sold</li></ul>
+    </div>
+    <div class="card c-cyan-card">
+      <div class="card-title">White-box Testing</div>
+      <ul><li>Tests logic of ALL possible paths through code</li><li>Detailed testing of how each procedure works</li><li>Tester has access to source code</li></ul>
+    </div>
+    <div class="card c-orange-card">
+      <div class="card-title">Black-box Testing</div>
+      <ul><li>Tests a module's inputs and outputs only</li><li>Tester has NO access to source code</li><li>Tests if correct output produced for given input</li></ul>
+    </div>
+    <div class="card c-yellow-card">
+      <div class="card-title">Integration Testing</div>
+      <ul><li>Individual modules tested during development</li><li>Modules combined and tested as a whole program</li><li>Tests that modules work correctly together</li></ul>
+    </div>
+    <div class="card c-purple-card">
+      <div class="card-title">Stub Testing</div>
+      <ul><li>Used when program has incomplete/erroneous modules</li><li>Faulty modules replaced by dummy modules</li><li>Dummy modules return known/expected result</li><li>Output statement shows they were called</li></ul>
+    </div>
+    <div class="card c-teal-card">
+      <div class="card-title">Walkthrough Method</div>
+      <ul><li>Program checked by creating a trace table</li><li>Goes through code one line at a time</li><li>Records variables as they change</li><li>Error indicated when variable gets unexpected value or unexpected path taken</li></ul>
+    </div>
+  </div>
+  <div class="memory-box"><strong>⚡ ALPHA vs BETA &nbsp;</strong>Alpha = development TEAM tests before release. Beta = small group of POTENTIAL USERS test before release. Both find errors — beta also collects user feedback.</div>
+</section>
+
+<!-- T6: ERRORS & TEST DATA -->
+<section class="topic" id="t6">
+  <div class="topic-num">TOPIC 06 · §12.3</div>
+  <div class="topic-title">Error Types & Test Data</div>
+  <div class="topic-sub">SYNTAX · LOGIC · RUNTIME · NORMAL · ABNORMAL · BOUNDARY</div>
+  <div class="card-grid">
+    <div class="card c-red-card">
+      <div class="card-title">Syntax Error</div>
+      <ul>
+        <li>Code breaks rules of the programming language</li>
+        <li>Examples: missing ENDIF, misspelled keyword, wrong brackets</li>
+        <li>Detected by translator (compiler/interpreter)</li>
+        <li>Program with NO syntax errors: obeys grammar of language and will run without flagged error</li>
+      </ul>
+    </div>
+    <div class="card c-orange-card">
+      <div class="card-title">Logic Error</div>
+      <ul>
+        <li>Program runs but produces incorrect output</li>
+        <li>Algorithm design is flawed</li>
+        <li>NOT detected by translator</li>
+        <li>Examples: wrong formula, incorrect condition, off-by-one in loop</li>
+      </ul>
+    </div>
+    <div class="card c-yellow-card">
+      <div class="card-title">Runtime Error</div>
+      <ul>
+        <li>Program crashes during execution</li>
+        <li>Program performs an invalid operation</li>
+        <li>Examples: division by zero, accessing invalid memory, infinite loop</li>
+      </ul>
+    </div>
+  </div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">TEST DATA TYPE</th><th class="th-green">DESCRIPTION</th><th class="th-yellow">EXPECTED RESULT</th></tr>
+    <tr><td style="color:var(--green)">Normal</td><td>Value within acceptable range</td><td>Should be ACCEPTED and processed correctly</td></tr>
+    <tr><td style="color:var(--red)">Abnormal / Erroneous</td><td>Value outside acceptable range or wrong type</td><td>Should be REJECTED with appropriate message</td></tr>
+    <tr><td style="color:var(--yellow)">Boundary / Extreme</td><td>Minimum or maximum acceptable value</td><td>Should be ACCEPTED (tests edge of valid range)</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ TEST DATA EXAM &nbsp;</strong>For a field accepting ages 1–100: Normal = 25 (accepted). Abnormal = -5 or 200 (rejected). Boundary = 1 and 100 (both accepted). Always give specific values in context of question.</div>
+</section>
+
+<!-- T7: MAINTENANCE -->
+<section class="topic" id="t7">
+  <div class="topic-num">TOPIC 07 · §12.3</div>
+  <div class="topic-title">Types of Maintenance</div>
+  <div class="topic-sub">CORRECTIVE · ADAPTIVE · PERFECTIVE</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">TYPE</th><th class="th-green">WHEN USED</th><th class="th-yellow">EXAMPLE</th></tr>
+    <tr><td style="color:var(--red)">Corrective</td><td>Program does not operate as expected / contains a bug</td><td>Fix crash when user enters letters in numeric field</td></tr>
+    <tr><td style="color:var(--blue)">Adaptive</td><td>Accommodates legislative/user requirement changes; new technology available</td><td>Update for new tax law; support new operating system</td></tr>
+    <tr><td style="color:var(--green)">Perfective</td><td>Changes made to improve program after it has been released</td><td>Add new feature users requested; improve performance</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ MAINTENANCE MNEMONIC &nbsp;</strong>CAP = <strong>C</strong>orrective (fix bugs), <strong>A</strong>daptive (adapt to changes), <strong>P</strong>erfective (improve/perfect). Corrective = something BROKEN. Adaptive = external CHANGE needed. Perfective = make it BETTER.</div>
+</section>
+
+<!-- EXAM -->
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)"><div class="part-num">PART 2</div><div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div></div>
+<div class="ez-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 12 · Software Development</div><div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong>.</div></div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 01</div>
+  <div class="q-text">State the five stages of the Program Development Life Cycle in order. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Analysis, Design, Coding/Implementation (1)</li>
+    <li>Testing (1)</li>
+    <li>Maintenance (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Must be in correct order for full marks. All 5 needed.</div></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 02</div>
+  <div class="q-text">State the difference between a syntax error and a logic error. <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Syntax error: breaks the rules/grammar of the programming language — detected by translator (1)</li>
+    <li>Logic error: program runs but produces incorrect output — algorithm design is wrong, NOT detected by translator (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 03</div>
+  <div class="q-text">A program accepts exam scores between 0 and 100. State suitable normal, abnormal and boundary test data. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Normal: any value between 1 and 99 e.g. 55 — should be accepted (1)</li>
+    <li>Abnormal: value outside range e.g. -1 or 150 or "abc" — should be rejected (1)</li>
+    <li>Boundary: 0 and 100 — should be accepted (both values tested) (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Must give specific values for each type. "A large number" = 0. Always state what should happen.</div></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 04</div>
+  <div class="q-text">Compare the waterfall and iterative development models. Give three differences. <span class="marks">[6]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 3 × 2)</h4><ul>
+    <li>Waterfall: each stage completed before next begins / Iterative: stages repeated in cycles (1) — waterfall is linear, iterative is cyclical (1)</li>
+    <li>Waterfall: no working software until late / Iterative: working software produced at end of each iteration (1) — iterative gets to market faster (1)</li>
+    <li>Waterfall: client only at start and end / Iterative: client involved at each iteration (1) — iterative more flexible to changing requirements (1)</li>
+    <li>Waterfall: extensive documentation / Iterative: documentation per iteration (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 05</div>
+  <div class="q-text">Describe the difference between alpha testing and beta testing. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Alpha: carried out by the development team (1)</li>
+    <li>Alpha: checks program works as intended before release to public (1)</li>
+    <li>Beta: carried out by a small group of potential/end users (1)</li>
+    <li>Beta: users provide feedback and identify errors; problems fixed before product sold (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 06</div>
+  <div class="q-text">Explain the three types of software maintenance. <span class="marks">[6]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (each type × 2)</h4><ul>
+    <li>Corrective: used when program does not work as expected / contains a bug (1) — fixes errors discovered after release (1)</li>
+    <li>Adaptive: accommodates legislative or user requirement changes (1) — allows program to be updated when new technology/laws require it (1)</li>
+    <li>Perfective: changes made to improve the program after release (1) — adds new features or improves performance based on user feedback (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 07</div>
+  <div class="q-text">Explain the difference between white-box and black-box testing. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>White-box: tester has access to source code (1) — tests all possible paths through the program logic (1)</li>
+    <li>Black-box: tester has NO access to source code (1) — only tests inputs and expected outputs (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 08</div>
+  <div class="q-context">A development team is building a hospital patient management system. Requirements may change as doctors use the system. Speed of delivery is critical.</div>
+  <div class="q-text">Justify which development model (waterfall, iterative, or RAD) is most suitable. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (RAD or Iterative — both acceptable with justification)</h4><ul>
+    <li>[RAD] Modules developed in parallel (1) — faster delivery as speed is critical (1)</li>
+    <li>[RAD] Minimal planning allows requirements to change easily (1) — doctors can change requirements as they use the system (1)</li>
+    <li>[Iterative] Working software produced at each iteration (1) — doctors can provide feedback early on real software (1)</li>
+    <li>Waterfall not suitable — no working software until end; requirements likely to change (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Named choice + reason + link to scenario. "RAD is suitable" = 0. "RAD is suitable because modules are developed in parallel, meaning the system can be delivered faster which is critical for the hospital" = 2 marks.</div></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 09</div>
+  <div class="q-text">Describe what stub testing is and explain when it is used. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Stub testing: incomplete or erroneous modules replaced by dummy modules (1)</li>
+    <li>Dummy modules return a known/expected result or output a message to show they were called (1)</li>
+    <li>Used when a program contains modules that have errors or are not yet complete (1)</li>
+    <li>Allows the rest of the program to be tested even when some modules are not ready (1)</li>
+  </ul></div>
+</div>
+</div>
+
+<!-- FLASHCARDS -->
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">PART 3</div><div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);">CH 12 · SOFTWARE DEVELOPMENT · 20 CARDS</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress"><div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div><div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div><div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div></div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 20</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button>&nbsp;<button class="fc-btn" onclick="FC.reviewMissed()">Review Missed</button></div>
+</div>
+</div>
+</main></div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'DEFINE',q:'State the 5 stages of the PDLC in order.',a:'1. Analysis\n2. Design\n3. Coding / Implementation\n4. Testing\n5. Maintenance'},
+  {label:'DEFINE',q:'What is produced during the Analysis stage?',a:'Problem definition, client requirements documentation, ER diagrams of current system. Developer discusses requirements with client.'},
+  {label:'DEFINE',q:'What is produced during the Design stage?',a:'Identifier table, algorithms and pseudocode, UI mockups, structure charts. Data structures and programming language chosen.'},
+  {label:'COMPARE',q:'Waterfall vs Iterative — 3 differences',a:'• Waterfall: linear / Iterative: cyclical stages repeated\n• Waterfall: no working software until end / Iterative: working software at each iteration\n• Waterfall: client at start and end only / Iterative: client involved throughout\n• Waterfall: extensive docs / Iterative: docs per iteration'},
+  {label:'ADVANTAGES',q:'3 advantages of Waterfall model',a:'• Easy to manage — stages complete one at a time\n• Clear deliverables at each stage\n• Detailed documentation\n• Little room for client to change requirements mid-way'},
+  {label:'DISADVANTAGES',q:'3 disadvantages of Waterfall model',a:'• No working program until late in cycle\n• Slower to market\n• Difficult to cope with changing requirements\n• Client only sees product at very end'},
+  {label:'DEFINE',q:'What is RAD (Rapid Application Development)?',a:'Modules developed in parallel as prototypes. Minimal planning — allows requirement changes. Client involved throughout. Used for time-critical development. Multiple areas worked simultaneously.'},
+  {label:'COMPARE',q:'RAD advantages vs drawbacks',a:'Advantages: faster delivery, prototype early, client involved throughout, flexible to changes.\nDrawbacks: hard to estimate cost/time, docs often omitted, client may change requirements often.'},
+  {label:'ERRORS',q:'Syntax error vs Logic error vs Runtime error',a:'Syntax: breaks language rules — detected by translator, won\'t run.\nLogic: runs but wrong output — algorithm wrong, not detected by translator.\nRuntime: crashes during execution — invalid operation (e.g. divide by zero).'},
+  {label:'TEST DATA',q:'Normal vs Abnormal vs Boundary test data',a:'Normal: value in acceptable range — should be ACCEPTED.\nAbnormal: outside range or wrong type — should be REJECTED.\nBoundary: minimum/maximum value — should be ACCEPTED (tests edge of range).'},
+  {label:'APPLY',q:'Test data for a field accepting integers 1–50',a:'Normal: 25 (accepted).\nAbnormal: 0, 51, -5, "abc" (rejected).\nBoundary: 1 and 50 (both accepted).'},
+  {label:'TESTING',q:'Alpha testing vs Beta testing',a:'Alpha: development TEAM tests before release to public.\nBeta: small group of POTENTIAL USERS test; provide feedback; problems fixed before sale.'},
+  {label:'TESTING',q:'White-box vs Black-box testing',a:'White-box: tester has source code access; tests ALL paths through logic.\nBlack-box: no source code access; tests inputs and expected outputs only.'},
+  {label:'TESTING',q:'What is stub testing? When is it used?',a:'Dysfunctional/incomplete modules replaced by dummy modules that return known results. Used when program has modules with errors or incomplete modules — allows rest of program to be tested.'},
+  {label:'TESTING',q:'What is integration testing?',a:'Individual modules tested separately during development, then combined and tested together as a complete program. Verifies modules work correctly when integrated.'},
+  {label:'TESTING',q:'Describe the walkthrough method.',a:'Developer creates a trace table and goes through code one line at a time. Records variable values as they change. Error found when variable gets unexpected value or unexpected path through program.'},
+  {label:'MAINTENANCE',q:'Corrective vs Adaptive vs Perfective maintenance',a:'Corrective: fix bugs/errors discovered after release.\nAdaptive: update for new laws, technology or changed requirements.\nPerfective: improve/add features after release based on feedback.'},
+  {label:'DESIGN',q:'Purpose of a Structure Chart',a:'Shows module relationships and how problem is broken down. Determines if module is function or procedure. Shows parameters passed between modules. Uses symbols: curved arrow=iteration, downward arrow=data passed down.'},
+  {label:'DESIGN',q:'What is a State-Transition Diagram?',a:'Shows states a system can be in. Arrows represent transitions between states. Format: input | output on each arrow. X marks the start state. Documents how a system behaves.'},
+  {label:'COMPARE',q:'Which development model suits each scenario?',a:'Well-defined stable requirements → Waterfall.\nEvolving requirements, need early prototypes → Iterative.\nTime-critical, parallel development, flexible → RAD.\nAll require client involvement — most in RAD, least in Waterfall.'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','t6','t7','exam','flash']);
+</script>
+</body>
+</html>

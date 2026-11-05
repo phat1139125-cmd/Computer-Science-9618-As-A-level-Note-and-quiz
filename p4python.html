@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Paper 4 Python Reference | 9618 A Level</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · P4</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PYTHON TEMPLATES</div>
+  <button class="nav-item" onclick="scrollToId('s1')">1. Searching Algorithms</button>
+  <button class="nav-item" onclick="scrollToId('s2')">2. Sorting Algorithms</button>
+  <button class="nav-item" onclick="scrollToId('s3')">3. File Handling</button>
+  <button class="nav-item" onclick="scrollToId('s4')">4. Classes & OOP</button>
+  <button class="nav-item" onclick="scrollToId('s5')">5. Exception Handling</button>
+  <button class="nav-item" onclick="scrollToId('s6')">6. Stack ADT</button>
+  <button class="nav-item" onclick="scrollToId('s7')">7. Queue ADT</button>
+  <button class="nav-item" onclick="scrollToId('s8')">8. Linked List ADT</button>
+  <button class="nav-item" onclick="scrollToId('s9')">9. Recursion</button>
+  <div class="nav-section">PART 2 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+<section class="hero">
+  <div class="hero-badge">PAPER 4 · A LEVEL · PYTHON REFERENCE</div>
+  <h1>Python <span>Code Templates</span></h1>
+  <p>All essential Python coding patterns for 9618 Paper 4 — searching, sorting, files, OOP, ADTs, recursion and exceptions.</p>
+  <div class="hero-pills">
+    <div class="hero-pill"><span>9</span> Topics</div>
+    <div class="hero-pill"><span>20</span> Flashcards</div>
+    <div class="hero-pill"><span>Paper 4</span> Focus</div>
+  </div>
+</section>
+
+<div class="part-header"><div class="part-num">REFERENCE</div><div class="part-title" style="color:var(--cyan)">PYTHON PAPER 4 — CODING TEMPLATES</div></div>
+
+<!-- S1: SEARCHING -->
+<section class="topic" id="s1">
+  <div class="topic-num">SECTION 01</div>
+  <div class="topic-title">Searching Algorithms</div>
+  <div class="topic-sub">LINEAR SEARCH · BINARY SEARCH</div>
+
+  <div class="sub-label">Linear Search</div>
+  <div class="code-block"><span class="kw">def</span> <span class="fn">linear_search</span>(arr, target):
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="fn">len</span>(arr)):
+        <span class="kw">if</span> arr[i] == target:
+            <span class="kw">return</span> i          <span class="cm"># return index if found</span>
+    <span class="kw">return</span> <span class="nm">-1</span>               <span class="cm"># return -1 if not found</span>
+
+<span class="cm"># With boolean flag (use when action needed if NOT found)</span>
+<span class="kw">def</span> <span class="fn">linear_search_flag</span>(arr, target):
+    Found = <span class="kw">False</span>
+    Index = <span class="nm">-1</span>
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="fn">len</span>(arr)):
+        <span class="kw">if</span> arr[i] == target:
+            Found = <span class="kw">True</span>
+            Index = i
+    <span class="kw">if not</span> Found:
+        <span class="fn">print</span>(<span class="st">"Not found"</span>)
+    <span class="kw">return</span> Index</div>
+
+  <div class="sub-label">Binary Search</div>
+  <div class="code-block"><span class="kw">def</span> <span class="fn">binary_search</span>(arr, target):
+    First = <span class="nm">0</span>
+    Last = <span class="fn">len</span>(arr) - <span class="nm">1</span>
+    <span class="kw">while</span> First <= Last:
+        MidValue = (First + Last) // <span class="nm">2</span>
+        <span class="kw">if</span> arr[MidValue] == target:
+            <span class="kw">return</span> MidValue       <span class="cm"># found</span>
+        <span class="kw">elif</span> arr[MidValue] > target:
+            Last = MidValue - <span class="nm">1</span>   <span class="cm"># discard upper half</span>
+        <span class="kw">else</span>:
+            First = MidValue + <span class="nm">1</span>  <span class="cm"># discard lower half</span>
+    <span class="kw">return</span> <span class="nm">-1</span>                   <span class="cm"># not found</span>
+
+<span class="cm"># ⚠️ Binary search requires SORTED array</span>
+<span class="cm"># First = first index of section being searched</span>
+<span class="cm"># Last = last index of section being searched</span>
+<span class="cm"># MidValue = index of the middle element</span></div>
+
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Key Notes</div><ul>
+      <li>Linear: no precondition, O(n)</li>
+      <li>Binary: array MUST be sorted, O(log n)</li>
+      <li>Return -1 = not found convention</li>
+      <li>Binary: if value at MidValue &gt; target → Last = MidValue-1</li>
+      <li>Binary: if value at MidValue &lt; target → First = MidValue+1</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- S2: SORTING -->
+<section class="topic" id="s2">
+  <div class="topic-num">SECTION 02</div>
+  <div class="topic-title">Sorting Algorithms</div>
+  <div class="topic-sub">BUBBLE SORT · INSERTION SORT</div>
+
+  <div class="sub-label">Bubble Sort</div>
+  <div class="code-block"><span class="kw">def</span> <span class="fn">bubble_sort</span>(arr):
+    n = <span class="fn">len</span>(arr)
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(n):
+        <span class="kw">for</span> j <span class="kw">in</span> <span class="fn">range</span>(n - <span class="nm">1</span> - i):   <span class="cm"># -i leaves sorted end out</span>
+            <span class="kw">if</span> arr[j] > arr[j + <span class="nm">1</span>]:    <span class="cm"># change > to < for descending</span>
+                <span class="cm"># Swap</span>
+                arr[j], arr[j + <span class="nm">1</span>] = arr[j + <span class="nm">1</span>], arr[j]
+    <span class="kw">return</span> arr
+
+<span class="cm"># ⚡ Outer loop: runs n times</span>
+<span class="cm"># ⚡ Inner loop: n-1-i because last i elements already sorted</span>
+<span class="cm"># ⚡ Change > to < for DESCENDING order</span></div>
+
+  <div class="sub-label">Insertion Sort</div>
+  <div class="code-block"><span class="kw">def</span> <span class="fn">insertion_sort</span>(arr):
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="nm">1</span>, <span class="fn">len</span>(arr)):
+        Current = arr[i]          <span class="cm"># element being inserted</span>
+        j = i - <span class="nm">1</span>
+        <span class="kw">while</span> j >= <span class="nm">0</span> <span class="kw">and</span> arr[j] > Current:
+            arr[j + <span class="nm">1</span>] = arr[j]  <span class="cm"># shift element right</span>
+            j -= <span class="nm">1</span>
+        arr[j + <span class="nm">1</span>] = Current     <span class="cm"># insert in correct position</span>
+    <span class="kw">return</span> arr
+
+<span class="cm"># ⚡ Outer loop: moves through each element from index 1</span>
+<span class="cm"># ⚡ Current: stores element being compared against all before it</span>
+<span class="cm"># ⚡ Inner while: shifts larger elements right until correct slot found</span>
+<span class="cm"># ⚡ More efficient than bubble sort for nearly-sorted data</span></div>
+</section>
+
+<!-- S3: FILE HANDLING -->
+<section class="topic" id="s3">
+  <div class="topic-num">SECTION 03</div>
+  <div class="topic-title">File Handling</div>
+  <div class="topic-sub">READ · WRITE · APPEND · EXCEPTION HANDLING</div>
+
+  <div class="code-block"><span class="cm"># Reading from a file — always use exception handling</span>
+<span class="kw">try</span>:
+    <span class="kw">with</span> <span class="fn">open</span>(<span class="st">"filename.txt"</span>, <span class="st">"r"</span>) <span class="kw">as</span> f:
+        <span class="kw">for</span> line <span class="kw">in</span> f:
+            line = line.<span class="fn">strip</span>()    <span class="cm"># removes \n from end</span>
+            <span class="fn">print</span>(line)
+<span class="kw">except</span> FileNotFoundError:
+    <span class="fn">print</span>(<span class="st">"File not found"</span>)
+
+<span class="cm"># Reading into an array</span>
+data = []
+<span class="kw">try</span>:
+    <span class="kw">with</span> <span class="fn">open</span>(<span class="st">"filename.txt"</span>, <span class="st">"r"</span>) <span class="kw">as</span> f:
+        <span class="kw">for</span> line <span class="kw">in</span> f:
+            data.<span class="fn">append</span>(line.<span class="fn">strip</span>())  <span class="cm"># .strip() removes \n</span>
+<span class="kw">except</span> FileNotFoundError:
+    <span class="fn">print</span>(<span class="st">"File not found"</span>)
+
+<span class="cm"># Writing to a file (OVERWRITES existing content)</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"filename.txt"</span>, <span class="st">"w"</span>) <span class="kw">as</span> f:
+    f.<span class="fn">write</span>(<span class="st">"data\n"</span>)           <span class="cm"># \n = new line</span>
+
+<span class="cm"># Appending to a file (PRESERVES existing content)</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"filename.txt"</span>, <span class="st">"a"</span>) <span class="kw">as</span> f:
+    f.<span class="fn">write</span>(<span class="st">"new data\n"</span>)</div>
+
+  <div class="card-grid">
+    <div class="card c-red-card"><div class="card-title">"r" / "w" / "a" modes</div><ul>
+      <li><code style="color:var(--cyan)">"r"</code> = READ — file must exist</li>
+      <li><code style="color:var(--red)">"w"</code> = WRITE — OVERWRITES all existing data</li>
+      <li><code style="color:var(--green)">"a"</code> = APPEND — adds to end, preserves existing</li>
+      <li>Always use <code style="color:var(--cyan)">.strip()</code> to remove \n when reading</li>
+      <li>Always use exception handling for file operations</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- S4: OOP -->
+<section class="topic" id="s4">
+  <div class="topic-num">SECTION 04</div>
+  <div class="topic-title">Classes & Object-Oriented Programming</div>
+  <div class="topic-sub">CLASS DEFINITION · INHERITANCE · OBJECTS · ARRAYS OF OBJECTS</div>
+
+  <div class="code-block"><span class="cm"># Class definition</span>
+<span class="kw">class</span> <span class="fn">Student</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, subject, code, grade):
+        self.__Subject = subject  <span class="cm"># __ = private attribute</span>
+        self.__Code = code
+        self.__Grade = grade
+
+    <span class="cm"># Getter method</span>
+    <span class="kw">def</span> <span class="fn">GetSubject</span>(self):
+        <span class="kw">return</span> self.__Subject
+
+    <span class="cm"># Setter method</span>
+    <span class="kw">def</span> <span class="fn">SetGrade</span>(self, grade):
+        self.__Grade = grade
+
+    <span class="cm"># Other method</span>
+    <span class="kw">def</span> <span class="fn">Display</span>(self):
+        <span class="fn">print</span>(self.__Subject, self.__Code, self.__Grade)
+
+<span class="cm"># Creating objects</span>
+S1 = <span class="fn">Student</span>(<span class="st">"Mathematics"</span>, <span class="nm">9709</span>, <span class="st">"A"</span>)
+S2 = <span class="fn">Student</span>(<span class="st">"Physics"</span>, <span class="nm">9702</span>, <span class="st">"B"</span>)
+
+<span class="cm"># Using methods</span>
+<span class="fn">print</span>(S1.<span class="fn">GetSubject</span>())    <span class="cm"># Mathematics</span>
+S1.<span class="fn">SetGrade</span>(<span class="st">"A*"</span>)
+S1.<span class="fn">Display</span>()
+
+<span class="cm"># Array of objects</span>
+students = []
+students.<span class="fn">append</span>(<span class="fn">Student</span>(<span class="st">"CS"</span>, <span class="nm">9618</span>, <span class="st">"A"</span>))
+<span class="fn">print</span>(students[<span class="nm">0</span>].<span class="fn">GetSubject</span>())   <span class="cm"># CS</span>
+students[<span class="nm">0</span>].<span class="fn">SetGrade</span>(<span class="st">"A*"</span>)</div>
+
+  <div class="sub-label">Inheritance</div>
+  <div class="code-block"><span class="cm"># Derived class inherits from base class</span>
+<span class="kw">class</span> <span class="fn">PostGrad</span>(<span class="fn">Student</span>):    <span class="cm"># inherits Student</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, subject, code, grade, thesis):
+        <span class="fn">super</span>().<span class="fn">__init__</span>(subject, code, grade)  <span class="cm"># call parent</span>
+        self.__Thesis = thesis
+
+    <span class="kw">def</span> <span class="fn">GetThesis</span>(self):
+        <span class="kw">return</span> self.__Thesis
+
+<span class="cm"># ⚡ self.__attr = PRIVATE (name mangled to _ClassName__attr)</span>
+<span class="cm"># ⚡ self._attr = PROTECTED (convention, not enforced)</span>
+<span class="cm"># ⚡ self.attr = PUBLIC</span>
+<span class="cm"># ⚡ super().__init__() calls the parent class constructor</span></div>
+</section>
+
+<!-- S5: EXCEPTION HANDLING -->
+<section class="topic" id="s5">
+  <div class="topic-num">SECTION 05</div>
+  <div class="topic-title">Exception Handling</div>
+  <div class="topic-sub">TRY · EXCEPT · MULTIPLE EXCEPTIONS · FINALLY</div>
+
+  <div class="code-block"><span class="cm"># Basic exception handling</span>
+<span class="kw">try</span>:
+    number = <span class="fn">int</span>(<span class="fn">input</span>(<span class="st">"Enter number: "</span>))
+    result = <span class="nm">100</span> / number
+    <span class="fn">print</span>(result)
+<span class="kw">except</span> ZeroDivisionError:
+    <span class="fn">print</span>(<span class="st">"Error: cannot divide by zero"</span>)
+<span class="kw">except</span> ValueError:
+    <span class="fn">print</span>(<span class="st">"Error: please enter a valid integer"</span>)
+<span class="kw">except</span>:
+    <span class="fn">print</span>(<span class="st">"An unexpected error occurred"</span>)
+
+<span class="cm"># Common exceptions to know:</span>
+<span class="cm"># ZeroDivisionError — division by zero</span>
+<span class="cm"># ValueError       — wrong type (e.g. int("abc"))</span>
+<span class="cm"># FileNotFoundError— file does not exist</span>
+<span class="cm"># IndexError       — list index out of range</span>
+<span class="cm"># TypeError        — wrong type for operation</span>
+<span class="cm"># NameError        — variable not defined</span></div>
+</section>
+
+<!-- S6: STACK -->
+<section class="topic" id="s6">
+  <div class="topic-num">SECTION 06</div>
+  <div class="topic-title">Stack ADT</div>
+  <div class="topic-sub">INITIALISE · PUSH · POP · IS_EMPTY · IS_FULL</div>
+
+  <div class="code-block"><span class="cm"># Stack using array + TopPointer</span>
+MAX_SIZE = <span class="nm">10</span>
+Stack = [<span class="kw">None</span>] * MAX_SIZE
+TopPointer = <span class="nm">-1</span>           <span class="cm"># -1 = empty stack</span>
+
+<span class="cm"># PUSH — add to stack</span>
+<span class="kw">def</span> <span class="fn">Push</span>(item):
+    <span class="kw">global</span> TopPointer
+    <span class="kw">if</span> TopPointer < MAX_SIZE - <span class="nm">1</span>:    <span class="cm"># check not full</span>
+        TopPointer += <span class="nm">1</span>
+        Stack[TopPointer] = item
+    <span class="kw">else</span>:
+        <span class="fn">print</span>(<span class="st">"Stack is full"</span>)
+
+<span class="cm"># POP — remove from stack</span>
+<span class="kw">def</span> <span class="fn">Pop</span>():
+    <span class="kw">global</span> TopPointer
+    <span class="kw">if</span> TopPointer >= <span class="nm">0</span>:             <span class="cm"># check not empty</span>
+        item = Stack[TopPointer]
+        TopPointer -= <span class="nm">1</span>
+        <span class="kw">return</span> item
+    <span class="kw">else</span>:
+        <span class="fn">print</span>(<span class="st">"Stack is empty"</span>)
+        <span class="kw">return</span> <span class="kw">None</span>
+
+<span class="cm"># IS_EMPTY and IS_FULL</span>
+<span class="kw">def</span> <span class="fn">IsEmpty</span>():
+    <span class="kw">return</span> TopPointer == <span class="nm">-1</span>
+
+<span class="kw">def</span> <span class="fn">IsFull</span>():
+    <span class="kw">return</span> TopPointer == MAX_SIZE - <span class="nm">1</span>
+
+<span class="cm"># ⚡ TopPointer starts at -1 (empty)</span>
+<span class="cm"># ⚡ PUSH: check not full FIRST, then increment pointer, then store</span>
+<span class="cm"># ⚡ POP: check not empty FIRST, store value, then decrement pointer</span></div>
+</section>
+
+<!-- S7: QUEUE -->
+<section class="topic" id="s7">
+  <div class="topic-num">SECTION 07</div>
+  <div class="topic-title">Queue ADT</div>
+  <div class="topic-sub">LINEAR QUEUE · CIRCULAR QUEUE · ENQUEUE · DEQUEUE</div>
+
+  <div class="code-block"><span class="cm"># Circular Queue</span>
+MAX_SIZE = <span class="nm">10</span>
+Queue = [<span class="kw">None</span>] * MAX_SIZE
+HeadPointer = <span class="nm">0</span>     <span class="cm"># points to first element</span>
+TailPointer = <span class="nm">0</span>     <span class="cm"># points to next free slot</span>
+Count = <span class="nm">0</span>           <span class="cm"># tracks number of items</span>
+
+<span class="cm"># ENQUEUE — add to queue</span>
+<span class="kw">def</span> <span class="fn">Enqueue</span>(item):
+    <span class="kw">global</span> TailPointer, Count
+    <span class="kw">if</span> Count < MAX_SIZE:                      <span class="cm"># check not full</span>
+        Queue[TailPointer] = item
+        TailPointer = (TailPointer + <span class="nm">1</span>) % MAX_SIZE  <span class="cm"># circular wrap</span>
+        Count += <span class="nm">1</span>
+    <span class="kw">else</span>:
+        <span class="fn">print</span>(<span class="st">"Queue is full"</span>)
+
+<span class="cm"># DEQUEUE — remove from queue</span>
+<span class="kw">def</span> <span class="fn">Dequeue</span>():
+    <span class="kw">global</span> HeadPointer, Count
+    <span class="kw">if</span> Count > <span class="nm">0</span>:                            <span class="cm"># check not empty</span>
+        item = Queue[HeadPointer]
+        HeadPointer = (HeadPointer + <span class="nm">1</span>) % MAX_SIZE  <span class="cm"># circular wrap</span>
+        Count -= <span class="nm">1</span>
+        <span class="kw">return</span> item
+    <span class="kw">else</span>:
+        <span class="fn">print</span>(<span class="st">"Queue is empty"</span>)
+        <span class="kw">return</span> <span class="kw">None</span>
+
+<span class="cm"># ⚡ (pointer + 1) % MAX_SIZE = circular wrap-around</span>
+<span class="cm"># ⚡ Count variable tracks items — avoids Head==Tail ambiguity</span>
+<span class="cm"># ⚡ Head and Tail both start at 0 for circular queue</span></div>
+</section>
+
+<!-- S8: LINKED LIST -->
+<section class="topic" id="s8">
+  <div class="topic-num">SECTION 08</div>
+  <div class="topic-title">Linked List ADT</div>
+  <div class="topic-sub">INITIALISE · INSERT · DELETE · TRAVERSE</div>
+
+  <div class="code-block"><span class="cm"># Linked list using two arrays: Data[] and Pointer[]</span>
+MAX_SIZE = <span class="nm">10</span>
+Data = [<span class="nm">-1</span>] * MAX_SIZE      <span class="cm"># -1 = empty node</span>
+Pointer = [i + <span class="nm">1</span> <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(MAX_SIZE)]  <span class="cm"># free list</span>
+Pointer[MAX_SIZE - <span class="nm">1</span>] = <span class="nm">-1</span> <span class="cm"># last node has null pointer</span>
+FirstNode = <span class="nm">-1</span>             <span class="cm"># -1 = list empty</span>
+FirstEmpty = <span class="nm">0</span>             <span class="cm"># first empty node = index 0</span>
+
+<span class="cm"># INSERT at beginning</span>
+<span class="kw">def</span> <span class="fn">Insert</span>(value):
+    <span class="kw">global</span> FirstNode, FirstEmpty
+    <span class="kw">if</span> FirstEmpty == <span class="nm">-1</span>:     <span class="cm"># check list not full</span>
+        <span class="fn">print</span>(<span class="st">"List is full"</span>)
+        <span class="kw">return</span>
+    NextEmpty = Pointer[FirstEmpty]   <span class="cm"># save next empty</span>
+    Data[FirstEmpty] = value          <span class="cm"># store value</span>
+    Pointer[FirstEmpty] = FirstNode   <span class="cm"># point to old first</span>
+    FirstNode = FirstEmpty            <span class="cm"># update first node</span>
+    FirstEmpty = NextEmpty            <span class="cm"># update free pointer</span>
+
+<span class="cm"># DELETE a value</span>
+<span class="kw">def</span> <span class="fn">Delete</span>(value):
+    <span class="kw">global</span> FirstNode, FirstEmpty
+    <span class="kw">if</span> FirstNode == <span class="nm">-1</span>: <span class="kw">return</span>       <span class="cm"># empty list</span>
+    <span class="kw">if</span> Data[FirstNode] == value:      <span class="cm"># delete first node</span>
+        Temp = FirstNode
+        FirstNode = Pointer[FirstNode]
+        Pointer[Temp] = FirstEmpty
+        Data[Temp] = <span class="nm">-1</span>
+        FirstEmpty = Temp
+        <span class="kw">return</span>
+    PreviousNode = FirstNode          <span class="cm"># search rest of list</span>
+    CurrentNode = Pointer[FirstNode]
+    <span class="kw">while</span> CurrentNode != <span class="nm">-1</span>:
+        <span class="kw">if</span> Data[CurrentNode] == value:
+            Pointer[PreviousNode] = Pointer[CurrentNode]
+            Pointer[CurrentNode] = FirstEmpty
+            Data[CurrentNode] = <span class="nm">-1</span>
+            FirstEmpty = CurrentNode
+            <span class="kw">return</span>
+        PreviousNode = CurrentNode
+        CurrentNode = Pointer[CurrentNode]
+
+<span class="cm"># TRAVERSE (output all)</span>
+<span class="kw">def</span> <span class="fn">Traverse</span>():
+    Pointer_val = FirstNode
+    <span class="kw">while</span> Pointer_val != <span class="nm">-1</span>:
+        <span class="fn">print</span>(Data[Pointer_val])
+        Pointer_val = Pointer[Pointer_val]
+
+<span class="cm"># ⚡ -1 = null pointer (no node)</span>
+<span class="cm"># ⚡ Data[i] = -1 means node i is empty</span>
+<span class="cm"># ⚡ FirstNode points to head; FirstEmpty to first free node</span></div>
+</section>
+
+<!-- S9: RECURSION -->
+<section class="topic" id="s9">
+  <div class="topic-num">SECTION 09</div>
+  <div class="topic-title">Recursion</div>
+  <div class="topic-sub">FACTORIAL · FIBONACCI · RECURSIVE BINARY SEARCH</div>
+
+  <div class="code-block"><span class="cm"># Recursive Factorial</span>
+<span class="kw">def</span> <span class="fn">factorial</span>(n):
+    <span class="kw">if</span> n == <span class="nm">0</span> <span class="kw">or</span> n == <span class="nm">1</span>:   <span class="cm"># base case</span>
+        <span class="kw">return</span> <span class="nm">1</span>
+    <span class="kw">return</span> n * <span class="fn">factorial</span>(n - <span class="nm">1</span>)  <span class="cm"># general case</span>
+
+<span class="cm"># Recursive Fibonacci</span>
+<span class="kw">def</span> <span class="fn">fibonacci</span>(n):
+    <span class="kw">if</span> n <= <span class="nm">1</span>:              <span class="cm"># base case</span>
+        <span class="kw">return</span> n
+    <span class="kw">return</span> <span class="fn">fibonacci</span>(n - <span class="nm">1</span>) + <span class="fn">fibonacci</span>(n - <span class="nm">2</span>)  <span class="cm"># general case</span>
+
+<span class="cm"># Recursive Binary Search</span>
+<span class="kw">def</span> <span class="fn">rec_binary_search</span>(arr, target, first, last):
+    <span class="kw">if</span> first > last:        <span class="cm"># base case — not found</span>
+        <span class="kw">return</span> <span class="nm">-1</span>
+    mid = (first + last) // <span class="nm">2</span>
+    <span class="kw">if</span> arr[mid] == target:  <span class="cm"># base case — found</span>
+        <span class="kw">return</span> mid
+    <span class="kw">elif</span> arr[mid] > target:
+        <span class="kw">return</span> <span class="fn">rec_binary_search</span>(arr, target, first, mid - <span class="nm">1</span>)
+    <span class="kw">else</span>:
+        <span class="kw">return</span> <span class="fn">rec_binary_search</span>(arr, target, mid + <span class="nm">1</span>, last)
+
+<span class="cm"># Call: rec_binary_search(arr, target, 0, len(arr)-1)</span>
+
+<span class="cm"># ⚡ Every recursive function MUST have:</span>
+<span class="cm">#   1. Base case (stopping condition)</span>
+<span class="cm">#   2. General case (calls itself, moves toward base case)</span></div>
+</section>
+
+<!-- FLASHCARDS -->
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">FLASHCARDS</div><div class="part-title" style="color:var(--purple)">PAPER 4 PYTHON QUICK RECALL</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);">PAPER 4 · PYTHON TEMPLATES · 20 CARDS</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress"><div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div><div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div><div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div></div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 20</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button>&nbsp;<button class="fc-btn" onclick="FC.reviewMissed()">Review Missed</button></div>
+</div>
+</div>
+</main></div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'SEARCH',q:'Linear search — Python key points',a:'Loop through array comparing each element to target.\nReturn index if found, -1 if not found.\nNo precondition. O(n) time.'},
+  {label:'SEARCH',q:'Binary search — Python key points (3)',a:'Array MUST be sorted. O(log n).\nFirst=0, Last=len-1, MidValue=(First+Last)//2.\nIf arr[mid]>target: Last=mid-1. If arr[mid]<target: First=mid+1.'},
+  {label:'SORT',q:'Bubble sort — what does the inner loop do?',a:'Compares adjacent pairs arr[j] and arr[j+1].\nSwaps if in wrong order.\nInner loop range: range(n-1-i) — leaves i sorted elements at end.'},
+  {label:'SORT',q:'Insertion sort — what does Current store?',a:'Current = arr[i] — the element being compared against all previous.\nInner while loop: shifts elements larger than Current one position right.\nAfter while: arr[j+1] = Current (insert into correct slot).'},
+  {label:'FILES',q:'3 file modes in Python and what each does',a:'"r" = READ (file must exist).\n"w" = WRITE (overwrites all existing data).\n"a" = APPEND (adds to end, preserves existing).\nAlways use .strip() to remove \\n when reading.'},
+  {label:'FILES',q:'Why use .strip() when reading files?',a:'Each line read from file includes \\n (newline) at end.\n.strip() removes whitespace and \\n.\nWithout it: data stored as "value\\n" instead of "value".'},
+  {label:'OOP',q:'How do you make an attribute private in Python?',a:'Use double underscore prefix: self.__attribute\nThis name-mangles to _ClassName__attribute.\nCannot be accessed directly from outside class — must use getter/setter.'},
+  {label:'OOP',q:'What is __init__ in Python?',a:'The constructor method. Called automatically when object is created. Initialises all attributes of the new object. Always takes self as first parameter.'},
+  {label:'OOP',q:'How do you call parent class constructor in Python?',a:'super().__init__(args)\nCalled inside child class __init__.\nPasses arguments to parent constructor to initialise inherited attributes.'},
+  {label:'EXCEPTION',q:'Python exception handling structure',a:'try:\n    # code that might fail\nexcept ZeroDivisionError:\n    # handle divide by zero\nexcept ValueError:\n    # handle wrong type\nexcept:\n    # handle any other error'},
+  {label:'EXCEPTION',q:'3 common Python exceptions and their causes',a:'ZeroDivisionError: division by zero.\nValueError: wrong type (e.g. int("abc")).\nFileNotFoundError: file does not exist.\nIndexError: list index out of range.'},
+  {label:'STACK',q:'Stack in Python — initialisation values',a:'Stack = [None] * MAX_SIZE\nTopPointer = -1  # -1 = empty\n\nFull: TopPointer == MAX_SIZE-1\nEmpty: TopPointer == -1'},
+  {label:'STACK',q:'Stack PUSH — steps in correct order',a:'1. Check TopPointer < MAX_SIZE-1 (not full)\n2. TopPointer += 1\n3. Stack[TopPointer] = item'},
+  {label:'STACK',q:'Stack POP — steps in correct order',a:'1. Check TopPointer >= 0 (not empty)\n2. item = Stack[TopPointer]\n3. TopPointer -= 1\n4. return item'},
+  {label:'QUEUE',q:'Circular queue — initialisation values',a:'Queue = [None] * MAX_SIZE\nHeadPointer = 0\nTailPointer = 0\nCount = 0\n\nFull: Count == MAX_SIZE\nEmpty: Count == 0'},
+  {label:'QUEUE',q:'Circular queue — how does wrap-around work?',a:'TailPointer = (TailPointer + 1) % MAX_SIZE\nHeadPointer = (HeadPointer + 1) % MAX_SIZE\n\n% MAX_SIZE makes pointer wrap back to 0 when it reaches the end.'},
+  {label:'LINKED LIST',q:'Linked list — what do -1 values mean?',a:'Data[i] = -1: node i is empty (free).\nPointer[i] = -1: null pointer — no next node (end of list).\nFirstNode = -1: list is empty.\nFirstEmpty = -1: no free nodes (list full).'},
+  {label:'LINKED LIST',q:'Linked list INSERT at beginning — 5 steps',a:'1. Check FirstEmpty != -1 (not full)\n2. NextEmpty = Pointer[FirstEmpty]\n3. Data[FirstEmpty] = value\n4. Pointer[FirstEmpty] = FirstNode\n5. FirstNode = FirstEmpty; FirstEmpty = NextEmpty'},
+  {label:'RECURSION',q:'Recursive factorial — base and general case',a:'Base case: if n==0 or n==1: return 1\nGeneral case: return n * factorial(n-1)\n\nfactorial(4) → 4×3×2×1×1 = 24'},
+  {label:'RECURSION',q:'2 essential requirements for any recursive function',a:'1. BASE CASE: stopping condition — function does NOT call itself. Without this → infinite recursion → stack overflow.\n2. GENERAL CASE: calls itself with modified argument that moves toward base case.'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['s1','s2','s3','s4','s5','s6','s7','s8','s9','flash']);
+</script>
+</body>
+</html>

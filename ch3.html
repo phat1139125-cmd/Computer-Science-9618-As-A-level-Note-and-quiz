@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 3 — Hardware | 9618</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 3</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. Storage Types</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. Embedded Systems</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Hardware Devices</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. RAM & ROM</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. Buffer & Control Systems</button>
+  <button class="nav-item" onclick="scrollToId('t5b')">5b. Sensors & Applications</button>
+  <button class="nav-item" onclick="scrollToId('t6')">6. Logic Gates</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+
+<section class="hero">
+  <div class="hero-badge">CHAPTER 03 · PAPER 1</div>
+  <h1>Hardware <span>& Components</span></h1>
+  <p>Storage, I/O devices, embedded systems, RAM/ROM, buffers, control systems, sensors and logic gates.</p>
+  <div class="hero-pills">
+    <div class="hero-pill"><span>24</span> Flashcards</div>
+    <div class="hero-pill"><span>9</span> Exam Questions</div>
+    <div class="hero-pill"><span>7</span> Topics</div>
+  </div>
+</section>
+
+<div class="part-header" id="part1">
+  <div class="part-num">PART 1</div>
+  <div class="part-title" style="color:var(--cyan)">THEORY — HARDWARE & COMPONENTS</div>
+</div>
+
+<!-- T1: STORAGE -->
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §3.1</div>
+  <div class="topic-title">Storage Types</div>
+  <div class="topic-sub">PRIMARY · SECONDARY · MAGNETIC · SOLID STATE · OPTICAL</div>
+
+  <div class="card-grid">
+    <div class="card c-cyan-card">
+      <div class="card-title">Need for Primary Storage</div>
+      <ul><li>Store files needed to boot system</li><li>Store OS and system software</li><li>Store intermediate / currently processed data</li></ul>
+    </div>
+    <div class="card c-blue-card">
+      <div class="card-title">Need for Secondary Storage</div>
+      <ul><li>Store files/data/software long-term</li><li>Non-volatile — persists when powered off</li></ul>
+    </div>
+  </div>
+
+  <div class="sub-label">Magnetic Hard Disk (HDD)</div>
+  <div class="card-grid">
+    <div class="card c-orange-card">
+      <div class="card-title">How HDD Works</div>
+      <ul>
+        <li>Has platters divided into sectors and concentric tracks</li>
+        <li>Surface can be magnetised</li>
+        <li>Read/write head mounted on arm</li>
+        <li>Writing: variation in current → variation in magnetic field</li>
+        <li>Reading: variation in magnetic field → variation in current</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">HDD Advantages</div>
+      <ul><li>Lower cost per unit of storage</li><li>Greater longevity for high read/write operations</li><li>Large storage capacity</li></ul>
+    </div>
+  </div>
+
+  <div class="sub-label">Solid State Memory (SSD)</div>
+  <div class="card-grid">
+    <div class="card c-purple-card">
+      <div class="card-title">How SSD Works</div>
+      <ul>
+        <li>Grid of columns and rows (arrays/blocks)</li>
+        <li>Two transistors at each intersection:</li>
+        <li>Floating gate — stores voltage (0 or 1)</li>
+        <li>Control gate — controls movement of charge</li>
+        <li>Cannot overwrite — must erase first then write</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">SSD Advantages</div>
+      <ul><li>No moving parts → more reliable</li><li>Faster data access times</li><li>Lighter and smaller</li><li>Silent operation</li></ul>
+    </div>
+  </div>
+
+  <div class="sub-label">Optical Disk (CD/DVD/Blu-ray)</div>
+  <div class="card-grid">
+    <div class="card c-teal-card">
+      <div class="card-title">How Optical Disk Works</div>
+      <ul>
+        <li>Rotating disk with concentric tracks on reflective metal layer</li>
+        <li>Data read/written using laser light (red or blue)</li>
+        <li>Data stored as pits and lands (crystalline/amorphous states)</li>
+        <li>Reading: reflected light encoded as bit pattern</li>
+        <li>Writing: laser changes surface states</li>
+      </ul>
+    </div>
+    <div class="card c-yellow-card">
+      <div class="card-title">Optical Features/Uses</div>
+      <ul><li>Used for transferring data between devices</li><li>Backup systems</li><li>Can be read-only (distribute software/movies)</li><li>Generally lower storage capacity</li></ul>
+    </div>
+  </div>
+
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-orange">HDD</th><th class="th-purple">SSD</th><th class="th-teal">Optical</th></tr>
+    <tr><td>Moving parts</td><td>Yes (spinning platters)</td><td>No</td><td>Yes (spinning disk)</td></tr>
+    <tr><td>Speed</td><td>Slower access</td><td>Fastest</td><td>Slowest</td></tr>
+    <tr><td>Cost per GB</td><td>Low</td><td>Higher</td><td>Low</td></tr>
+    <tr><td>Reliability</td><td>Less reliable (mechanical)</td><td>Very reliable</td><td>Fragile</td></tr>
+    <tr><td>Capacity</td><td>Very high</td><td>High</td><td>Lower</td></tr>
+  </table>
+</section>
+
+<!-- T2: EMBEDDED -->
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §3.1</div>
+  <div class="topic-title">Embedded Systems</div>
+  <div class="topic-sub">MICROPROCESSOR WITHIN A LARGER SYSTEM</div>
+
+  <div class="def-box">
+    <div class="def-label">DEFINITION</div>
+    <p>A <strong>microprocessor within a larger system</strong> that performs a specific task. Has memory, input/output abilities and a processor. Integrated into machine, not easily changed. Does not have its own operating system. Combination of hardware and software designed for a specific function.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card c-green-card">
+      <div class="card-title">Examples</div>
+      <ul><li>Washing machine — controls cycle programs</li><li>Digital camera — image processing</li><li>Car engine control unit</li><li>Microwave oven controller</li></ul>
+    </div>
+    <div class="card c-red-card">
+      <div class="card-title">Disadvantages</div>
+      <ul><li>Difficult to change/update firmware</li><li>Cannot be easily adapted for another task</li><li>Difficult to update or repair — usually replaced</li><li>Cannot take advantage of new technology</li></ul>
+    </div>
+  </div>
+
+  <div class="def-box">
+    <div class="def-label">ROM USE IN EMBEDDED SYSTEMS</div>
+    <ul>
+      <li>To store data that does not change</li>
+      <li>Data must be stored when device is powered off</li>
+      <li>Stores boot-up instructions</li>
+    </ul>
+  </div>
+</section>
+
+<!-- T3: HARDWARE DEVICES -->
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §3.1</div>
+  <div class="topic-title">Hardware Devices — Operations</div>
+  <div class="topic-sub">LASER PRINTER · 3D PRINTER · MICROPHONE · SPEAKER · TOUCHSCREENS · VR HEADSET</div>
+
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">🖨️ Laser Printer</div>
+      <ul>
+        <li>Revolving drum given electrical charge</li>
+        <li>Laser draws image as electrostatic charge</li>
+        <li>Drum coated with oppositely charged toner</li>
+        <li>Toner sticks only to charged areas</li>
+        <li>Drum rolls over electrostatically charged paper</li>
+        <li>Paper heated through fuser to seal image</li>
+        <li>Charge removed from drum, excess toner collected</li>
+      </ul>
+    </div>
+    <div class="card c-teal-card">
+      <div class="card-title">🖨️ 3D Printer</div>
+      <ul>
+        <li>Uses digital 3D model / CAD file</li>
+        <li>Additive manufacturing — builds layer by layer</li>
+        <li>Uses xyz coordinates, starting from bottom</li>
+        <li>Material fused together layer by layer</li>
+        <li>FDM: material heated, pushed through nozzle</li>
+        <li>Temperature sensor: prevents overheating</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">🎤 Microphone</div>
+      <ul>
+        <li>Has a diaphragm</li>
+        <li>Sound waves cause diaphragm to vibrate</li>
+        <li>Vibration causes coil to move past magnet</li>
+        <li>Electrical signal is produced</li>
+      </ul>
+    </div>
+    <div class="card c-orange-card">
+      <div class="card-title">🔊 Speaker</div>
+      <ul>
+        <li>Electric current sent to speaker</li>
+        <li>Current passes through coil</li>
+        <li>Coil creates electromagnetic field</li>
+        <li>Electromagnet repelled/attracted by permanent magnet</li>
+        <li>Coil movement causes diaphragm to vibrate</li>
+        <li>Vibration creates sound waves</li>
+      </ul>
+    </div>
+    <div class="card c-cyan-card">
+      <div class="card-title">📱 Resistive Touchscreen</div>
+      <ul>
+        <li>Has two layers</li>
+        <li>Touch causes layers to meet — circuit completed</li>
+        <li>Processor determines point of contact</li>
+        <li>Works with any object</li>
+      </ul>
+    </div>
+    <div class="card c-purple-card">
+      <div class="card-title">📱 Capacitive Touchscreen</div>
+      <ul>
+        <li>Has several layers</li>
+        <li>Touch causes change in electric current</li>
+        <li>Microprocessor identifies touch coordinates</li>
+        <li>Requires conductive touch (finger)</li>
+      </ul>
+    </div>
+    <div class="card c-yellow-card">
+      <div class="card-title">🥽 VR Headset</div>
+      <ul>
+        <li>Video sent from computer to headset</li>
+        <li>LCD/OLED display inside headset</li>
+        <li>Two lenses — create 3D effect per eye</li>
+        <li>60–120 fps video feed</li>
+        <li>Sensors track user movements</li>
+        <li>Binaural (surround) sound</li>
+        <li>Infrared sensors monitor eye movement</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- T4: RAM & ROM -->
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §3.1</div>
+  <div class="topic-title">RAM & ROM</div>
+  <div class="topic-sub">SRAM · DRAM · PROM · EPROM · EEPROM</div>
+
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-blue">RAM</th><th class="th-green">ROM</th></tr>
+    <tr><td>Type</td><td>Primary memory</td><td>Primary memory</td></tr>
+    <tr><td>Volatile?</td><td>Yes — loses data when powered off</td><td>No — retains data</td></tr>
+    <tr><td>Purpose</td><td>Stores currently running programs/OS/data</td><td>Stores start-up instructions/BIOS/firmware</td></tr>
+    <tr><td>Writable?</td><td>Yes — read and write</td><td>Read only (mostly)</td></tr>
+  </table>
+
+  <table class="cmp-table" style="margin-top:16px">
+    <tr><th class="th-cyan">TYPE</th><th class="th-blue">STRUCTURE</th><th class="th-yellow">ADVANTAGE</th><th class="th-red">DISADVANTAGE</th></tr>
+    <tr><td style="color:var(--cyan)">SRAM</td><td>Transistors as flip-flops</td><td>Faster — no refresh needed. Less power. Used in cache.</td><td>Lower data density. More expensive.</td></tr>
+    <tr><td style="color:var(--green)">DRAM</td><td>Transistor + capacitor</td><td>Higher density. Cheaper. More data per chip.</td><td>Must be refreshed → more power. Slower.</td></tr>
+  </table>
+
+  <table class="cmp-table" style="margin-top:16px">
+    <tr><th class="th-cyan">ROM TYPE</th><th class="th-green">HOW ERASED</th><th class="th-yellow">KEY FEATURE</th></tr>
+    <tr><td style="color:var(--blue)">PROM</td><td>Cannot be erased — set once</td><td>Programmed once by manufacturer</td></tr>
+    <tr><td style="color:var(--orange)">EPROM</td><td>UV light; must remove from device</td><td>Can be overwritten multiple times, must erase all first</td></tr>
+    <tr><td style="color:var(--green)">EEPROM</td><td>Voltage — no additional equipment needed</td><td>Can erase individual sections; firmware easily updated</td></tr>
+  </table>
+
+  <div class="memory-box"><strong>⚡ SRAM vs DRAM &nbsp;</strong>SRAM = faster + cache. DRAM = denser + cheaper + main memory. Key difference: DRAM needs refreshing (capacitor leaks charge), SRAM does not (flip-flop holds state).</div>
+</section>
+
+<!-- T5: BUFFER & CONTROL -->
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §3.1</div>
+  <div class="topic-title">Buffer & Control Systems</div>
+  <div class="topic-sub">PURPOSE OF BUFFER · MONITORING · CONTROL SYSTEMS · ACTUATORS · FEEDBACK</div>
+
+  <div class="def-box">
+    <div class="def-label">PURPOSE OF A BUFFER</div>
+    <ul>
+      <li>Acts as temporary storage until data is ready to be transmitted</li>
+      <li>Stores data before it is used by the receiving device</li>
+      <li>Allows processes to operate independently of each other</li>
+      <li>e.g. printer buffer, video streaming buffer</li>
+    </ul>
+  </div>
+
+  <div class="sub-label">Buffer Process</div>
+  <div class="process">
+    <div class="step"><p>Computer sends instructions/data to <span class="kw">buffer</span></p></div>
+    <div class="step"><p>Data transferred from buffer to device — allows processor to <span class="kw">continue processing</span></p></div>
+    <div class="step"><p>When buffer is empty, an <span class="kw">interrupt</span> is sent to computer requesting more data</p></div>
+  </div>
+
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-blue">MONITORING SYSTEM</th><th class="th-green">CONTROL SYSTEM</th></tr>
+    <tr><td>Action</td><td>Records/reports data only</td><td>Records data AND takes action</td></tr>
+    <tr><td>Output</td><td>Data/alerts to human</td><td>Signal to actuator</td></tr>
+    <tr><td>Feedback</td><td>Not necessarily used</td><td>Uses feedback loop</td></tr>
+    <tr><td>Example</td><td>Weather station, CCTV</td><td>Heating system, washing machine</td></tr>
+  </table>
+
+  <div class="card-grid">
+    <div class="card c-orange-card">
+      <div class="card-title">Role of Actuator</div>
+      <ul><li>Generates signal / converts electrical energy to mechanical energy</li><li>Produces a physical action (e.g. open valve, turn motor)</li></ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">Importance of Feedback</div>
+      <ul><li>Ensures system operates within given criteria</li><li>Allows system output to affect system input</li><li>Allows conditions to be automatically adjusted</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- T5b: SENSORS -->
+<section class="topic" id="t5b">
+  <div class="topic-num">TOPIC 05b · §3.1</div>
+  <div class="topic-title">Sensors & Their Applications</div>
+  <div class="topic-sub">TYPES OF SENSOR · EXAMPLE APPLICATIONS · MONITORING & CONTROL USE</div>
+
+  <div class="def-box">
+    <div class="def-label">WHAT IS A SENSOR?</div>
+    <p>A device that detects or measures a physical quantity and converts it into an electrical signal that can be read by a computer. Sensors provide the <strong>input</strong> to monitoring and control systems.</p>
+  </div>
+
+  <div class="sub-label">How Sensors Work in a System</div>
+  <div class="packet-journey">
+    <div class="pj-node">Sensor detects physical change</div>
+    <div class="pj-arrow">→</div>
+    <div class="pj-node">Converts to electrical signal</div>
+    <div class="pj-arrow">→</div>
+    <div class="pj-node">Signal sent to computer/processor</div>
+    <div class="pj-arrow">→</div>
+    <div class="pj-node">Processor compares to threshold</div>
+    <div class="pj-arrow">→</div>
+    <div class="pj-node">Actuator takes action (if control system)</div>
+  </div>
+
+  <div class="sub-label">Sensor Types & Applications</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">SENSOR TYPE</th><th class="th-green">EXAMPLE APPLICATIONS</th></tr>
+    <tr>
+      <td style="color:var(--orange)"><strong>Temperature</strong></td>
+      <td>
+        <ul style="list-style:none;padding:0;font-size:0.8rem;">
+          <li>▸ Control a central heating system</li>
+          <li>▸ Control/monitor a chemical process</li>
+          <li>▸ Control/monitor temperature in a greenhouse</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="color:var(--blue)"><strong>Moisture / Humidity</strong></td>
+      <td>
+        <ul style="list-style:none;padding:0;font-size:0.8rem;">
+          <li>▸ Control/monitor moisture/humidity in soil or air in a greenhouse</li>
+          <li>▸ Monitor dampness in industrial applications (e.g. paint spray booth)</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="color:var(--yellow)"><strong>Light</strong></td>
+      <td>
+        <ul style="list-style:none;padding:0;font-size:0.8rem;">
+          <li>▸ Switch street lighting on at night and off during the day</li>
+          <li>▸ Monitor/control light levels in a greenhouse</li>
+          <li>▸ Switch on car headlights when it gets dark</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="color:var(--red)"><strong>Infrared / Motion</strong></td>
+      <td>
+        <ul style="list-style:none;padding:0;font-size:0.8rem;">
+          <li>▸ Turn on windscreen wipers when rain detected</li>
+          <li>▸ Detect an intruder in a burglar alarm system</li>
+          <li>▸ Count people entering or leaving a building</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="color:var(--purple)"><strong>Pressure</strong></td>
+      <td>
+        <ul style="list-style:none;padding:0;font-size:0.8rem;">
+          <li>▸ Detect intruders in a burglar alarm system</li>
+          <li>▸ Check weight (e.g. weight of a vehicle)</li>
+          <li>▸ Monitor/control processes where gas pressure is important</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="color:var(--teal)"><strong>Acoustic / Sound</strong></td>
+      <td>
+        <ul style="list-style:none;padding:0;font-size:0.8rem;">
+          <li>▸ Pick up noise levels (footsteps, breaking glass) in a burglar alarm</li>
+          <li>▸ Detect noise of liquids dripping from a pipe</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="color:var(--green)"><strong>Gas (O₂ / CO₂)</strong></td>
+      <td>
+        <ul style="list-style:none;padding:0;font-size:0.8rem;">
+          <li>▸ Monitor pollution levels in a river or air</li>
+          <li>▸ Measure O₂ and CO₂ levels in a greenhouse</li>
+          <li>▸ Check for CO₂ or NO₂ leaks in a power station</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="color:var(--cyan)"><strong>pH</strong></td>
+      <td>
+        <ul style="list-style:none;padding:0;font-size:0.8rem;">
+          <li>▸ Monitor/control acidity/alkalinity levels in soil</li>
+          <li>▸ Monitor pollution in rivers</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="color:var(--orange)"><strong>Magnetic Field</strong></td>
+      <td>
+        <ul style="list-style:none;padding:0;font-size:0.8rem;">
+          <li>▸ Detect changes in cell phones, CD players</li>
+          <li>▸ Used in anti-lock braking systems (ABS) in motor vehicles</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+
+  <div class="sub-label">Sensor in a Control System — Example (Greenhouse)</div>
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">1. Temperature Sensor reads value</div>
+      <ul><li>Measures current temperature</li><li>Converts to electrical signal</li><li>Sends to microprocessor</li></ul>
+    </div>
+    <div class="card c-cyan-card">
+      <div class="card-title">2. Processor compares to threshold</div>
+      <ul><li>Compares reading to set value (e.g. 25°C)</li><li>If too low → sends signal to actuator</li><li>If within range → no action</li></ul>
+    </div>
+    <div class="card c-orange-card">
+      <div class="card-title">3. Actuator takes action</div>
+      <ul><li>Turns on heating system</li><li>Opens/closes vents</li><li>Feedback loop continues</li></ul>
+    </div>
+  </div>
+
+  <div class="memory-box"><strong>⚡ EXAM PATTERN — Sensor questions &nbsp;</strong>"State a sensor that could be used to [scenario]" — match sensor to physical quantity being measured. Temperature → temperature sensor. Detecting movement → infrared/motion sensor. Checking gas leaks → gas sensor. Always explain WHAT the sensor measures and HOW it is used in the system.</div>
+</section>
+
+<!-- T6: LOGIC GATES -->
+<section class="topic" id="t6">
+  <div class="topic-num">TOPIC 06 · §3.2</div>
+  <div class="topic-title">Logic Gates & Circuits</div>
+  <div class="topic-sub">NOT · AND · OR · NAND · NOR · XOR · TRUTH TABLES</div>
+
+  <div class="def-box">
+    <div class="def-label">LOGIC GATE TRUTH TABLES</div>
+    <p>All gates except NOT have two inputs. Output depends on input combination.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card c-red-card">
+      <div class="card-title">NOT Gate</div>
+      <ul><li>1 input, 1 output</li><li>Inverts the input</li><li>0→1, 1→0</li></ul>
+    </div>
+    <div class="card c-blue-card">
+      <div class="card-title">AND Gate</div>
+      <ul><li>Output = 1 only if ALL inputs = 1</li><li>0,0→0 · 0,1→0 · 1,0→0 · 1,1→1</li></ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">OR Gate</div>
+      <ul><li>Output = 1 if ANY input = 1</li><li>0,0→0 · 0,1→1 · 1,0→1 · 1,1→1</li></ul>
+    </div>
+    <div class="card c-orange-card">
+      <div class="card-title">NAND Gate</div>
+      <ul><li>NOT AND — inverted AND</li><li>0,0→1 · 0,1→1 · 1,0→1 · 1,1→0</li></ul>
+    </div>
+    <div class="card c-purple-card">
+      <div class="card-title">NOR Gate</div>
+      <ul><li>NOT OR — inverted OR</li><li>0,0→1 · 0,1→0 · 1,0→0 · 1,1→0</li></ul>
+    </div>
+    <div class="card c-yellow-card">
+      <div class="card-title">XOR Gate</div>
+      <ul><li>Output = 1 if inputs are DIFFERENT</li><li>0,0→0 · 0,1→1 · 1,0→1 · 1,1→0</li></ul>
+    </div>
+  </div>
+
+  <table class="cmp-table">
+    <tr><th class="th-cyan">A</th><th class="th-cyan">B</th><th class="th-blue">AND</th><th class="th-green">OR</th><th class="th-orange">NAND</th><th class="th-purple">NOR</th><th class="th-yellow">XOR</th></tr>
+    <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ MEMORY TRICKS &nbsp;</strong>AND = ALL must be 1. OR = ANY can be 1. NAND/NOR = opposite of AND/OR. XOR = eXclusive OR = different inputs = 1.</div>
+</section>
+
+<!-- EXAM -->
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)">
+  <div class="part-num">PART 2</div>
+  <div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div>
+</div>
+<div class="ez-header">
+  <div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 3 · Hardware</div>
+  <div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong> to reveal mark scheme.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-easy">● EASY</div>
+  <div class="q-num">QUESTION 01 · Describe</div>
+  <div class="q-text">Describe two features of an embedded system. <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 2)</h4><ul>
+    <li>Microprocessor within a larger system that performs a specific task (1)</li>
+    <li>Integrated into machine — not easily changed/updated (1)</li>
+    <li>Does not have its own operating system (1)</li>
+    <li>Combination of hardware and software designed for a specific function (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> "Performs a specific task" is always a safe mark. Avoid vague answers like "it is small".</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-easy">● EASY</div>
+  <div class="q-num">QUESTION 02 · Compare</div>
+  <div class="q-text">Compare SRAM and DRAM. Give two differences. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 2 × 2)</h4><ul>
+    <li>SRAM does not need to be refreshed / DRAM needs to be refreshed constantly (1)</li>
+    <li>SRAM is faster / DRAM is slower (1)</li>
+    <li>SRAM has lower data density / DRAM has higher data density (1)</li>
+    <li>SRAM is used in cache / DRAM is used in main memory (1)</li>
+    <li>SRAM uses transistors as flip-flops / DRAM uses transistors and capacitors (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Both sides required for each mark. "SRAM is faster" alone = 0. "SRAM is faster than DRAM because it does not need refreshing" = 1 mark.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-easy">● EASY</div>
+  <div class="q-num">QUESTION 03 · Describe</div>
+  <div class="q-text">Describe the purpose of a buffer. <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Temporary storage for data before it is used by the receiving device (1)</li>
+    <li>Allows processes to operate independently at different speeds (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> "Temporary storage" alone = 1. Add "allows device and processor to operate independently" for second mark.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 04 · Describe</div>
+  <div class="q-text">Describe how a laser printer produces a printed page. <span class="marks">[5]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 5)</h4><ul>
+    <li>Revolving drum is given an electrical charge (1)</li>
+    <li>Laser beam draws the page contents as an electrostatic pattern on the drum (1)</li>
+    <li>Drum coated with oppositely charged toner (1)</li>
+    <li>Toner sticks only to areas charged by the laser (1)</li>
+    <li>Drum rolls over electrostatically charged paper, transferring the pattern (1)</li>
+    <li>Paper passed through fuser/heated to seal the image (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Process question — marks for each correct sequential step. Must include the fuser/heat step for full marks.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 05 · Explain</div>
+  <div class="q-text">Explain why solid state storage (SSD) is preferred over a magnetic hard disk (HDD) in a laptop. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 3)</h4><ul>
+    <li>SSD has no moving parts so it is more reliable / less likely to be damaged by movement (1)</li>
+    <li>SSD has faster data access times — improves laptop performance (1)</li>
+    <li>SSD is lighter and smaller — important for portable devices (1)</li>
+    <li>SSD is silent — no spinning disk noise (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Always link each advantage to WHY it is important for a laptop context. "No moving parts" alone = 1. "No moving parts so more suitable for portable devices that are moved frequently" = stronger.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 06 · Complete Truth Table</div>
+  <div class="q-text">Complete the truth table for: X = (A AND B) OR (NOT A)<span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>A=0, B=0: NOT A=1, A AND B=0, X = 0 OR 1 = 1 (1)</li>
+    <li>A=0, B=1: NOT A=1, A AND B=0, X = 0 OR 1 = 1 (1)</li>
+    <li>A=1, B=0: NOT A=0, A AND B=0, X = 0 OR 0 = 0 (1)</li>
+    <li>A=1, B=1: NOT A=0, A AND B=1, X = 1 OR 0 = 1 (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Work each gate in sequence. Show intermediate columns for AND and NOT A to earn method marks.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-hard">★ CHALLENGE</div>
+  <div class="q-num">QUESTION 07 · Compare</div>
+  <div class="q-text">Compare EPROM and EEPROM. State two differences. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 2 × 2)</h4><ul>
+    <li>EPROM erased using UV light / EEPROM erased using voltage (1)</li>
+    <li>EPROM must be removed from device to be erased / EEPROM erased within device (1)</li>
+    <li>EPROM must be entirely erased before rewriting / EEPROM can erase individual sections (1)</li>
+    <li>EEPROM firmware can be changed more easily than EPROM (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-hard">★ CHALLENGE</div>
+  <div class="q-num">QUESTION 09 · Scenario</div>
+  <div class="q-context">A greenhouse uses an automated computer control system to maintain ideal growing conditions. The system monitors temperature, light levels, moisture in the soil and CO₂ levels.</div>
+  <div class="q-text">For each condition, state the sensor used and describe how the system would respond if the reading falls outside the acceptable range. <span class="marks">[8]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (2 marks per sensor: name + response)</h4><ul>
+    <li>Temperature: temperature sensor (1) — if too low, actuator turns on heating; if too high, opens vents/fans (1)</li>
+    <li>Light: light sensor (1) — if too dark, actuator switches on artificial lighting; if too bright, closes blinds (1)</li>
+    <li>Moisture: moisture/humidity sensor (1) — if soil too dry, actuator turns on irrigation/watering system (1)</li>
+    <li>CO₂: gas sensor (1) — if CO₂ too high, actuator opens vents to allow fresh air in (1)</li>
+  </ul>
+  <div class="examiner-hint"><strong>Examiner:</strong> Each answer needs: correct sensor name (1) + specific actuator response linked to the direction of the error (1). "Does something" = 0. "Turns on the heater if temperature is too low" = 1 mark for response.</div></div>
+</div>
+
+
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Feedback ensures the system operates within given criteria / set parameters (1)</li>
+    <li>Allows the system output to affect the system input (1)</li>
+    <li>Conditions can be automatically adjusted without human intervention (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> "Without feedback the system would not know if the output was correct and could not self-correct" = strong answer.</div></div>
+</div>
+</div>
+
+<!-- FLASHCARDS -->
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">PART 3</div><div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:5px;">CH 3 · HARDWARE · 20 CARDS</div><div style="font-size:0.84rem;color:var(--dim2)">Click card or FLIP. ✓/✗ to track.</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress">
+    <div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div>
+    <div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div>
+    <div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div>
+  </div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 20</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Session Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button>&nbsp;<button class="fc-btn" onclick="FC.reviewMissed()">Review Missed</button></div>
+</div>
+</div>
+
+</main>
+</div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'DEFINITION',q:'What is an embedded system?',a:'A microprocessor within a larger system that performs a specific task. Has memory, I/O and processor. Integrated into machine, not easily changed. No separate OS.'},
+  {label:'DISADVANTAGES',q:'Give two disadvantages of embedded systems.',a:'• Difficult to change/update firmware by user\n• Cannot easily be adapted for another task\n• Difficult to update or repair — usually replaced\n• Cannot take advantage of new technology'},
+  {label:'COMPARE',q:'HDD vs SSD — 3 differences',a:'• HDD: has moving parts / SSD: no moving parts\n• HDD: slower access / SSD: faster\n• HDD: cheaper per GB / SSD: more expensive\n• HDD: less reliable (mechanical) / SSD: more reliable'},
+  {label:'DESCRIBE',q:'How does a magnetic hard disk store data?',a:'Platters divided into sectors and tracks. Surface can be magnetised. Read/write head on arm. Writing: current variation → magnetic field variation. Reading: magnetic field variation → current variation.'},
+  {label:'DESCRIBE',q:'How does solid state memory store data?',a:'Grid of columns and rows with two transistors at each intersection: floating gate (stores voltage = 0 or 1) and control gate (controls charge movement). Cannot overwrite — must erase then write.'},
+  {label:'COMPARE',q:'SRAM vs DRAM — 3 differences',a:'• SRAM: uses flip-flops / DRAM: transistor + capacitor\n• SRAM: no refresh needed (faster) / DRAM: needs refresh\n• SRAM: lower density, more expensive / DRAM: higher density, cheaper\n• SRAM: used in cache / DRAM: used in main memory'},
+  {label:'COMPARE',q:'EPROM vs EEPROM — how they are erased',a:'EPROM: erased using UV light, must be physically removed from device, must erase entirely.\nEEPROM: erased using voltage, erased within device, can erase individual sections.'},
+  {label:'DEFINITION',q:'What is the purpose of a buffer?',a:'Temporary storage for data before it is used by the receiving device. Allows processes to operate independently at different speeds. e.g. printer buffer, video streaming buffer.'},
+  {label:'PROCESS',q:'Describe the buffer process (3 steps)',a:'1. Computer sends data/instructions to buffer\n2. Data transferred from buffer to device (processor continues processing)\n3. When buffer empty, interrupt sent requesting more data'},
+  {label:'COMPARE',q:'Monitoring system vs Control system',a:'Monitoring: records/reports data only, outputs alerts to human, does not take automatic action.\nControl: records data AND takes action, outputs signal to actuator, uses feedback loop.'},
+  {label:'DEFINITION',q:'What is the role of an actuator?',a:'Generates a signal / converts electrical energy into mechanical energy to produce a physical action (e.g. opening a valve, turning a motor).'},
+  {label:'EXPLAIN',q:'Why is feedback important in a control system?',a:'Ensures system operates within set criteria. Allows system output to affect system input. Conditions can be automatically adjusted without human intervention.'},
+  {label:'SENSORS',q:'What sensor is used to control a central heating system?',a:'Temperature sensor.\nDetects current temperature → compares to set value → if too low, sends signal to actuator (boiler) to turn on heating.'},
+  {label:'SENSORS',q:'What sensor detects intruders in a burglar alarm? Give two options.',a:'Infrared/motion sensor — detects movement/body heat.\nPressure sensor — detects weight on floor/mat.\nAcoustic/sound sensor — detects breaking glass or footsteps.'},
+  {label:'SENSORS',q:'Name the sensor used in each scenario: (a) greenhouse humidity, (b) car headlights, (c) gas leak, (d) river pollution',a:'(a) Moisture/humidity sensor\n(b) Light sensor\n(c) Gas sensor (O₂/CO₂)\n(d) pH sensor or gas sensor'},
+  {label:'SENSORS',q:'What is a sensor and what role does it play in a control system?',a:'A device that detects/measures a physical quantity and converts it to an electrical signal. In a control system: sensor reads value → processor compares to threshold → actuator takes action if outside range.'},
+  {label:'SENSORS',q:'Give the full list of sensor types you need to know.',a:'• Temperature\n• Moisture/humidity\n• Light\n• Infrared/motion\n• Pressure\n• Acoustic/sound\n• Gas (O₂/CO₂)\n• pH\n• Magnetic field'},
+  {label:'PROCESS',q:'How does a laser printer produce a page? (5 steps)',a:'1. Drum given electrical charge\n2. Laser draws image as electrostatic pattern\n3. Toner (oppositely charged) sticks to laser-charged areas\n4. Drum transfers pattern to charged paper\n5. Paper heated through fuser to seal image'},
+  {label:'DESCRIBE',q:'How does a microphone work?',a:'Sound waves cause diaphragm to vibrate → coil moves past magnet → electrical signal produced. Converts sound waves to electrical signals.'},
+  {label:'DESCRIBE',q:'How does a speaker work?',a:'Electric current → coil → electromagnetic field → electromagnet repelled/attracted by permanent magnet → coil vibrates → diaphragm vibrates → sound waves produced.'},
+  {label:'COMPARE',q:'Resistive vs Capacitive touchscreen',a:'Resistive: two layers, touch connects layers completing circuit, works with any object.\nCapacitive: several layers, touch changes electric current, requires conductive object (finger), identifies coordinates via microprocessor.'},
+  {label:'TRUTH TABLE',q:'AND gate — output for all input combinations',a:'0,0 → 0\n0,1 → 0\n1,0 → 0\n1,1 → 1\n(Output 1 only if ALL inputs are 1)'},
+  {label:'TRUTH TABLE',q:'OR gate — output for all input combinations',a:'0,0 → 0\n0,1 → 1\n1,0 → 1\n1,1 → 1\n(Output 1 if ANY input is 1)'},
+  {label:'TRUTH TABLE',q:'XOR gate — output for all input combinations',a:'0,0 → 0\n0,1 → 1\n1,0 → 1\n1,1 → 0\n(Output 1 if inputs are DIFFERENT)'},
+  {label:'DESCRIBE',q:'Describe how an optical disk stores data.',a:'Rotating disk with concentric tracks on reflective metal layer. Data stored as pits/lands (crystalline/amorphous states = 0s and 1s). Reading: laser light reflects differently off each state. Writing: laser changes surface between states.'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','t5b','t6','exam','flash']);
+</script>
+</body>
+</html>

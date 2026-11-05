@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>9618 AS & A Level CS — Complete Revision Hub</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.hub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;padding:20px 48px 32px;}
+.ch-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;text-decoration:none;color:var(--text);transition:all .2s;display:flex;flex-direction:column;gap:8px;}
+.ch-card:hover{border-color:var(--border2);background:var(--card2);transform:translateY(-2px);}
+.ch-num{font-family:'Share Tech Mono',monospace;font-size:0.6rem;color:var(--dim);letter-spacing:2px;display:flex;align-items:center;gap:8px;}
+.ch-title{font-size:1rem;font-weight:800;color:#fff;line-height:1.3;}
+.ch-sub{font-size:0.76rem;color:var(--dim2);line-height:1.5;}
+.ch-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px;}
+.tag{font-family:'Share Tech Mono',monospace;font-size:0.57rem;padding:2px 7px;border-radius:3px;letter-spacing:1px;}
+.ch-arrow{font-size:1.1rem;margin-top:auto;color:var(--dim);transition:color .2s;}
+.ch-card:hover .ch-arrow{color:var(--cyan);}
+.section-header{padding:24px 48px 6px;border-top:1px solid var(--border);margin-top:8px;}
+.sec-label{font-family:'Share Tech Mono',monospace;font-size:0.6rem;color:var(--dim);letter-spacing:3px;}
+.sec-title{font-size:0.95rem;font-weight:800;color:var(--text);margin-top:3px;}
+.as-pip{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:0.55rem;padding:1px 6px;border-radius:3px;background:rgba(0,229,255,0.1);color:var(--cyan);border:1px solid rgba(0,229,255,0.25);}
+.al-pip{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:0.55rem;padding:1px 6px;border-radius:3px;background:rgba(185,126,255,0.1);color:var(--purple);border:1px solid rgba(185,126,255,0.25);}
+.p4-pip{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:0.55rem;padding:1px 6px;border-radius:3px;background:rgba(255,214,0,0.1);color:var(--yellow);border:1px solid rgba(255,214,0,0.25);}
+.hub-hero{padding:48px 48px 36px;background:linear-gradient(135deg,rgba(61,158,255,0.06) 0%,rgba(185,126,255,0.04) 100%);border-bottom:1px solid var(--border);}
+.hub-hero h1{font-family:'Orbitron',monospace;font-size:clamp(1.4rem,4vw,2.4rem);color:#fff;letter-spacing:2px;line-height:1.2;}
+.hub-hero h1 .accent{color:var(--cyan);text-shadow:0 0 24px rgba(0,229,255,0.35);}
+.hub-hero p{color:var(--dim2);margin-top:8px;font-size:0.85rem;max-width:540px;line-height:1.6;}
+.stats-row{display:flex;gap:16px;margin-top:18px;flex-wrap:wrap;}
+.stat-chip{background:var(--card2);border:1px solid var(--border2);border-radius:8px;padding:8px 16px;text-align:center;}
+.stat-chip .n{font-family:'Orbitron',monospace;font-size:1.3rem;color:var(--cyan);}
+.stat-chip .l{font-family:'Share Tech Mono',monospace;font-size:0.58rem;color:var(--dim);letter-spacing:1px;margin-top:2px;}
+.nav-chapter{display:block;padding:6px 14px;font-size:0.72rem;text-decoration:none;color:var(--dim2);transition:color .15s;border-left:2px solid transparent;}
+.nav-chapter:hover{color:var(--text);}
+.nav-chapter.as-link{border-left-color:rgba(0,229,255,0.2);}
+.nav-chapter.al-link{border-left-color:rgba(185,126,255,0.2);}
+.nav-chapter.as-link:hover{border-left-color:var(--cyan);color:var(--cyan);}
+.nav-chapter.al-link:hover{border-left-color:var(--purple);color:var(--purple);}
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 CS</div><div style="font-family:'Share Tech Mono',monospace;font-size:0.58rem;color:var(--dim);margin-top:2px;">REVISION HUB</div></div></div>
+  <div class="nav-section">AS · PAPER 1</div>
+  <a href="ch1.html" class="nav-chapter as-link">Ch1 · Info Representation</a>
+  <a href="ch2.html" class="nav-chapter as-link">Ch2 · Networks & Internet</a>
+  <a href="ch3.html" class="nav-chapter as-link">Ch3 · Hardware</a>
+  <a href="ch4.html" class="nav-chapter as-link">Ch4 · Processor Fundamentals</a>
+  <a href="ch5.html" class="nav-chapter as-link">Ch5 · System Software</a>
+  <a href="ch6.html" class="nav-chapter as-link">Ch6 · Security & Integrity</a>
+  <a href="ch7.html" class="nav-chapter as-link">Ch7 · Ethics & Ownership</a>
+  <a href="ch8.html" class="nav-chapter as-link">Ch8 · Databases</a>
+  <div class="nav-section">AS · PAPER 2</div>
+  <a href="ch9.html" class="nav-chapter as-link">Ch9 · Algorithm Design</a>
+  <a href="ch10.html" class="nav-chapter as-link">Ch10 · Data Types</a>
+  <a href="ch11.html" class="nav-chapter as-link">Ch11 · Programming</a>
+  <a href="ch12.html" class="nav-chapter as-link">Ch12 · Software Dev</a>
+  <div class="nav-section">A LEVEL · PAPER 3</div>
+  <a href="ch13.html" class="nav-chapter al-link">Ch13 · Data Representation</a>
+  <a href="ch14.html" class="nav-chapter al-link">Ch14 · Communication Tech</a>
+  <a href="ch15.html" class="nav-chapter al-link">Ch15 · Hardware & VMs</a>
+  <a href="ch16.html" class="nav-chapter al-link">Ch16 · System Software</a>
+  <a href="ch17.html" class="nav-chapter al-link">Ch17 · Security</a>
+  <a href="ch18.html" class="nav-chapter al-link">Ch18 · AI</a>
+  <div class="nav-section">A LEVEL · PAPER 4</div>
+  <a href="ch19.html" class="nav-chapter al-link">Ch19 · Comp Thinking</a>
+  <a href="ch20.html" class="nav-chapter al-link">Ch20 · Further Programming</a>
+  <a href="p4python.html" class="nav-chapter al-link">P4 · Python Reference</a>
+</nav>
+
+<main class="main">
+<div class="hub-hero">
+  <div class="hero-badge">CAMBRIDGE 9618 · AS & A LEVEL COMPUTER SCIENCE</div>
+  <h1>Complete <span class="accent">Revision Hub</span></h1>
+  <p>All 20 chapters — theory, exam practice with mark schemes, and flashcards. Plus Python Paper 4 template reference.</p>
+  <div class="stats-row">
+    <div class="stat-chip"><div class="n">20</div><div class="l">CHAPTERS</div></div>
+    <div class="stat-chip"><div class="n">400+</div><div class="l">FLASHCARDS</div></div>
+    <div class="stat-chip"><div class="n">160+</div><div class="l">EXAM Qs</div></div>
+    <div class="stat-chip"><div class="n">4</div><div class="l">PAPERS</div></div>
+  </div>
+</div>
+
+<div class="section-header" style="border-top:none;padding-top:16px;">
+  <div class="sec-label">AS LEVEL — PAPER 1</div>
+  <div class="sec-title">Theory Foundations</div>
+</div>
+<div class="hub-grid">
+  <a href="ch1.html" class="ch-card"><div class="ch-num">CH 01 <span class="as-pip">AS</span></div><div class="ch-title">Information Representation</div><div class="ch-sub">BCD, hex, ASCII/Unicode, bitmap/vector, sound, lossy/lossless compression, RLE</div><div class="ch-tags"><span class="tag" style="background:rgba(0,229,255,0.1);color:var(--cyan)">Number Systems</span><span class="tag" style="background:rgba(77,255,145,0.1);color:var(--green)">Multimedia</span><span class="tag" style="background:rgba(255,159,67,0.1);color:var(--orange)">Compression</span></div><div class="ch-arrow">→</div></a>
+  <a href="ch2.html" class="ch-card"><div class="ch-num">CH 02 <span class="as-pip">AS</span></div><div class="ch-title">Networks & The Internet</div><div class="ch-sub">LAN/WAN, topologies, Ethernet/CSMA-CD, IP addressing, subnetting, DNS, cloud</div><div class="ch-tags"><span class="tag" style="background:rgba(61,158,255,0.12);color:var(--blue)">Topologies</span><span class="tag" style="background:rgba(77,255,145,0.1);color:var(--green)">IP/DNS</span><span class="tag" style="background:rgba(185,126,255,0.1);color:var(--purple)">Cloud</span></div><div class="ch-arrow">→</div></a>
+  <a href="ch3.html" class="ch-card"><div class="ch-num">CH 03 <span class="as-pip">AS</span></div><div class="ch-title">Hardware</div><div class="ch-sub">Storage, I/O devices, RAM/ROM, buffers, 9 sensor types, control systems, logic gates</div><div class="ch-tags"><span class="tag" style="background:rgba(255,83,112,0.1);color:var(--red)">Storage</span><span class="tag" style="background:rgba(255,159,67,0.1);color:var(--orange)">Sensors</span><span class="tag" style="background:rgba(255,214,0,0.1);color:var(--yellow)">Logic Gates</span></div><div class="ch-arrow">→</div></a>
+  <a href="ch4.html" class="ch-card"><div class="ch-num">CH 04 <span class="as-pip">AS</span></div><div class="ch-title">Processor Fundamentals</div><div class="ch-sub">Von Neumann, all registers, F-E cycle, RTN, interrupts, assembly, addressing modes, bit masking</div><div class="ch-tags"><span class="tag" style="background:rgba(0,229,255,0.1);color:var(--cyan)">CPU</span><span class="tag" style="background:rgba(77,255,145,0.1);color:var(--green)">F-E Cycle</span><span class="tag" style="background:rgba(185,126,255,0.1);color:var(--purple)">Assembly</span></div><div class="ch-arrow">→</div></a>
+  <a href="ch5.html" class="ch-card"><div class="ch-num">CH 05 <span class="as-pip">AS</span></div><div class="ch-title">System Software</div><div class="ch-sub">OS 6 management tasks, utilities, program libraries, DLL, compiler vs interpreter, IDE tools</div><div class="ch-tags"><span class="tag" style="background:rgba(61,158,255,0.12);color:var(--blue)">OS</span><span class="tag" style="background:rgba(38,217,200,0.1);color:var(--teal)">Utilities</span><span class="tag" style="background:rgba(255,159,67,0.1);color:var(--orange)">IDE</span></div><div class="ch-arrow">→</div></a>
+  <a href="ch6.html" class="ch-card"><div class="ch-num">CH 06 <span class="as-pip">AS</span></div><div class="ch-title">Security, Privacy & Data Integrity</div><div class="ch-sub">Threats (virus/spyware/phishing/pharming), firewall, encryption, validation, parity, checksum</div><div class="ch-tags"><span class="tag" style="background:rgba(255,83,112,0.1);color:var(--red)">Threats</span><span class="tag" style="background:rgba(77,255,145,0.1);color:var(--green)">Security</span><span class="tag" style="background:rgba(0,229,255,0.1);color:var(--cyan)">Validation</span></div><div class="ch-arrow">→</div></a>
+  <a href="ch7.html" class="ch-card"><div class="ch-num">CH 07 <span class="as-pip">AS</span></div><div class="ch-title">Ethics & Ownership</div><div class="ch-sub">SE Code of Ethics (8 principles), BCS/IEEE, copyright, open source/shareware/commercial, AI impacts</div><div class="ch-tags"><span class="tag" style="background:rgba(185,126,255,0.1);color:var(--purple)">SE Code</span><span class="tag" style="background:rgba(61,158,255,0.12);color:var(--blue)">Copyright</span><span class="tag" style="background:rgba(255,159,67,0.1);color:var(--orange)">Licensing</span></div><div class="ch-arrow">→</div></a>
+  <a href="ch8.html" class="ch-card"><div class="ch-num">CH 08 <span class="as-pip">AS</span></div><div class="ch-title">Databases</div><div class="ch-sub">Relational DB vs file-based, normalisation 1NF→3NF, SQL DDL/DML with highlighting, DBMS</div><div class="ch-tags"><span class="tag" style="background:rgba(0,229,255,0.1);color:var(--cyan)">Normalisation</span><span class="tag" style="background:rgba(77,255,145,0.1);color:var(--green)">SQL</span><span class="tag" style="background:rgba(185,126,255,0.1);color:var(--purple)">DBMS</span></div><div class="ch-arrow">→</div></a>
+</div>
+
+<div class="section-header">
+  <div class="sec-label">AS LEVEL — PAPER 2</div>
+  <div class="sec-title">Programming & Problem Solving</div>
+</div>
+<div class="hub-grid">
+  <a href="ch9.html" class="ch-card"><div class="ch-num">CH 09 <span class="as-pip">AS</span></div><div class="ch-title">Algorithm Design & Problem Solving</div><div class="ch-sub">Abstraction, decomposition, pseudocode reference, linear/binary search, bubble sort, Big O</div><div class="ch-tags"><span class="tag" style="background:rgba(61,158,255,0.12);color:var(--blue)">Abstraction</span><span class="tag" style="background:rgba(77,255,145,0.1);color:var(--green)">Searching</span><span class="tag" style="background:rgba(255,159,67,0.1);color:var(--orange)">Big O</span></div><div class="ch-arrow">→</div></a>
+  <a href="ch10.html" class="ch-card"><div class="ch-num">CH 10 <span class="as-pip">AS</span></div><div class="ch-title">Data Types & Structures</div><div class="ch-sub">Records, arrays, files (READ/WRITE/APPEND), linked lists (add/remove/traverse), queues, stacks</div><div class="ch-tags"><span class="tag" style="background:rgba(185,126,255,0.1);color:var(--purple)">Records</span><span class="tag" style="background:rgba(38,217,200,0.1);color:var(--teal)">ADTs</span><span class="tag" style="background:rgba(77,255,145,0.1);color:var(--green)">Files</span></div><div class="ch-arrow">→</div></a>
+  <a href="ch11.html" class="ch-card"><div class="ch-num">CH 11 <span class="as-pip">AS</span></div><div class="ch-title">Programming</div><div class="ch-sub">Good practice, constants, IF/CASE, FOR/WHILE/REPEAT, procedures vs functions, BYVAL/BYREF</div><div class="ch-tags"><span class="tag" style="background:rgba(77,255,145,0.1);color:var(--green)">Constructs</span><span class="tag" style="background:rgba(255,214,0,0.1);color:var(--yellow)">Functions</span><span class="tag" style="background:rgba(0,229,255,0.1);color:var(--cyan)">Parameters</span></div><div class="ch-arrow">→</div></a>
+  <a href="ch12.html" class="ch-card"><div class="ch-num">CH 12 <span class="as-pip">AS</span></div><div class="ch-title">Software Development</div><div class="ch-sub">PDLC, waterfall/iterative/RAD models, structure charts, state diagrams, testing, error types, maintenance</div><div class="ch-tags"><span class="tag" style="background:rgba(255,83,112,0.1);color:var(--red)">Testing</span><span class="tag" style="background:rgba(185,126,255,0.1);color:var(--purple)">PDLC</span><span class="tag" style="background:rgba(255,159,67,0.1);color:var(--orange)">Models</span></div><div class="ch-arrow">→</div></a>
+</div>
+
+<div class="section-header">
+  <div class="sec-label">A LEVEL — PAPER 3</div>
+  <div class="sec-title">Advanced Theory</div>
+</div>
+<div class="hub-grid">
+  <a href="ch13.html" class="ch-card"><div class="ch-num">CH 13 <span class="al-pip">A LEVEL</span></div><div class="ch-title">Data Representation</div><div class="ch-sub">Composite/non-composite UDTs, serial/sequential/random files, hashing & collisions, floating-point, normalisation</div><div class="ch-tags"><span class="tag" style="background:rgba(185,126,255,0.1);color:var(--purple)">UDTs</span><span class="tag" style="background:rgba(0,229,255,0.1);color:var(--cyan)">File Org</span><span class="tag" style="background:rgba(77,255,145,0.1);color:var(--green)">Float Point</span></div><div class="ch-arrow">→</div></a>
+  <a href="ch14.html" class="ch-card"><div class="ch-num">CH 14 <span class="al-pip">A LEVEL</span></div><div class="ch-title">Communication Technologies</div><div class="ch-sub">Protocols, SSL/TLS, TCP/IP 4 layers, SMTP/POP3/IMAP/FTP/BitTorrent, circuit vs packet switching, routers</div><div class="ch-tags"><span class="tag" style="background:rgba(61,158,255,0.12);color:var(--blue)">TCP/IP</span><span class="tag" style="background:rgba(255,159,67,0.1);color:var(--orange)">Protocols</span><span class="tag" style="background:rgba(77,255,145,0.1);color:var(--green)">Switching</span></div><div class="ch-arrow">→</div></a>
+  <a href="ch15.html" class="ch-card"><div class="ch-num">CH 15 <span class="al-pip">A LEVEL</span></div><div class="ch-title">Hardware & Virtual Machines</div><div class="ch-sub">RISC vs CISC (8 features), pipelining, SISD/SIMD/MISD/MIMD, VMs, half/full adders, SR/JK flip-flops, K-maps</div><div class="ch-tags"><span class="tag" style="background:rgba(255,83,112,0.1);color:var(--red)">RISC/CISC</span><span class="tag" style="background:rgba(185,126,255,0.1);color:var(--purple)">VMs</span><span class="tag" style="background:rgba(255,214,0,0.1);color:var(--yellow)">Boolean</span></div><div class="ch-arrow">→</div></a>
+  <a href="ch16.html" class="ch-card"><div class="ch-num">CH 16 <span class="al-pip">A LEVEL</span></div><div class="ch-title">System Software (Advanced)</div><div class="ch-sub">DMA, process states & transitions, Round Robin/SJF/FCFS/SRT, virtual memory, paging, segmentation, BNF, RPN</div><div class="ch-tags"><span class="tag" style="background:rgba(0,229,255,0.1);color:var(--cyan)">Scheduling</span><span class="tag" style="background:rgba(38,217,200,0.1);color:var(--teal)">Virtual Mem</span><span class="tag" style="background:rgba(255,159,67,0.1);color:var(--orange)">BNF/RPN</span></div><div class="ch-arrow">→</div></a>
+  <a href="ch17.html" class="ch-card"><div class="ch-num">CH 17 <span class="al-pip">A LEVEL</span></div><div class="ch-title">Security</div><div class="ch-sub">Asymmetric/symmetric encryption, quantum cryptography, SSL/TLS handshake, digital certificates & signatures</div><div class="ch-tags"><span class="tag" style="background:rgba(77,255,145,0.1);color:var(--green)">Encryption</span><span class="tag" style="background:rgba(255,214,0,0.1);color:var(--yellow)">SSL/TLS</span><span class="tag" style="background:rgba(185,126,255,0.1);color:var(--purple)">Quantum</span></div><div class="ch-arrow">→</div></a>
+  <a href="ch18.html" class="ch-card"><div class="ch-num">CH 18 <span class="al-pip">A LEVEL</span></div><div class="ch-title">Artificial Intelligence</div><div class="ch-sub">Graphs in AI, A*/Dijkstra's, neural networks, back propagation, deep learning, supervised/unsupervised/reinforcement</div><div class="ch-tags"><span class="tag" style="background:rgba(255,159,67,0.1);color:var(--orange)">Neural Nets</span><span class="tag" style="background:rgba(61,158,255,0.12);color:var(--blue)">Deep Learning</span><span class="tag" style="background:rgba(77,255,145,0.1);color:var(--green)">ML Types</span></div><div class="ch-arrow">→</div></a>
+</div>
+
+<div class="section-header">
+  <div class="sec-label">A LEVEL — PAPER 4</div>
+  <div class="sec-title">Advanced Programming & Python</div>
+</div>
+<div class="hub-grid">
+  <a href="ch19.html" class="ch-card"><div class="ch-num">CH 19 <span class="al-pip">A LEVEL</span></div><div class="ch-title">Computational Thinking & Problem Solving</div><div class="ch-sub">Recursion (winding/unwinding), binary tree traversals, graphs as ADTs, dictionary ADT, Big O comparison</div><div class="ch-tags"><span class="tag" style="background:rgba(0,229,255,0.1);color:var(--cyan)">Recursion</span><span class="tag" style="background:rgba(185,126,255,0.1);color:var(--purple)">Binary Trees</span><span class="tag" style="background:rgba(77,255,145,0.1);color:var(--green)">Graphs</span></div><div class="ch-arrow">→</div></a>
+  <a href="ch20.html" class="ch-card"><div class="ch-num">CH 20 <span class="al-pip">A LEVEL</span></div><div class="ch-title">Further Programming</div><div class="ch-sub">Paradigms, OOP (class/inheritance/polymorphism/encapsulation/getter/setter), declarative, exception handling</div><div class="ch-tags"><span class="tag" style="background:rgba(255,159,67,0.1);color:var(--orange)">OOP</span><span class="tag" style="background:rgba(255,83,112,0.1);color:var(--red)">Declarative</span><span class="tag" style="background:rgba(255,214,0,0.1);color:var(--yellow)">Exceptions</span></div><div class="ch-arrow">→</div></a>
+  <a href="p4python.html" class="ch-card"><div class="ch-num">P4 REF <span class="p4-pip">PYTHON</span></div><div class="ch-title">Python Paper 4 Reference</div><div class="ch-sub">All code templates: searching, sorting, file I/O, OOP classes, exceptions, stack, queue, linked list, recursion</div><div class="ch-tags"><span class="tag" style="background:rgba(255,214,0,0.1);color:var(--yellow)">Search/Sort</span><span class="tag" style="background:rgba(255,214,0,0.1);color:var(--yellow)">ADTs</span><span class="tag" style="background:rgba(255,214,0,0.1);color:var(--yellow)">OOP</span><span class="tag" style="background:rgba(255,214,0,0.1);color:var(--yellow)">Files</span></div><div class="ch-arrow">→</div></a>
+</div>
+
+</main>
+</div>
+</body>
+</html>

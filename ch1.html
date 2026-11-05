@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 1 — Information Representation | 9618</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 1</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1.1 Data Representation</button>
+  <button class="nav-item" onclick="scrollToId('t2')">1.2 Bitmap Graphics</button>
+  <button class="nav-item" onclick="scrollToId('t3')">1.3 Vector Graphics</button>
+  <button class="nav-item" onclick="scrollToId('t4')">1.4 Sound</button>
+  <button class="nav-item" onclick="scrollToId('t5')">1.5 Compression</button>
+  <button class="nav-item" onclick="scrollToId('t6')">1.6 Run-Length Encoding</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+
+<section class="hero">
+  <div class="hero-badge">CHAPTER 01 · PAPER 1</div>
+  <h1>Information <span>Representation</span></h1>
+  <p>Data representation, multimedia (graphics & sound), and compression. Section 1.1–1.3 of the syllabus.</p>
+  <div class="hero-pills">
+    <div class="hero-pill"><span>16</span> Flashcards</div>
+    <div class="hero-pill"><span>8</span> Exam Questions</div>
+    <div class="hero-pill"><span>6</span> Topics</div>
+  </div>
+</section>
+
+<div class="part-header" id="part1">
+  <div class="part-num">PART 1</div>
+  <div class="part-title" style="color:var(--cyan)">THEORY — INFORMATION REPRESENTATION</div>
+</div>
+
+<!-- T1: DATA REPRESENTATION -->
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §1.1</div>
+  <div class="topic-title">Data Representation</div>
+  <div class="topic-sub">BCD · HEX · ASCII · UNICODE · CHARACTER SETS</div>
+
+  <div class="def-box">
+    <div class="def-label">CHARACTER SET</div>
+    <p>All of the characters that the computer can represent/use. Each character has a corresponding unique binary number.</p>
+  </div>
+
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-blue">ASCII</th><th class="th-orange">Extended ASCII</th><th class="th-green">UNICODE</th></tr>
+    <tr><td>Bit length</td><td>7-bit</td><td>8-bit</td><td>16-bit (UTF-16)</td></tr>
+    <tr><td>Characters</td><td>128</td><td>256</td><td>100,000+</td></tr>
+    <tr><td>Languages</td><td>English only</td><td>Western European</td><td>All world languages</td></tr>
+    <tr><td>Relationship</td><td>Base standard</td><td>ASCII superset</td><td>ASCII subset of Unicode</td></tr>
+  </table>
+
+  <div class="sub-label">BCD — Binary Coded Decimal</div>
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">Benefits of BCD</div>
+      <ul>
+        <li>Easier to convert between BCD and denary</li>
+        <li>Less complex to encode/decode for programmers</li>
+        <li>Easier for digital equipment to display digits</li>
+        <li>Can represent monetary values exactly</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">Applications of BCD</div>
+      <ul>
+        <li>Electronic displays — calculators, digital clocks</li>
+        <li>Only need to show individual digits</li>
+        <li>Storage of date/time in BIOS</li>
+        <li>Conversion with denary is simpler</li>
+      </ul>
+    </div>
+    <div class="card c-yellow-card">
+      <div class="card-title">Applications of Hex</div>
+      <ul>
+        <li>MAC addresses</li>
+        <li>HTML colour codes</li>
+        <li>Memory addresses in assembly / machine code</li>
+        <li>Compact representation of binary</li>
+      </ul>
+    </div>
+  </div>
+  <div class="memory-box"><strong>⚡ ASCII EXAM TIP &nbsp;</strong>Each character has a unique code. Character replaced by its code. Codes stored in same order as in the word. Students will NOT be expected to memorise specific ASCII values.</div>
+</section>
+
+<!-- T2: BITMAP -->
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §1.2</div>
+  <div class="topic-title">Bitmap Graphics</div>
+  <div class="topic-sub">PIXEL · FILE HEADER · RESOLUTION · BIT DEPTH · COLOUR DEPTH</div>
+
+  <div class="def-box">
+    <div class="def-label">BITMAP GRAPHIC</div>
+    <p>Made up of <strong>pixels</strong>, each of a single colour (with each colour having a unique binary value). Stored as a sequence of binary numbers — one binary value per pixel.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card c-cyan-card">
+      <div class="card-title">🔲 Pixel</div>
+      <ul><li>The smallest addressable element in an image</li><li>Each pixel stores one colour value</li></ul>
+    </div>
+    <div class="card c-blue-card">
+      <div class="card-title">📋 File Header</div>
+      <ul><li>Stores metadata about the bitmap</li><li>Contains: file type, compression type, dimensions (W×H), file size, colour depth</li></ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">📐 Image Resolution</div>
+      <ul><li>Total number of pixels in image (W × H)</li><li>Higher resolution → sharper, less pixelated</li><li>More pixels → larger file size</li></ul>
+    </div>
+    <div class="card c-yellow-card">
+      <div class="card-title">🎨 Bit/Colour Depth</div>
+      <ul><li>Number of bits used per pixel</li><li>Determines number of colours representable</li><li>More bits → greater colour range → larger file</li></ul>
+    </div>
+  </div>
+
+  <div class="sub-label">File Size Calculation</div>
+  <div class="def-box">
+    <div class="def-label">FORMULA</div>
+    <p><strong>File size (bits)</strong> = Image resolution (pixels) × Colour depth (bits per pixel)<br>
+    Or: Width × Height × Bits per pixel<br>
+    Divide by 8 for bytes, 1024 for KB, 1024² for MB</p>
+  </div>
+
+  <table class="cmp-table">
+    <tr><th class="th-cyan">CHANGE</th><th class="th-green">EFFECT ON QUALITY</th><th class="th-yellow">EFFECT ON FILE SIZE</th></tr>
+    <tr><td>Increase resolution</td><td>Sharper, more detail, less pixelation</td><td>Increases (more pixels to store)</td></tr>
+    <tr><td>Increase bit depth</td><td>More colours, closer to original image</td><td>Increases (more bits per pixel)</td></tr>
+  </table>
+
+  <div class="card-grid">
+    <div class="card c-green-card">
+      <div class="card-title">✅ Bitmap Advantages</div>
+      <ul><li>Widely supported</li><li>Accurate colour representation</li><li>Good for complex images (photos)</li><li>Can be compressed significantly</li></ul>
+    </div>
+    <div class="card c-red-card">
+      <div class="card-title">❌ Bitmap Disadvantages</div>
+      <ul><li>Prone to pixelation when enlarged</li><li>Large file size</li><li>Harder to edit (each pixel individually)</li></ul>
+    </div>
+  </div>
+  <div class="memory-box"><strong>⚡ EXAM FORMULA &nbsp;</strong>File size = Width × Height × Colour depth. E.g. 100×100 pixels, 24-bit colour = 100×100×24 = 240,000 bits = 30,000 bytes = ~29.3 KB.</div>
+</section>
+
+<!-- T3: VECTOR -->
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §1.2</div>
+  <div class="topic-title">Vector Graphics</div>
+  <div class="topic-sub">DRAWING OBJECTS · PROPERTIES · DRAWING LIST</div>
+
+  <div class="def-box">
+    <div class="def-label">VECTOR GRAPHIC</div>
+    <p>Stores a set of <strong>instructions</strong> about how to draw shapes. Does NOT store individual pixel values — stores coordinates and mathematical formulae for each object.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">Drawing Object</div>
+      <ul><li>Component of vector graphic</li><li>Created using a formula/command</li><li>e.g. circle, rectangle, line</li></ul>
+    </div>
+    <div class="card c-cyan-card">
+      <div class="card-title">Drawing Property</div>
+      <ul><li>Contains data about the shapes</li><li>Defines appearance of a drawing object</li><li>e.g. colour, stroke width, fill</li></ul>
+    </div>
+    <div class="card c-purple-card">
+      <div class="card-title">Drawing List</div>
+      <ul><li>List of all drawing objects in image</li><li>Stores commands to draw each object</li><li>Contains object attributes</li></ul>
+    </div>
+  </div>
+
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-green">VECTOR</th><th class="th-orange">BITMAP</th></tr>
+    <tr><td>Storage</td><td>Instructions/formulae</td><td>Binary value per pixel</td></tr>
+    <tr><td>Scaling</td><td>Does NOT pixelate when enlarged</td><td>Pixelates when enlarged</td></tr>
+    <tr><td>File size</td><td>Smaller — just instructions</td><td>Larger — data per pixel</td></tr>
+    <tr><td>Editing</td><td>Individual objects editable</td><td>Must edit pixel by pixel</td></tr>
+    <tr><td>Compression</td><td>Does NOT compress well</td><td>Can be compressed significantly</td></tr>
+    <tr><td>Best for</td><td>Logos, diagrams, text</td><td>Photos, complex images</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ EXAM JUSTIFY &nbsp;</strong>"Justify use of vector/bitmap for task": Vector → logo/diagram (scalable, small file, editable objects). Bitmap → photograph (accurate colours, widely supported).</div>
+</section>
+
+<!-- T4: SOUND -->
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §1.2</div>
+  <div class="topic-title">Sound Representation</div>
+  <div class="topic-sub">SAMPLING · SAMPLING RATE · SAMPLING RESOLUTION · ANALOGUE vs DIGITAL</div>
+
+  <div class="def-box">
+    <div class="def-label">HOW SOUND IS REPRESENTED</div>
+    <p>Amplitude is recorded a set number of times per second → each amplitude given a unique binary value → binary numbers saved in sequence.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card c-cyan-card">
+      <div class="card-title">Sampling</div>
+      <ul><li>Taking measurements at regular intervals</li><li>Stores the amplitude value at each point</li></ul>
+    </div>
+    <div class="card c-blue-card">
+      <div class="card-title">Sampling Rate</div>
+      <ul><li>Number of samples taken per second (Hz)</li><li>e.g. CD quality = 44,100 Hz</li></ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">Sampling Resolution</div>
+      <ul><li>Number of bits used to store each sample</li><li>Also called bit depth</li></ul>
+    </div>
+    <div class="card c-yellow-card">
+      <div class="card-title">Analogue Data</div>
+      <ul><li>A variable/continuously changing value</li><li>Sound waves are analogue</li></ul>
+    </div>
+  </div>
+
+  <table class="cmp-table">
+    <tr><th class="th-cyan">CHANGE</th><th class="th-green">EFFECT ON QUALITY</th><th class="th-yellow">EFFECT ON FILE SIZE</th></tr>
+    <tr><td>Increase sampling rate</td><td>More accurate — closer to original waveform. Reduces quantisation errors. Smaller gaps between samples.</td><td>Increases (more samples stored)</td></tr>
+    <tr><td>Increase sampling resolution</td><td>Wider range of amplitudes. Smaller quantisation errors. More accurate representation.</td><td>Increases (more bits per sample)</td></tr>
+  </table>
+
+  <div class="def-box">
+    <div class="def-label">FILE SIZE FORMULA</div>
+    <p>File size (bits) = Sampling rate × Sampling resolution × Duration (seconds) × Number of channels</p>
+  </div>
+  <div class="memory-box"><strong>⚡ QUANTISATION ERROR &nbsp;</strong>Error introduced when the actual amplitude does not exactly match any stored value. Increasing sampling resolution reduces quantisation error because more amplitude values can be represented.</div>
+</section>
+
+<!-- T5: COMPRESSION -->
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §1.3</div>
+  <div class="topic-title">Compression</div>
+  <div class="topic-sub">LOSSY · LOSSLESS · WHY COMPRESS</div>
+
+  <div class="def-box">
+    <div class="def-label">WHY COMPRESS?</div>
+    <p>Reduces file size → takes up less storage space. Faster download/upload. Less bandwidth used. Original may be too large to send as email attachment.</p>
+  </div>
+
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-red">LOSSY</th><th class="th-green">LOSSLESS</th></tr>
+    <tr><td>Original data</td><td>Lost/deleted — cannot be reconstructed</td><td>Preserved — fully restored</td></tr>
+    <tr><td>File size reduction</td><td>Greater reduction</td><td>Smaller reduction</td></tr>
+    <tr><td>Quality</td><td>Reduced (acceptable loss)</td><td>Identical to original</td></tr>
+    <tr><td>Use when</td><td>All data not required / significant reduction needed</td><td>All data required / high quality needed</td></tr>
+    <tr><td>Examples</td><td>JPEG images, MP3 audio, video streaming</td><td>PNG images, ZIP files, text documents</td></tr>
+    <tr><td>Text files</td><td>❌ Cannot use — would corrupt data</td><td>✅ Must use for text</td></tr>
+  </table>
+
+  <div class="sub-label">Compression Techniques by File Type</div>
+  <div class="card-grid">
+    <div class="card c-red-card">
+      <div class="card-title">Images — Lossy</div>
+      <ul><li>Reduce bit depth (fewer bits per pixel)</li><li>Reduce number of colours</li><li>Reduce resolution (fewer pixels)</li></ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">Images — Lossless</div>
+      <ul><li>Run-Length Encoding (RLE)</li><li>Replace sequences of same-colour pixels</li></ul>
+    </div>
+    <div class="card c-blue-card">
+      <div class="card-title">Sound</div>
+      <ul><li>Reduce amplitude range</li><li>Record only changes in sound</li><li>RLE for consecutive same sounds</li></ul>
+    </div>
+  </div>
+  <div class="memory-box"><strong>⚡ EXAM: LOSSY ON TEXT FILE &nbsp;</strong>"If lossy compression were used on a text file, it would corrupt the data because all data is required for it to make sense."</div>
+</section>
+
+<!-- T6: RLE -->
+<section class="topic" id="t6">
+  <div class="topic-num">TOPIC 06 · §1.3</div>
+  <div class="topic-title">Run-Length Encoding (RLE)</div>
+  <div class="topic-sub">LOSSLESS · HOW IT WORKS · LIMITATIONS</div>
+
+  <div class="def-box">
+    <div class="def-label">HOW RLE WORKS</div>
+    <p>Identifies groups/sequences of <strong>repeated characters</strong> and replaces them with a copy of the character plus the number of times it occurred.</p>
+    <ul style="margin-top:8px">
+      <li>e.g. AAAABBBCCCC → 4A 3B 4C (3 items instead of 11)</li>
+      <li>For images: stores colour code + number of identical consecutive pixels</li>
+    </ul>
+  </div>
+
+  <div class="card-grid">
+    <div class="card c-green-card">
+      <div class="card-title">✅ When RLE Works Well</div>
+      <ul><li>Image has large areas of same colour</li><li>e.g. clipart, logos, simple graphics</li><li>Long sequences of identical data</li></ul>
+    </div>
+    <div class="card c-red-card">
+      <div class="card-title">❌ Limitations of RLE</div>
+      <ul><li>Relies on sequences of repeated data</li><li>If no repeats: RGB → R1 B1 G1 (increases size!)</li><li>Photographs have many colour variations — RLE adds to file size</li></ul>
+    </div>
+  </div>
+  <div class="memory-box"><strong>⚡ RLE LIMITATIONS EXAM &nbsp;</strong>"RLE stores each colour and a count. If no sequences exist, it stores each pixel individually plus the count of 1 — only adding to total data and increasing file size."</div>
+</section>
+
+<!-- EXAM ZONE -->
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)">
+  <div class="part-num">PART 2</div>
+  <div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div>
+</div>
+<div class="ez-header">
+  <div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 1 · Information Representation</div>
+  <div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong> to reveal mark scheme.</div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-easy">● EASY</div>
+  <div class="q-num">QUESTION 01 · Definition</div>
+  <div class="q-text">Define the term "sampling rate". <span class="marks">[1]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul><li>The number of samples taken per unit time / per second (1)</li></ul>
+  <div class="examiner-hint"><strong>Examiner:</strong> Must mention "per second" or "per unit time". Just "number of samples" = 0.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-easy">● EASY</div>
+  <div class="q-num">QUESTION 02 · Calculate</div>
+  <div class="q-text">A bitmap image is 400 pixels wide and 300 pixels high. The colour depth is 24 bits. Calculate the file size in kilobytes. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>400 × 300 = 120,000 pixels (1)</li>
+    <li>120,000 × 24 = 2,880,000 bits (1)</li>
+    <li>2,880,000 ÷ 8 ÷ 1024 = 351.6 KB (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Show working — marks awarded for each correct step even if final answer is wrong.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-easy">● EASY</div>
+  <div class="q-num">QUESTION 03 · Compare</div>
+  <div class="q-text">State two differences between bitmap and vector graphics. <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 2)</h4><ul>
+    <li>Bitmap stores pixel values / vector stores mathematical instructions (1)</li>
+    <li>Bitmap pixelates when scaled / vector does not pixelate (1)</li>
+    <li>Bitmap has larger file size / vector has smaller file size (1)</li>
+    <li>Bitmap compresses well / vector does not compress well (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Must give both sides for 1 mark each (contrast).</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 04 · Explain</div>
+  <div class="q-text">Explain two effects of increasing the sampling rate when recording sound. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 2 × 2)</h4><ul>
+    <li>Sound is recorded more often / smaller gaps between samples (1) → digital waveform more closely resembles the analogue original (1)</li>
+    <li>Reduces quantisation errors (1) → improves accuracy of recorded sound (1)</li>
+    <li>Increases file size (1) → because more samples are stored (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> 4-mark explain = 2 effects, each with explanation of WHY. Effect alone = 1 mark, effect + reason = 2 marks.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 05 · Explain</div>
+  <div class="q-text">Explain why lossy compression cannot be used on a text file. <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Lossy compression permanently removes/deletes data (1)</li>
+    <li>Text files require all data to make sense / any missing data would corrupt the file (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Must link "data is lost" to "text requires all data" — both points needed for 2 marks.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 06 · Compare</div>
+  <div class="q-text">Compare lossy and lossless compression methods. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (4 contrasting pairs)</h4><ul>
+    <li>Lossy permanently removes data / lossless preserves all original data (1)</li>
+    <li>Lossy achieves greater file size reduction / lossless achieves smaller reduction (1)</li>
+    <li>Lossy reduces quality / lossless maintains identical quality (1)</li>
+    <li>Lossy used when quality loss acceptable / lossless used when all data needed (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Both sides for each contrast point.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-hard">★ CHALLENGE</div>
+  <div class="q-num">QUESTION 07 · Explain</div>
+  <div class="q-text">Explain two limitations of run-length encoding (RLE). <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>RLE relies on sequences of repeated data (1) — if few repeats exist, file size may actually increase (1)</li>
+    <li>For images with many colours (e.g. photos), each pixel may be a different colour (1) — RLE stores each pixel plus a count of 1, adding to the total data (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Limitation alone = 1 mark. Limitation + explanation = 2 marks. Must explain WHY it is a limitation.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-hard">★ CHALLENGE</div>
+  <div class="q-num">QUESTION 08 · Justify</div>
+  <div class="q-context">A graphic designer needs to create a company logo that will be printed at many different sizes — from a business card to a billboard.</div>
+  <div class="q-text">Justify whether a bitmap or vector graphic should be used for the logo. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Vector graphic should be used (1)</li>
+    <li>Vector graphics do not pixelate when scaled / can be enlarged without loss of quality (1)</li>
+    <li>The logo needs to be printed at many different sizes, so maintaining quality at all sizes is essential (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Named choice + advantage + link to scenario = 3 marks. Just "vector is better" = 0.</div></div>
+</div>
+
+</div>
+
+<!-- FLASHCARDS -->
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)">
+  <div class="part-num">PART 3</div>
+  <div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div>
+</div>
+<div class="fc-header">
+  <div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:5px;">CH 1 · INFORMATION REPRESENTATION · 16 CARDS</div>
+  <div style="font-size:0.84rem;color:var(--dim2)">Click card or FLIP to reveal. ✓/✗ to track progress.</div>
+</div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress">
+    <div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div>
+    <div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div>
+    <div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div>
+  </div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 16</div>
+  <div class="fc-card-wrap">
+    <div class="fc-card" id="fc-card" onclick="FC.flip()">
+      <div class="fc-front">
+        <div class="fc-label" id="fc-front-label">TERM</div>
+        <div class="fc-question" id="fc-front-text">Loading...</div>
+        <div class="fc-flip-hint">Click to flip →</div>
+      </div>
+      <div class="fc-back">
+        <div class="fc-label">ANSWER</div>
+        <div class="fc-answer" id="fc-back-text"></div>
+      </div>
+    </div>
+  </div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done">
+    <h3>Session Complete! 🎉</h3>
+    <p id="fc-done-stats"></p>
+    <button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button>
+    &nbsp;<button class="fc-btn" onclick="FC.reviewMissed()">Review Missed</button>
+  </div>
+</div>
+</div>
+
+</main>
+</div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'DEFINITION',q:'What is a character set?',a:'All of the characters that the computer can represent/use. Each character has a corresponding unique binary number.'},
+  {label:'COMPARE',q:'ASCII vs Unicode — 3 key differences',a:'• ASCII: 7-bit / Extended ASCII: 8-bit / Unicode: 16-bit\n• ASCII: 128 characters / Unicode: 100,000+\n• ASCII: English only / Unicode: all world languages\n• ASCII is a subset of Unicode'},
+  {label:'DEFINITION',q:'What is a pixel?',a:'The smallest addressable element in an image. Each pixel stores one colour value as a binary number.'},
+  {label:'DEFINITION',q:'What is colour depth / bit depth?',a:'The number of bits used to represent each colour (bits per pixel). Determines the number of colours that can be represented.'},
+  {label:'FORMULA',q:'How do you calculate bitmap file size?',a:'File size (bits) = Width × Height × Colour depth\nDivide by 8 for bytes, ÷1024 for KB, ÷1024² for MB'},
+  {label:'COMPARE',q:'Effect of increasing image resolution vs colour depth on file size and quality',a:'Resolution increase: more pixels → larger file, sharper image\nColour depth increase: more bits per pixel → larger file, more colours, closer to original'},
+  {label:'COMPARE',q:'Vector vs Bitmap — 4 differences',a:'• Vector: stores instructions / Bitmap: stores pixel values\n• Vector: no pixelation when scaled / Bitmap: pixelates\n• Vector: smaller file / Bitmap: larger file\n• Vector: poor compression / Bitmap: compresses well'},
+  {label:'DEFINITION',q:'What is sampling rate?',a:'The number of samples taken per second. Measured in Hz. Higher sampling rate → more accurate digital representation of analogue sound.'},
+  {label:'DEFINITION',q:'What is sampling resolution?',a:'The number of bits used to store each sample. Higher resolution → more amplitude values → more accurate, larger file.'},
+  {label:'EXPLAIN',q:'Effect of INCREASING sampling rate on sound quality and file size',a:'Quality: sound recorded more often, smaller gaps, reduces quantisation errors, digital waveform closer to analogue original\nFile size: increases — more samples stored'},
+  {label:'EXPLAIN',q:'What is a quantisation error?',a:'Error introduced when the actual amplitude does not exactly match any available stored value. Reduced by increasing sampling resolution.'},
+  {label:'COMPARE',q:'Lossy vs Lossless compression — when to use each',a:'Lossy: use when all data not required / significant reduction needed / quality loss acceptable (e.g. JPEGs, MP3)\nLossless: use when all data must be preserved (e.g. text, executables, medical images)'},
+  {label:'EXPLAIN',q:'Why can lossy compression NOT be used on text files?',a:'Lossy compression permanently removes data. Text files require ALL data to make sense — any missing data would corrupt the file making it unreadable.'},
+  {label:'DEFINITION',q:'How does Run-Length Encoding (RLE) work?',a:'Identifies sequences of repeated characters/pixels and replaces them with: (character + count). e.g. AAAA BBB → 4A 3B'},
+  {label:'LIMITATIONS',q:'Give two limitations of RLE',a:'• Relies on sequences of repeated data — if few repeats exist, file size actually increases\n• For images with many colours (photos), each pixel may differ — storing each plus count=1 adds to file size'},
+  {label:'BENEFITS',q:'Give 3 benefits of using BCD',a:'• Easier to convert between BCD and denary\n• Less complex to encode/decode for programmers\n• Easier for digital equipment to display individual digits\n• Can represent monetary values exactly'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','t6','exam','flash']);
+</script>
+</body>
+</html>

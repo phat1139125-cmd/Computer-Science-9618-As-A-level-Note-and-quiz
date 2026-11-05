@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 11 — Programming | 9618</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 11</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. Good Programming Practice</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. Selection Constructs</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Iteration Constructs</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. Procedures & Functions</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. Pass by Value vs Reference</button>
+  <button class="nav-item" onclick="scrollToId('t6')">6. Library Routines</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+<section class="hero">
+  <div class="hero-badge">CHAPTER 11 · PAPER 2</div>
+  <h1>Programming <span>Fundamentals</span></h1>
+  <p>Good practice, constructs, procedures, functions, parameter passing and library routines.</p>
+  <div class="hero-pills"><div class="hero-pill"><span>16</span> Flashcards</div><div class="hero-pill"><span>7</span> Exam Questions</div><div class="hero-pill"><span>6</span> Topics</div></div>
+</section>
+<div class="part-header" id="part1"><div class="part-num">PART 1</div><div class="part-title" style="color:var(--cyan)">THEORY — PROGRAMMING</div></div>
+
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §11.1</div>
+  <div class="topic-title">Good Programming Practice</div>
+  <div class="topic-sub">READABILITY · CONSTANTS · MEANINGFUL NAMES</div>
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">Features Making Code Understandable</div>
+      <ul>
+        <li>Indentation — shows structure/nesting clearly</li>
+        <li>White space — separates logical sections</li>
+        <li>Comments — explains purpose of code sections</li>
+        <li>Meaningful variable names (e.g. camelCase)</li>
+        <li>Capitalised keywords</li>
+        <li>Standard way to indicate special cases</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">Importance of Good Practice</div>
+      <ul>
+        <li>Easier to understand — describes purpose of identifiers</li>
+        <li>Easier to debug, test and maintain</li>
+        <li>Others can understand and modify the code</li>
+      </ul>
+    </div>
+    <div class="card c-yellow-card">
+      <div class="card-title">Constants</div>
+      <ul>
+        <li>Used for values that don't change during execution</li>
+        <li>Avoids input error or accidental change</li>
+        <li>Easier to maintain — change value in one place only</li>
+        <li>Makes program easier to understand</li>
+      </ul>
+    </div>
+  </div>
+  <div class="code-block"><span class="cm">// Good practice examples</span>
+<span class="kw">CONSTANT</span> MAX_SIZE : <span class="nm">100</span>   <span class="cm">// Use constant not magic number</span>
+<span class="kw">DECLARE</span> studentCount : INTEGER  <span class="cm">// Meaningful name</span>
+<span class="kw">DECLARE</span> isFound : BOOLEAN        <span class="cm">// Clear boolean name</span>
+
+<span class="cm">// Poor practice (avoid)</span>
+<span class="kw">DECLARE</span> x : INTEGER   <span class="cm">// Meaningless name</span>
+<span class="kw">DECLARE</span> n : INTEGER   <span class="cm">// Meaningless name</span></div>
+  <div class="memory-box"><strong>⚡ EXAM &nbsp;</strong>When asked "state two features of good programming practice" — indentation + meaningful variable names are always safe marks. When asked WHY: "makes code easier to maintain and debug by other programmers."</div>
+</section>
+
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §11.2</div>
+  <div class="topic-title">Selection Constructs</div>
+  <div class="topic-sub">IF STATEMENT · CASE STATEMENT</div>
+  <div class="code-block"><span class="cm">// IF statement (with optional ELSE)</span>
+<span class="kw">IF</span> score >= <span class="nm">70</span> <span class="kw">THEN</span>
+    OUTPUT <span class="st">"Pass"</span>
+<span class="kw">ELSE IF</span> score >= <span class="nm">50</span> <span class="kw">THEN</span>
+    OUTPUT <span class="st">"Merit"</span>
+<span class="kw">ELSE</span>
+    OUTPUT <span class="st">"Fail"</span>
+<span class="kw">ENDIF</span>
+
+<span class="cm">// CASE statement</span>
+<span class="kw">CASE OF</span> grade
+    <span class="st">'A'</span> : OUTPUT <span class="st">"Excellent"</span>
+    <span class="st">'B'</span> : OUTPUT <span class="st">"Good"</span>
+    <span class="st">'C'</span> : OUTPUT <span class="st">"Average"</span>
+    <span class="kw">OTHERWISE</span> : OUTPUT <span class="st">"Below average"</span>
+<span class="kw">ENDCASE</span></div>
+  <div class="card-grid">
+    <div class="card c-cyan-card"><div class="card-title">CASE Statement Properties</div><ul><li>Clauses checked in sequence</li><li>If first clause satisfied — others NOT tested</li><li>OTHERWISE clause may never execute if all values covered</li><li>Use instead of many ELSE IF chains</li></ul></div>
+  </div>
+</section>
+
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §11.2</div>
+  <div class="topic-title">Iteration Constructs</div>
+  <div class="topic-sub">FOR · WHILE · REPEAT · WHEN TO USE EACH</div>
+  <div class="code-block"><span class="cm">// FOR — count-controlled (known iterations)</span>
+<span class="kw">FOR</span> counter ← <span class="nm">1</span> <span class="kw">TO</span> <span class="nm">10</span>
+    OUTPUT counter
+<span class="kw">NEXT</span> counter
+
+<span class="cm">// WHILE — pre-condition (may not run)</span>
+<span class="kw">WHILE</span> answer &lt;&gt; <span class="st">"quit"</span>
+    INPUT answer
+<span class="kw">ENDWHILE</span>
+
+<span class="cm">// REPEAT — post-condition (always runs once)</span>
+<span class="kw">REPEAT</span>
+    INPUT number
+<span class="kw">UNTIL</span> number > <span class="nm">0</span></div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">LOOP</th><th class="th-yellow">ITERATIONS KNOWN?</th><th class="th-green">CONDITION CHECKED</th><th class="th-orange">MIN EXECUTIONS</th></tr>
+    <tr><td style="color:var(--blue)">FOR</td><td>Yes</td><td>Before (count-controlled)</td><td>0 (if To < From)</td></tr>
+    <tr><td style="color:var(--blue)">WHILE</td><td>No</td><td>Before (pre-condition)</td><td>0 (if condition false initially)</td></tr>
+    <tr><td style="color:var(--blue)">REPEAT</td><td>No</td><td>After (post-condition)</td><td>1 (always executes at least once)</td></tr>
+  </table>
+</section>
+
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §11.3</div>
+  <div class="topic-title">Procedures & Functions</div>
+  <div class="topic-sub">DEFINITION · DIFFERENCE · PARAMETERS · INTERFACE</div>
+  <div class="def-box"><div class="def-label">KEY DIFFERENCE</div><p><strong>Function</strong>: returns a value. Used in an expression — the return value replaces the call.<br><strong>Procedure</strong>: does NOT return a value. Can output values. Called with CALL statement.</p></div>
+  <div class="code-block"><span class="cm">// PROCEDURE definition</span>
+<span class="kw">PROCEDURE</span> DisplayGreeting(name : STRING)
+    OUTPUT <span class="st">"Hello, "</span>, name
+<span class="kw">ENDPROCEDURE</span>
+
+<span class="cm">// PROCEDURE call</span>
+<span class="kw">CALL</span> DisplayGreeting(<span class="st">"Ahmed"</span>)
+
+<span class="cm">// FUNCTION definition</span>
+<span class="kw">FUNCTION</span> Square(n : INTEGER) <span class="kw">RETURNS</span> INTEGER
+    <span class="kw">RETURN</span> n * n
+<span class="kw">ENDFUNCTION</span>
+
+<span class="cm">// FUNCTION call (used in expression)</span>
+result ← Square(<span class="nm">5</span>)   <span class="cm">// result = 25</span></div>
+  <div class="card-grid">
+    <div class="card c-green-card">
+      <div class="card-title">Benefits of Using Procedures/Functions</div>
+      <ul>
+        <li>Can be called repeatedly when required</li>
+        <li>Only designed and tested once</li>
+        <li>Changes to code only needed in one place (easier to maintain)</li>
+        <li>Reduces complexity of program</li>
+        <li>Easier to test and debug</li>
+      </ul>
+    </div>
+    <div class="card c-blue-card">
+      <div class="card-title">Function/Procedure Interface</div>
+      <ul>
+        <li>Refers to the parameters and return value</li>
+        <li>Defines parameter names, data types and order</li>
+        <li>Provides mechanism to pass data between modules</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §11.3</div>
+  <div class="topic-title">Pass by Value vs Pass by Reference</div>
+  <div class="topic-sub">BYVAL · BYREF · WHEN TO USE EACH</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-blue">PASS BY VALUE (BYVAL)</th><th class="th-green">PASS BY REFERENCE (BYREF)</th></tr>
+    <tr><td>What is passed</td><td>A COPY of the variable's value</td><td>The memory ADDRESS of the variable</td></tr>
+    <tr><td>Changes in module</td><td>Do NOT affect original variable</td><td>DO affect original variable permanently</td></tr>
+    <tr><td>Safety</td><td>Safer — original protected</td><td>Less safe — original can be changed</td></tr>
+    <tr><td>Use when</td><td>You only need to READ the value</td><td>You need to MODIFY and return the value</td></tr>
+  </table>
+  <div class="code-block"><span class="cm">// Pass by VALUE — copy passed, original unchanged</span>
+<span class="kw">PROCEDURE</span> Double(<span class="kw">BYVAL</span> num : INTEGER)
+    num ← num * <span class="nm">2</span>   <span class="cm">// only changes local copy</span>
+<span class="kw">ENDPROCEDURE</span>
+
+<span class="cm">// Pass by REFERENCE — original variable modified</span>
+<span class="kw">PROCEDURE</span> Double(<span class="kw">BYREF</span> num : INTEGER)
+    num ← num * <span class="nm">2</span>   <span class="cm">// changes original variable</span>
+<span class="kw">ENDPROCEDURE</span></div>
+  <div class="memory-box"><strong>⚡ BYVAL vs BYREF EXAM &nbsp;</strong>BYVAL = copy passed = original unchanged. BYREF = address passed = original IS changed. Use BYREF when procedure needs to return multiple values (since a function only returns one).</div>
+</section>
+
+<section class="topic" id="t6">
+  <div class="topic-num">TOPIC 06 · §11.1</div>
+  <div class="topic-title">Library Routines</div>
+  <div class="topic-sub">WHAT THEY ARE · BENEFITS · WHEN TO USE</div>
+  <div class="def-box"><div class="def-label">LIBRARY ROUTINES</div><p>Pre-written, pre-tested functions and subroutines that can be imported and called in your own program. More complex functions available through program libraries.</p></div>
+  <div class="card-grid">
+    <div class="card c-green-card"><div class="card-title">Benefits During Development</div><ul><li>Already tried and tested — free from errors</li><li>Perform functions you may not be able to program</li><li>Readily available — speed up development</li><li>Used for tasks repeated in several places</li></ul></div>
+    <div class="card c-blue-card"><div class="card-title">When to Use</div><ul><li>Task performed/repeated in several places in code</li><li>Part of algorithm performs a specific, reusable task</li><li>Reduces complexity of main program</li><li>When testing/debugging is easier with modular code</li></ul></div>
+  </div>
+</section>
+
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)"><div class="part-num">PART 2</div><div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div></div>
+<div class="ez-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 11 · Programming</div><div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong>.</div></div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 01</div>
+  <div class="q-text">State two features of good programming practice and explain why each is important. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 2 × 2)</h4><ul>
+    <li>Meaningful variable names (1) — makes code easier to understand and maintain by other programmers (1)</li>
+    <li>Comments (1) — describe purpose of code sections, making debugging and maintenance easier (1)</li>
+    <li>Indentation (1) — shows program structure/nesting clearly (1)</li>
+    <li>Using constants (1) — value only needs to be changed in one place if it needs updating (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 02</div>
+  <div class="q-text">State the difference between a function and a procedure. <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>A function returns a value / a procedure does not return a value (1)</li>
+    <li>A function is used in an expression — the return value replaces the call (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> The key mark is "returns a value" for function vs "does not return a value" for procedure. A procedure can still output values using OUTPUT — that's not the same as returning.</div></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 03</div>
+  <div class="q-text">Explain the difference between passing a parameter by value and passing by reference. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>By value: a copy of the variable's value is passed to the module (1)</li>
+    <li>By value: changes made inside the module do NOT affect the original variable (1)</li>
+    <li>By reference: the memory address of the variable is passed (1)</li>
+    <li>By reference: changes made inside the module DO permanently change the original variable (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 04</div>
+  <div class="q-text">Write a function in pseudocode called FindMax that takes two integer parameters and returns the larger value. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>FUNCTION FindMax(a : INTEGER, b : INTEGER) RETURNS INTEGER (1)</li>
+    <li>IF a > b THEN (1)</li>
+    <li>RETURN a (1)</li>
+    <li>ELSE / RETURN b / ENDIF / ENDFUNCTION (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 05</div>
+  <div class="q-text">Justify which loop structure (FOR, WHILE, or REPEAT) is most appropriate for each scenario: (a) Validate user input must be between 1 and 10. (b) Process exactly 50 records from a file. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>(a) REPEAT loop (1) — input must be requested at least once before checking if valid; condition checked after body executes (1)</li>
+    <li>(b) FOR loop (1) — number of iterations (50) is known in advance; count-controlled (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 06</div>
+  <div class="q-text">Write a procedure in pseudocode that takes an array of 10 integers by reference and replaces any negative values with 0. <span class="marks">[5]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>PROCEDURE FixNegatives(BYREF nums : ARRAY[1:10] OF INTEGER) (1)</li>
+    <li>FOR i ← 1 TO 10 (1)</li>
+    <li>IF nums[i] < 0 THEN (1)</li>
+    <li>nums[i] ← 0 (1)</li>
+    <li>ENDIF / NEXT i / ENDPROCEDURE (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Must use BYREF since we're modifying the original array. BYVAL would only modify a local copy.</div></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 07</div>
+  <div class="q-text">Explain three benefits of using procedures and functions in a program. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 3)</h4><ul>
+    <li>Can be called repeatedly — code written only once but used many times (1)</li>
+    <li>Only designed and tested once — reduces development time (1)</li>
+    <li>Changes only need to be made in one place — easier to maintain (1)</li>
+    <li>Reduces complexity of main program — easier to read and understand (1)</li>
+  </ul></div>
+</div>
+</div>
+
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">PART 3</div><div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);">CH 11 · PROGRAMMING · 16 CARDS</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress"><div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div><div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div><div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div></div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 16</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button></div>
+</div>
+</div>
+</main></div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'PRACTICE',q:'Name 4 features of good programming practice',a:'• Meaningful variable names\n• Indentation (shows structure)\n• Comments (explain purpose)\n• White space\n• Using constants for fixed values\n• Capitalised keywords'},
+  {label:'EXPLAIN',q:'Why use CONSTANTS instead of variables for fixed values?',a:'• Value entered only once — avoids input error\n• Prevents accidental change during execution\n• If value needs updating, only change in one place\n• Makes program easier to understand'},
+  {label:'COMPARE',q:'Function vs Procedure — key difference',a:'Function: RETURNS a value; used in an expression; the return value replaces the call.\nProcedure: does NOT return a value; called with CALL statement; can still output values.'},
+  {label:'PSEUDOCODE',q:'Write a function header that takes two integers and returns a boolean',a:'FUNCTION FunctionName(a : INTEGER, b : INTEGER) RETURNS BOOLEAN\n    ...\nENDFUNCTION'},
+  {label:'PSEUDOCODE',q:'Write a procedure header with one string parameter, and show how to call it',a:'PROCEDURE ShowMessage(msg : STRING)\n    OUTPUT msg\nENDPROCEDURE\n\nCALL ShowMessage("Hello")'},
+  {label:'COMPARE',q:'Pass by VALUE vs Pass by REFERENCE',a:'By VALUE (BYVAL): copy passed — original unchanged outside module.\nBy REFERENCE (BYREF): address passed — original variable IS changed permanently.'},
+  {label:'APPLY',q:'When should you use BYREF instead of BYVAL?',a:'Use BYREF when the procedure needs to modify the original variable and the changes should persist after the procedure ends. Also used when returning multiple values (since functions only return one).'},
+  {label:'LOOPS',q:'FOR vs WHILE vs REPEAT — key distinctions',a:'FOR: iterations KNOWN — count-controlled.\nWHILE: iterations unknown — pre-condition (may not run at all).\nREPEAT: iterations unknown — post-condition (always runs at least ONCE).'},
+  {label:'PSEUDOCODE',q:'Write a REPEAT loop to get valid input (1-10)',a:'REPEAT\n    INPUT number\nUNTIL number >= 1 AND number <= 10\n\n(Always runs at least once — perfect for input validation)'},
+  {label:'SELECTION',q:'When is CASE better than IF-ELSE IF?',a:'When checking multiple values of the same variable. CASE is cleaner and more readable than a long chain of ELSE IF. Clauses checked in sequence — first match executes, others skipped.'},
+  {label:'BENEFITS',q:'3 benefits of using procedures/functions',a:'• Called repeatedly — written once, used many times\n• Only designed and tested once\n• Changes made in one place only — easier to maintain\n• Reduces main program complexity'},
+  {label:'DEFINE',q:'What is a function/procedure interface?',a:'The parameters and return value of a function/procedure. Defines parameter names, data types and order. Provides mechanism for calling program to pass data to the module.'},
+  {label:'BENEFITS',q:'3 benefits of using library routines',a:'• Already tried and tested — free from errors\n• Perform complex functions programmer may not be able to code\n• Readily available — speeds up development time'},
+  {label:'PSEUDOCODE',q:'Write CASE statement structure',a:'CASE OF variableName\n    value1 : statement\n    value2 : statement\n    OTHERWISE : statement\nENDCASE'},
+  {label:'PSEUDOCODE',q:'Declare and use a constant in pseudocode',a:'CONSTANT PI : 3.14159\nCONSTANT MAX_SIZE : 100\n\nArea ← PI * radius * radius'},
+  {label:'EXPLAIN',q:'Why is indentation important in code?',a:'Shows the program structure and nesting clearly. Makes it easy to see which statements are inside loops, conditions or procedures. Improves readability and makes debugging easier.'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','t6','exam','flash']);
+</script>
+</body>
+</html>

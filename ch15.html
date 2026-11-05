@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 15 — Hardware & Virtual Machines | 9618 A Level</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 15</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. RISC vs CISC</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. Pipelining</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Computer Architectures</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. Virtual Machines</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. Half & Full Adders</button>
+  <button class="nav-item" onclick="scrollToId('t6')">6. SR & JK Flip-Flops</button>
+  <button class="nav-item" onclick="scrollToId('t7')">7. Boolean Algebra & K-Maps</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+<section class="hero">
+  <div class="hero-badge">CHAPTER 15 · A LEVEL · PAPER 3</div>
+  <h1>Hardware &amp; <span>Virtual Machines</span></h1>
+  <p>RISC/CISC, pipelining, parallel architectures, virtual machines, adders, flip-flops, Boolean algebra and Karnaugh maps.</p>
+  <div class="hero-pills"><div class="hero-pill"><span>24</span> Flashcards</div><div class="hero-pill"><span>9</span> Exam Questions</div><div class="hero-pill"><span>7</span> Topics</div></div>
+</section>
+<div class="part-header" id="part1"><div class="part-num">PART 1</div><div class="part-title" style="color:var(--cyan)">THEORY — HARDWARE & VIRTUAL MACHINES</div></div>
+
+<!-- T1: RISC vs CISC -->
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §15.1</div>
+  <div class="topic-title">RISC vs CISC Processors</div>
+  <div class="topic-sub">REDUCED vs COMPLEX INSTRUCTION SET</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-green">RISC</th><th class="th-orange">CISC</th></tr>
+    <tr><td>Instruction set</td><td>Few instructions, few addressing modes</td><td>Many instruction formats, large instruction set</td></tr>
+    <tr><td>Instruction length</td><td>Fixed length, single clock cycle</td><td>Variable length, multi-clock cycle</td></tr>
+    <tr><td>Registers</td><td>Many general purpose registers</td><td>Few registers</td></tr>
+    <tr><td>CPU design</td><td>Hard-wired CPU</td><td>Programmable CPU (microprogrammed)</td></tr>
+    <tr><td>Design emphasis</td><td>Software (compiler does more work)</td><td>Hardware (complex circuits)</td></tr>
+    <tr><td>Memory use</td><td>Makes extensive use of RAM</td><td>Makes frequent use of cache memory</td></tr>
+    <tr><td>Pipelining</td><td>✅ Uses pipelining extensively</td><td>❌ Harder to pipeline (variable instruction length)</td></tr>
+    <tr><td>Addressing modes</td><td>Few</td><td>Many different modes</td></tr>
+  </table>
+  <div class="sub-label">Interrupt Handling (both RISC and CISC)</div>
+  <div class="process">
+    <div class="step"><p>Processor detects interrupt at <span class="kw">start/end of F-E cycle</span></p></div>
+    <div class="step"><p>Current program stopped — register contents <span class="kw">stored on a stack</span></p></div>
+    <div class="step"><p>Appropriate <span class="kw">ISR called and executed</span></p></div>
+    <div class="step"><p>After ISR: registers <span class="kw">restored from stack</span> — program resumes</p></div>
+  </div>
+  <div class="info-box"><strong>RISC interrupt extra complexity: &nbsp;</strong>Instructions still in pipeline when interrupt received — all discarded except the last. ISR applied to remaining instruction. Processor restarts with next instruction after servicing.</div>
+  <div class="memory-box"><strong>⚡ RISC EXAM MNEMONICS &nbsp;</strong>RISC = Few instructions, Fixed length, Many registers, Hard-wired, Software-emphasis, RAM-heavy, Pipelining. CISC = Many instructions, Variable length, Few registers, Programmable, Hardware-emphasis, Cache-heavy.</div>
+</section>
+
+<!-- T2: PIPELINING -->
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §15.1</div>
+  <div class="topic-title">Pipelining</div>
+  <div class="topic-sub">HOW IT WORKS · STAGES · PURPOSE</div>
+  <div class="def-box"><div class="def-label">PIPELINING</div><p>Allows <strong>several instructions to be processed simultaneously</strong> — increases instruction throughput during F-E cycle. While one instruction is being executed, the next can be fetched.</p></div>
+  <div class="sub-label">Pipeline Stages (each takes one clock cycle)</div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Stage 1</div><ul><li>Instruction Fetch (IF)</li></ul></div>
+    <div class="card c-cyan-card"><div class="card-title">Stage 2</div><ul><li>Instruction Decode (ID)</li></ul></div>
+    <div class="card c-green-card"><div class="card-title">Stage 3</div><ul><li>Operand Fetch (OF)</li></ul></div>
+    <div class="card c-yellow-card"><div class="card-title">Stage 4</div><ul><li>Execute (EX)</li></ul></div>
+    <div class="card c-orange-card"><div class="card-title">Stage 5</div><ul><li>Result Store (WB)</li></ul></div>
+  </div>
+  <div class="def-box" style="margin-top:12px"><div class="def-label">HOW PIPELINING WORKS</div>
+    <p>No two instructions can execute the <strong>same stage</strong> at the same clock cycle. Instruction 2 begins at clock cycle 2 while instruction 1 has moved to stage 2, etc. Overlapping stages increases throughput.</p>
+  </div>
+  <div class="memory-box"><strong>⚡ PIPELINING EXAM &nbsp;</strong>"While one instruction is being executed, the next instruction can be fetched." This is the core statement. RISC is designed for pipelining because all instructions are the same length (predictable decode time).</div>
+</section>
+
+<!-- T3: COMPUTER ARCHITECTURES -->
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §15.1</div>
+  <div class="topic-title">Computer Architectures</div>
+  <div class="topic-sub">SISD · SIMD · MISD · MIMD · MASSIVELY PARALLEL</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">ARCHITECTURE</th><th class="th-green">MEANING</th><th class="th-yellow">HOW IT WORKS</th></tr>
+    <tr><td style="color:var(--blue)">SISD</td><td>Single Instruction, Single Data</td><td>One processor, one instruction, one data source at a time — traditional serial processing</td></tr>
+    <tr><td style="color:var(--blue)">SIMD</td><td>Single Instruction, Multiple Data</td><td>Same instruction executed on multiple data sets simultaneously — e.g. graphics processing</td></tr>
+    <tr><td style="color:var(--blue)">MISD</td><td>Multiple Instructions, Single Data</td><td>Different instructions on same data set — each processor works independently on same data</td></tr>
+    <tr><td style="color:var(--blue)">MIMD</td><td>Multiple Instructions, Multiple Data</td><td>Many processors operating independently — each executes different instructions on different data asynchronously</td></tr>
+  </table>
+  <div class="def-box" style="margin-top:12px"><div class="def-label">MASSIVELY PARALLEL COMPUTERS</div><ul>
+    <li>Large number of processors or separate computers connected together</li>
+    <li>Simultaneously perform a set of coordinated computations</li>
+    <li>Communicate using a message interface</li>
+    <li>A kind of network infrastructure</li>
+  </ul></div>
+</section>
+
+<!-- T4: VIRTUAL MACHINES -->
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §15.1</div>
+  <div class="topic-title">Virtual Machines</div>
+  <div class="topic-sub">DEFINITION · BENEFITS · LIMITATIONS · HOST/GUEST OS</div>
+  <div class="def-box"><div class="def-label">VIRTUAL MACHINE</div><p>An <strong>emulation of a computer system</strong> (hardware and software) using a host computer system. Uses a guest operating system for emulation.</p></div>
+  <div class="card-grid">
+    <div class="card c-green-card"><div class="card-title">✅ Benefits</div><ul>
+      <li>Cost saving — test new systems without buying hardware</li>
+      <li>Different instruction set architectures emulated on one computer</li>
+      <li>VM crash doesn't affect host machine</li>
+      <li>Security — virus only affects VM, not host</li>
+      <li>Multiple VMs can co-exist on one computer</li>
+      <li>Emulate programs incompatible with host OS</li>
+      <li>Run old software on newer systems</li>
+    </ul></div>
+    <div class="card c-red-card"><div class="card-title">❌ Limitations</div><ul>
+      <li>Cannot emulate hardware developed after VM was created</li>
+      <li>Extra code executed — less efficient, slower, uses more RAM</li>
+      <li>Higher maintenance — both host and VM must be maintained</li>
+      <li>VM affected by weaknesses of host machine</li>
+    </ul></div>
+  </div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">ROLE</th><th class="th-blue">HOST OS</th><th class="th-green">GUEST OS</th></tr>
+    <tr><td>What it is</td><td>Normal OS of the host machine</td><td>OS running inside the virtual machine</td></tr>
+    <tr><td>Controls</td><td>All resources of host machine</td><td>Virtual hardware/software during emulation</td></tr>
+    <tr><td>Provides</td><td>UI to operate VM software; runs VM software</td><td>UI for emulated hardware; runs under host OS control</td></tr>
+    <tr><td>Hardware access</td><td>Direct — all physical resources</td><td>Indirect — via VM and host OS</td></tr>
+  </table>
+</section>
+
+<!-- T5: ADDERS -->
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §15.2</div>
+  <div class="topic-title">Half-Adder & Full-Adder</div>
+  <div class="topic-sub">COMBINATIONAL CIRCUITS · TRUTH TABLES · GATE COMPOSITION</div>
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">Half-Adder</div>
+      <ul>
+        <li>Performs binary addition on 2 bits</li>
+        <li>2 inputs (X, Y) → 2 outputs (Sum, Carry)</li>
+        <li>Sum = X XOR Y</li>
+        <li>Carry = X AND Y</li>
+        <li>Gates: XOR + AND</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">Full-Adder</div>
+      <ul>
+        <li>Two half-adders combined + OR gate</li>
+        <li>3 inputs (X, Y, Cin) → 2 outputs (Sum, Cout)</li>
+        <li>Handles carry-in from previous bit</li>
+        <li>Used for multi-bit binary addition</li>
+      </ul>
+    </div>
+  </div>
+  <div class="sub-label">Half-Adder Truth Table</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">X</th><th class="th-cyan">Y</th><th class="th-green">Sum (XOR)</th><th class="th-yellow">Carry (AND)</th></tr>
+    <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+  </table>
+  <div class="sub-label">Full-Adder Truth Table</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">X</th><th class="th-cyan">Y</th><th class="th-cyan">Cin</th><th class="th-green">Sum</th><th class="th-yellow">Cout</th></tr>
+    <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ ADDER EXAM &nbsp;</strong>Half-adder = XOR (sum) + AND (carry). Full-adder = two half-adders + OR gate. Cout is 1 when two or more inputs are 1.</div>
+</section>
+
+<!-- T6: FLIP-FLOPS -->
+<section class="topic" id="t6">
+  <div class="topic-num">TOPIC 06 · §15.2</div>
+  <div class="topic-title">SR & JK Flip-Flops</div>
+  <div class="topic-sub">SEQUENTIAL CIRCUITS · STORAGE · TRUTH TABLES</div>
+  <div class="def-box"><div class="def-label">SEQUENTIAL CIRCUITS</div><p>Output depends on input value produced from a <strong>previous output value</strong>. Output depends on history — has memory.</p></div>
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">SR Flip-Flop</div>
+      <ul>
+        <li>Stores one bit of data (0 or 1)</li>
+        <li>Used in RAM — each flip-flop = one storage cell</li>
+        <li>Inputs: S (Set), R (Reset)</li>
+        <li>Outputs: Q and NOT Q</li>
+        <li>Made of 2 cross-coupled NOR or NAND gates</li>
+      </ul>
+    </div>
+    <div class="card c-red-card">
+      <div class="card-title">SR Problems</div>
+      <ul>
+        <li>Invalid state possible (NOR: S=1,R=1 / NAND: S=0,R=0)</li>
+        <li>Circuit unstable if inputs don't arrive simultaneously</li>
+        <li>Q and NOT Q become equal in invalid state</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">JK Flip-Flop (improved SR)</div>
+      <ul>
+        <li>Eliminates invalid input combinations</li>
+        <li>Used in shift registers and binary counters</li>
+        <li>Uses clock pulse to synchronise inputs</li>
+        <li>J=0, K=0 → no change</li>
+        <li>J=1, K=1 → Q TOGGLES each clock pulse</li>
+        <li>Q always equals J; NOT Q always equals K</li>
+      </ul>
+    </div>
+  </div>
+  <div class="sub-label">SR Flip-Flop Truth Tables</div>
+  <div class="card-grid">
+    <div class="card c-cyan-card">
+      <div class="card-title">NOR Gate SR — Invalid when S=R=1</div>
+      <table style="width:100%;font-size:0.75rem;border-collapse:collapse;margin-top:6px">
+        <tr style="border-bottom:1px solid var(--border)"><td style="padding:3px;color:var(--cyan)">S</td><td style="padding:3px;color:var(--cyan)">R</td><td style="padding:3px;color:var(--green)">Q</td><td style="padding:3px;color:var(--yellow)">NOT Q</td></tr>
+        <tr><td style="padding:3px">0</td><td style="padding:3px">0</td><td style="padding:3px">No change</td><td style="padding:3px">No change</td></tr>
+        <tr><td style="padding:3px">1</td><td style="padding:3px">0</td><td style="padding:3px">1</td><td style="padding:3px">0</td></tr>
+        <tr><td style="padding:3px">0</td><td style="padding:3px">1</td><td style="padding:3px">0</td><td style="padding:3px">1</td></tr>
+        <tr style="color:var(--red)"><td style="padding:3px">1</td><td style="padding:3px">1</td><td style="padding:3px">INVALID</td><td style="padding:3px">INVALID</td></tr>
+      </table>
+    </div>
+    <div class="card c-orange-card">
+      <div class="card-title">NAND Gate SR — Invalid when S=R=0</div>
+      <table style="width:100%;font-size:0.75rem;border-collapse:collapse;margin-top:6px">
+        <tr style="border-bottom:1px solid var(--border)"><td style="padding:3px;color:var(--cyan)">S</td><td style="padding:3px;color:var(--cyan)">R</td><td style="padding:3px;color:var(--green)">Q</td><td style="padding:3px;color:var(--yellow)">NOT Q</td></tr>
+        <tr style="color:var(--red)"><td style="padding:3px">0</td><td style="padding:3px">0</td><td style="padding:3px">INVALID</td><td style="padding:3px">INVALID</td></tr>
+        <tr><td style="padding:3px">1</td><td style="padding:3px">0</td><td style="padding:3px">1</td><td style="padding:3px">0</td></tr>
+        <tr><td style="padding:3px">0</td><td style="padding:3px">1</td><td style="padding:3px">0</td><td style="padding:3px">1</td></tr>
+        <tr><td style="padding:3px">1</td><td style="padding:3px">1</td><td style="padding:3px">No change</td><td style="padding:3px">No change</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- T7: BOOLEAN ALGEBRA -->
+<section class="topic" id="t7">
+  <div class="topic-num">TOPIC 07 · §15.2</div>
+  <div class="topic-title">Boolean Algebra & Karnaugh Maps</div>
+  <div class="topic-sub">NOTATION · DE MORGAN'S LAWS · K-MAP SIMPLIFICATION</div>
+  <div class="sub-label">Boolean Notation</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">GATE</th><th class="th-green">NOTATION</th><th class="th-yellow">EXAMPLE</th></tr>
+    <tr><td>AND</td><td style="color:var(--blue)">A · B</td><td>A AND B = A.B</td></tr>
+    <tr><td>OR</td><td style="color:var(--blue)">A + B</td><td>A OR B = A+B</td></tr>
+    <tr><td>NOT</td><td style="color:var(--blue)">Ā (A-bar)</td><td>NOT A = Ā</td></tr>
+    <tr><td>NAND</td><td style="color:var(--blue)">Ā·B̄ (overline AB)</td><td>NOT(A AND B)</td></tr>
+    <tr><td>NOR</td><td style="color:var(--blue)">Ā+B̄ (overline A+B)</td><td>NOT(A OR B)</td></tr>
+  </table>
+  <div class="sub-label">De Morgan's Laws</div>
+  <div class="card-grid">
+    <div class="card c-purple-card"><div class="card-title">Law 1</div><ul><li>NOT(A AND B) = NOT A OR NOT B</li><li>Ā·B̄ = Ā + B̄</li><li>NAND = NOT A OR NOT B</li></ul></div>
+    <div class="card c-teal-card"><div class="card-title">Law 2</div><ul><li>NOT(A OR B) = NOT A AND NOT B</li><li>Ā+B̄ = Ā · B̄</li><li>NOR = NOT A AND NOT B</li></ul></div>
+  </div>
+  <div class="sub-label">Karnaugh Maps (K-Maps)</div>
+  <div class="def-box"><div class="def-label">PURPOSE OF K-MAPS</div><ul>
+    <li>Method of simplifying Boolean expressions from a truth table</li>
+    <li>Minimises number of Boolean expressions and logic gates</li>
+    <li>Provides a more efficient circuit</li>
+  </ul></div>
+  <div class="card-grid">
+    <div class="card c-yellow-card"><div class="card-title">K-Map Rules</div><ul>
+      <li>Group adjacent cells containing 1s</li>
+      <li>Groups cannot be diagonal — CAN wrap around edges</li>
+      <li>Only 2ⁿ cells per group (2, 4, 8...)</li>
+      <li>Each 1 must be in at least one group</li>
+      <li>Overlapping groups allowed</li>
+      <li>Groups should be as LARGE as possible</li>
+      <li>Use FEWEST groups possible</li>
+    </ul></div>
+    <div class="card c-green-card"><div class="card-title">Reading K-Map Output</div><ul>
+      <li>Each group gives one simplified term</li>
+      <li>Variables that don't change within group are kept</li>
+      <li>Variables that change are eliminated</li>
+      <li>Final expression = OR of all group terms</li>
+    </ul></div>
+  </div>
+  <div class="memory-box"><strong>⚡ K-MAP EXAM TIPS &nbsp;</strong>Always make groups as large as possible — larger groups = fewer variables = simpler expression. Groups CAN wrap around the edges of the map. Priority: 8s → 4s → 2s → 1s. Never diagonal groups.</div>
+</section>
+
+<!-- EXAM -->
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)"><div class="part-num">PART 2</div><div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div></div>
+<div class="ez-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 15 · Hardware & Virtual Machines</div><div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong>.</div></div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 01</div>
+  <div class="q-text">State three differences between RISC and CISC processors. <span class="marks">[6]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 3 × 2)</h4><ul>
+    <li>RISC: few instructions / CISC: many instruction formats and large instruction set (1)</li>
+    <li>RISC: fixed length single-clock instructions / CISC: variable length multi-clock instructions (1)</li>
+    <li>RISC: many general purpose registers / CISC: few registers (1)</li>
+    <li>RISC: hard-wired CPU / CISC: programmable (microprogrammed) CPU (1)</li>
+    <li>RISC: software emphasis / CISC: hardware emphasis with complex circuits (1)</li>
+    <li>RISC: uses pipelining extensively / CISC: harder to pipeline (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 02</div>
+  <div class="q-text">Explain what pipelining is and how it increases throughput. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Pipelining allows several instructions to be processed simultaneously (1)</li>
+    <li>Instructions divided into subtasks — each subtask completed in one clock cycle (1)</li>
+    <li>While one instruction is executing, the next can be fetched — increases throughput (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 03</div>
+  <div class="q-text">State two benefits and two limitations of using a virtual machine. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 2 each)</h4><ul>
+    <li>[Benefit] VM crash doesn't affect host machine (1)</li>
+    <li>[Benefit] Security — virus only affects VM not host system (1)</li>
+    <li>[Benefit] Cost saving — test on virtual hardware without buying real hardware (1)</li>
+    <li>[Limitation] Extra code executed → slower, uses more RAM, less efficient (1)</li>
+    <li>[Limitation] Cannot emulate hardware developed after VM was created (1)</li>
+    <li>[Limitation] Both host and VM must be maintained — higher maintenance (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 04</div>
+  <div class="q-text">Describe the four computer architectures: SISD, SIMD, MISD and MIMD. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>SISD: single processor executes one instruction on one data source at a time (1)</li>
+    <li>SIMD: same instruction executed on multiple data sets simultaneously — parallel (1)</li>
+    <li>MISD: different instructions executed on the same data set — each processor independent (1)</li>
+    <li>MIMD: many processors operating independently — different instructions on different data (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 05</div>
+  <div class="q-text">Complete the truth table for a half-adder. State which gates are used to produce each output. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>X=0,Y=0: Sum=0, Carry=0 / X=0,Y=1: Sum=1, Carry=0 / X=1,Y=0: Sum=1, Carry=0 / X=1,Y=1: Sum=0, Carry=1 (2 — 1 mark for each correct pair of rows)</li>
+    <li>Sum output produced by XOR gate (1)</li>
+    <li>Carry output produced by AND gate (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 06</div>
+  <div class="q-text">Explain the difference between an SR flip-flop using NOR gates and one using NAND gates, focusing on the invalid state. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>NOR SR: invalid state occurs when BOTH S and R = 1 (1) — Q and NOT Q both become equal (1)</li>
+    <li>NAND SR: invalid state occurs when BOTH S and R = 0 (1) — Q and NOT Q both become equal (1)</li>
+    <li>Both: S=R in "no change" state is the opposite of the invalid state (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 07</div>
+  <div class="q-text">State De Morgan's two laws and give an example of each. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Law 1: NOT(A AND B) = NOT A OR NOT B (1) — e.g. NAND gate equivalent (1)</li>
+    <li>Law 2: NOT(A OR B) = NOT A AND NOT B (1) — e.g. NOR gate equivalent (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 08</div>
+  <div class="q-text">Explain what a JK flip-flop is and how it improves on the SR flip-flop. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>JK is an improved version of SR flip-flop (1)</li>
+    <li>Eliminates the invalid input combination — all input combinations are valid (1)</li>
+    <li>When J=K=1: output Q toggles after each clock pulse (instead of invalid state) (1)</li>
+    <li>Uses a clock pulse to synchronise inputs — increases stability (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 09</div>
+  <div class="q-text">State the rules for simplifying a Boolean expression using a Karnaugh map and explain why K-maps are useful. <span class="marks">[5]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (rules — any 3, benefit — 1)</h4><ul>
+    <li>Group adjacent cells containing 1s (1)</li>
+    <li>Groups must contain 2ⁿ cells (2, 4, 8...) — no diagonal groups (1)</li>
+    <li>Groups can wrap around edges of map (1)</li>
+    <li>Each 1 must be in at least one group — overlapping allowed (1)</li>
+    <li>Groups should be as large as possible; use fewest groups possible (1)</li>
+    <li>Benefit: minimises number of logic gates — provides more efficient circuit (1)</li>
+  </ul></div>
+</div>
+</div>
+
+<!-- FLASHCARDS -->
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">PART 3</div><div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);">CH 15 · HARDWARE & VIRTUAL MACHINES · 24 CARDS</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress"><div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div><div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div><div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div></div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 24</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button>&nbsp;<button class="fc-btn" onclick="FC.reviewMissed()">Review Missed</button></div>
+</div>
+</div>
+</main></div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'COMPARE',q:'RISC vs CISC — 5 key differences',a:'RISC: few instructions, fixed length, many registers, hard-wired, software emphasis, RAM-heavy, uses pipelining.\nCISC: many instructions, variable length, few registers, programmable, hardware emphasis, cache-heavy.'},
+  {label:'DEFINE',q:'What is pipelining and why does RISC use it?',a:'Allows several instructions processed simultaneously. While one instruction executes, next is fetched. RISC uses it because fixed-length instructions make stages predictable and uniform.'},
+  {label:'PROCESS',q:'Name the 5 stages of the pipeline',a:'1. Instruction Fetch (IF)\n2. Instruction Decode (ID)\n3. Operand Fetch (OF)\n4. Execute (EX)\n5. Result/Write-back (WB)\n\nEach stage takes one clock cycle.'},
+  {label:'ARCHITECTURES',q:'SISD vs SIMD vs MISD vs MIMD',a:'SISD: one processor, one instruction, one data (serial).\nSIMD: one instruction, multiple data sets simultaneously.\nMISD: multiple instructions, same data set.\nMIMD: multiple processors, different instructions, different data.'},
+  {label:'DEFINE',q:'What is a Virtual Machine?',a:'An emulation of a computer system using a host computer system. Uses a guest OS for emulation. Can run software incompatible with the host OS.'},
+  {label:'BENEFITS',q:'5 benefits of virtual machines',a:'• VM crash doesn\'t affect host\n• Security — virus only affects VM\n• Cost saving — no need to buy hardware\n• Multiple VMs on one computer\n• Run old software on newer systems\n• Test different architectures'},
+  {label:'LIMITATIONS',q:'3 limitations of virtual machines',a:'• Cannot emulate hardware created after VM was made\n• Extra code → slower, uses more RAM, less efficient\n• Both host and VM must be maintained (higher cost/complexity)'},
+  {label:'COMPARE',q:'Host OS vs Guest OS in virtual machines',a:'Host OS: normal OS of host machine, controls all physical resources, runs VM software.\nGuest OS: OS inside VM, controls virtual hardware, runs under host OS, accesses hardware via host.'},
+  {label:'DEFINE',q:'What is a massively parallel computer?',a:'Large number of processors/computers connected together, simultaneously performing coordinated computations. Communicate via message interface. A kind of network infrastructure.'},
+  {label:'ADDERS',q:'Half-adder — gates used and outputs',a:'2 inputs (X, Y) → 2 outputs.\nSum = X XOR Y (XOR gate).\nCarry = X AND Y (AND gate).\nUsed for binary addition of 2 bits.'},
+  {label:'ADDERS',q:'Full-adder — how it differs from half-adder',a:'Two half-adders combined + OR gate.\n3 inputs: X, Y, Cin (carry in).\n2 outputs: Sum, Cout.\nHandles carry from previous bit position — used in multi-bit addition.'},
+  {label:'ADDERS',q:'Full-adder: X=1, Y=1, Cin=1 → Sum and Cout?',a:'Sum = 1, Cout = 1\n(1+1+1 = 3 = binary 11, so Sum=1, Carry=1)'},
+  {label:'FLIP-FLOP',q:'What is an SR flip-flop used for?',a:'Stores one bit of data (0 or 1). Used in RAM — each flip-flop = one storage cell. Memory is made up of many SR flip-flops. Has S (Set) and R (Reset) inputs.'},
+  {label:'FLIP-FLOP',q:'SR Flip-Flop (NOR gates) — when does invalid state occur?',a:'Invalid when S=1 AND R=1 simultaneously.\nQ and NOT Q become equal — circuit enters undefined state.\nNormal: S=R=0 = no change. S=1,R=0 = set. S=0,R=1 = reset.'},
+  {label:'FLIP-FLOP',q:'SR Flip-Flop (NAND gates) — when does invalid state occur?',a:'Invalid when S=0 AND R=0 simultaneously.\nOpposite of NOR: S=R=1 = no change. S=0,R=1 = set. S=1,R=0 = reset.'},
+  {label:'FLIP-FLOP',q:'JK flip-flop — how does it improve on SR?',a:'Eliminates invalid input combination — all combinations valid.\nJ=K=0: no change. J=1,K=0: set. J=0,K=1: reset. J=K=1: TOGGLES Q.\nUses clock pulse to synchronise — more stable.'},
+  {label:'FLIP-FLOP',q:'2 advantages of JK over SR flip-flop',a:'• Validates all input combinations — no invalid state\n• Avoidance of unstable states — increased stability\n• Clock pulse synchronises inputs'},
+  {label:'BOOLEAN',q:'Boolean notation: AND, OR, NOT, NAND, NOR',a:'AND = A.B\nOR = A+B\nNOT = Ā\nNAND = overline(A.B)\nNOR = overline(A+B)'},
+  {label:'BOOLEAN',q:'De Morgan\'s Law 1',a:'NOT(A AND B) = NOT A OR NOT B\nOverline(A.B) = Ā + B̄\n\nMeaning: NAND is equivalent to NOT A OR NOT B'},
+  {label:'BOOLEAN',q:'De Morgan\'s Law 2',a:'NOT(A OR B) = NOT A AND NOT B\nOverline(A+B) = Ā · B̄\n\nMeaning: NOR is equivalent to NOT A AND NOT B'},
+  {label:'K-MAP',q:'What is a Karnaugh map and why is it useful?',a:'Method of simplifying Boolean expressions from a truth table. Groups adjacent 1s to eliminate variables. Minimises logic gates — more efficient circuit.'},
+  {label:'K-MAP',q:'K-Map simplification rules (5 key rules)',a:'• Group adjacent 1s (no diagonals)\n• Groups must be 2ⁿ size (2,4,8...)\n• Groups can WRAP around edges\n• Each 1 in at least one group; overlapping allowed\n• Groups as large as possible; fewest groups possible'},
+  {label:'SEQUENTIAL',q:'Sequential circuit vs Combinational circuit',a:'Combinational: output depends ONLY on current inputs (e.g. adders, logic gates).\nSequential: output depends on current inputs AND previous outputs — has memory/state (e.g. flip-flops).'},
+  {label:'INTERRUPT',q:'How does pipelining affect interrupt handling in RISC?',a:'Added complexity — instructions still in pipeline when interrupt received. All currently processing instructions discarded except the last. ISR applied to remaining instruction. Processor restarts with next instruction after servicing.'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','t6','t7','exam','flash']);
+</script>
+</body>
+</html>

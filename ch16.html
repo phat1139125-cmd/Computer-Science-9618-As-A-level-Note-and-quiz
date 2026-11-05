@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 16 — System Software Advanced | 9618 A Level</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 16</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. OS — Maximising Resources</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. Process Management & States</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Scheduling Algorithms</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. Virtual Memory & Paging</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. Segmentation & Page Replacement</button>
+  <button class="nav-item" onclick="scrollToId('t6')">6. Translation Software & BNF</button>
+  <button class="nav-item" onclick="scrollToId('t7')">7. Reverse Polish Notation</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+<section class="hero">
+  <div class="hero-badge">CHAPTER 16 · A LEVEL · PAPER 3</div>
+  <h1>System Software <span>Advanced</span></h1>
+  <p>OS resource management, process states, scheduling, virtual memory, paging, BNF notation and RPN.</p>
+  <div class="hero-pills"><div class="hero-pill"><span>24</span> Flashcards</div><div class="hero-pill"><span>9</span> Exam Questions</div><div class="hero-pill"><span>7</span> Topics</div></div>
+</section>
+<div class="part-header" id="part1"><div class="part-num">PART 1</div><div class="part-title" style="color:var(--cyan)">THEORY — SYSTEM SOFTWARE (ADVANCED)</div></div>
+
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §16.1</div>
+  <div class="topic-title">OS — Maximising Use of Resources</div>
+  <div class="topic-sub">RESOURCE MAXIMISATION · USER INTERFACE · DMA</div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Maximising Resources</div><ul>
+      <li>Implements process scheduling — increases CPU efficiency</li>
+      <li>Manages main memory allocation</li>
+      <li>Optimises I/O operations</li>
+      <li>DMA: hardware accesses main memory independently of CPU</li>
+      <li>CPU free to carry out other tasks during data transfer</li>
+    </ul></div>
+    <div class="card c-cyan-card"><div class="card-title">User Interface</div><ul>
+      <li>Hides complexities of hardware/OS from user</li>
+      <li>Provides appropriate access for users with differing needs</li>
+      <li>Avoids complex commands involving memory addresses</li>
+      <li>e.g. GUI uses icons for navigation</li>
+    </ul></div>
+  </div>
+  <div class="def-box"><div class="def-label">DMA — Direct Memory Access</div>
+    <p>Allows hardware to access main memory independently of the CPU. CPU not utilised during data transfer — free to carry out other tasks simultaneously. Optimises I/O operations.</p>
+  </div>
+</section>
+
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §16.1</div>
+  <div class="topic-title">Process Management & States</div>
+  <div class="topic-sub">MULTITASKING · PROCESS STATES · STATE TRANSITIONS</div>
+  <div class="def-box"><div class="def-label">MULTITASKING</div>
+    <p>Allows computers to <strong>appear to</strong> carry out more than one process at a time. Processor time, hardware and resources shared between tasks. Scheduling decides which process runs next.</p>
+  </div>
+  <div class="card-grid">
+    <div class="card c-green-card"><div class="card-title">READY</div><ul><li>Program waiting to run on CPU</li><li>Waiting for its allocated time slice</li><li>All resources available except CPU</li></ul></div>
+    <div class="card c-cyan-card"><div class="card-title">RUNNING</div><ul><li>Program currently executing on CPU</li><li>Has CPU time allocated to it</li></ul></div>
+    <div class="card c-red-card"><div class="card-title">BLOCKED</div><ul><li>Execution halted — waiting for event</li><li>e.g. waiting for I/O to complete</li><li>Cannot proceed until event occurs</li></ul></div>
+  </div>
+  <div class="sub-label">State Transitions</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">TRANSITION</th><th class="th-green">CAUSE</th></tr>
+    <tr><td style="color:var(--orange)">Running → Ready</td><td>Time slice expires; higher priority process preempts; interrupt arrives</td></tr>
+    <tr><td style="color:var(--blue)">Ready → Running</td><td>OS scheduler allocates CPU time to this process</td></tr>
+    <tr><td style="color:var(--red)">Running → Blocked</td><td>Process needs I/O operation; must wait for resource/event</td></tr>
+    <tr><td style="color:var(--green)">Blocked → Ready</td><td>I/O operation completed; event occurred — process can resume</td></tr>
+  </table>
+  <div class="sub-label">How OS Kernel Acts as Interrupt Handler</div>
+  <div class="process">
+    <div class="step"><p>Receives <span class="kw">signal</span> when interrupt generated</p></div>
+    <div class="step"><p>Checks <span class="kw">priority</span> of interrupt and reviews current interrupts</p></div>
+    <div class="step"><p>Consults <span class="kw">Interrupt Dispatch Table (IDT)</span> — saves register contents on kernel stack</p></div>
+    <div class="step"><p>Executes appropriate ISR — then <span class="kw">restores register contents</span></p></div>
+  </div>
+</section>
+
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §16.1</div>
+  <div class="topic-title">Scheduling Algorithms</div>
+  <div class="topic-sub">ROUND ROBIN · SJF · FCFS · SRT · STARVATION</div>
+  <div class="def-box"><div class="def-label">PURPOSE OF SCHEDULING</div><ul>
+    <li>Allows more than one task to appear to run simultaneously</li>
+    <li>Allows high priority jobs to complete first</li>
+    <li>Keeps CPU busy at all times — reduces wait times</li>
+  </ul></div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">ALGORITHM</th><th class="th-green">HOW IT WORKS</th><th class="th-yellow">STARVATION?</th></tr>
+    <tr><td style="color:var(--blue)">Round Robin</td><td>Each process given fixed CPU time — cycles through all processes equally</td><td>❌ No — every process gets equal share</td></tr>
+    <tr><td style="color:var(--blue)">Shortest Job First (SJF)</td><td>Shortest processes executed first in ascending order of CPU time required</td><td>⚠️ Possible — long jobs may wait indefinitely</td></tr>
+    <tr><td style="color:var(--blue)">First Come First Served (FCFS)</td><td>Processes executed in the order they arrive — simple queue</td><td>❌ No — every process eventually runs</td></tr>
+    <tr><td style="color:var(--blue)">Shortest Remaining Time (SRT)</td><td>If shorter process queued, current process preempted — shorter runs first</td><td>✅ Yes — longer processes may never run if short ones keep arriving</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ STARVATION &nbsp;</strong>Starvation = a process never gets CPU time because shorter/higher-priority processes keep arriving. Round Robin and FCFS never starve. SRT CAN starve long processes. SJF MAY starve. Ask: "can a process be permanently delayed?" = starvation.</div>
+</section>
+
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §16.1</div>
+  <div class="topic-title">Virtual Memory & Paging</div>
+  <div class="topic-sub">WHAT IT IS · WHY USED · PAGING vs SEGMENTATION</div>
+  <div class="def-box"><div class="def-label">VIRTUAL MEMORY</div><ul>
+    <li>Created temporarily using secondary storage to <strong>simulate additional RAM</strong></li>
+    <li>Extends RAM — CPU appears to access more memory than physically available</li>
+    <li>Only data in use needs to be in main memory</li>
+    <li>Data swapped between RAM and virtual memory as needed</li>
+  </ul></div>
+  <div class="card-grid">
+    <div class="card c-yellow-card"><div class="card-title">Why Use Virtual Memory?</div><ul>
+      <li>When RAM is running low (many processes running)</li>
+      <li>More efficient RAM use — unused programs moved out</li>
+    </ul></div>
+  </div>
+  <div class="sub-label">Paging</div>
+  <div class="def-box"><div class="def-label">PAGING</div><ul>
+    <li>Memory divided into <strong>fixed-size blocks</strong> (pages)</li>
+    <li>Dividing done by OS</li>
+    <li><strong>Faster access times</strong> than segmentation</li>
+    <li>Pages read/written from/to secondary storage when required</li>
+  </ul></div>
+  <div class="def-box" style="margin-top:10px"><div class="def-label">PAGE FAULT</div>
+    <p>An interrupt raised when a requested page is <strong>not yet loaded</strong> into main memory. OS replaces an existing page with the needed one — swapping between secondary and main memory.</p>
+  </div>
+  <div class="memory-box"><strong>⚡ PAGING vs SEGMENTATION &nbsp;</strong>Paging = fixed-size blocks, done by OS, faster. Segmentation = variable-size blocks, done by compiler, has segment name/number/offset — slower.</div>
+</section>
+
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §16.1</div>
+  <div class="topic-title">Segmentation, Page Replacement & Disk Thrashing</div>
+  <div class="topic-sub">SEGMENTATION · FIFO · LRU · CLOCK · THRASHING</div>
+  <div class="def-box"><div class="def-label">SEGMENTATION</div><ul>
+    <li>Virtual address space broken into <strong>varying-sized blocks</strong></li>
+    <li>Segment size calculated by the compiler</li>
+    <li>Each segment has name, size, number — used as index in segment map table</li>
+    <li>Segment map table maps virtual → physical addresses</li>
+    <li>Address = segment name + offset value</li>
+    <li>Slower access times than paging</li>
+  </ul></div>
+  <div class="sub-label">Page Replacement Algorithms</div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">FIFO (First In First Out)</div><ul>
+      <li>Oldest page removed first (queue structure)</li>
+      <li>Page usage not considered</li>
+      <li>Suffers from Belady's Anomaly — more frames can cause more page faults</li>
+    </ul></div>
+    <div class="card c-green-card"><div class="card-title">LRU (Least Recently Used)</div><ul>
+      <li>Page not used for longest time is replaced</li>
+      <li>Implemented using linked list</li>
+      <li>Most recently used at front; least recently used at back</li>
+    </ul></div>
+    <div class="card c-orange-card"><div class="card-title">Clock Page Replacement</div><ul>
+      <li>Circular queue — single pointer (head and tail)</li>
+      <li>Each page has R-flag (0 or 1)</li>
+      <li>R=0 → page removed, new page inserted</li>
+      <li>R=1 → move to next page, pointer advances until R=0 found</li>
+    </ul></div>
+  </div>
+  <div class="def-box" style="margin-top:12px"><div class="def-label">DISK THRASHING</div><ul>
+    <li>Occurs when virtual memory is heavily used</li>
+    <li>Main memory fills up → many pages swapped between virtual and physical memory</li>
+    <li>Very high rate of hard disk access → excessive head movements</li>
+    <li>Latency increases dramatically</li>
+    <li>More time spent swapping than processing → program may freeze</li>
+  </ul></div>
+</section>
+
+<section class="topic" id="t6">
+  <div class="topic-num">TOPIC 06 · §16.2</div>
+  <div class="topic-title">Translation Software & BNF</div>
+  <div class="topic-sub">INTERPRETER · COMPILATION STAGES · BNF NOTATION</div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Interpreter Process</div><ul>
+      <li>Examines source code one statement at a time</li>
+      <li>Checks each statement for errors</li>
+      <li>No error → statement executed immediately</li>
+      <li>Error found → reported, interpreter halts</li>
+      <li>Re-interpreted every iteration of loops</li>
+      <li>Must retranslate every run</li>
+    </ul></div>
+    <div class="card c-green-card"><div class="card-title">Compilation Stages</div><ul>
+      <li><strong>Lexical Analysis</strong>: converts characters → tokens</li>
+      <li><strong>Syntax Analysis</strong>: checks grammar; produces parse tree; reports errors</li>
+      <li><strong>Code Generation</strong>: converts intermediate code → executable</li>
+      <li><strong>Optimisation</strong>: minimises execution time and memory</li>
+    </ul></div>
+  </div>
+  <div class="sub-label">Backus-Naur Form (BNF) Notation</div>
+  <div class="def-box"><div class="def-label">BNF — FORMAL GRAMMAR DEFINITION</div><ul>
+    <li>Formal method of defining <strong>grammatical rules</strong> of a programming language</li>
+    <li><code style="color:var(--cyan)">&lt;name&gt; ::= option1 | option2 | option3</code></li>
+    <li><code style="color:var(--cyan)">&lt;&gt;</code> encloses a rule name (non-terminal)</li>
+    <li><code style="color:var(--cyan)">::=</code> means "is defined as"</li>
+    <li><code style="color:var(--cyan)">|</code> means OR (multiple valid options)</li>
+    <li>BNF rules can be <strong>recursive</strong> — allowing repeated/extended structures</li>
+  </ul></div>
+  <div class="code-block"><span class="cm">// BNF example: defining a hexadecimal number</span>
+&lt;digit&gt; ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+&lt;letter&gt; ::= A | B | C | D | E | F
+&lt;hexnum&gt; ::= &lt;digit&gt; | &lt;letter&gt; | &lt;hexnum&gt;&lt;digit&gt; | &lt;hexnum&gt;&lt;letter&gt;
+
+<span class="cm">// Recursive rule: &lt;hexnum&gt; can contain itself</span>
+<span class="cm">// → allows hexadecimal numbers of any length</span></div>
+  <div class="memory-box"><strong>⚡ BNF EXAM &nbsp;</strong>&lt;&gt; = non-terminal (can be replaced). ::= = "is defined as". | = OR. Recursive definitions allow structures to repeat. E.g. &lt;hexnum&gt;&lt;digit&gt; means "a hex number followed by another digit" → allows multi-digit hex.</div>
+</section>
+
+<section class="topic" id="t7">
+  <div class="topic-num">TOPIC 07 · §16.2</div>
+  <div class="topic-title">Reverse Polish Notation (RPN)</div>
+  <div class="topic-sub">WHAT IT IS · EVALUATION · STACK METHOD</div>
+  <div class="def-box"><div class="def-label">RPN (POSTFIX NOTATION)</div><ul>
+    <li>Used to evaluate expressions — operator comes <strong>after</strong> its operands</li>
+    <li>Provides unambiguous representation of expressions</li>
+    <li>Does NOT require brackets or BODMAS rules</li>
+    <li>Reads from left to right</li>
+  </ul></div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">INFIX (normal)</th><th class="th-green">POSTFIX (RPN)</th><th class="th-yellow">RESULT</th></tr>
+    <tr><td>3 + 4</td><td>3 4 +</td><td>7</td></tr>
+    <tr><td>2 × 4</td><td>2 4 *</td><td>8</td></tr>
+    <tr><td>(5 + 3) × (7 - 2)</td><td>5 3 + 7 2 - *</td><td>40</td></tr>
+    <tr><td>8 - 2 × 3</td><td>8 2 3 * -</td><td>2</td></tr>
+  </table>
+  <div class="sub-label">RPN Evaluation Using a Stack</div>
+  <div class="process">
+    <div class="step"><p>Read expression <span class="kw">left to right</span>, one item at a time</p></div>
+    <div class="step"><p>If <span class="kw">value/operand</span> → push onto stack</p></div>
+    <div class="step"><p>If <span class="kw">operator</span> → pop last TWO values from stack; apply operator</p></div>
+    <div class="step"><p>Push <span class="kw">result</span> back onto stack</p></div>
+    <div class="step"><p>Repeat until one value remains — that is the <span class="kw">result</span></p></div>
+  </div>
+  <div class="def-box" style="margin-top:10px"><div class="def-label">WORKED EXAMPLE: 5 3 + 7 2 - *</div>
+    <p>Read 5 → push. Read 3 → push. Stack: [5, 3]<br>
+    Read + → pop 3 and 5, apply: 5+3=8 → push 8. Stack: [8]<br>
+    Read 7 → push. Read 2 → push. Stack: [8, 7, 2]<br>
+    Read - → pop 2 and 7: 7-2=5 → push 5. Stack: [8, 5]<br>
+    Read * → pop 5 and 8: 8×5=40 → push 40. Stack: [40]<br>
+    Result = <strong>40</strong></p>
+  </div>
+  <div class="memory-box"><strong>⚡ RPN EXAM &nbsp;</strong>Values → push. Operator → pop two, apply, push result. Note: order matters for subtraction/division — second-popped is LEFT operand. e.g. pop 2 then pop 7 for "7 2 -" → 7-2 not 2-7.</div>
+</section>
+
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)"><div class="part-num">PART 2</div><div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div></div>
+<div class="ez-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 16 · System Software Advanced</div><div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong>.</div></div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 01</div>
+  <div class="q-text">State the three process states and describe when a transition from Running to Blocked occurs. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Three states: Ready, Running, Blocked (1)</li>
+    <li>Running → Blocked occurs when process needs to carry out an I/O operation (1)</li>
+    <li>Or when process must wait for a resource to become available (1)</li>
+    <li>Process cannot proceed until the event/I/O completes (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 02</div>
+  <div class="q-text">Explain what virtual memory is and why it is used. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Secondary storage used to simulate additional main memory (1)</li>
+    <li>Extends RAM — CPU appears to access more memory than physically available (1)</li>
+    <li>Used when RAM is running low / for more efficient use of RAM (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 03</div>
+  <div class="q-text">Evaluate the RPN expression: 6 2 * 4 + <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>6 2 * → 6×2=12 pushed to stack (1)</li>
+    <li>12 4 + → 12+4=16 — result = 16 (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 04</div>
+  <div class="q-text">Compare Round Robin and Shortest Remaining Time scheduling algorithms. Include whether starvation can occur. <span class="marks">[6]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 3 × 2)</h4><ul>
+    <li>Round Robin: each process given fixed time slice / SRT: process with shortest remaining time runs next (1)</li>
+    <li>Round Robin: no preemption mid-slice / SRT: current process preempted if shorter job arrives (1)</li>
+    <li>Round Robin: starvation does NOT occur — each process gets equal share (1)</li>
+    <li>SRT: starvation CAN occur — long processes may never run if short ones keep arriving (1)</li>
+    <li>Round Robin: higher throughput for similar length jobs / SRT: best throughput overall (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 05</div>
+  <div class="q-text">Compare paging and segmentation as methods of implementing virtual memory. <span class="marks">[6]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 3 × 2)</h4><ul>
+    <li>Paging: fixed-size blocks / Segmentation: variable-size blocks (1)</li>
+    <li>Paging: dividing done by OS / Segmentation: segment size calculated by compiler (1)</li>
+    <li>Paging: faster access times / Segmentation: slower access times (1)</li>
+    <li>Segmentation: each segment has name, size and number; addressed by name+offset / Paging: addressed by page number and offset (1)</li>
+    <li>Segmentation: segment map table maps virtual → physical addresses (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 06</div>
+  <div class="q-text">State the four stages of compilation in order and briefly describe each. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Lexical analysis: converts sequence of characters into tokens (1)</li>
+    <li>Syntax analysis: checks code matches language grammar; produces parse tree; reports errors (1)</li>
+    <li>Code generation: converts intermediate representation into executable form (1)</li>
+    <li>Optimisation: minimises execution time and memory requirements (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 07</div>
+  <div class="q-text">Explain what BNF notation is and what the symbols &lt;&gt;, ::= and | mean. Give an example. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>BNF is a formal method of defining the grammatical rules of a programming language (1)</li>
+    <li>&lt;&gt; encloses a rule name (non-terminal symbol) (1)</li>
+    <li>::= means "is defined as" (1)</li>
+    <li>| means OR — allows multiple valid alternatives (1)</li>
+    <li>Example: &lt;digit&gt; ::= 0|1|2|3|4|5|6|7|8|9</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 08</div>
+  <div class="q-text">Explain what disk thrashing is and describe its cause and effect. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Disk thrashing occurs when virtual memory is being heavily used (1)</li>
+    <li>Cause: main memory fills up — many pages constantly swapped between virtual and physical memory (1)</li>
+    <li>Effect: very high rate of hard disk access — excessive read/write head movements (1)</li>
+    <li>Result: more time spent swapping than processing — program may freeze/not run (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 09</div>
+  <div class="q-text">Evaluate the RPN expression: 20 3 * 2 / 10 5 / * (where a=20, b=3, c=10, d=5) <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>20 3 * → 20×3=60, push 60 (1)</li>
+    <li>60 2 / → 60÷2=30, push 30 (1)</li>
+    <li>10 5 / → 10÷5=2, push 2 (1)</li>
+    <li>30 2 * → 30×2=60, result = 60 (1)</li>
+  </ul></div>
+</div>
+</div>
+
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">PART 3</div><div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);">CH 16 · SYSTEM SOFTWARE ADVANCED · 24 CARDS</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress"><div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div><div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div><div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div></div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 24</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button>&nbsp;<button class="fc-btn" onclick="FC.reviewMissed()">Review Missed</button></div>
+</div>
+</div>
+</main></div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'DEFINE',q:'What is DMA and how does it help the OS?',a:'Direct Memory Access — allows hardware to access main memory INDEPENDENTLY of the CPU. CPU is freed to carry out other tasks during data transfer. Optimises I/O operations.'},
+  {label:'STATES',q:'Name the 3 process states and define each',a:'Ready: waiting for CPU time — all resources except CPU available.\nRunning: currently executing on CPU.\nBlocked: halted, waiting for event/I/O to complete.'},
+  {label:'TRANSITIONS',q:'State all 4 process state transitions and their causes',a:'Running→Ready: time slice expires / higher priority process / interrupt.\nReady→Running: scheduler allocates CPU time.\nRunning→Blocked: needs I/O / waiting for resource.\nBlocked→Ready: I/O completes / event occurs.'},
+  {label:'SCHEDULING',q:'Round Robin scheduling — how it works and starvation?',a:'Each process given a fixed CPU time slice. Cycles through all processes equally. Starvation does NOT occur — every process gets equal share each cycle.'},
+  {label:'SCHEDULING',q:'Shortest Job First (SJF) — how it works and starvation?',a:'Shortest processes executed first in ascending order of CPU time required. Leads to increased throughput. Starvation MAY occur — long processes wait if short ones keep arriving.'},
+  {label:'SCHEDULING',q:'First Come First Served (FCFS) — how it works and starvation?',a:'Processes executed in arrival order — simple queue. No complex logic. Starvation does NOT occur — every process eventually gets CPU time.'},
+  {label:'SCHEDULING',q:'Shortest Remaining Time (SRT) — how it works and starvation?',a:'Current process preempted if shorter process arrives. Shorter process runs first. Starvation CAN occur — long processes may never run if short ones keep queuing.'},
+  {label:'DEFINE',q:'What is virtual memory?',a:'Secondary storage used to simulate additional RAM. Extends available memory — CPU appears to access more than physically available. Data swapped between RAM and virtual memory as needed.'},
+  {label:'COMPARE',q:'Paging vs Segmentation — 3 differences',a:'Paging: fixed-size blocks, done by OS, faster access.\nSegmentation: variable-size blocks, done by compiler, slower access, uses name+offset addressing.'},
+  {label:'DEFINE',q:'What is a page fault?',a:'Interrupt raised when a requested page is not yet loaded into main memory. OS replaces an existing page with the needed one — swapping between secondary and main memory.'},
+  {label:'PAGE REPLACE',q:'FIFO page replacement — how it works and its problem',a:'OS tracks pages in a queue — oldest page at front. When new page needed, oldest removed first. Page usage not considered. Suffers from Belady\'s Anomaly — more frames can cause MORE page faults.'},
+  {label:'PAGE REPLACE',q:'LRU page replacement — how it works',a:'Replaces page not used for longest time. Implemented using linked list — most recently used at front, least recently used at back.'},
+  {label:'PAGE REPLACE',q:'Clock page replacement — how it works',a:'Circular queue with single pointer. Each page has R-flag (0 or 1). R=0 → page removed, new page inserted. R=1 → skip to next page, pointer advances until R=0 found.'},
+  {label:'DEFINE',q:'What is disk thrashing and what causes it?',a:'Occurs when virtual memory heavily used. Main memory fills up → many pages constantly swapped between virtual and physical memory → very high disk access → excessive head movements → program may freeze.'},
+  {label:'DEFINE',q:'How does an interpreter execute programs?',a:'Examines source code one statement at a time. If no error → executes immediately. If error → reports and halts. Re-interprets every loop iteration. Must retranslate every run.'},
+  {label:'COMPILE',q:'4 stages of compilation in order',a:'1. Lexical Analysis: characters → tokens\n2. Syntax Analysis: checks grammar, parse tree, reports errors\n3. Code Generation: intermediate code → executable\n4. Optimisation: minimises execution time and memory'},
+  {label:'BNF',q:'What is BNF notation and what does each symbol mean?',a:'Formal method for defining programming language grammar.\n<> = encloses rule name (non-terminal)\n::= = "is defined as"\n| = OR (multiple valid options)\nRecursive rules allow repeated structures.'},
+  {label:'BNF',q:'Write BNF for a binary digit and a binary number',a:'<bit> ::= 0 | 1\n<binary> ::= <bit> | <binary><bit>\n\nRecursion in <binary> allows numbers of any length.'},
+  {label:'RPN',q:'What is RPN (Reverse Polish Notation)?',a:'Postfix notation — operator comes AFTER its operands. No brackets or BODMAS needed. Unambiguous representation. Read left to right. Evaluated using a stack.'},
+  {label:'RPN',q:'RPN evaluation algorithm (5 steps)',a:'1. Read expression left to right\n2. If value → push onto stack\n3. If operator → pop TWO values, apply operator\n4. Push result back onto stack\n5. Repeat until one value remains = result'},
+  {label:'RPN',q:'Convert infix to RPN: (5 + 3) × (7 - 2)',a:'5 3 + 7 2 - *\n\nEach bracketed expression becomes: operands first, then operator.\nFinal multiplication comes last.'},
+  {label:'RPN',q:'Evaluate: 8 4 2 - *',a:'4 2 - → 4-2 = 2, push 2\n8 2 * → 8×2 = 16\nResult = 16'},
+  {label:'SCHEDULING',q:'Which scheduling algorithms prevent starvation?',a:'Round Robin: yes — fixed time for all.\nFCFS: yes — every process eventually runs.\nSJF: not guaranteed — long jobs may starve.\nSRT: no guarantee — long jobs may never run.'},
+  {label:'KERNEL',q:'How does the OS kernel act as an interrupt handler?',a:'1. Receives signal when interrupt generated\n2. Checks priority, reviews current interrupts\n3. Consults Interrupt Dispatch Table (IDT)\n4. Saves register contents on kernel stack\n5. Executes ISR → restores register contents'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','t6','t7','exam','flash']);
+</script>
+</body>
+</html>

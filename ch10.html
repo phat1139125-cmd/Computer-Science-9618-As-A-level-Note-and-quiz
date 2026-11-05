@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 10 — Data Types & Structures | 9618</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 10</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. Data Types & Records</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. Arrays</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Files</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. Linked Lists</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. Queues</button>
+  <button class="nav-item" onclick="scrollToId('t6')">6. Stacks</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+<section class="hero">
+  <div class="hero-badge">CHAPTER 10 · PAPER 2</div>
+  <h1>Data Types &amp; <span>Structures</span></h1>
+  <p>Records, arrays, files, linked lists, queues and stacks — Abstract Data Types (ADTs).</p>
+  <div class="hero-pills"><div class="hero-pill"><span>20</span> Flashcards</div><div class="hero-pill"><span>8</span> Exam Questions</div><div class="hero-pill"><span>6</span> Topics</div></div>
+</section>
+<div class="part-header" id="part1"><div class="part-num">PART 1</div><div class="part-title" style="color:var(--cyan)">THEORY — DATA TYPES & STRUCTURES</div></div>
+
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §10.1</div>
+  <div class="topic-title">Data Types & Records</div>
+  <div class="topic-sub">PRIMITIVE TYPES · RECORD STRUCTURE · BOOLEAN USES</div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Primitive Data Types</div><ul><li>INTEGER — whole numbers</li><li>REAL — decimal numbers</li><li>CHAR — single character</li><li>STRING — sequence of characters</li><li>BOOLEAN — TRUE or FALSE</li><li>DATE — date value</li></ul></div>
+    <div class="card c-green-card"><div class="card-title">Uses of BOOLEAN</div><ul><li>To terminate a conditional loop when value has been found</li><li>When variable can only take one of two possible values</li><li>As a flag variable</li></ul></div>
+  </div>
+  <div class="sub-label">Record Definition — Pseudocode</div>
+  <div class="code-block"><span class="cm">// Define a record type</span>
+<span class="kw">TYPE</span> Student
+    <span class="kw">DECLARE</span> StudentID : INTEGER
+    <span class="kw">DECLARE</span> StudentName : STRING
+    <span class="kw">DECLARE</span> Grade : CHAR
+<span class="kw">ENDTYPE</span>
+
+<span class="cm">// Declare array of records</span>
+<span class="kw">DECLARE</span> Students : ARRAY[<span class="nm">1</span>:<span class="nm">30</span>] OF Student
+
+<span class="cm">// Access record fields</span>
+Students[<span class="nm">1</span>].StudentName ← <span class="st">"Ahmed"</span>
+OUTPUT Students[<span class="nm">1</span>].Grade</div>
+  <div class="card-grid">
+    <div class="card c-purple-card"><div class="card-title">Advantages of Records</div><ul><li>Set of data of different data types stored under single identifier</li><li>Multiple instances referenced using one identifier</li><li>Logical grouping of related data</li></ul></div>
+  </div>
+</section>
+
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §10.2</div>
+  <div class="topic-title">Arrays</div>
+  <div class="topic-sub">1D ARRAYS · 2D ARRAYS · ADVANTAGES</div>
+  <div class="code-block"><span class="cm">// 1D Array declaration</span>
+<span class="kw">DECLARE</span> Scores : ARRAY[<span class="nm">1</span>:<span class="nm">10</span>] OF INTEGER
+
+<span class="cm">// 2D Array declaration</span>
+<span class="kw">DECLARE</span> Grid : ARRAY[<span class="nm">1</span>:<span class="nm">5</span>, <span class="nm">1</span>:<span class="nm">5</span>] OF INTEGER
+
+<span class="cm">// Accessing elements</span>
+Scores[<span class="nm">3</span>] ← <span class="nm">85</span>
+Grid[<span class="nm">2</span>,<span class="nm">4</span>] ← <span class="nm">99</span>
+
+<span class="cm">// Iterating through array</span>
+<span class="kw">FOR</span> i ← <span class="nm">1</span> <span class="kw">TO</span> <span class="nm">10</span>
+    OUTPUT Scores[i]
+<span class="kw">NEXT</span> i</div>
+  <div class="card-grid">
+    <div class="card c-cyan-card"><div class="card-title">Array Advantages</div><ul><li>Simplify algorithm — easier to amend or add data</li><li>Easier to understand, test and debug</li><li>Can iterate through values using a loop</li><li>Arrays of records can store multiple data types</li></ul></div>
+  </div>
+</section>
+
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §10.3</div>
+  <div class="topic-title">Files</div>
+  <div class="topic-sub">READ · WRITE · WHY USE FILES</div>
+  <div class="card-grid">
+    <div class="card c-green-card"><div class="card-title">Advantages of Files</div><ul><li>Data persists after computer switched off</li><li>Data not manually re-entered each run</li><li>Large amounts of data stored permanently</li></ul></div>
+  </div>
+  <div class="code-block"><span class="cm">// Writing to a file — WRITE overwrites ALL existing data</span>
+<span class="kw">OPENFILE</span> <span class="st">"data.txt"</span> <span class="kw">FOR WRITE</span>
+<span class="kw">WRITEFILE</span> <span class="st">"data.txt"</span>, DataToWrite
+<span class="kw">CLOSEFILE</span> <span class="st">"data.txt"</span>
+
+<span class="cm">// Appending to a file — APPEND adds to end, preserves existing data</span>
+<span class="kw">OPENFILE</span> <span class="st">"data.txt"</span> <span class="kw">FOR APPEND</span>
+<span class="kw">WRITEFILE</span> <span class="st">"data.txt"</span>, NewData
+<span class="kw">CLOSEFILE</span> <span class="st">"data.txt"</span>
+
+<span class="cm">// Reading from a file</span>
+<span class="kw">OPENFILE</span> <span class="st">"data.txt"</span> <span class="kw">FOR READ</span>
+<span class="kw">READFILE</span> <span class="st">"data.txt"</span>, DataVariable
+<span class="kw">CLOSEFILE</span> <span class="st">"data.txt"</span>
+
+<span class="cm">// Reading all lines with EOF check</span>
+<span class="kw">OPENFILE</span> <span class="st">"data.txt"</span> <span class="kw">FOR READ</span>
+<span class="kw">WHILE NOT</span> EOF(<span class="st">"data.txt"</span>)
+    <span class="kw">READFILE</span> <span class="st">"data.txt"</span>, Line
+    OUTPUT Line
+<span class="kw">ENDWHILE</span>
+<span class="kw">CLOSEFILE</span> <span class="st">"data.txt"</span></div>
+
+  <div class="card-grid">
+    <div class="card c-red-card"><div class="card-title">⚠️ FOR WRITE</div><ul><li>Overwrites the ENTIRE file completely</li><li>All existing data is LOST</li><li>Use when creating a new file or replacing all content</li></ul></div>
+    <div class="card c-green-card"><div class="card-title">✅ FOR APPEND</div><ul><li>Adds new data to the END of the file</li><li>Existing data is PRESERVED</li><li>Use when adding records to an existing file</li></ul></div>
+    <div class="card c-blue-card"><div class="card-title">📖 FOR READ</div><ul><li>Opens file to read data only</li><li>Use EOF() to check for end of file</li><li>Always CLOSEFILE after use</li></ul></div>
+  </div>
+  <div class="memory-box"><strong>⚡ WRITE vs APPEND &nbsp;</strong>WRITE = destroys existing data (start fresh). APPEND = preserves existing data (add to end). Exam question: "add new students to existing file" → use APPEND. "Create a new file" → use WRITE. File names always in quotes with .txt.</div>
+</section>
+
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §10.4</div>
+  <div class="topic-title">Linked Lists</div>
+  <div class="topic-sub">STRUCTURE · ADDING/REMOVING NODES · ADVANTAGES</div>
+  <div class="def-box"><div class="def-label">LINKED LIST</div><p>Consists of <strong>nodes</strong> — each node contains data and a pointer to the next node. Has a start pointer. Last node has a null pointer. Unused nodes stored on free list.</p></div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Structure</div><ul><li>Start pointer — points to first node</li><li>Each node: data + pointer to next node</li><li>Null pointer — indicates end of list</li><li>Free list — stores unused/available nodes</li></ul></div>
+    <div class="card c-green-card"><div class="card-title">✅ Advantages</div><ul><li>Easier to add/delete data — only pointers changed</li><li>Dynamic size — can grow/shrink as needed</li><li>No shifting of data required</li></ul></div>
+    <div class="card c-red-card"><div class="card-title">❌ Disadvantages</div><ul><li>Pointers need to be stored as well as data</li><li>More complex to implement</li><li>Cannot access elements randomly (must traverse)</li></ul></div>
+  </div>
+  <div class="sub-label">Adding a Node — Steps</div>
+  <div class="process">
+    <div class="step"><p>Check for an <span class="kw">empty node</span> in free list</p></div>
+    <div class="step"><p>Assign data item to <span class="kw">first empty node</span> (call it X)</p></div>
+    <div class="step"><p>Set pointer of X to point to the node that will come <span class="kw">after</span> it (Y)</p></div>
+    <div class="step"><p>Set pointer of node that previously pointed to Y to <span class="kw">point to X</span></p></div>
+    <div class="step"><p>Update <span class="kw">free list pointer</span> to next empty node</p></div>
+  </div>
+  <div class="sub-label">Implementation — Pseudocode</div>
+  <div class="code-block"><span class="cm">// Declare linked list using two parallel arrays</span>
+<span class="kw">DECLARE</span> Data : ARRAY[<span class="nm">0</span>:<span class="nm">9</span>] OF STRING
+<span class="kw">DECLARE</span> Pointer : ARRAY[<span class="nm">0</span>:<span class="nm">9</span>] OF INTEGER
+<span class="kw">DECLARE</span> StartNode : INTEGER
+<span class="kw">DECLARE</span> FreeNode : INTEGER
+
+<span class="cm">// Traverse linked list</span>
+Current ← StartNode
+<span class="kw">WHILE</span> Current &lt;&gt; <span class="nm">-1</span>  <span class="cm">// -1 = null pointer</span>
+    OUTPUT Data[Current]
+    Current ← Pointer[Current]
+<span class="kw">ENDWHILE</span></div>
+</section>
+
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §10.4</div>
+  <div class="topic-title">Queues</div>
+  <div class="topic-sub">FIFO · ADDING · REMOVING · CIRCULAR QUEUE</div>
+  <div class="def-box"><div class="def-label">QUEUE</div><p>Works on <strong>FIFO</strong> (First In, First Out) basis. Has Front and End (Tail) pointers. May be circular.</p></div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">OPERATION</th><th class="th-green">STEPS</th><th class="th-yellow">CHECK FIRST</th></tr>
+    <tr><td>Add (Enqueue)</td><td>Increment End pointer → store data at End pointer position</td><td>Queue is NOT full</td></tr>
+    <tr><td>Remove (Dequeue)</td><td>Return value at Front pointer → increment Front pointer</td><td>Queue is NOT empty</td></tr>
+  </table>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Circular Queue</div><ul><li>Both Head and Tail pointers initialised to 0</li><li>If Tail reaches max, it wraps back to 0</li><li>If Head reaches max, it wraps back to 0</li><li>Tracks number of items in queue</li></ul></div>
+    <div class="card c-orange-card"><div class="card-title">Queue vs Stack</div><ul><li>Queue: FIFO — data removed in ORDER received</li><li>Stack: LIFO/FILO — data removed in REVERSE order</li><li>Queue: two pointers (Front + End)</li><li>Stack: one pointer (Top)</li></ul></div>
+  </div>
+</section>
+
+<section class="topic" id="t6">
+  <div class="topic-num">TOPIC 06 · §10.4</div>
+  <div class="topic-title">Stacks</div>
+  <div class="topic-sub">LIFO · PUSH · POP · USES</div>
+  <div class="def-box"><div class="def-label">STACK</div><p>Works on <strong>LIFO/FILO</strong> (Last In, First Out) basis. Has one pointer — the Top Pointer. Push adds to top; Pop removes from top.</p></div>
+  <div class="card-grid">
+    <div class="card c-green-card"><div class="card-title">Stack Uses</div><ul><li>Recursion — stores return addresses</li><li>Interrupt handling — saves register contents</li><li>Procedure calls — stores local variables</li><li>Evaluating RPN expressions</li><li>Implementing ADTs</li></ul></div>
+  </div>
+  <div class="code-block"><span class="cm">// Stack implementation</span>
+<span class="kw">DECLARE</span> Stack : ARRAY[<span class="nm">0</span>:<span class="nm">9</span>] OF STRING
+<span class="kw">DECLARE</span> TopPointer : INTEGER
+TopPointer ← <span class="nm">-1</span>  <span class="cm">// empty stack</span>
+
+<span class="cm">// PUSH operation</span>
+<span class="kw">PROCEDURE</span> Push(Item : STRING)
+    <span class="kw">IF</span> TopPointer < <span class="nm">9</span> <span class="kw">THEN</span>
+        TopPointer ← TopPointer + <span class="nm">1</span>
+        Stack[TopPointer] ← Item
+    <span class="kw">ENDIF</span>
+<span class="kw">ENDPROCEDURE</span>
+
+<span class="cm">// POP operation</span>
+<span class="kw">FUNCTION</span> Pop() <span class="kw">RETURNS</span> STRING
+    <span class="kw">IF</span> TopPointer >= <span class="nm">0</span> <span class="kw">THEN</span>
+        Item ← Stack[TopPointer]
+        TopPointer ← TopPointer - <span class="nm">1</span>
+        <span class="kw">RETURN</span> Item
+    <span class="kw">ENDIF</span>
+<span class="kw">ENDFUNCTION</span></div>
+  <div class="memory-box"><strong>⚡ STACK CHECKS &nbsp;</strong>Always check if stack is FULL before PUSH (TopPointer = max). Always check if stack is EMPTY before POP (TopPointer = -1 or 0 depending on initialisation). These checks = exam marks.</div>
+</section>
+
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)"><div class="part-num">PART 2</div><div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div></div>
+<div class="ez-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 10 · Data Types & Structures</div><div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong>.</div></div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 01</div>
+  <div class="q-text">Describe the difference between a queue and a stack. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 4)</h4><ul>
+    <li>Queue: FIFO — first data item in is first removed / Stack: LIFO — last data item in is first removed (1)</li>
+    <li>Queue has two pointers (Front and End) / Stack has one pointer (Top) (1)</li>
+    <li>Queue: data added at one end, removed at other / Stack: data added and removed at same end (1)</li>
+    <li>Queue used for ordered processing / Stack used for reverse-order processing (e.g. recursion) (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 02</div>
+  <div class="q-text">Write pseudocode to define a record type called Book with fields: Title (string), ISBN (string), Price (real). Then declare an array of 50 Books. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>TYPE Book (1)</li>
+    <li>DECLARE Title : STRING / DECLARE ISBN : STRING / DECLARE Price : REAL (1)</li>
+    <li>ENDTYPE (1)</li>
+    <li>DECLARE Library : ARRAY[1:50] OF Book (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 03</div>
+  <div class="q-text">Describe the key features of a linked list. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 4)</h4><ul>
+    <li>Consists of nodes — each contains data and a pointer to next node (1)</li>
+    <li>Has a start pointer pointing to the first node (1)</li>
+    <li>Last node has a null pointer indicating end of list (1)</li>
+    <li>Unused nodes stored on a free list (1)</li>
+    <li>Data accessed by traversing nodes sequentially via pointers (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 04</div>
+  <div class="q-text">Write pseudocode to push an item onto a stack, including an appropriate check. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Check if stack is NOT full: IF TopPointer &lt; MaxSize THEN (1)</li>
+    <li>Increment pointer: TopPointer ← TopPointer + 1 (1)</li>
+    <li>Store item: Stack[TopPointer] ← Item (1)</li>
+    <li>ENDIF / appropriate structure (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 05</div>
+  <div class="q-text">Explain two advantages and one disadvantage of using a linked list compared to an array. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>[Adv] Easier to add/delete data — only pointers need to be changed, data does not need to be shifted (1)</li>
+    <li>[Adv] Dynamic size — can grow or shrink as needed without declaring fixed size in advance (1)</li>
+    <li>[Dis] Extra memory needed to store pointers alongside data / more complex to implement (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 06</div>
+  <div class="q-text">State four uses of a stack data structure in computer systems. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 4)</h4><ul>
+    <li>Recursion — stores return addresses and local variables (1)</li>
+    <li>Interrupt handling — saves register contents when interrupt occurs (1)</li>
+    <li>Procedure/function calls — stores return addresses (1)</li>
+    <li>Evaluating RPN (Reverse Polish Notation) expressions (1)</li>
+    <li>Implementing other ADTs (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 07</div>
+  <div class="q-text">Write pseudocode to read all lines from a file called "records.txt" into a 1D array called Lines. <span class="marks">[5]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>OPENFILE "records.txt" FOR READ (1)</li>
+    <li>DECLARE index : INTEGER / index ← 0 (1)</li>
+    <li>WHILE NOT EOF("records.txt") (1)</li>
+    <li>READFILE "records.txt", Lines[index] / index ← index + 1 (1)</li>
+    <li>ENDWHILE / CLOSEFILE "records.txt" (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 08</div>
+  <div class="q-text">Describe the steps to add a new node to a linked list. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Check there is an empty node available in the free list (1)</li>
+    <li>Assign data item to the first empty node in the free list (1)</li>
+    <li>Set pointer of new node to point to the node that should come after it (1)</li>
+    <li>Set pointer of previous node (that pointed to the position) to point to new node / update free list pointer (1)</li>
+  </ul></div>
+</div>
+</div>
+
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">PART 3</div><div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);">CH 10 · DATA TYPES & STRUCTURES · 20 CARDS</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress"><div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div><div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div><div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div></div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 20</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button></div>
+</div>
+</div>
+</main></div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'DEFINE',q:'What is a RECORD data structure?',a:'A set of data of different data types stored under a single identifier. Each field can hold a different type. Multiple instances referenced using one identifier (e.g. array of records).'},
+  {label:'PSEUDOCODE',q:'How do you define a record type in pseudocode?',a:'TYPE RecordName\n    DECLARE field1 : DATATYPE\n    DECLARE field2 : DATATYPE\nENDTYPE'},
+  {label:'PSEUDOCODE',q:'How do you access a field in an array of records?',a:'arrayName[index].fieldName\ne.g. Students[1].StudentName'},
+  {label:'DEFINE',q:'What are the two types of BOOLEAN uses?',a:'1. As a flag to terminate a conditional loop when a value has been found.\n2. When a variable can only take one of two possible values (TRUE/FALSE).'},
+  {label:'PSEUDOCODE',q:'Declare a 2D array called Grid, 5×5 of integers',a:'DECLARE Grid : ARRAY[1:5, 1:5] OF INTEGER\n\nAccess: Grid[row, col]'},
+  {label:'BENEFITS',q:'3 advantages of using arrays',a:'• Simplify algorithm — easier to amend or add data\n• Can iterate through values using a loop\n• Arrays of records can store multiple data types'},
+  {label:'FILES',q:'What is the difference between WRITE and APPEND file modes?',a:'FOR WRITE: overwrites the ENTIRE file — all existing data is lost. Use when creating new file or replacing all content.\nFOR APPEND: adds new data to the END — existing data is preserved. Use when adding to an existing file.'},
+  {label:'PSEUDOCODE',q:'Write pseudocode to open, write to, and close a file',a:'OPENFILE "data.txt" FOR WRITE\nWRITEFILE "data.txt", DataItem\nCLOSEFILE "data.txt"'},
+  {label:'DEFINE',q:'What is a linked list?',a:'Consists of nodes — each containing data and a pointer to the next node. Has a start pointer. Last node has a null pointer. Unused nodes on free list.'},
+  {label:'COMPARE',q:'Linked list vs Array — 2 advantages of linked list',a:'• Easier to add/delete — only pointers changed, no data shifting\n• Dynamic — can grow/shrink without fixed size declaration'},
+  {label:'COMPARE',q:'Linked list vs Array — 2 disadvantages of linked list',a:'• Extra memory for pointers alongside data\n• More complex to implement\n• Cannot randomly access — must traverse sequentially'},
+  {label:'PROCESS',q:'Steps to add a node to a linked list (5 steps)',a:'1. Check free list for empty node\n2. Assign data to first empty node (X)\n3. Set X\'s pointer to node after it (Y)\n4. Set previous node\'s pointer to X\n5. Update free list pointer to next empty node'},
+  {label:'DEFINE',q:'Queue — what does FIFO mean? How many pointers?',a:'FIFO = First In, First Out. First item added is first removed.\nTwo pointers: Front (remove end) and End/Tail (add end).'},
+  {label:'OPERATIONS',q:'Queue — Enqueue and Dequeue steps',a:'Enqueue (add): Check not full → increment End pointer → store data at End.\nDequeue (remove): Check not empty → return value at Front → increment Front pointer.'},
+  {label:'DEFINE',q:'Stack — what does LIFO mean? How many pointers?',a:'LIFO = Last In, First Out. Last item added is first removed.\nOne pointer: Top Pointer (points to current top element).'},
+  {label:'OPERATIONS',q:'Stack — Push and Pop steps',a:'Push: Check not full → TopPointer++ → Stack[TopPointer] = item.\nPop: Check not empty → item = Stack[TopPointer] → TopPointer-- → return item.'},
+  {label:'USES',q:'4 uses of a stack in computer systems',a:'• Recursion (stores return addresses)\n• Interrupt handling (saves register contents)\n• Procedure/function calls\n• Evaluating RPN expressions'},
+  {label:'COMPARE',q:'Queue vs Stack — key structural difference',a:'Queue: FIFO — two pointers (Front + End), data added at one end, removed at other.\nStack: LIFO — one pointer (Top), data added and removed at same end.'},
+  {label:'CIRCULAR',q:'What is a circular queue?',a:'A queue where the End pointer wraps back to position 0 when it reaches the maximum. Both Head and Tail start at 0. Tracks number of items to check if full/empty.'},
+  {label:'PSEUDOCODE',q:'Write pseudocode to traverse a linked list',a:'Current ← StartNode\nWHILE Current <> -1\n    OUTPUT Data[Current]\n    Current ← Pointer[Current]\nENDWHILE\n\n(-1 = null pointer indicating end)'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','t6','exam','flash']);
+</script>
+</body>
+</html>

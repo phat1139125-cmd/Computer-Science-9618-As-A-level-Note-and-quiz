@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 6 — Security & Data Integrity | 9618</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 6</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. Security, Privacy & Integrity</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. Threats</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Protection Methods</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. Validation & Verification</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. Parity & Checksum</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+<section class="hero">
+  <div class="hero-badge">CHAPTER 06 · PAPER 1</div>
+  <h1>Security, Privacy &amp; <span>Data Integrity</span></h1>
+  <p>Threats, protection measures, validation, verification, parity checks and checksums.</p>
+  <div class="hero-pills"><div class="hero-pill"><span>16</span> Flashcards</div><div class="hero-pill"><span>7</span> Exam Questions</div><div class="hero-pill"><span>5</span> Topics</div></div>
+</section>
+<div class="part-header" id="part1"><div class="part-num">PART 1</div><div class="part-title" style="color:var(--cyan)">THEORY — SECURITY & DATA INTEGRITY</div></div>
+
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §6.1</div>
+  <div class="topic-title">Security, Privacy & Data Integrity</div>
+  <div class="topic-sub">DEFINITIONS · WHY DATA MUST BE KEPT SECURE</div>
+  <div class="card-grid">
+    <div class="card c-red-card"><div class="card-title">Data Security</div><ul><li>Protects data against loss/corruption</li><li>Ensures recovery is possible</li></ul></div>
+    <div class="card c-blue-card"><div class="card-title">Data Privacy</div><ul><li>Ensures data is protected against unauthorised access</li></ul></div>
+    <div class="card c-green-card"><div class="card-title">Data Integrity</div><ul><li>Ensures consistency/accuracy of data</li><li>Checks data is up to date</li><li>e.g. validation/verification rules, cascading update/delete</li></ul></div>
+  </div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">REASON</th><th class="th-green">WHY KEEP DATA SECURE</th></tr>
+    <tr><td>Data security</td><td>Protect against someone deleting, modifying or stealing data</td></tr>
+    <tr><td>System security</td><td>Protect against malware installation or system damage</td></tr>
+  </table>
+</section>
+
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §6.1</div>
+  <div class="topic-title">Threats to Computer Systems</div>
+  <div class="topic-sub">VIRUS · SPYWARE · HACKING · PHISHING · PHARMING</div>
+  <div class="card-grid">
+    <div class="card c-red-card">
+      <div class="card-title">🦠 Virus / Malware</div>
+      <ul><li>Malicious software that replicates itself</li><li>Downloaded/run without user knowledge</li><li>Runs in background</li><li>Can damage/delete/corrupt data</li><li>Does NOT send data out of computer</li></ul>
+    </div>
+    <div class="card c-orange-card">
+      <div class="card-title">🕵️ Spyware</div>
+      <ul><li>Malicious software</li><li>Downloaded/run without user knowledge</li><li>Secretly records user data/actions</li><li>Sends data/activity logs to third party</li><li>Does NOT replicate itself</li></ul>
+    </div>
+    <div class="card c-purple-card">
+      <div class="card-title">💻 Hacking</div>
+      <ul><li>Illegal/unauthorised access</li><li>Used to delete/damage/collect data</li><li>Done with malicious intent</li></ul>
+    </div>
+    <div class="card c-yellow-card">
+      <div class="card-title">📧 Phishing (requires user action)</div>
+      <ul><li>Email pretends to be from official body</li><li>Persuades user to disclose private information</li><li>Redirects to unofficial website</li><li>REQUIRES user to click/act</li></ul>
+    </div>
+    <div class="card c-teal-card">
+      <div class="card-title">🌐 Pharming (automatic)</div>
+      <ul><li>Automatically redirects user to false/fake website</li><li>No user action required</li><li>Prevention: check URL validity, ensure HTTPS</li></ul>
+    </div>
+  </div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">THREAT</th><th class="th-yellow">REPLICATES?</th><th class="th-orange">SENDS DATA OUT?</th><th class="th-green">USER ACTION NEEDED?</th></tr>
+    <tr><td style="color:var(--red)">Virus</td><td>✅ Yes</td><td>❌ No</td><td>Sometimes (download)</td></tr>
+    <tr><td style="color:var(--orange)">Spyware</td><td>❌ No</td><td>✅ Yes</td><td>Sometimes</td></tr>
+    <tr><td style="color:var(--yellow)">Phishing</td><td>❌ No</td><td>✅ Yes (user discloses)</td><td>✅ Yes</td></tr>
+    <tr><td style="color:var(--teal)">Pharming</td><td>❌ No</td><td>✅ Yes (fake site)</td><td>❌ No (automatic)</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ PHISHING vs PHARMING &nbsp;</strong>Phishing REQUIRES user action (click email link). Pharming is AUTOMATIC — user just visits website and gets redirected. This distinction = exam mark.</div>
+</section>
+
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §6.1</div>
+  <div class="topic-title">Protection Methods</div>
+  <div class="topic-sub">FIREWALL · ANTI-MALWARE · ENCRYPTION · ACCESS RIGHTS · DIGITAL SIGNATURES</div>
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">🔥 Firewall</div>
+      <ul><li>Monitors incoming and outgoing traffic/packets</li><li>Compares packets to criteria (whitelist/blacklist/blocked IPs)</li><li>Blocks/rejects packets that don't match criteria</li><li>Accepts packets that do match</li></ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">🔒 Encryption</div>
+      <ul><li>Converts data into cipher text</li><li>Cannot be understood if intercepted without decryption key</li><li>Protects data in transit and at rest</li></ul>
+    </div>
+    <div class="card c-orange-card">
+      <div class="card-title">👤 Access Rights</div>
+      <ul><li>Give certain users access to different elements</li><li>Uses different accounts/logins with different access levels</li><li>Specific views can be assigned</li></ul>
+    </div>
+    <div class="card c-purple-card">
+      <div class="card-title">✍️ Digital Signature</div>
+      <ul><li>User puts message through hashing algorithm → digest</li><li>Digest encrypted with sender's private key → signature</li><li>Message + signature sent to receiver</li><li>Receiver decrypts signature using sender's public key → digest</li><li>Receiver hashes received document → second digest</li><li>Digests compared — if same, document is authentic</li></ul>
+    </div>
+    <div class="card c-cyan-card">
+      <div class="card-title">🔐 Two-Factor Authentication</div>
+      <ul><li>Requires two forms of verification</li><li>e.g. password + SMS code</li><li>Prevents unauthorised access even if password stolen</li></ul>
+    </div>
+    <div class="card c-yellow-card">
+      <div class="card-title">🧬 Biometric Passwords</div>
+      <ul><li>Uses unique biological features</li><li>e.g. fingerprint, retina scan, face ID</li><li>Hard to replicate</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §6.2</div>
+  <div class="topic-title">Validation & Verification</div>
+  <div class="topic-sub">VALIDATION CHECKS · VERIFICATION METHODS · WHY DATA CAN STILL BE WRONG</div>
+  <div class="def-box"><div class="def-label">VALIDATION</div><p>Checks data is <strong>reasonable/sensible</strong> — in the correct format, range, or type. Does NOT check accuracy.</p></div>
+  <div class="def-box" style="margin-top:10px"><div class="def-label">VERIFICATION</div><p>Checks that data <strong>matches the original</strong> — is accurately entered. Does NOT check if original is correct.</p></div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">VALIDATION CHECK</th><th class="th-green">WHAT IT CHECKS</th></tr>
+    <tr><td style="color:var(--blue)">Format check</td><td>Data is in the required format (e.g. date as DD/MM/YYYY)</td></tr>
+    <tr><td style="color:var(--blue)">Length check</td><td>Data contains the correct number of characters</td></tr>
+    <tr><td style="color:var(--blue)">Type check</td><td>Correct data type entered (e.g. only numeric data)</td></tr>
+    <tr><td style="color:var(--blue)">Range check</td><td>Value falls within an acceptable range (e.g. 1–100)</td></tr>
+    <tr><td style="color:var(--blue)">Presence check</td><td>Data has actually been entered (field not left empty)</td></tr>
+    <tr><td style="color:var(--blue)">Check digit</td><td>Final digit calculated from other digits — verifies no transcription error</td></tr>
+  </table>
+  <div class="card-grid">
+    <div class="card c-teal-card"><div class="card-title">Verification Methods</div><ul><li>Visual check — manual comparison with source document</li><li>Double entry — enter twice, system compares both entries</li></ul></div>
+    <div class="card c-red-card"><div class="card-title">Why Data May Still Be Wrong</div><ul><li>Original document may be incorrect — verification only checks if it matches, not if it's correct</li><li>Validation only checks if data is reasonable — not if it's accurate</li></ul></div>
+  </div>
+  <div class="memory-box"><strong>⚡ VALIDATION vs VERIFICATION &nbsp;</strong>Validation = reasonable? Verification = matches original? Neither guarantees data is CORRECT — the original source could be wrong.</div>
+</section>
+
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §6.2</div>
+  <div class="topic-title">Parity Check & Checksum</div>
+  <div class="topic-sub">ERROR DETECTION DURING DATA TRANSFER</div>
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">Parity Check</div>
+      <ul><li>Type of parity agreed before transfer (even or odd)</li><li>Each byte contains a parity bit</li><li>Receiver counts 1s in byte — checks parity matches</li><li>Parity block: additional parity byte sent with vertical AND horizontal parity</li><li>Intersection of error row/column identifies the error</li><li>⚠️ Cannot detect if even number of bits changed (could cancel out)</li></ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">Checksum</div>
+      <ul><li>Checksum value calculated from data BEFORE transmission</li><li>Value transmitted along with data</li><li>Receiver recalculates checksum from received data</li><li>If checksums match → no error</li><li>If checksums don't match → error occurred</li></ul>
+    </div>
+  </div>
+  <div class="memory-box"><strong>⚡ PARITY LIMITATION &nbsp;</strong>"A parity check cannot detect an error if an even number of bits has been changed, as the errors may cancel each other out." This exact explanation = exam mark.</div>
+</section>
+
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)"><div class="part-num">PART 2</div><div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div></div>
+<div class="ez-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 6 · Security & Data Integrity</div><div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong> to reveal mark scheme.</div></div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 01</div>
+  <div class="q-text">State the difference between data security and data privacy. <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul><li>Data security: protects data against loss or corruption (1)</li><li>Data privacy: ensures data is protected against unauthorised access (1)</li></ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 02</div>
+  <div class="q-text">Describe how a firewall protects a computer system. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul><li>Monitors incoming and outgoing network traffic/packets (1)</li><li>Compares each packet against criteria set by the user (whitelist/blacklist) (1)</li><li>Blocks/rejects packets that do not meet the criteria; accepts those that do (1)</li></ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 03</div>
+  <div class="q-text">Explain the difference between phishing and pharming. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Phishing: email pretends to be from an official body (1)</li><li>Phishing: requires user to take action — click link/disclose information (1)</li>
+    <li>Pharming: automatically redirects user to a fake website (1)</li><li>Pharming: no user action required — happens automatically (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Key distinction = phishing needs user action; pharming is automatic.</div></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 04</div>
+  <div class="q-text">Compare virus and spyware as threats to a computer system. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 4 contrasting pairs)</h4><ul>
+    <li>Virus replicates itself / spyware does not replicate (1)</li>
+    <li>Virus can damage/delete data / spyware secretly records and sends user data to third party (1)</li>
+    <li>Virus does not send data out of computer / spyware sends activity logs externally (1)</li>
+    <li>Both run in background without user knowledge (similar) (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 05</div>
+  <div class="q-text">Explain three validation checks that could be used when a user enters a date of birth. <span class="marks">[6]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 3 × 2)</h4><ul>
+    <li>Format check: ensures date entered in correct format e.g. DD/MM/YYYY (1) — rejects entry if format not followed (1)</li>
+    <li>Range check: ensures date falls within an acceptable range e.g. year between 1900 and current year (1) — rejects values outside this range (1)</li>
+    <li>Type check: ensures only numeric data entered for day/month/year fields (1) — rejects letters or symbols (1)</li>
+    <li>Presence check: ensures field is not left empty (1) — rejects blank entry (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 06</div>
+  <div class="q-text">Describe how a checksum is used to detect errors during data transmission. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Checksum value calculated from the data before transmission (1)</li>
+    <li>Value transmitted along with data to receiver (1)</li>
+    <li>Receiver recalculates checksum from received data and compares — if different, an error has occurred (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 07</div>
+  <div class="q-text">Explain why validation and verification cannot guarantee that data entered into a system is correct. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Validation only checks if data is reasonable/in the correct format (1) — it does not check if data is accurate or correct (1)</li>
+    <li>Verification checks if data matches the original source document (1) — but if the original document is incorrect, the error will not be detected (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Must address BOTH validation and verification limitations separately for full marks.</div></div>
+</div>
+</div>
+
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">PART 3</div><div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);">CH 6 · SECURITY & INTEGRITY · 16 CARDS</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress"><div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div><div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div><div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div></div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 16</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button>&nbsp;<button class="fc-btn" onclick="FC.reviewMissed()">Review Missed</button></div>
+</div>
+</div>
+</main></div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'DEFINE',q:'Difference: Data Security vs Data Privacy vs Data Integrity',a:'Security: protects against loss/corruption.\nPrivacy: protects against unauthorised access.\nIntegrity: ensures data is accurate, consistent and up to date.'},
+  {label:'COMPARE',q:'Virus vs Spyware — 3 differences',a:'• Virus replicates / spyware does not\n• Virus damages/deletes data / spyware secretly sends user data to third party\n• Virus does not send data out / spyware sends activity logs externally'},
+  {label:'COMPARE',q:'Phishing vs Pharming — key difference',a:'Phishing: email pretends to be official, REQUIRES user action (click link).\nPharming: AUTOMATICALLY redirects user to fake website — no user action needed.'},
+  {label:'DESCRIBE',q:'How does a firewall protect a system?',a:'Monitors incoming/outgoing traffic. Compares each packet against criteria (whitelist/blacklist/blocked IPs). Blocks packets that don\'t meet criteria; accepts those that do.'},
+  {label:'DESCRIBE',q:'How does encryption protect data?',a:'Converts data into cipher text using an encryption key. Cannot be understood if intercepted without the matching decryption key.'},
+  {label:'DESCRIBE',q:'How does a digital signature work? (5 steps)',a:'1. Message hashed → digest\n2. Digest encrypted with sender\'s private key → signature\n3. Message + signature sent\n4. Receiver decrypts signature with sender\'s public key → digest\n5. Receiver hashes received message → compare digests (if same = authentic)'},
+  {label:'DEFINE',q:'What is validation? Name 4 checks.',a:'Checks data is reasonable/sensible. Checks: format, length, type, range, presence, check digit.'},
+  {label:'DEFINE',q:'What is verification? Name 2 methods.',a:'Checks data matches original source. Methods: visual check (manual comparison), double entry (enter twice, system compares).'},
+  {label:'EXPLAIN',q:'Why can validation and verification not guarantee correct data?',a:'Validation: only checks if data is reasonable — not accurate.\nVerification: checks if it matches original — but original may be wrong.'},
+  {label:'DEFINE',q:'Format check vs Range check vs Type check',a:'Format: correct format e.g. DD/MM/YYYY.\nRange: value within acceptable limits e.g. 1–100.\nType: correct data type e.g. numeric only.'},
+  {label:'DESCRIBE',q:'How does a parity check detect errors?',a:'Type of parity agreed (even/odd). Each byte has a parity bit. Receiver counts 1s — checks parity matches. Parity block: row and column parity identifies error intersection.'},
+  {label:'LIMITATION',q:'What is the limitation of a parity check?',a:'Cannot detect an error if an even number of bits has been changed — errors may cancel each other out.'},
+  {label:'DESCRIBE',q:'How does a checksum detect transmission errors?',a:'Checksum calculated from data before sending. Transmitted with data. Receiver recalculates checksum. If checksums differ → error occurred.'},
+  {label:'DEFINE',q:'What is two-factor authentication?',a:'Requires two forms of verification (e.g. password + SMS code). Prevents unauthorised access even if password is stolen.'},
+  {label:'COMPARE',q:'Access rights vs Encryption as security methods',a:'Access rights: restricts which users can access which data/files — different accounts have different permissions.\nEncryption: converts data to cipher text — cannot be understood without decryption key. Both protect against unauthorised access.'},
+  {label:'DEFINE',q:'What is a presence check?',a:'Validates that a field has actually been filled in — data cannot be left empty. Used for required/mandatory fields.'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','exam','flash']);
+</script>
+</body>
+</html>

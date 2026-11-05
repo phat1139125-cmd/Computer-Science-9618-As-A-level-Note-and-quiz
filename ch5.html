@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 5 — System Software | 9618</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 5</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. OS Purpose & Management</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. Utility Software</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Program Libraries</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. Compiler vs Interpreter</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. IDE Features</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+
+<section class="hero">
+  <div class="hero-badge">CHAPTER 05 · PAPER 1</div>
+  <h1>System <span>Software</span></h1>
+  <p>Operating system functions, utility software, program libraries, language translators and IDE tools.</p>
+  <div class="hero-pills">
+    <div class="hero-pill"><span>18</span> Flashcards</div>
+    <div class="hero-pill"><span>8</span> Exam Questions</div>
+    <div class="hero-pill"><span>5</span> Topics</div>
+  </div>
+</section>
+
+<div class="part-header" id="part1">
+  <div class="part-num">PART 1</div>
+  <div class="part-title" style="color:var(--cyan)">THEORY — SYSTEM SOFTWARE</div>
+</div>
+
+<!-- T1: OS -->
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §5.1</div>
+  <div class="topic-title">Operating System — Purpose & Management Tasks</div>
+  <div class="topic-sub">PURPOSE · MEMORY · FILE · SECURITY · HARDWARE · PROCESS MANAGEMENT</div>
+
+  <div class="def-box">
+    <div class="def-label">PURPOSE OF AN OS</div>
+    <ul>
+      <li>Provide a <strong>user interface</strong></li>
+      <li>Provide a <strong>platform for software to run</strong></li>
+      <li>Hide complexities of hardware from user</li>
+    </ul>
+  </div>
+
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">Memory Management</div>
+      <ul>
+        <li>Controls movement of data between RAM/processor</li>
+        <li>Allocates memory to processes dynamically</li>
+        <li>RAM assigned into blocks</li>
+        <li>Prevents two programs occupying same RAM</li>
+        <li>Moves data from secondary storage when needed</li>
+        <li>Manages paging and virtual memory</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">File Management</div>
+      <ul>
+        <li>Space allocated to particular files</li>
+        <li>Maintains a directory structure</li>
+        <li>Provides file naming abilities</li>
+        <li>Implements access rights</li>
+        <li>Allows file sharing</li>
+        <li>Specifies tasks on files (copy, paste, delete)</li>
+      </ul>
+    </div>
+    <div class="card c-red-card">
+      <div class="card-title">Security Management</div>
+      <ul>
+        <li>Creates accounts and passwords</li>
+        <li>Provides firewall or anti-malware</li>
+        <li>Validates user and process authenticity</li>
+      </ul>
+    </div>
+    <div class="card c-orange-card">
+      <div class="card-title">Hardware Management</div>
+      <ul>
+        <li>Receives data from input devices</li>
+        <li>Sends data to output devices</li>
+        <li>Installs and operates device drivers</li>
+        <li>Allows communication between peripherals</li>
+        <li>Handles buffers for data transfer</li>
+        <li>Manages interrupts from devices</li>
+      </ul>
+    </div>
+    <div class="card c-purple-card">
+      <div class="card-title">Process Management</div>
+      <ul>
+        <li>Manages scheduling of processes</li>
+        <li>Manages resources processes require</li>
+        <li>Enables processes to share/transfer data</li>
+        <li>Prevents interference between processes</li>
+        <li>Handles process queue</li>
+        <li>Supports multitasking</li>
+      </ul>
+    </div>
+    <div class="card c-teal-card">
+      <div class="card-title">Input/Output Management</div>
+      <ul>
+        <li>Manages communication with I/O devices</li>
+        <li>Handles device drivers</li>
+        <li>Error checking and recovery</li>
+      </ul>
+    </div>
+  </div>
+  <div class="memory-box"><strong>⚡ OS MANAGEMENT TASKS — MNEMONIC &nbsp;</strong>MF·SH·PI = <strong>M</strong>emory, <strong>F</strong>ile, <strong>S</strong>ecurity, <strong>H</strong>ardware, <strong>P</strong>rocess, <strong>I</strong>/O. Each = 1 mark in "state 4 OS management tasks" questions.</div>
+</section>
+
+<!-- T2: UTILITY -->
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §5.1</div>
+  <div class="topic-title">Utility Software</div>
+  <div class="topic-sub">DISK FORMATTER · DEFRAG · DISK REPAIR · BACKUP · COMPRESSION · VIRUS CHECKER</div>
+
+  <div class="def-box">
+    <div class="def-label">PURPOSE</div>
+    <p>Utility software helps <strong>set up, optimise and maintain</strong> the computer. Makes memory allocation more efficient and checks the system for faults.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">Disk Formatter</div>
+      <ul>
+        <li>Prepares/initialises disk for storing files</li>
+        <li>Partitions disk, generates new file system</li>
+        <li>Can delete all data from disk</li>
+        <li>Sets up file allocation table</li>
+        <li>Checks disk for errors</li>
+      </ul>
+    </div>
+    <div class="card c-cyan-card">
+      <div class="card-title">Defragmentation</div>
+      <ul>
+        <li>Files become fragmented over time (saving/deleting)</li>
+        <li>Moves/rearranges blocks so each file is contiguous</li>
+        <li>Moves free space together</li>
+        <li>Less head movement → faster access</li>
+        <li>Improves disk access times</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">Disk Repair</div>
+      <ul>
+        <li>Scans for errors/inconsistencies in disk</li>
+        <li>Corrects errors — prevents bad sectors being used</li>
+        <li>Reduces access times by optimising storage</li>
+      </ul>
+    </div>
+    <div class="card c-yellow-card">
+      <div class="card-title">Backup Software</div>
+      <ul>
+        <li>Creates copy of data at regular intervals</li>
+        <li>Allows retrieval if data is lost/corrupted</li>
+        <li>Provides security against data loss</li>
+      </ul>
+    </div>
+    <div class="card c-orange-card">
+      <div class="card-title">Compression Software</div>
+      <ul>
+        <li>Reduces file size</li>
+        <li>Saves storage and memory space</li>
+        <li>Reduces transmission time</li>
+      </ul>
+    </div>
+    <div class="card c-red-card">
+      <div class="card-title">Virus Checker</div>
+      <ul>
+        <li>Scans for malicious program code</li>
+        <li>Checks against stored database of viruses</li>
+        <li>Database needs regular updates</li>
+        <li>Quarantines or deletes detected viruses</li>
+        <li>Checks downloaded files against database</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- T3: LIBRARIES -->
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §5.1</div>
+  <div class="topic-title">Program Libraries & DLL</div>
+  <div class="topic-sub">PROGRAM LIBRARY · DYNAMIC LINK LIBRARY · BENEFITS</div>
+
+  <div class="def-box">
+    <div class="def-label">PROGRAM LIBRARY</div>
+    <p>Contains <strong>pre-written functions and subroutines</strong> that can be referenced or imported. The functions/routines can be called in your own program.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card c-green-card">
+      <div class="card-title">Benefits of Program Libraries</div>
+      <ul>
+        <li>Saves time — code not written from scratch</li>
+        <li>More likely to work correctly (already tested)</li>
+        <li>Program updates automatically if routine updated</li>
+        <li>Can perform complex calculations programmer cannot</li>
+      </ul>
+    </div>
+    <div class="card c-blue-card">
+      <div class="card-title">Dynamic Link Library (DLL) Benefits ★</div>
+      <ul>
+        <li>Requires less main memory — DLL loaded only once when needed</li>
+        <li>Executable file is smaller (not all library routines included)</li>
+        <li>No maintenance needed from programmer (DLL is separate)</li>
+        <li>No need to recompile program if DLL changes</li>
+        <li>Changes to DLL done independently of main program</li>
+      </ul>
+    </div>
+  </div>
+  <div class="memory-box"><strong>⚡ DLL KEY BENEFIT &nbsp;</strong>"DLL is only loaded into memory once when needed, so multiple programs can share it without each needing their own copy in memory." This saves RAM = key exam mark.</div>
+</section>
+
+<!-- T4: COMPILER vs INTERPRETER -->
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §5.2</div>
+  <div class="topic-title">Compiler vs Interpreter</div>
+  <div class="topic-sub">WHEN TO USE · ADVANTAGES · DISADVANTAGES ★</div>
+
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-blue">COMPILER</th><th class="th-orange">INTERPRETER</th></tr>
+    <tr><td>Translation</td><td>Entire code translated at once, then run</td><td>Line by line — each line translated then executed</td></tr>
+    <tr><td>When used</td><td>After program is completed</td><td>While writing/testing a program</td></tr>
+    <tr><td>Error reporting</td><td>Error report after full translation</td><td>Stops at first error — shows position immediately</td></tr>
+    <tr><td>Output</td><td>Creates executable file (.exe)</td><td>No executable — must retranslate each run</td></tr>
+    <tr><td>Speed</td><td>Faster execution (pre-compiled)</td><td>Slower (translates each run)</td></tr>
+    <tr><td>Source code</td><td>Users cannot access/edit source code</td><td>Source code visible</td></tr>
+  </table>
+
+  <div class="card-grid">
+    <div class="card c-green-card">
+      <div class="card-title">✅ Compiler — After Testing</div>
+      <ul>
+        <li>Produces executable — runs without source code</li>
+        <li>Source code protected from users</li>
+        <li>Can compile for different hardware</li>
+        <li>Program tested multiple times without retranslating</li>
+        <li>Debug multiple errors simultaneously</li>
+      </ul>
+    </div>
+    <div class="card c-red-card">
+      <div class="card-title">❌ Compiler — During Testing</div>
+      <ul>
+        <li>Cannot change code without recompilation</li>
+        <li>Won't run if any errors exist</li>
+        <li>Errors not corrected in real-time</li>
+        <li>One error may cause false errors elsewhere</li>
+        <li>Cannot test incomplete/individual sections</li>
+      </ul>
+    </div>
+    <div class="card c-cyan-card">
+      <div class="card-title">✅ Interpreter — During Testing</div>
+      <ul>
+        <li>Real-time changes visible immediately</li>
+        <li>Debuggable at each stage</li>
+        <li>Can test when incomplete</li>
+        <li>Errors corrected in real-time</li>
+        <li>Small parts tested individually</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="def-box">
+    <div class="def-label">ASSEMBLER</div>
+    <p>Translates <strong>assembly language</strong> into machine code. Specific to one processor architecture.</p>
+  </div>
+  <div class="memory-box"><strong>⚡ EXAM PATTERN &nbsp;</strong>"Justify use of interpreter during development": stops at first error → programmer can correct immediately. Can test incomplete program. No need to recompile after each change. "Justify compiler for distribution": executable file → users don't need translator. Source code protected.</div>
+</section>
+
+<!-- T5: IDE -->
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §5.2</div>
+  <div class="topic-title">IDE Features & Tools</div>
+  <div class="topic-sub">CODING · ERROR DETECTION · PRESENTATION · DEBUGGING</div>
+
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">Coding Tools</div>
+      <ul>
+        <li>Context sensitive prompts — displays predictions/options as code is written</li>
+        <li>Auto-complete — suggests what to type next</li>
+        <li>Auto-correct</li>
+      </ul>
+    </div>
+    <div class="card c-red-card">
+      <div class="card-title">Error Detection</div>
+      <ul>
+        <li>Dynamic syntax check — underlines/highlights syntax errors in real-time as code is entered</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">Presentation</div>
+      <ul>
+        <li>Pretty printing — highlights key terms with colour</li>
+        <li>Auto-indentation</li>
+        <li>Expand/collapse code blocks</li>
+      </ul>
+    </div>
+    <div class="card c-yellow-card">
+      <div class="card-title">Debugging Tools ★</div>
+      <ul>
+        <li>Single stepping — runs code one line at a time, showing effect of each statement</li>
+        <li>Breakpoints — stops code at a set line to check current values</li>
+        <li>Report windows — outputs contents of variables and data structures</li>
+      </ul>
+    </div>
+  </div>
+  <div class="memory-box"><strong>⚡ IDE DEBUGGING ★ &nbsp;</strong>Single stepping, breakpoints and report windows are the three most exam-tested IDE tools. For each: name it + what it does + WHY it helps debug. "Breakpoints allow programmer to pause execution at a specific line to inspect variable values at that point."</div>
+</section>
+
+<!-- EXAM -->
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)"><div class="part-num">PART 2</div><div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div></div>
+<div class="ez-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 5 · System Software</div><div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong> to reveal mark scheme.</div></div>
+
+<div class="q-block">
+  <div class="q-tier tier-easy">● EASY</div>
+  <div class="q-num">QUESTION 01 · State</div>
+  <div class="q-text">State four management tasks carried out by an operating system. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 4)</h4><ul>
+    <li>Memory management (1)</li><li>File management (1)</li><li>Security management (1)</li>
+    <li>Hardware management (1)</li><li>Process management (1)</li><li>Input/output management (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> One word answers acceptable for this "state" question. Must be specific management type — "management" alone = 0.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-easy">● EASY</div>
+  <div class="q-num">QUESTION 02 · Describe</div>
+  <div class="q-text">Describe what defragmentation software does and explain why it improves performance. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Moves/rearranges blocks of files so each file is stored contiguously in memory (1)</li>
+    <li>Moves free space together (1)</li>
+    <li>Less head movement required to read a file → faster access times (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> "Contiguous" is the key mark word. Must explain WHY performance improves — "less head movement" is the mechanism.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-easy">● EASY</div>
+  <div class="q-num">QUESTION 03 · State</div>
+  <div class="q-text">State two benefits of using a program library. <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 2)</h4><ul>
+    <li>Saves time — code does not need to be written from scratch (1)</li>
+    <li>More likely to work correctly — already tested (1)</li>
+    <li>Can perform complex calculations programmer cannot (1)</li>
+    <li>Updates automatically if library routine is updated (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 04 · Compare</div>
+  <div class="q-text">Compare the use of a compiler and an interpreter when testing a program during development. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 4 contrasting pairs)</h4><ul>
+    <li>Interpreter stops at first error and shows position immediately / compiler reports all errors after full translation (1)</li>
+    <li>Interpreter allows real-time corrections / compiler requires recompilation before changes take effect (1)</li>
+    <li>Interpreter allows testing of incomplete code / compiler requires complete code to compile (1)</li>
+    <li>Interpreter translates line-by-line / compiler translates entire program at once (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Both sides for each mark. Context is "during development/testing" — focus on debugging advantages of interpreter.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 05 · Explain</div>
+  <div class="q-text">Explain two advantages of using a compiler rather than an interpreter once a program has been completed and is ready for distribution. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 2 × 2)</h4><ul>
+    <li>Compiler produces an executable file (1) — users do not need a translator installed to run the program (1)</li>
+    <li>Source code is not accessible to users (1) — prevents them from editing or copying the program (1)</li>
+    <li>Can be compiled for different hardware specifications (1) — allows distribution to wider range of users/devices (1)</li>
+    <li>Program executes faster (1) — no translation overhead at runtime (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 06 · Describe</div>
+  <div class="q-text">Describe three debugging tools found in a typical IDE. <span class="marks">[6]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (3 × 2)</h4><ul>
+    <li>Single stepping: runs code one line at a time (1) — programmer can see effect of each line on variable values (1)</li>
+    <li>Breakpoints: stops execution at a specified line (1) — programmer can inspect current variable values at that point (1)</li>
+    <li>Report/watch windows: displays contents of variables and data structures (1) — programmer can monitor how values change as program runs (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Name + what it does + why it helps = 2 marks per tool.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-hard">★ CHALLENGE</div>
+  <div class="q-num">QUESTION 07 · Explain</div>
+  <div class="q-text">Explain four benefits of using a Dynamic Link Library (DLL). <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>DLL only loaded into memory once when needed — requires less main memory (1)</li>
+    <li>Executable file is smaller — does not contain all library routines (1)</li>
+    <li>No maintenance required from programmer — DLL is separate from the program (1)</li>
+    <li>Program does not need to be recompiled if DLL changes — changes made independently (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-hard">★ CHALLENGE</div>
+  <div class="q-num">QUESTION 08 · Describe</div>
+  <div class="q-text">Describe how a virus checker protects a computer system. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Regularly scans computer files and checks against stored database of known viruses (1)</li>
+    <li>Database must be updated regularly to include new viruses (1)</li>
+    <li>If virus detected, it is quarantined or deleted (1)</li>
+    <li>Checks downloaded files against database — prevents download if virus detected (1)</li>
+  </ul></div>
+</div>
+</div>
+
+<!-- FLASHCARDS -->
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">PART 3</div><div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:5px;">CH 5 · SYSTEM SOFTWARE · 18 CARDS</div><div style="font-size:0.84rem;color:var(--dim2)">Click card or FLIP. ✓/✗ to track.</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress"><div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div><div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div><div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div></div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 18</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button>&nbsp;<button class="fc-btn" onclick="FC.reviewMissed()">Review Missed</button></div>
+</div>
+</div>
+
+</main></div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'PURPOSE',q:'State 3 purposes of an Operating System.',a:'• Provides a user interface\n• Provides a platform for software to run\n• Hides complexities of hardware from user'},
+  {label:'TASKS',q:'Name 6 management tasks carried out by an OS.',a:'• Memory management\n• File management\n• Security management\n• Hardware management\n• Process management\n• Input/output management'},
+  {label:'EXPLAIN',q:'What does OS Memory Management do?',a:'Allocates memory to processes dynamically. Assigns RAM in blocks. Prevents two programs occupying same RAM. Manages paging and virtual memory. Moves data from secondary storage when needed.'},
+  {label:'EXPLAIN',q:'What does OS Process Management do?',a:'Manages scheduling — decides order of processes. Manages resources processes require. Enables processes to share data. Prevents interference between processes. Supports multitasking.'},
+  {label:'DEFINE',q:'What does defragmentation software do?',a:'Moves/rearranges blocks of files so each file is stored contiguously in memory. Moves free space together. Reduces read/write head movement → faster disk access times.'},
+  {label:'DEFINE',q:'What does disk formatter software do?',a:'Prepares/initialises disk for storing files by partitioning it. Generates a new file system. Can delete all data. Sets up file allocation table. Checks disk for errors.'},
+  {label:'BENEFITS',q:'Give 3 benefits of using a Program Library.',a:'• Saves time — code not written from scratch\n• Already tested — more likely to work correctly\n• Can perform complex calculations programmer cannot\n• Program updates automatically if library updated'},
+  {label:'BENEFITS',q:'Give 4 benefits of a Dynamic Link Library (DLL).',a:'• DLL loaded once when needed — requires less main memory\n• Executable file is smaller\n• No maintenance from programmer — DLL is separate\n• No recompilation if DLL changes — done independently'},
+  {label:'COMPARE',q:'Compiler vs Interpreter — 4 differences',a:'• Compiler: entire code translated / Interpreter: line by line\n• Compiler: used after completion / Interpreter: during development\n• Compiler: error report after all translation / Interpreter: stops at first error\n• Compiler: creates executable / Interpreter: must retranslate each run'},
+  {label:'ADVANTAGES',q:'Advantages of COMPILER for distribution',a:'• Creates executable — users don\'t need translator\n• Source code protected from users\n• Can compile for different hardware\n• Faster execution at runtime'},
+  {label:'ADVANTAGES',q:'Advantages of INTERPRETER during testing',a:'• Stops at first error immediately — real-time correction\n• Can test incomplete code\n• Small sections tested individually\n• Changes visible immediately without recompilation'},
+  {label:'DEFINE',q:'What is an Assembler?',a:'Translates assembly language into machine code. Specific to one processor architecture.'},
+  {label:'IDE',q:'What is single stepping in an IDE?',a:'Allows programmer to run code one line at a time. Pauses between each line. Programmer can check effect of each statement on variable values.'},
+  {label:'IDE',q:'What are breakpoints in an IDE?',a:'Stops code execution at a specified line. Programmer can inspect current values of variables and data structures at that point to identify errors.'},
+  {label:'IDE',q:'What are report/watch windows in an IDE?',a:'Output the contents of variables and data structures during execution. Programmer can monitor how variables change as program runs.'},
+  {label:'IDE',q:'What is dynamic syntax checking in an IDE?',a:'Underlines/highlights syntax errors in real-time as code is being entered. Programmer notified immediately without needing to run the program.'},
+  {label:'IDE',q:'What is pretty printing in an IDE?',a:'Highlights key terms/keywords with different colours. Helps programmer identify key parts of code structure and improves readability.'},
+  {label:'DEFINE',q:'What does a virus checker do?',a:'Scans files against stored database of known viruses. Database updated regularly. Quarantines or deletes viruses found. Checks downloaded files against database.'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','exam','flash']);
+</script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 8 — Databases | 9618</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 8</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. File-based vs Relational DB</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. Database Terminology</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Normalisation</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. DBMS</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. SQL — DDL & DML</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+<section class="hero">
+  <div class="hero-badge">CHAPTER 08 · PAPER 1</div>
+  <h1>Database <span>Concepts</span></h1>
+  <p>Relational databases, normalisation (1NF–3NF), DBMS features, SQL DDL and DML.</p>
+  <div class="hero-pills"><div class="hero-pill"><span>20</span> Flashcards</div><div class="hero-pill"><span>8</span> Exam Questions</div><div class="hero-pill"><span>5</span> Topics</div></div>
+</section>
+<div class="part-header" id="part1"><div class="part-num">PART 1</div><div class="part-title" style="color:var(--cyan)">THEORY — DATABASES</div></div>
+
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §8.1</div>
+  <div class="topic-title">File-based Approach vs Relational Database</div>
+  <div class="topic-sub">DRAWBACKS OF FILE-BASED · ADVANTAGES OF RELATIONAL DB</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">ISSUE</th><th class="th-red">FILE-BASED</th><th class="th-green">RELATIONAL DATABASE</th></tr>
+    <tr><td>Data redundancy</td><td>High — same data stored many times</td><td>Reduced — each item stored once (linked tables)</td></tr>
+    <tr><td>Data consistency</td><td>Poor — duplicates stored differently</td><td>Maintained — changes update automatically across tables</td></tr>
+    <tr><td>Complex queries</td><td>Hard — new program written each time</td><td>Easy — SQL queries run directly</td></tr>
+    <tr><td>Privacy/access</td><td>Lack of privacy — no user views</td><td>Different views per user — improved privacy</td></tr>
+    <tr><td>Program-data dependence</td><td>Programs must be rewritten if data changes</td><td>Program-data independence — data separate from software</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ EXAM PATTERN &nbsp;</strong>Advantages of relational DB over file-based: Reduced redundancy / maintained consistency / complex queries / user views / program-data independence. Each = 1 mark with explanation.</div>
+</section>
+
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §8.1</div>
+  <div class="topic-title">Database Terminology</div>
+  <div class="topic-sub">ENTITY · FIELD · TUPLE · PRIMARY KEY · FOREIGN KEY · REFERENTIAL INTEGRITY</div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Entity</div><ul><li>An object about which data can be stored</li><li>e.g. Student, Order, Product</li><li>Represented as a table</li></ul></div>
+    <div class="card c-cyan-card"><div class="card-title">Field / Attribute</div><ul><li>A column in a table</li><li>Stores one piece of data per record</li><li>e.g. StudentName, OrderDate</li></ul></div>
+    <div class="card c-green-card"><div class="card-title">Tuple / Record</div><ul><li>A single row of data in a table</li><li>Contains data about one instance of an entity</li></ul></div>
+    <div class="card c-yellow-card"><div class="card-title">Primary Key</div><ul><li>Unique attribute — identifies each record</li><li>Cannot be null or duplicate</li><li>Can be used as foreign key in another table</li></ul></div>
+    <div class="card c-orange-card"><div class="card-title">Foreign Key</div><ul><li>A field in one table that links to a primary key in another</li><li>Creates relationships between tables</li></ul></div>
+    <div class="card c-purple-card"><div class="card-title">Candidate Key</div><ul><li>An attribute that could be a primary key</li><li>Uniquely identifies a record</li></ul></div>
+    <div class="card c-red-card"><div class="card-title">Secondary Key</div><ul><li>Alternative/additional key used with primary key to locate data</li><li>Candidate key not chosen as primary key</li></ul></div>
+    <div class="card c-teal-card"><div class="card-title">Referential Integrity</div><ul><li>Ensures every foreign key has a corresponding primary key</li><li>Prevents records being added/deleted incorrectly</li><li>Ensures changes reflected across all related records</li><li>Ensures queries return accurate/complete results</li></ul></div>
+  </div>
+</section>
+
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §8.1</div>
+  <div class="topic-title">Normalisation</div>
+  <div class="topic-sub">1NF · 2NF · 3NF · HOW TO NORMALISE</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">NORMAL FORM</th><th class="th-green">RULE</th><th class="th-yellow">HOW TO ACHIEVE</th></tr>
+    <tr><td style="color:var(--blue)"><strong>1NF</strong></td><td>No repeating groups. All fields atomic.</td><td>Remove repeating groups. Split composite fields (e.g. Name → FirstName + LastName). Identify primary key.</td></tr>
+    <tr><td style="color:var(--blue)"><strong>2NF</strong></td><td>In 1NF + no partial key dependencies (all attributes fully dependent on WHOLE primary key)</td><td>Remove any partial key dependencies. Applies to composite primary keys only.</td></tr>
+    <tr><td style="color:var(--blue)"><strong>3NF</strong></td><td>In 2NF + no transitive dependencies (all attributes depend only on primary key, not on other non-key attributes)</td><td>Remove non-key dependencies. Each attribute must depend on primary key AND NOTHING ELSE.</td></tr>
+  </table>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">0NF → 1NF</div><ul><li>Remove/identify repeating groups</li><li>Ensure each field is atomic</li><li>Identify primary key</li></ul></div>
+    <div class="card c-green-card"><div class="card-title">1NF → 2NF</div><ul><li>Remove partial key dependencies</li><li>If attribute depends on PART of composite PK → move to separate table</li></ul></div>
+    <div class="card c-orange-card"><div class="card-title">2NF → 3NF</div><ul><li>Remove transitive/non-key dependencies</li><li>If attribute depends on another non-key attribute → move to separate table</li></ul></div>
+  </div>
+  <div class="memory-box"><strong>⚡ 3NF DEFINITION &nbsp;</strong>"All attributes/fields are fully dependent on the primary key AND NO OTHER ATTRIBUTES." This exact phrasing = exam mark.</div>
+</section>
+
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §8.2</div>
+  <div class="topic-title">Database Management System (DBMS)</div>
+  <div class="topic-sub">DATA DICTIONARY · LOGICAL SCHEMA · SECURITY · SOFTWARE TOOLS</div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Data Dictionary Contents</div><ul><li>Table name / field name</li><li>Data types for each field</li><li>Validation rules used</li><li>Primary and foreign keys</li><li>Relationships between elements</li></ul></div>
+    <div class="card c-cyan-card"><div class="card-title">Logical Schema</div><ul><li>Shows structure of database and relationships</li><li>e.g. E-R (Entity-Relationship) diagram</li><li>Independent of any particular DBMS</li><li>Describes relationship between data and its structure</li></ul></div>
+    <div class="card c-green-card"><div class="card-title">DBMS Security Features</div><ul><li>Authentication — usernames/passwords</li><li>Backup/recovery procedures — automatic copies</li><li>Access rights — read/write per user/table</li><li>Views — users see only required data</li><li>Encryption — data turned to ciphertext</li><li>Record and table locking — prevents simultaneous access</li></ul></div>
+    <div class="card c-yellow-card"><div class="card-title">DBMS Software Tools</div><ul><li>Developer interface — create tables, forms, reports</li><li>Query processor — processes and executes SQL queries</li><li>Allows user to enter criteria and search data</li><li>Organises and displays results</li></ul></div>
+  </div>
+</section>
+
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §8.3</div>
+  <div class="topic-title">SQL — DDL & DML</div>
+  <div class="topic-sub">CREATE · ALTER · SELECT · INSERT · UPDATE · DELETE</div>
+  <div class="sub-label">DDL — Data Definition Language</div>
+  <div class="code-block"><span class="cm">-- Create a database</span>
+<span class="kw">CREATE DATABASE</span> database_name;
+
+<span class="cm">-- Create a table</span>
+<span class="kw">CREATE TABLE</span> <span class="fn">table_name</span> (
+    column1 <span class="st">DATATYPE</span>,
+    column2 <span class="st">DATATYPE</span> <span class="kw">NOT NULL</span>,
+    <span class="kw">PRIMARY KEY</span>(column1),
+    <span class="kw">FOREIGN KEY</span>(column2) <span class="kw">REFERENCES</span> <span class="fn">other_table</span>(column2)
+);
+
+<span class="cm">-- Alter a table</span>
+<span class="kw">ALTER TABLE</span> <span class="fn">table_name</span>
+    <span class="kw">ADD</span> column_name <span class="st">DATATYPE</span>;
+    <span class="kw">DROP COLUMN</span> column_name;
+    <span class="kw">RENAME COLUMN</span> old_name <span class="kw">TO</span> new_name;</div>
+
+  <div class="sub-label">DML — Data Manipulation Language</div>
+  <div class="code-block"><span class="cm">-- SELECT query</span>
+<span class="kw">SELECT</span> column1, column2
+<span class="kw">FROM</span> <span class="fn">table_name</span>
+<span class="kw">WHERE</span> condition
+<span class="kw">ORDER BY</span> column1 <span class="kw">ASC</span>/<span class="kw">DESC</span>
+<span class="kw">GROUP BY</span> column1
+<span class="kw">INNER JOIN</span> <span class="fn">other_table</span> <span class="kw">ON</span> table1.key = other_table.key;
+
+<span class="cm">-- Aggregate functions</span>
+<span class="kw">SELECT</span> <span class="fn">COUNT</span>(*), <span class="fn">SUM</span>(column), <span class="fn">AVG</span>(column) <span class="kw">FROM</span> <span class="fn">table_name</span>;
+
+<span class="cm">-- Insert, Update, Delete</span>
+<span class="kw">INSERT INTO</span> <span class="fn">table_name</span> <span class="kw">VALUES</span> (<span class="nm">val1</span>, <span class="nm">val2</span>);
+<span class="kw">UPDATE</span> <span class="fn">table_name</span> <span class="kw">SET</span> column1 = value <span class="kw">WHERE</span> condition;
+<span class="kw">DELETE FROM</span> <span class="fn">table_name</span> <span class="kw">WHERE</span> condition;</div>
+
+  <div class="card-grid">
+    <div class="card c-teal-card"><div class="card-title">SQL Data Types</div><ul><li>CHARACTER — single character</li><li>VARCHAR(n) — string up to n characters</li><li>BOOLEAN</li><li>INTEGER</li><li>REAL — decimal number</li><li>DATE</li><li>TIME</li></ul></div>
+    <div class="card c-purple-card"><div class="card-title">Key SQL Clauses</div><ul><li>WHERE — filter rows by condition</li><li>ORDER BY — sort results</li><li>GROUP BY — group rows with same value</li><li>INNER JOIN — combine rows from two tables where condition met</li><li>HAVING — filter groups (use with GROUP BY)</li></ul></div>
+  </div>
+  <div class="memory-box"><strong>⚡ SQL EXAM TIPS &nbsp;</strong>Always end DDL statements with semicolon. INNER JOIN: ON specifies the linking columns. WHERE filters rows BEFORE grouping; HAVING filters AFTER grouping. VARCHAR(255) allows up to 255 characters.</div>
+</section>
+
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)"><div class="part-num">PART 2</div><div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div></div>
+<div class="ez-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 8 · Databases</div><div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong>.</div></div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 01</div>
+  <div class="q-text">Explain the difference between a primary key and a foreign key. <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Primary key: uniquely identifies each record/tuple in a table (1)</li>
+    <li>Foreign key: a field in one table that links to (references) the primary key in another table (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 02</div>
+  <div class="q-text">State two advantages of using a relational database over a file-based approach. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 2 × 2)</h4><ul>
+    <li>Reduced data redundancy (1) — each data item stored only once in linked tables (1)</li>
+    <li>Better data consistency (1) — changes in one table update automatically in related tables (1)</li>
+    <li>Complex queries easier (1) — SQL can query multiple linked tables (1)</li>
+    <li>Different views per user (1) — improved privacy, users only see relevant data (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 03</div>
+  <div class="q-text">Explain what is meant by third normal form (3NF). <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>In 2NF with no transitive dependencies (1)</li>
+    <li>All attributes are fully dependent on the primary key AND NO OTHER non-key attributes (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Both parts needed. "No transitive dependencies" alone = 1 mark. Must also state relationship to primary key.</div></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 04</div>
+  <div class="q-text">Write an SQL statement to select the StudentName and Grade from a table called Results, where the Grade is greater than 70, ordered by Grade descending. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>SELECT StudentName, Grade (1)</li>
+    <li>FROM Results (1)</li>
+    <li>WHERE Grade > 70 (1)</li>
+    <li>ORDER BY Grade DESC; (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Each clause = 1 mark. Capitalization of keywords preferred but not required. Semicolon at end is good practice.</div></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 05</div>
+  <div class="q-text">Explain the importance of referential integrity in a relational database. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 3)</h4><ul>
+    <li>Ensures every foreign key has a corresponding primary key in the related table (1)</li>
+    <li>Prevents records being added, modified or deleted incorrectly (1)</li>
+    <li>Ensures changes in one table are reflected in all related records (1)</li>
+    <li>Ensures queries return accurate and complete results (1)</li>
+    <li>Prevents non-existent data from being referenced (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 06</div>
+  <div class="q-text">Write SQL to create a table called Student with fields: StudentID (integer, primary key), StudentName (varchar 50, not null), DateOfBirth (date). <span class="marks">[5]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>CREATE TABLE Student ( (1)</li>
+    <li>StudentID INTEGER, (1)</li>
+    <li>StudentName VARCHAR(50) NOT NULL, (1)</li>
+    <li>DateOfBirth DATE, (1)</li>
+    <li>PRIMARY KEY(StudentID) ); (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 07</div>
+  <div class="q-text">Describe four security features provided by a DBMS. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 4)</h4><ul>
+    <li>Authentication — usernames/passwords to verify user identity (1)</li>
+    <li>Access rights — different users have read/write permissions to different tables (1)</li>
+    <li>Encryption — data stored as ciphertext, cannot be understood without key (1)</li>
+    <li>Backup/recovery — automatic copies created regularly, data can be restored if lost (1)</li>
+    <li>Views — users can only see parts of database relevant to them (1)</li>
+    <li>Record/table locking — prevents simultaneous conflicting access (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 08</div>
+  <div class="q-text">Write an SQL query to join a Students table and a Courses table, showing StudentName and CourseName where the StudentID matches, for students in Year 12. <span class="marks">[5]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>SELECT Students.StudentName, Courses.CourseName (1)</li>
+    <li>FROM Students (1)</li>
+    <li>INNER JOIN Courses ON Students.StudentID = Courses.StudentID (1)</li>
+    <li>WHERE Students.Year = 12; (1)</li>
+    <li>(Correct table prefixes used for ambiguous columns) (1)</li>
+  </ul></div>
+</div>
+</div>
+
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">PART 3</div><div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);">CH 8 · DATABASES · 20 CARDS</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress"><div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div><div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div><div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div></div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 20</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button></div>
+</div>
+</div>
+</main></div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'COMPARE',q:'4 advantages of relational DB over file-based approach',a:'• Reduced redundancy — each item stored once\n• Maintained consistency — changes update automatically\n• Complex queries easier — SQL\n• Different views per user — improved privacy\n• Program-data independence'},
+  {label:'DEFINE',q:'Entity vs Field vs Tuple',a:'Entity: object data can be stored about (= table).\nField: column/attribute in a table.\nTuple: single row/record of data about one instance.'},
+  {label:'DEFINE',q:'Primary Key vs Foreign Key',a:'Primary key: uniquely identifies each record; cannot be null or duplicate.\nForeign key: field in one table that references primary key in another; creates relationship between tables.'},
+  {label:'DEFINE',q:'What is referential integrity?',a:'Ensures every foreign key has a corresponding primary key. Prevents records being added/deleted incorrectly. Ensures changes reflected across all related records.'},
+  {label:'DEFINE',q:'What is a candidate key?',a:'An attribute that COULD be a primary key — it uniquely identifies each record. The one not chosen as PK becomes a secondary key.'},
+  {label:'NORMALISATION',q:'What does 1NF require?',a:'No repeating groups of attributes. Each field is atomic (one value per field). A primary key is identified.'},
+  {label:'NORMALISATION',q:'What does 2NF require?',a:'In 1NF, PLUS no partial key dependencies. All non-key attributes must depend on the WHOLE primary key (applies when PK is composite).'},
+  {label:'NORMALISATION',q:'What does 3NF require?',a:'In 2NF, PLUS no transitive dependencies. All attributes must depend on the primary key AND NO OTHER non-key attributes.'},
+  {label:'NORMALISATION',q:'How do you move from 2NF to 3NF?',a:'Remove transitive (non-key) dependencies. If an attribute depends on another non-key attribute rather than the primary key, move it to a separate table.'},
+  {label:'DEFINE',q:'What does a Data Dictionary contain?',a:'Table names, field names, data types, validation rules, primary and foreign keys, relationships between elements.'},
+  {label:'DEFINE',q:'What is a Logical Schema?',a:'Shows structure of database and its relationships (e.g. E-R diagram). Independent of any DBMS. Describes relationship between data and structure.'},
+  {label:'SQL',q:'Write SQL to SELECT all columns from Students WHERE Year = 12',a:'SELECT *\nFROM Students\nWHERE Year = 12;'},
+  {label:'SQL',q:'Write SQL to SELECT StudentName ordered by Name ascending',a:'SELECT StudentName\nFROM Students\nORDER BY StudentName ASC;'},
+  {label:'SQL',q:'Write SQL to count students grouped by Year',a:'SELECT Year, COUNT(*)\nFROM Students\nGROUP BY Year;'},
+  {label:'SQL',q:'Write SQL INNER JOIN syntax',a:'SELECT t1.col, t2.col\nFROM table1 t1\nINNER JOIN table2 t2\nON t1.key = t2.key;'},
+  {label:'SQL',q:'Write SQL to INSERT a new record',a:'INSERT INTO table_name\nVALUES (value1, value2, value3);'},
+  {label:'SQL',q:'Write SQL to UPDATE a record',a:'UPDATE table_name\nSET column1 = value\nWHERE condition;'},
+  {label:'SQL',q:'Write SQL to CREATE a table with PK and FK',a:'CREATE TABLE Orders (\n  OrderID INTEGER,\n  CustomerID INTEGER,\n  PRIMARY KEY(OrderID),\n  FOREIGN KEY(CustomerID) REFERENCES Customers(CustomerID)\n);'},
+  {label:'SQL',q:'SQL data types — list 5',a:'CHARACTER, VARCHAR(n), BOOLEAN, INTEGER, REAL, DATE, TIME'},
+  {label:'DBMS',q:'Name 5 DBMS security features',a:'• Authentication\n• Access rights (read/write per user)\n• Encryption\n• Backup/recovery procedures\n• Views (users see only relevant data)\n• Record/table locking'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','exam','flash']);
+</script>
+</body>
+</html>

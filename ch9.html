@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 9 — Algorithm Design | 9618</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 9</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. Abstraction & Decomposition</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. Algorithms & Stepwise Refinement</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Linear & Binary Search</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. Bubble & Insertion Sort</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. Big O Notation</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+<section class="hero">
+  <div class="hero-badge">CHAPTER 09 · PAPER 2</div>
+  <h1>Algorithm Design &amp; <span>Problem Solving</span></h1>
+  <p>Abstraction, decomposition, stepwise refinement, searching, sorting and Big O notation.</p>
+  <div class="hero-pills"><div class="hero-pill"><span>16</span> Flashcards</div><div class="hero-pill"><span>7</span> Exam Questions</div><div class="hero-pill"><span>5</span> Topics</div></div>
+</section>
+<div class="part-header" id="part1"><div class="part-num">PART 1</div><div class="part-title" style="color:var(--cyan)">THEORY — ALGORITHM DESIGN</div></div>
+
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §9.1</div>
+  <div class="topic-title">Abstraction & Decomposition</div>
+  <div class="topic-sub">COMPUTATIONAL THINKING SKILLS</div>
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">Abstraction</div>
+      <ul>
+        <li>Filter out unnecessary information</li>
+        <li>Only essential information is included</li>
+        <li>Simplifies the solution — easier to implement</li>
+        <li>System tailored to needs of user</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">Decomposition</div>
+      <ul>
+        <li>Breaking a complex problem into smaller sub-problems</li>
+        <li>Sub-problems easier to program, test and maintain</li>
+        <li>Leads to modular design</li>
+        <li>Sub-problems can be given to different teams</li>
+        <li>Solved separately and combined</li>
+      </ul>
+    </div>
+  </div>
+  <div class="memory-box"><strong>⚡ EXAM &nbsp;</strong>Abstraction = remove unnecessary detail. Decomposition = break into smaller parts. Both make problems easier to solve and programs easier to test and maintain.</div>
+</section>
+
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §9.2</div>
+  <div class="topic-title">Algorithms & Stepwise Refinement</div>
+  <div class="topic-sub">ALGORITHM DEFINITION · STEPWISE REFINEMENT · PSEUDOCODE</div>
+  <div class="def-box"><div class="def-label">ALGORITHM</div><p>A sequence of defined steps that describe how to solve a problem.</p></div>
+  <div class="def-box" style="margin-top:10px"><div class="def-label">STEPWISE REFINEMENT</div><p>Process of developing a modular design by repeatedly splitting a problem into sub-tasks until each sub-task is a single programmable statement.</p></div>
+  <div class="sub-label">Pseudocode Reference — Key Constructs</div>
+  <div class="code-block"><span class="cm">// Variables & Constants</span>
+<span class="kw">DECLARE</span> variable_name : DATATYPE
+<span class="kw">CONSTANT</span> CONST_NAME : value
+
+<span class="cm">// Input / Output</span>
+<span class="kw">INPUT</span> variable_name
+<span class="kw">OUTPUT</span> variable_name, <span class="st">"string"</span>
+
+<span class="cm">// IF statement</span>
+<span class="kw">IF</span> condition <span class="kw">THEN</span>
+    statements
+<span class="kw">ELSE</span>
+    statements
+<span class="kw">ENDIF</span>
+
+<span class="cm">// CASE statement</span>
+<span class="kw">CASE OF</span> variable
+    value1 : statement
+    value2 : statement
+    <span class="kw">OTHERWISE</span> : statement
+<span class="kw">ENDCASE</span>
+
+<span class="cm">// FOR loop (count-controlled)</span>
+<span class="kw">FOR</span> i ← 1 <span class="kw">TO</span> 10
+    statements
+<span class="kw">NEXT</span> i
+
+<span class="cm">// WHILE loop (pre-condition)</span>
+<span class="kw">WHILE</span> condition
+    statements
+<span class="kw">ENDWHILE</span>
+
+<span class="cm">// REPEAT loop (post-condition)</span>
+<span class="kw">REPEAT</span>
+    statements
+<span class="kw">UNTIL</span> condition</div>
+  <div class="card-grid">
+    <div class="card c-cyan-card"><div class="card-title">FOR loop — use when</div><ul><li>Number of iterations is KNOWN in advance</li><li>Count-controlled repetition</li></ul></div>
+    <div class="card c-blue-card"><div class="card-title">WHILE loop — use when</div><ul><li>Number of iterations NOT known</li><li>Condition checked BEFORE loop body</li><li>Loop may not execute if condition false from start</li></ul></div>
+    <div class="card c-orange-card"><div class="card-title">REPEAT loop — use when</div><ul><li>Number of iterations NOT known</li><li>Condition checked AFTER loop body</li><li>Loop always executes AT LEAST ONCE</li></ul></div>
+  </div>
+</section>
+
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §9.3</div>
+  <div class="topic-title">Linear & Binary Search</div>
+  <div class="topic-sub">HOW THEY WORK · COMPARISON · PRECONDITIONS</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-orange">LINEAR SEARCH</th><th class="th-green">BINARY SEARCH</th></tr>
+    <tr><td>Precondition</td><td>None — works on unsorted data</td><td>Data MUST be sorted (ascending or descending)</td></tr>
+    <tr><td>Method</td><td>Checks each element sequentially from start</td><td>Finds mid-point, discards half, repeats</td></tr>
+    <tr><td>Comparisons</td><td>Usually more comparisons</td><td>Fewer comparisons (logarithmic)</td></tr>
+    <tr><td>Time complexity</td><td>O(n) — linear</td><td>O(log n) — logarithmic</td></tr>
+    <tr><td>Best for</td><td>Small/unsorted lists</td><td>Large sorted lists</td></tr>
+  </table>
+
+  <div class="sub-label">Binary Search Process</div>
+  <div class="process">
+    <div class="step"><p>Find the <span class="kw">middle index</span> of the list</p></div>
+    <div class="step"><p>Check if middle value <span class="kw">equals target</span> — if yes, found!</p></div>
+    <div class="step"><p>If target &lt; middle value → <span class="kw">discard upper half</span></p></div>
+    <div class="step"><p>If target &gt; middle value → <span class="kw">discard lower half</span></p></div>
+    <div class="step"><p>Repeat until found OR only one element remains and it doesn't match</p></div>
+  </div>
+
+  <div class="code-block"><span class="cm">// Binary Search pseudocode</span>
+<span class="kw">DECLARE</span> First, Last, Mid : INTEGER
+First ← <span class="nm">0</span>
+Last ← Length - <span class="nm">1</span>
+Found ← <span class="kw">FALSE</span>
+
+<span class="kw">WHILE</span> First <= Last <span class="kw">AND NOT</span> Found
+    Mid ← (First + Last) <span class="kw">DIV</span> <span class="nm">2</span>
+    <span class="kw">IF</span> List[Mid] = Target <span class="kw">THEN</span>
+        Found ← <span class="kw">TRUE</span>
+    <span class="kw">ELSE IF</span> List[Mid] > Target <span class="kw">THEN</span>
+        Last ← Mid - <span class="nm">1</span>
+    <span class="kw">ELSE</span>
+        First ← Mid + <span class="nm">1</span>
+    <span class="kw">ENDIF</span>
+<span class="kw">ENDWHILE</span></div>
+</section>
+
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §9.3</div>
+  <div class="topic-title">Bubble Sort & Insertion Sort</div>
+  <div class="topic-sub">HOW EACH WORKS · PSEUDOCODE</div>
+
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">Bubble Sort</div>
+      <ul>
+        <li>Repeatedly compares adjacent pairs</li>
+        <li>Swaps if in wrong order</li>
+        <li>Largest values "bubble" to end each pass</li>
+        <li>Outer loop: runs n times</li>
+        <li>Inner loop: each pass leaves out one more element at end</li>
+        <li>O(n²) — quadratic time complexity</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">Insertion Sort</div>
+      <ul>
+        <li>Builds sorted portion one element at a time</li>
+        <li>Compares current element with those before it</li>
+        <li>Inserts element into correct position in sorted portion</li>
+        <li>Efficient for nearly-sorted data</li>
+        <li>O(n²) worst case, O(n) best case</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="code-block"><span class="cm">// Bubble Sort pseudocode</span>
+<span class="kw">FOR</span> i ← <span class="nm">1</span> <span class="kw">TO</span> Length - <span class="nm">1</span>
+    <span class="kw">FOR</span> j ← <span class="nm">0</span> <span class="kw">TO</span> Length - <span class="nm">1</span> - i
+        <span class="kw">IF</span> List[j] > List[j+<span class="nm">1</span>] <span class="kw">THEN</span>
+            Temp ← List[j]
+            List[j] ← List[j+<span class="nm">1</span>]
+            List[j+<span class="nm">1</span>] ← Temp
+        <span class="kw">ENDIF</span>
+    <span class="kw">NEXT</span> j
+<span class="kw">NEXT</span> i</div>
+
+  <div class="card-grid">
+    <div class="card c-yellow-card"><div class="card-title">Factors affecting sort performance</div><ul><li>Initial order of data</li><li>Number of data items to be sorted</li><li>Efficiency of the sorting algorithm</li></ul></div>
+  </div>
+</section>
+
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §9.3</div>
+  <div class="topic-title">Big O Notation</div>
+  <div class="topic-sub">TIME COMPLEXITY · SPACE COMPLEXITY</div>
+  <div class="def-box"><div class="def-label">BIG O NOTATION</div><p>Used to indicate the <strong>time or space complexity</strong> of an algorithm — how performance scales with input size.</p></div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">ALGORITHM</th><th class="th-green">BIG O</th><th class="th-yellow">MEANING</th></tr>
+    <tr><td>Linear search</td><td style="color:var(--orange)">O(n)</td><td>Time increases linearly with number of items</td></tr>
+    <tr><td>Binary search</td><td style="color:var(--green)">O(log n)</td><td>Time increases logarithmically — much slower growth</td></tr>
+    <tr><td>Bubble sort</td><td style="color:var(--red)">O(n²)</td><td>Time increases as square of items — slow for large n</td></tr>
+    <tr><td>Insertion sort</td><td style="color:var(--red)">O(n²)</td><td>Worst case quadratic; best case O(n) for nearly-sorted</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ O(log n) EXPLAINED &nbsp;</strong>"The time taken goes up linearly as the number of items rises exponentially." So doubling the items only adds 1 more comparison for binary search — much more efficient than linear search for large lists.</div>
+</section>
+
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)"><div class="part-num">PART 2</div><div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div></div>
+<div class="ez-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 9 · Algorithm Design</div><div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong>.</div></div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 01</div>
+  <div class="q-text">Explain the difference between abstraction and decomposition. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Abstraction: filtering out unnecessary information (1) — only essential information is included in the model (1)</li>
+    <li>Decomposition: breaking a complex problem into smaller sub-problems (1) — each sub-problem is easier to program, test and maintain (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-easy">● EASY</div><div class="q-num">QUESTION 02</div>
+  <div class="q-text">State one precondition for using a binary search. State its time complexity. <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Data must be sorted in ascending (or descending) order (1)</li>
+    <li>Time complexity: O(log n) (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 03</div>
+  <div class="q-text">Describe how a binary search works on the list: [2, 5, 8, 12, 16, 23, 38, 56, 72, 91] to find the value 23. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Find mid-point: index 4 (value 16) (1)</li>
+    <li>23 > 16 → discard lower half; new list [23, 38, 56, 72, 91] (1)</li>
+    <li>Find new mid-point: index 7 (value 56) (1)</li>
+    <li>23 &lt; 56 → discard upper half; new list [23, 38]; mid = 23 → found (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Show each step including mid calculation and which half is discarded.</div></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 04</div>
+  <div class="q-text">Compare linear search and binary search. Give two differences. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 2 × 2)</h4><ul>
+    <li>Linear: no precondition / Binary: data must be sorted (1) — binary search is faster on sorted lists (1)</li>
+    <li>Linear: O(n) / Binary: O(log n) (1) — binary search scales better for large datasets (1)</li>
+    <li>Linear: checks each element in sequence / Binary: halves the search space each iteration (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-std">◆ STANDARD</div><div class="q-num">QUESTION 05</div>
+  <div class="q-text">Justify whether a FOR, WHILE or REPEAT loop is most suitable when: (a) reading exactly 10 numbers from the user, (b) reading numbers until a negative value is entered. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>(a) FOR loop (1) — number of iterations (10) is known in advance (1)</li>
+    <li>(b) REPEAT or WHILE loop (1) — number of iterations not known; depends on when user enters negative value (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Must justify the choice — name alone = 0.</div></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 06</div>
+  <div class="q-text">Trace through a bubble sort on the list [5, 1, 4, 2] and show the list after each pass. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Pass 1: Compare 5,1→swap; 5,4→swap; 5,2→swap → [1, 4, 2, 5] (1)</li>
+    <li>Pass 2: Compare 1,4→no swap; 4,2→swap → [1, 2, 4, 5] (1)</li>
+    <li>Pass 3: Compare 1,2→no swap → [1, 2, 4, 5] — sorted (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block"><div class="q-tier tier-hard">★ CHALLENGE</div><div class="q-num">QUESTION 07</div>
+  <div class="q-text">Explain what O(log n) means and why binary search has this complexity. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>O(log n) means time taken increases logarithmically with the number of items (1)</li>
+    <li>Time goes up linearly as number of items rises exponentially (1)</li>
+    <li>Binary search halves the search space each step — so doubling the list only adds one more comparison (1)</li>
+  </ul></div>
+</div>
+</div>
+
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">PART 3</div><div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);">CH 9 · ALGORITHM DESIGN · 16 CARDS</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress"><div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div><div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div><div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div></div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 16</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button></div>
+</div>
+</div>
+</main></div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'DEFINE',q:'What is abstraction in computational thinking?',a:'Filtering out unnecessary information so only essential details are included. Simplifies the solution and tailors the system to user needs.'},
+  {label:'DEFINE',q:'What is decomposition?',a:'Breaking a complex problem into smaller sub-problems. Each sub-problem is easier to program, test and maintain. Sub-problems can be assigned to different teams.'},
+  {label:'DEFINE',q:'What is an algorithm?',a:'A sequence of defined steps that describes how to solve a problem.'},
+  {label:'DEFINE',q:'What is stepwise refinement?',a:'Process of developing a modular design by repeatedly splitting a problem into sub-tasks until each sub-task is a single programmable statement.'},
+  {label:'LOOPS',q:'FOR vs WHILE vs REPEAT — when to use each',a:'FOR: number of iterations KNOWN (count-controlled).\nWHILE: iterations unknown; condition checked BEFORE — may not run at all.\nREPEAT: iterations unknown; condition checked AFTER — always runs at least once.'},
+  {label:'COMPARE',q:'Linear Search vs Binary Search — 3 differences',a:'• Linear: no precondition / Binary: data MUST be sorted\n• Linear: O(n) / Binary: O(log n)\n• Linear: checks sequentially / Binary: halves search space each step'},
+  {label:'PROCESS',q:'Binary search — describe the process (5 steps)',a:'1. Find mid-point of list\n2. If mid = target → found\n3. If target < mid → discard upper half\n4. If target > mid → discard lower half\n5. Repeat until found or list empty'},
+  {label:'COMPLEXITY',q:'Big O for: Linear search / Binary search / Bubble sort',a:'Linear search: O(n)\nBinary search: O(log n)\nBubble sort: O(n²)\nInsertion sort: O(n²) worst, O(n) best'},
+  {label:'EXPLAIN',q:'What does O(log n) mean?',a:'Time increases logarithmically. Doubling the list adds only one more step. Time goes up linearly as number of items rises exponentially. Much more efficient than O(n) for large datasets.'},
+  {label:'DESCRIBE',q:'How does bubble sort work?',a:'Repeatedly compares adjacent pairs. Swaps if in wrong order. Largest values bubble to end each pass. Outer loop runs n times; inner loop reduces by one each pass. O(n²).'},
+  {label:'DESCRIBE',q:'How does insertion sort work?',a:'Builds sorted portion one element at a time. Compares current element with those before it. Inserts element into correct position. Efficient for nearly-sorted data. O(n²) worst, O(n) best.'},
+  {label:'FACTORS',q:'3 factors affecting sorting algorithm performance',a:'• Initial order of data\n• Number of data items to be sorted\n• Efficiency of the sorting algorithm itself'},
+  {label:'PSEUDOCODE',q:'Write WHILE loop pseudocode structure',a:'WHILE condition\n    statements\nENDWHILE\n\nCondition checked BEFORE body. May not execute if condition false initially.'},
+  {label:'PSEUDOCODE',q:'Write IF-ELSE pseudocode structure',a:'IF condition THEN\n    statements\nELSE\n    statements\nENDIF'},
+  {label:'PSEUDOCODE',q:'Write CASE statement pseudocode structure',a:'CASE OF variable\n    value1 : statement\n    value2 : statement\n    OTHERWISE : statement\nENDCASE'},
+  {label:'PSEUDOCODE',q:'How do you declare a variable and assign a value in pseudocode?',a:'DECLARE counter : INTEGER\ncounter ← 0\n\nUse ← for assignment, not ='}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','exam','flash']);
+</script>
+</body>
+</html>

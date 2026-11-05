@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ch 4 — Processor Fundamentals | 9618</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="shell">
+<nav class="sidenav">
+  <div class="nav-logo"><div><div class="nav-title">9618 · CH 4</div><a href="index.html">← All Chapters</a></div></div>
+  <div class="nav-section">PART 1 — THEORY</div>
+  <button class="nav-item" onclick="scrollToId('t1')">1. Von Neumann & Registers</button>
+  <button class="nav-item" onclick="scrollToId('t2')">2. CPU Components</button>
+  <button class="nav-item" onclick="scrollToId('t3')">3. Fetch-Execute Cycle</button>
+  <button class="nav-item" onclick="scrollToId('t4')">4. Interrupts</button>
+  <button class="nav-item" onclick="scrollToId('t5')">5. Performance Factors</button>
+  <button class="nav-item" onclick="scrollToId('t6')">6. Assembly Language</button>
+  <button class="nav-item" onclick="scrollToId('t7')">7. Addressing Modes</button>
+  <button class="nav-item" onclick="scrollToId('t8')">8. Bit Manipulation</button>
+  <div class="nav-section">PART 2 — EXAM</div>
+  <button class="nav-item" onclick="scrollToId('exam')">Exam Practice</button>
+  <div class="nav-section">PART 3 — FLASHCARDS</div>
+  <button class="nav-item" onclick="scrollToId('flash')">Flashcard System</button>
+</nav>
+<main class="main">
+
+<section class="hero">
+  <div class="hero-badge">CHAPTER 04 · PAPER 1</div>
+  <h1>Processor <span>Fundamentals</span></h1>
+  <p>Von Neumann architecture, registers, fetch-execute cycle, interrupts, assembly language and bit manipulation.</p>
+  <div class="hero-pills">
+    <div class="hero-pill"><span>22</span> Flashcards</div>
+    <div class="hero-pill"><span>8</span> Exam Questions</div>
+    <div class="hero-pill"><span>8</span> Topics</div>
+  </div>
+</section>
+
+<div class="part-header" id="part1">
+  <div class="part-num">PART 1</div>
+  <div class="part-title" style="color:var(--cyan)">THEORY — PROCESSOR FUNDAMENTALS</div>
+</div>
+
+<!-- T1: VON NEUMANN -->
+<section class="topic" id="t1">
+  <div class="topic-num">TOPIC 01 · §4.1</div>
+  <div class="topic-title">Von Neumann Architecture & Registers</div>
+  <div class="topic-sub">STORED PROGRAM CONCEPT · SPECIAL PURPOSE REGISTERS</div>
+
+  <div class="def-box">
+    <div class="def-label">STORED PROGRAM CONCEPT</div>
+    <p>Instructions and data are stored in the <strong>same memory space</strong> (main memory). The CPU fetches and executes instructions stored in memory one at a time.</p>
+  </div>
+
+  <div class="sub-label">Von Neumann Components</div>
+  <div class="card-grid">
+    <div class="card c-blue-card"><div class="card-title">Buses</div><ul><li>Address bus — carries memory addresses</li><li>Data bus — carries data between components</li><li>Control bus — carries control signals</li></ul></div>
+    <div class="card c-cyan-card"><div class="card-title">CPU</div><ul><li>CU — Control Unit</li><li>ALU — Arithmetic & Logic Unit</li><li>IAS — Immediate Access Store</li><li>System Clock</li></ul></div>
+    <div class="card c-green-card"><div class="card-title">Registers</div><ul><li>PC, MAR, MDR, CIR, ACC</li><li>Index Register (IX)</li><li>Status Register</li></ul></div>
+  </div>
+
+  <div class="sub-label">Special Purpose Registers</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">REGISTER</th><th class="th-yellow">ABBREVIATION</th><th class="th-green">PURPOSE</th></tr>
+    <tr><td>Program Counter</td><td style="color:var(--blue)">PC</td><td>Holds address of NEXT instruction to be fetched. Incremented each cycle.</td></tr>
+    <tr><td>Memory Address Register</td><td style="color:var(--blue)">MAR</td><td>Holds address of memory location currently being read from or written to.</td></tr>
+    <tr><td>Memory Data Register</td><td style="color:var(--blue)">MDR</td><td>Holds data fetched from address in MAR. Data copied to CIR.</td></tr>
+    <tr><td>Current Instruction Register</td><td style="color:var(--blue)">CIR</td><td>Holds instruction currently being decoded and executed.</td></tr>
+    <tr><td>Index Register</td><td style="color:var(--blue)">IX</td><td>Stores a value added to an address to give another address (indexed addressing).</td></tr>
+    <tr><td>Status Register</td><td style="color:var(--blue)">SR</td><td>Stores flags from results of operations and interrupt flags.</td></tr>
+    <tr><td>Accumulator</td><td style="color:var(--blue)">ACC</td><td>General purpose register — holds results of arithmetic/logic operations.</td></tr>
+  </table>
+
+  <table class="cmp-table" style="margin-top:14px">
+    <tr><th class="th-cyan">FEATURE</th><th class="th-blue">GENERAL PURPOSE REGISTERS</th><th class="th-green">SPECIAL PURPOSE REGISTERS</th></tr>
+    <tr><td>Use</td><td>Hold temporary data, used for any purpose</td><td>Hold status/specific data</td></tr>
+    <tr><td>Access</td><td>Can be used by most instructions</td><td>Only used by certain instructions</td></tr>
+  </table>
+</section>
+
+<!-- T2: CPU COMPONENTS -->
+<section class="topic" id="t2">
+  <div class="topic-num">TOPIC 02 · §4.1</div>
+  <div class="topic-title">CPU Components</div>
+  <div class="topic-sub">CU · ALU · SYSTEM CLOCK · IAS · BUSES</div>
+
+  <div class="card-grid">
+    <div class="card c-blue-card">
+      <div class="card-title">Control Unit (CU)</div>
+      <ul>
+        <li>Synchronises actions of other CPU components (based on system clock)</li>
+        <li>Sends/receives control signals along control bus</li>
+        <li>Manages execution of instructions</li>
+        <li>Decodes instruction opcode during F-E cycle</li>
+        <li>Controls communication between CPU components</li>
+        <li>Signal types: interrupt, timing, read & write</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">System Clock</div>
+      <ul>
+        <li>Synchronises computer operations by creating time signals</li>
+        <li>Allows operations to be processed in correct order</li>
+        <li>Keeps track of date and time</li>
+        <li>Each tick = one clock cycle</li>
+      </ul>
+    </div>
+    <div class="card c-orange-card">
+      <div class="card-title">IAS — Immediate Access Store</div>
+      <ul>
+        <li>Holds all data/programs currently in use</li>
+        <li>Volatile memory</li>
+        <li>Fast access times</li>
+        <li>Also called main memory / RAM</li>
+      </ul>
+    </div>
+    <div class="card c-cyan-card">
+      <div class="card-title">Buses</div>
+      <ul>
+        <li>Address bus: carries address where data is going to/from</li>
+        <li>Data bus: carries data between components</li>
+        <li>Control bus: CU sends timing, read/write, interrupt signals</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- T3: FE CYCLE -->
+<section class="topic" id="t3">
+  <div class="topic-num">TOPIC 03 · §4.1</div>
+  <div class="topic-title">Fetch-Execute Cycle</div>
+  <div class="topic-sub">STAGES · REGISTER TRANSFER NOTATION ★</div>
+
+  <div class="sub-label">Stages of the F-E Cycle</div>
+  <div class="process">
+    <div class="step"><p><span class="kw">PC</span> stores address of next instruction to fetch</p></div>
+    <div class="step"><p>Address copied from PC to <span class="kw">MAR</span> via address bus</p></div>
+    <div class="step"><p>Instruction copied from main memory to <span class="kw">MDR</span> via data bus</p></div>
+    <div class="step"><p>Instruction copied from MDR to <span class="kw">CIR</span></p></div>
+    <div class="step"><p>CIR instruction decoded by CU (into opcode and operand)</p></div>
+    <div class="step"><p>Processor <span class="kw">executes</span> instruction</p></div>
+    <div class="step"><p>Address in <span class="kw">PC incremented</span> to point to next instruction</p></div>
+  </div>
+
+  <div class="sub-label">Register Transfer Notation ★ (Exam Favourite)</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">NOTATION</th><th class="th-green">MEANING</th></tr>
+    <tr><td><code style="color:var(--cyan)">MAR ← [PC]</code></td><td>Contents of PC loaded to MAR (fetch step 2)</td></tr>
+    <tr><td><code style="color:var(--cyan)">MDR ← [[MAR]]</code></td><td>Data at address held in MAR copied to MDR</td></tr>
+    <tr><td><code style="color:var(--cyan)">CIR ← [MDR]</code></td><td>Contents of MDR copied to CIR</td></tr>
+    <tr><td><code style="color:var(--cyan)">[PC] ← [PC] + 1</code></td><td>Address in PC is incremented</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ RTN EXAM &nbsp;</strong>Square brackets [ ] mean "contents of". Double brackets [[ ]] mean "data at the address stored in". Always use arrows ← not = in RTN.</div>
+</section>
+
+<!-- T4: INTERRUPTS -->
+<section class="topic" id="t4">
+  <div class="topic-num">TOPIC 04 · §4.1</div>
+  <div class="topic-title">Interrupts</div>
+  <div class="topic-sub">PURPOSE · CAUSES · HANDLING PROCESS</div>
+
+  <div class="def-box">
+    <div class="def-label">PURPOSE OF AN INTERRUPT</div>
+    <p>To send a signal from a device/process to the processor, <strong>seeking attention</strong> of the processor so it can handle the request.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card c-red-card">
+      <div class="card-title">Software Interrupt Causes</div>
+      <ul><li>Division by zero</li><li>Attempt to access invalid memory location</li><li>Array index out of bounds</li><li>Stack overflow</li><li>Buffer overflow</li></ul>
+    </div>
+    <div class="card c-orange-card">
+      <div class="card-title">Hardware Interrupt Causes</div>
+      <ul><li>Printer out of paper</li><li>Keyboard key press</li><li>Power failure</li><li>I/O device signals completion</li></ul>
+    </div>
+  </div>
+
+  <div class="sub-label">Interrupt Handling Process</div>
+  <div class="process">
+    <div class="step"><p>Interrupt <span class="kw">flag raised</span> in interrupt register</p></div>
+    <div class="step"><p>Register <span class="kw">checked at start/end</span> of each F-E cycle</p></div>
+    <div class="step"><p>Type and source of interrupt <span class="kw">identified</span></p></div>
+    <div class="step"><p><span class="kw">Priority checked</span> — if lower than current process, F-E cycle continues</p></div>
+    <div class="step"><p>If higher priority: contents of registers <span class="kw">saved to a stack</span></p></div>
+    <div class="step"><p>Address of appropriate <span class="kw">ISR loaded to PC</span> and executed</p></div>
+    <div class="step"><p>After ISR finishes: <span class="kw">check for further interrupts</span></p></div>
+    <div class="step"><p>Otherwise: <span class="kw">restore registers</span> from stack and continue previous process</p></div>
+  </div>
+  <div class="memory-box"><strong>⚡ INTERRUPT EXAM PATTERN &nbsp;</strong>Key marks: "flag raised", "checked at end of cycle", "registers saved to stack", "ISR address loaded to PC", "registers restored from stack". The STACK is critical — always mention it.</div>
+</section>
+
+<!-- T5: PERFORMANCE -->
+<section class="topic" id="t5">
+  <div class="topic-num">TOPIC 05 · §4.1</div>
+  <div class="topic-title">CPU Performance Factors</div>
+  <div class="topic-sub">CORES · CLOCK SPEED · CACHE · BUS WIDTH · RAM</div>
+
+  <table class="cmp-table">
+    <tr><th class="th-cyan">FACTOR</th><th class="th-green">HOW IT IMPROVES PERFORMANCE</th><th class="th-red">LIMITATION</th></tr>
+    <tr><td style="color:var(--blue)">Number of Cores</td><td>Each core processes one instruction per clock pulse. More cores → more instructions simultaneously → faster tasks</td><td>Software may not be designed for multiple cores — one core may be idle</td></tr>
+    <tr><td style="color:var(--blue)">Clock Speed</td><td>Faster clock = more instructions per second. Each instruction executed on one clock pulse.</td><td>Heat generation, battery consumption</td></tr>
+    <tr><td style="color:var(--blue)">Cache Memory</td><td>Stores frequently used instructions near CPU. Prevents CPU waiting for RAM. More cache = more instructions available fast.</td><td>Expensive; limited size</td></tr>
+    <tr><td style="color:var(--blue)">Bus Width</td><td>Wider bus = more data transferred per cycle. More efficient data movement.</td><td>Must match other component widths</td></tr>
+    <tr><td style="color:var(--blue)">RAM Quantity</td><td>More applications in main memory simultaneously. Saves/decreases disk access times.</td><td>Virtual memory overhead if exceeded</td></tr>
+  </table>
+</section>
+
+<!-- T6: ASSEMBLY -->
+<section class="topic" id="t6">
+  <div class="topic-num">TOPIC 06 · §4.2</div>
+  <div class="topic-title">Assembly Language & Two-Pass Assembler</div>
+  <div class="topic-sub">INSTRUCTION GROUPS · TWO-PASS ASSEMBLER</div>
+
+  <div class="card-grid">
+    <div class="card c-yellow-card">
+      <div class="card-title">Instruction Groups</div>
+      <ul>
+        <li>Data movement — moves data between addresses/locations</li>
+        <li>Input/output — takes input, outputs character</li>
+        <li>Arithmetic operations — addition or subtraction</li>
+        <li>Unconditional/conditional — jump to another instruction</li>
+        <li>Compare — compares result to another value</li>
+      </ul>
+    </div>
+    <div class="card c-blue-card">
+      <div class="card-title">Two-Pass Assembler — First Pass</div>
+      <ul>
+        <li>Creates a symbol table</li>
+        <li>Reads assembly language one line at a time</li>
+        <li>Adds symbolic addresses/labels to symbol table</li>
+        <li>Removes comments and white space</li>
+        <li>Checks opcode is in instruction set</li>
+      </ul>
+    </div>
+    <div class="card c-green-card">
+      <div class="card-title">Two-Pass Assembler — Second Pass</div>
+      <ul>
+        <li>Generates object/machine code</li>
+        <li>Reads assembly program one line at a time</li>
+        <li>Replaces symbolic addresses with actual addresses from symbol table</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sub-label">Key Assembly Instructions (9618 Instruction Set)</div>
+  <table class="cmp-table">
+    <tr><th class="th-cyan">OPCODE</th><th class="th-green">OPERATION</th></tr>
+    <tr><td style="color:var(--cyan)">LDM #n</td><td>Immediate addressing — load number n to ACC</td></tr>
+    <tr><td style="color:var(--cyan)">LDD &lt;address&gt;</td><td>Direct — load contents of given address to ACC</td></tr>
+    <tr><td style="color:var(--cyan)">LDI &lt;address&gt;</td><td>Indirect — address at given address loaded to ACC</td></tr>
+    <tr><td style="color:var(--cyan)">LDX &lt;address&gt;</td><td>Indexed — address + IX register content, load to ACC</td></tr>
+    <tr><td style="color:var(--cyan)">STO &lt;address&gt;</td><td>Store contents of ACC to given address</td></tr>
+    <tr><td style="color:var(--cyan)">ADD / SUB</td><td>Add/subtract contents of address from ACC</td></tr>
+    <tr><td style="color:var(--cyan)">JMP &lt;address&gt;</td><td>Unconditional jump to given address</td></tr>
+    <tr><td style="color:var(--cyan)">CMP / JPE / JPN</td><td>Compare ACC; jump if equal (JPE) or not equal (JPN)</td></tr>
+    <tr><td style="color:var(--cyan)">IN / OUT</td><td>Input character to ACC / output character from ACC</td></tr>
+    <tr><td style="color:var(--cyan)">END</td><td>Return control to operating system</td></tr>
+  </table>
+</section>
+
+<!-- T7: ADDRESSING -->
+<section class="topic" id="t7">
+  <div class="topic-num">TOPIC 07 · §4.2</div>
+  <div class="topic-title">Addressing Modes</div>
+  <div class="topic-sub">IMMEDIATE · DIRECT · INDIRECT · INDEXED · RELATIVE</div>
+
+  <table class="cmp-table">
+    <tr><th class="th-cyan">MODE</th><th class="th-yellow">OPERAND CONTAINS</th><th class="th-green">WHAT IS LOADED TO ACC</th></tr>
+    <tr><td style="color:var(--blue)">Immediate</td><td>The data itself (#n)</td><td>The data value directly</td></tr>
+    <tr><td style="color:var(--blue)">Direct</td><td>Memory address of data</td><td>Data at the given address</td></tr>
+    <tr><td style="color:var(--blue)">Indirect</td><td>Address that stores the actual address</td><td>Data at address stored at operand address</td></tr>
+    <tr><td style="color:var(--blue)">Indexed</td><td>Base address (+ IX register content)</td><td>Data at (operand address + IX)</td></tr>
+    <tr><td style="color:var(--blue)">Relative</td><td>Offset from current instruction</td><td>Allows relocatable code</td></tr>
+  </table>
+  <div class="memory-box"><strong>⚡ ADDRESSING TRICK &nbsp;</strong>All modes load contents of the calculated address into ACC. The difference is HOW that address is calculated. Immediate = data is the operand itself (fastest). Indirect = two memory lookups needed (slowest).</div>
+</section>
+
+<!-- T8: BIT MANIPULATION -->
+<section class="topic" id="t8">
+  <div class="topic-num">TOPIC 08 · §4.3</div>
+  <div class="topic-title">Bit Manipulation</div>
+  <div class="topic-sub">BINARY SHIFTS · BIT MASKING</div>
+
+  <table class="cmp-table">
+    <tr><th class="th-cyan">OPERATION</th><th class="th-green">WHAT HAPPENS</th><th class="th-yellow">EFFECT</th></tr>
+    <tr><td style="color:var(--blue)">Logical Left Shift</td><td>Bits moved left, 0s fill from right</td><td>Multiplies by 2 per shift</td></tr>
+    <tr><td style="color:var(--blue)">Logical Right Shift</td><td>Bits moved right, 0s fill from left</td><td>Divides by 2 per shift</td></tr>
+    <tr><td style="color:var(--blue)">Arithmetic Shift</td><td>Sign bit preserved; 1s fill vacant positions</td><td>Preserves sign for signed numbers</td></tr>
+    <tr><td style="color:var(--blue)">Cyclic Shift</td><td>Bits shifted out of one end appear at other end</td><td>No bits lost</td></tr>
+  </table>
+
+  <div class="sub-label">Bit Masking</div>
+  <div class="card-grid">
+    <div class="card c-orange-card"><div class="card-title">AND Masking</div><ul><li>Used to CHECK if a bit has been set</li><li>AND with 1 = preserves bit; AND with 0 = clears bit</li><li>Use to read specific bits</li></ul></div>
+    <div class="card c-green-card"><div class="card-title">OR Masking</div><ul><li>Used to SET a bit to 1</li><li>OR with 1 = sets bit to 1; OR with 0 = no change</li></ul></div>
+    <div class="card c-purple-card"><div class="card-title">XOR Masking</div><ul><li>Used to TOGGLE/CLEAR a bit</li><li>XOR with 1 = toggles bit; XOR with 0 = no change</li></ul></div>
+  </div>
+</section>
+
+<!-- EXAM -->
+<div id="exam" class="exam-zone">
+<div class="part-header" style="background:var(--bg2)"><div class="part-num">PART 2</div><div class="part-title" style="color:var(--red)">EXAM PRACTICE ZONE</div></div>
+<div class="ez-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:7px;">Cambridge 9618 · Chapter 4 · Processor Fundamentals</div><div style="font-size:0.84rem;color:var(--dim2)">Click <strong style="color:var(--green)">Show Answer</strong> to reveal mark scheme.</div></div>
+
+<div class="q-block">
+  <div class="q-tier tier-easy">● EASY</div>
+  <div class="q-num">QUESTION 01 · Define</div>
+  <div class="q-text">State the purpose of the Program Counter (PC). <span class="marks">[1]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul><li>Holds the address of the next instruction to be fetched (1)</li></ul>
+  <div class="examiner-hint"><strong>Examiner:</strong> Must say "address" and "next instruction". "Holds the current instruction" = 0.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-easy">● EASY</div>
+  <div class="q-num">QUESTION 02 · Describe</div>
+  <div class="q-text">Describe the role of the Control Unit (CU). <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 3)</h4><ul>
+    <li>Synchronises actions of other CPU components based on system clock pulses (1)</li>
+    <li>Sends and receives control signals via the control bus (1)</li>
+    <li>Manages the execution of instructions / decodes opcode (1)</li>
+    <li>Controls communication between components of CPU (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 03 · RTN ★</div>
+  <div class="q-text">Write Register Transfer Notation for the first three steps of the fetch stage of the F-E cycle. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>MAR ← [PC] (1)</li>
+    <li>MDR ← [[MAR]] (1)</li>
+    <li>CIR ← [MDR] (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Must use correct notation with ← arrows and square brackets. [PC] means "contents of PC". [[MAR]] means "data at address held in MAR".</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 04 · Describe</div>
+  <div class="q-text">Describe how an interrupt is handled by the processor. <span class="marks">[5]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 5)</h4><ul>
+    <li>Interrupt flag raised in interrupt register (1)</li>
+    <li>Checked at start/end of F-E cycle (1)</li>
+    <li>Priority of interrupt checked against current process (1)</li>
+    <li>If higher priority: contents of registers saved to a stack (1)</li>
+    <li>Address of ISR loaded to PC and executed (1)</li>
+    <li>After ISR: registers restored from stack / continue previous process (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Key marks: "flag", "checked at end of cycle", "saved to stack", "ISR address to PC", "restored from stack". Always mention the STACK.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 05 · Explain</div>
+  <div class="q-text">Explain how increasing the number of processor cores can improve performance. Give one reason why this may NOT always increase performance. <span class="marks">[3]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Each core can process one instruction per clock pulse (1)</li>
+    <li>More cores allow multiple sequences of instructions to execute simultaneously (1)</li>
+    <li>[Limitation] Software may not be designed for multiple cores — one or more cores may remain idle (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-std">◆ STANDARD</div>
+  <div class="q-num">QUESTION 06 · Explain</div>
+  <div class="q-text">Explain the difference between direct and indirect addressing modes. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Direct: operand holds the memory address of the data (1)</li>
+    <li>Direct: data at that address is loaded into ACC (1)</li>
+    <li>Indirect: operand holds an address that itself stores the actual address of the data (1)</li>
+    <li>Indirect: data at the address stored at operand address is loaded to ACC (two memory accesses required) (1)</li>
+  </ul></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-hard">★ CHALLENGE</div>
+  <div class="q-num">QUESTION 07 · Apply</div>
+  <div class="q-text">The value 10110110 is stored in the accumulator. Perform a logical left shift by 2 places. State the result. <span class="marks">[2]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME</h4><ul>
+    <li>Shift left 2: 10110110 → 11011000 (1)</li>
+    <li>Bits shifted out (10) are lost; 0s fill from right (1)</li>
+  </ul><div class="examiner-hint"><strong>Examiner:</strong> Logical shift: vacated positions filled with 0s from right. Bits shifted out are discarded. Show working.</div></div>
+</div>
+
+<div class="q-block">
+  <div class="q-tier tier-hard">★ CHALLENGE</div>
+  <div class="q-num">QUESTION 08 · Explain</div>
+  <div class="q-text">Explain two causes of software interrupts. <span class="marks">[4]</span></div>
+  <button class="reveal-btn" onclick="toggleAnswer(this)">Show Answer</button>
+  <div class="answer-box"><h4>MARK SCHEME (any 2 × 2)</h4><ul>
+    <li>Division by zero (1) — program attempts arithmetic operation that is undefined (1)</li>
+    <li>Access to invalid memory location (1) — program tries to read/write outside its allocated memory (1)</li>
+    <li>Array index out of bounds (1) — program accesses index beyond array size (1)</li>
+    <li>Stack overflow (1) — recursion or too many function calls exceed available stack space (1)</li>
+  </ul></div>
+</div>
+</div>
+
+<!-- FLASHCARDS -->
+<div id="flash" class="fc-zone">
+<div class="part-header" style="background:var(--bg3)"><div class="part-num">PART 3</div><div class="part-title" style="color:var(--purple)">FLASHCARD REVISION SYSTEM</div></div>
+<div class="fc-header"><div style="font-family:'Share Tech Mono',monospace;font-size:0.66rem;color:var(--dim2);margin-bottom:5px;">CH 4 · PROCESSOR FUNDAMENTALS · 22 CARDS</div><div style="font-size:0.84rem;color:var(--dim2)">Click card or FLIP. ✓/✗ to track.</div></div>
+<div class="fc-controls">
+  <button class="fc-btn primary" onclick="FC.shuffle()">🔀 Shuffle</button>
+  <button class="fc-btn" onclick="FC.restart()">↺ Restart</button>
+  <button class="fc-btn" onclick="FC.reviewMissed()">❌ Review Missed</button>
+  <div class="fc-progress"><div class="fc-stat"><span class="stat-correct">✓</span>&nbsp;<span id="fc-correct">0</span></div><div class="fc-stat"><span class="stat-wrong">✗</span>&nbsp;<span id="fc-wrong">0</span></div><div class="fc-stat"><span class="stat-remaining">◎</span>&nbsp;<span id="fc-remain">0</span> left</div></div>
+</div>
+<div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-bar" style="width:0%"></div></div>
+<div class="fc-arena">
+  <div class="fc-counter" id="fc-counter">Card 1 of 22</div>
+  <div class="fc-card-wrap"><div class="fc-card" id="fc-card" onclick="FC.flip()">
+    <div class="fc-front"><div class="fc-label" id="fc-front-label">TERM</div><div class="fc-question" id="fc-front-text">Loading...</div><div class="fc-flip-hint">Click to flip →</div></div>
+    <div class="fc-back"><div class="fc-label">ANSWER</div><div class="fc-answer" id="fc-back-text"></div></div>
+  </div></div>
+  <div class="fc-actions">
+    <button class="fc-action cross" onclick="FC.mark(false)">✗</button>
+    <button class="fc-action flip-btn" onclick="FC.flip()">FLIP</button>
+    <button class="fc-action tick" onclick="FC.mark(true)">✓</button>
+  </div>
+  <div class="fc-done" id="fc-done"><h3>Complete! 🎉</h3><p id="fc-done-stats"></p><button class="fc-btn primary" onclick="FC.restart()">↺ Restart</button>&nbsp;<button class="fc-btn" onclick="FC.reviewMissed()">Review Missed</button></div>
+</div>
+</div>
+
+</main>
+</div>
+<script src="shared.js"></script>
+<script>
+const CARDS=[
+  {label:'DEFINITION',q:'What is the Stored Program Concept?',a:'Instructions and data are stored in the same memory space (main memory). The CPU fetches and executes instructions from memory sequentially.'},
+  {label:'DEFINITION',q:'What does the Program Counter (PC) hold?',a:'The address of the NEXT instruction to be fetched. It is incremented after each fetch.'},
+  {label:'DEFINITION',q:'What does the MAR hold?',a:'Memory Address Register: holds the address of the memory location currently being read from or written to.'},
+  {label:'DEFINITION',q:'What does the MDR hold?',a:'Memory Data Register: holds the data fetched from the address in MAR. Data is then copied to CIR.'},
+  {label:'DEFINITION',q:'What does the CIR hold?',a:'Current Instruction Register: holds the instruction currently being decoded and executed.'},
+  {label:'RTN',q:'Write RTN for: contents of PC loaded to MAR',a:'MAR ← [PC]'},
+  {label:'RTN',q:'Write RTN for: data at address in MAR copied to MDR',a:'MDR ← [[MAR]]'},
+  {label:'RTN',q:'Write RTN for: contents of MDR copied to CIR',a:'CIR ← [MDR]'},
+  {label:'RTN',q:'Write RTN for: PC incremented',a:'[PC] ← [PC] + 1'},
+  {label:'PROCESS',q:'List the 7 stages of the Fetch-Execute cycle',a:'1. PC stores address of next instruction\n2. Address copied to MAR via address bus\n3. Instruction copied from memory to MDR via data bus\n4. Instruction copied from MDR to CIR\n5. CIR decoded (opcode + operand)\n6. Instruction executed\n7. PC incremented'},
+  {label:'DEFINE',q:'What is the role of the Control Unit?',a:'Synchronises CPU components via system clock. Sends/receives control signals. Decodes opcodes. Controls communication between components. Signal types: timing, read/write, interrupt.'},
+  {label:'CAUSES',q:'Give 3 causes of SOFTWARE interrupts',a:'• Division by zero\n• Access to invalid memory location\n• Array index out of bounds\n• Stack overflow\n• Buffer overflow'},
+  {label:'CAUSES',q:'Give 2 causes of HARDWARE interrupts',a:'• Printer out of paper\n• Keyboard key press\n• Power failure\n• I/O device signals completion'},
+  {label:'PROCESS',q:'Describe interrupt handling (5 key steps)',a:'1. Interrupt flag raised\n2. Checked at end of F-E cycle\n3. Priority checked — if higher than current process:\n4. Registers saved to stack\n5. ISR address loaded to PC, executed\n6. Registers restored from stack'},
+  {label:'PERFORMANCE',q:'How does MORE CACHE improve CPU performance?',a:'Cache stores frequently used instructions/data close to CPU. Prevents CPU waiting for slower RAM. More cache = more instructions available at fast speed = less swapping between RAM and cache.'},
+  {label:'PERFORMANCE',q:'How does CLOCK SPEED affect performance?',a:'Each instruction executed on one clock pulse. Faster clock = more instructions per second = more F-E cycles per unit time. More work done in less time.'},
+  {label:'ADDRESSING',q:'Immediate vs Direct addressing — difference',a:'Immediate: operand IS the data (no memory lookup needed).\nDirect: operand holds address OF the data (one memory lookup).'},
+  {label:'ADDRESSING',q:'Indirect addressing — how it works',a:'Operand holds an address. That address stores the ACTUAL address of the data. Two memory lookups needed to find the data.'},
+  {label:'ADDRESSING',q:'Indexed addressing — how it works',a:'Address formed from base address in operand PLUS contents of Index Register (IX). Used to access sequential elements (e.g. array elements).'},
+  {label:'BIT SHIFT',q:'What is a LOGICAL shift? What fills vacated bits?',a:'Bits shifted out are discarded. Vacated positions filled with 0s. Left shift multiplies by 2; right shift divides by 2.'},
+  {label:'BIT SHIFT',q:'What is a CYCLIC shift?',a:'No bits are lost. Bits shifted out of one end appear at the other end.'},
+  {label:'BIT MASKING',q:'AND / OR / XOR masking — what each is used for',a:'AND: CHECK if bit is set (AND with 1 preserves, AND with 0 clears)\nOR: SET a bit to 1 (OR with 1 sets, OR with 0 no change)\nXOR: TOGGLE a bit (XOR with 1 toggles, XOR with 0 no change)'}
+];
+const FC = createFlashcardEngine(CARDS);
+initNavHighlight(['t1','t2','t3','t4','t5','t6','t7','t8','exam','flash']);
+</script>
+</body>
+</html>
